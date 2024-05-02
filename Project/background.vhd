@@ -22,7 +22,8 @@ BEGIN
 
 size <= CONV_STD_LOGIC_VECTOR(20,10);
 
-cloud_x_pos <= CONV_STD_LOGIC_VECTOR(540,11);
+cloud_x_pos <= CONV_STD_LOGIC_VECTOR(500,11);
+cloud_y_pos <= CONV_STD_LOGIC_VECTOR(240,10);
 
 cloud_on <= '1' when ( ('0' & cloud_x_pos <= '0' & pixel_column + size) and ('0' & pixel_column <= '0' & cloud_x_pos + size) 	-- x_pos - size <= pixel_column <= x_pos + size
 					and ('0' & cloud_y_pos <= pixel_row + size) and ('0' & pixel_row <= cloud_y_pos + size) )  else	-- y_pos - size <= pixel_row <= y_pos + size
