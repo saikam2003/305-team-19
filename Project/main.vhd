@@ -56,9 +56,9 @@ BEGIN
 						);
 						
 						
-	red_output <= bird_red when t_bird_on = '1' else '0';
-	green_output <= bird_green when t_bird_on = '1' else '1';
-	blue_output <= bird_blue when t_bird_on = '1' else '1';
+--	red_output <= bird_red when t_bird_on = '1' else '0';
+--	green_output <= bird_green when t_bird_on = '1' else '1';
+--	blue_output <= bird_blue when t_bird_on = '1' else '1';
 	
 	red_output <= pipe_red when t_pipe_on = '1' else '0';
 	green_output <= pipe_green when t_pipe_on = '1' else '1';
