@@ -1,5 +1,5 @@
 Fitter report for background
-Thu May 02 14:44:22 2024
+Thu May 02 19:33:17 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                    ;
 +---------------------------------+-------------------------------------------------+
-; Fitter Status                   ; Successful - Thu May 02 14:44:22 2024           ;
+; Fitter Status                   ; Successful - Thu May 02 19:33:17 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; background                                      ;
 ; Top-level Entity Name           ; background_block                                ;
@@ -1676,10 +1676,10 @@ Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file C:/Users/skam727/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/output_files/background.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 207 warnings
-    Info: Peak virtual memory: 7639 megabytes
-    Info: Processing ended: Thu May 02 14:44:23 2024
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Peak virtual memory: 7650 megabytes
+    Info: Processing ended: Thu May 02 19:33:17 2024
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:12
 
 
 +----------------------------+
