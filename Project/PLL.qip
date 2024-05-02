@@ -328,7 +328,7 @@ set_global_assignment -entity "PLL_0002" -library "PLL" -name IP_COMPONENT_PARAM
 set_global_assignment -entity "PLL_0002" -library "PLL" -name IP_COMPONENT_PARAMETER "Z3VpX2VuYWJsZV9jYXNjYWRlX291dA==::ZmFsc2U=::Q3JlYXRlIGEgJ2Nhc2NhZGVfb3V0JyBzaWduYWwgdG8gY29ubmVjdCB3aXRoIGEgZG93bnN0cmVhbSBQTEw="
 set_global_assignment -entity "PLL_0002" -library "PLL" -name IP_COMPONENT_PARAMETER "Z3VpX2VuYWJsZV9jYXNjYWRlX2lu::ZmFsc2U=::Q3JlYXRlIGFuIGFkanBsbGluIG9yIGNjbGsgc2lnbmFsIHRvIGNvbm5lY3Qgd2l0aCBhbiB1cHN0cmVhbSBQTEw="
 
-set_global_assignment -library "PLL" -name VHDL_FILE [file join $::quartus(qip_path) "PLL.vhd"]
+set_global_assignment -library "PLL" -name VERILOG_FILE [file join $::quartus(qip_path) "PLL.v"]
 set_global_assignment -library "PLL" -name VERILOG_FILE [file join $::quartus(qip_path) "PLL/PLL_0002.v"]
 set_global_assignment -library "PLL" -name QIP_FILE [file join $::quartus(qip_path) "PLL/PLL_0002.qip"]
 
