@@ -1,5 +1,5 @@
 Flow report for BIRD
-Thu May 02 21:25:39 2024
+Thu May 02 21:29:10 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Thu May 02 21:25:35 2024           ;
+; Flow Status                     ; Successful - Thu May 02 21:29:06 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/02/2024 21:24:58 ;
+; Start date & time ; 05/02/2024 21:28:29 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; BIRD                ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+----------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name    ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+----------------+------------+
-; COMPILER_SIGNATURE_ID               ; 224948462350776.171464189824572        ; --            ; --             ; --         ;
+; COMPILER_SIGNATURE_ID               ; 224948462350153.171464210918588        ; --            ; --             ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --             ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --             ; --         ;
 ; MISC_FILE                           ; PLL.cmp                                ; --            ; --             ; --         ;
@@ -103,11 +103,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 4932 MB             ; 00:00:03                           ;
-; Fitter               ; 00:00:26     ; 1.0                     ; 7682 MB             ; 00:00:19                           ;
+; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 4945 MB             ; 00:00:01                           ;
+; Fitter               ; 00:00:26     ; 1.1                     ; 7679 MB             ; 00:00:19                           ;
 ; Assembler            ; 00:00:03     ; 1.0                     ; 4823 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.4                     ; 5245 MB             ; 00:00:01                           ;
-; Total                ; 00:00:38     ; --                      ; --                  ; 00:00:24                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.4                     ; 5241 MB             ; 00:00:02                           ;
+; Total                ; 00:00:38     ; --                      ; --                  ; 00:00:23                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -116,10 +116,10 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; EN453040         ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; EN453040         ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; EN453040         ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; EN453040         ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; EN453041         ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; EN453041         ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; EN453041         ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; EN453041         ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

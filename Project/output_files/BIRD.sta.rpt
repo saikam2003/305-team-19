@@ -1,5 +1,5 @@
 Timing Analyzer report for BIRD
-Thu May 02 21:25:39 2024
+Thu May 02 21:29:10 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -97,26 +97,26 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 24          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.44        ;
+; Average used               ; 1.40        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   3.2%      ;
-;     Processor 3            ;   3.1%      ;
-;     Processor 4            ;   3.0%      ;
-;     Processor 5            ;   2.9%      ;
-;     Processor 6            ;   2.9%      ;
-;     Processor 7            ;   2.9%      ;
-;     Processor 8            ;   2.9%      ;
-;     Processor 9            ;   2.9%      ;
-;     Processor 10           ;   2.9%      ;
-;     Processor 11           ;   2.9%      ;
-;     Processor 12           ;   2.9%      ;
-;     Processor 13           ;   2.8%      ;
-;     Processor 14           ;   2.8%      ;
-;     Processor 15           ;   2.8%      ;
-;     Processor 16           ;   2.8%      ;
+;     Processor 2            ;   3.0%      ;
+;     Processor 3            ;   2.9%      ;
+;     Processor 4            ;   2.8%      ;
+;     Processor 5            ;   2.7%      ;
+;     Processor 6            ;   2.7%      ;
+;     Processor 7            ;   2.7%      ;
+;     Processor 8            ;   2.6%      ;
+;     Processor 9            ;   2.6%      ;
+;     Processor 10           ;   2.6%      ;
+;     Processor 11           ;   2.6%      ;
+;     Processor 12           ;   2.6%      ;
+;     Processor 13           ;   2.6%      ;
+;     Processor 14           ;   2.6%      ;
+;     Processor 15           ;   2.6%      ;
+;     Processor 16           ;   2.6%      ;
 +----------------------------+-------------+
 
 
@@ -546,7 +546,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Thu May 02 21:25:36 2024
+    Info: Processing started: Thu May 02 21:29:07 2024
 Info: Command: quartus_sta BIRD -c BIRD
 Info: qsta_default_script.tcl version: #1
 Warning (20013): Ignored 230 assignments for entity "DE0_CV_Default" -- entity does not exist in design
@@ -910,9 +910,9 @@ Info (332146): Worst-case minimum pulse width slack is 0.074
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 237 warnings
-    Info: Peak virtual memory: 5245 megabytes
-    Info: Processing ended: Thu May 02 21:25:39 2024
+    Info: Peak virtual memory: 5241 megabytes
+    Info: Processing ended: Thu May 02 21:29:10 2024
     Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 
