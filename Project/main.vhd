@@ -46,7 +46,7 @@ BEGIN
 	pipe_component: PIPE
 						PORT MAP(
 							clk => clk_input,
-							horz_sync => horizontal_sync,
+							horz_sync => vertical_sync,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => pipe_red,

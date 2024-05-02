@@ -1,5 +1,5 @@
 Fitter report for BIRD
-Thu May 02 19:57:40 2024
+Thu May 02 20:22:37 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                    ;
 +---------------------------------+-------------------------------------------------+
-; Fitter Status                   ; Successful - Thu May 02 19:57:40 2024           ;
+; Fitter Status                   ; Successful - Thu May 02 20:22:37 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
@@ -72,7 +72,7 @@ refer to the applicable agreement for further details.
 ; Device                          ; 5CEBA4F23C7                                     ;
 ; Timing Models                   ; Final                                           ;
 ; Logic utilization (in ALMs)     ; 49 / 18,480 ( < 1 % )                           ;
-; Total registers                 ; 67                                              ;
+; Total registers                 ; 74                                              ;
 ; Total pins                      ; 6 / 224 ( 3 % )                                 ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0 / 3,153,920 ( 0 % )                           ;
@@ -154,44 +154,51 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 24          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.04        ;
+; Average used               ; 1.03        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.4%      ;
-;     Processor 3            ;   0.4%      ;
-;     Processor 4            ;   0.4%      ;
-;     Processor 5            ;   0.3%      ;
-;     Processor 6            ;   0.3%      ;
+;     Processor 2            ;   0.5%      ;
+;     Processor 3            ;   0.3%      ;
+;     Processor 4            ;   0.3%      ;
+;     Processor 5            ;   0.2%      ;
+;     Processor 6            ;   0.2%      ;
 ;     Processors 7-16        ;   0.2%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Netlist Optimizations                                                                                                                                                                                                                                                                                 ;
-+----------------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-----------------------------------------------------------+------------------+-----------------------+
-; Node                                                                       ; Action     ; Operation                                         ; Reason                     ; Node Port ; Node Port Name ; Destination Node                                          ; Destination Port ; Destination Port Name ;
-+----------------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-----------------------------------------------------------+------------------+-----------------------+
-; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0 ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                                           ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[4]                            ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[4]~DUPLICATE ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[0]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[0]~DUPLICATE    ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[1]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[1]~DUPLICATE    ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[2]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[2]~DUPLICATE    ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[3]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[3]~DUPLICATE    ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[4]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[4]~DUPLICATE    ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[7]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[7]~DUPLICATE    ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[8]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[8]~DUPLICATE    ;                  ;                       ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[9]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[9]~DUPLICATE    ;                  ;                       ;
-; VGA_SYNC:inst|h_count[1]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[1]~DUPLICATE                        ;                  ;                       ;
-; VGA_SYNC:inst|h_count[2]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[2]~DUPLICATE                        ;                  ;                       ;
-; VGA_SYNC:inst|h_count[3]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[3]~DUPLICATE                        ;                  ;                       ;
-; VGA_SYNC:inst|h_count[4]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[4]~DUPLICATE                        ;                  ;                       ;
-; VGA_SYNC:inst|h_count[6]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[6]~DUPLICATE                        ;                  ;                       ;
-; VGA_SYNC:inst|h_count[7]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[7]~DUPLICATE                        ;                  ;                       ;
-; VGA_SYNC:inst|pixel_column[4]                                              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|pixel_column[4]~DUPLICATE                   ;                  ;                       ;
-; VGA_SYNC:inst|v_count[6]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|v_count[6]~DUPLICATE                        ;                  ;                       ;
-+----------------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-----------------------------------------------------------+------------------+-----------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Netlist Optimizations                                                                                                                                                                                                                                                                               ;
++----------------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+---------------------------------------------------------+------------------+-----------------------+
+; Node                                                                       ; Action     ; Operation                                         ; Reason                     ; Node Port ; Node Port Name ; Destination Node                                        ; Destination Port ; Destination Port Name ;
++----------------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+---------------------------------------------------------+------------------+-----------------------+
+; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0 ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                                         ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[1]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[1]~DUPLICATE  ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[2]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[2]~DUPLICATE  ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[3]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[3]~DUPLICATE  ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[4]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[4]~DUPLICATE  ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[5]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[5]~DUPLICATE  ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[7]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[7]~DUPLICATE  ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[8]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[8]~DUPLICATE  ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[9]                               ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[9]~DUPLICATE  ;                  ;                       ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[10]                              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[10]~DUPLICATE ;                  ;                       ;
+; VGA_SYNC:inst|h_count[1]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[1]~DUPLICATE                      ;                  ;                       ;
+; VGA_SYNC:inst|h_count[2]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[2]~DUPLICATE                      ;                  ;                       ;
+; VGA_SYNC:inst|h_count[3]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[3]~DUPLICATE                      ;                  ;                       ;
+; VGA_SYNC:inst|h_count[4]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[4]~DUPLICATE                      ;                  ;                       ;
+; VGA_SYNC:inst|h_count[5]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[5]~DUPLICATE                      ;                  ;                       ;
+; VGA_SYNC:inst|h_count[6]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[6]~DUPLICATE                      ;                  ;                       ;
+; VGA_SYNC:inst|h_count[7]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|h_count[7]~DUPLICATE                      ;                  ;                       ;
+; VGA_SYNC:inst|pixel_column[4]                                              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|pixel_column[4]~DUPLICATE                 ;                  ;                       ;
+; VGA_SYNC:inst|pixel_column[5]                                              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|pixel_column[5]~DUPLICATE                 ;                  ;                       ;
+; VGA_SYNC:inst|pixel_column[6]                                              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|pixel_column[6]~DUPLICATE                 ;                  ;                       ;
+; VGA_SYNC:inst|pixel_column[7]                                              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|pixel_column[7]~DUPLICATE                 ;                  ;                       ;
+; VGA_SYNC:inst|pixel_column[8]                                              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|pixel_column[8]~DUPLICATE                 ;                  ;                       ;
+; VGA_SYNC:inst|pixel_column[9]                                              ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|pixel_column[9]~DUPLICATE                 ;                  ;                       ;
+; VGA_SYNC:inst|v_count[6]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|v_count[6]~DUPLICATE                      ;                  ;                       ;
+; VGA_SYNC:inst|v_count[9]                                                   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; VGA_SYNC:inst|v_count[9]~DUPLICATE                      ;                  ;                       ;
++----------------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+---------------------------------------------------------+------------------+-----------------------+
 
 
 +-------------------------------------------------------------------------------------------+
@@ -450,12 +457,12 @@ The pin-out file can be found in C:/Users/cvis514/OneDrive - The University of A
 +-------------------------------------------------------------+--------------------+-------+
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 49 / 18,480        ; < 1 % ;
 ; ALMs needed [=A-B+C]                                        ; 49                 ;       ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 49 / 18,480        ; < 1 % ;
-;         [a] ALMs used for LUT logic and registers           ; 21                 ;       ;
-;         [b] ALMs used for LUT logic                         ; 24                 ;       ;
-;         [c] ALMs used for registers                         ; 4                  ;       ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 51 / 18,480        ; < 1 % ;
+;         [a] ALMs used for LUT logic and registers           ; 20                 ;       ;
+;         [b] ALMs used for LUT logic                         ; 25                 ;       ;
+;         [c] ALMs used for registers                         ; 6                  ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 0 / 18,480         ; 0 %   ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 2 / 18,480         ; < 1 % ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 18,480         ; 0 %   ;
 ;         [a] Due to location constrained logic               ; 0                  ;       ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                  ;       ;
@@ -474,15 +481,15 @@ The pin-out file can be found in C:/Users/cvis514/OneDrive - The University of A
 ;     -- 5 input functions                                    ; 16                 ;       ;
 ;     -- 4 input functions                                    ; 8                  ;       ;
 ;     -- <=3 input functions                                  ; 43                 ;       ;
-; Combinational ALUT usage for route-throughs                 ; 0                  ;       ;
+; Combinational ALUT usage for route-throughs                 ; 1                  ;       ;
 ;                                                             ;                    ;       ;
-; Dedicated logic registers                                   ; 67                 ;       ;
+; Dedicated logic registers                                   ; 74                 ;       ;
 ;     -- By type:                                             ;                    ;       ;
 ;         -- Primary logic registers                          ; 50 / 36,960        ; < 1 % ;
-;         -- Secondary logic registers                        ; 17 / 36,960        ; < 1 % ;
+;         -- Secondary logic registers                        ; 24 / 36,960        ; < 1 % ;
 ;     -- By function:                                         ;                    ;       ;
 ;         -- Design implementation registers                  ; 50                 ;       ;
-;         -- Routing optimization registers                   ; 17                 ;       ;
+;         -- Routing optimization registers                   ; 24                 ;       ;
 ;                                                             ;                    ;       ;
 ; Virtual pins                                                ; 0                  ;       ;
 ; I/O pins                                                    ; 6 / 224            ; 3 %   ;
@@ -508,11 +515,11 @@ The pin-out file can be found in C:/Users/cvis514/OneDrive - The University of A
 ; Remote update blocks                                        ; 0 / 1              ; 0 %   ;
 ; Oscillator blocks                                           ; 0 / 1              ; 0 %   ;
 ; Impedance control blocks                                    ; 0 / 3              ; 0 %   ;
-; Average interconnect usage (total/H/V)                      ; 0.2% / 0.3% / 0.1% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 2.4% / 2.7% / 1.4% ;       ;
-; Maximum fan-out                                             ; 46                 ;       ;
+; Average interconnect usage (total/H/V)                      ; 0.2% / 0.2% / 0.1% ;       ;
+; Peak interconnect usage (total/H/V)                         ; 1.7% / 1.9% / 1.0% ;       ;
+; Maximum fan-out                                             ; 53                 ;       ;
 ; Highest non-global fan-out                                  ; 22                 ;       ;
-; Total fan-out                                               ; 479                ;       ;
+; Total fan-out                                               ; 502                ;       ;
 ; Average fan-out                                             ; 2.94               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
@@ -524,12 +531,12 @@ The pin-out file can be found in C:/Users/cvis514/OneDrive - The University of A
 +-------------------------------------------------------------+----------------------+--------------------------------+
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 49 / 18480 ( < 1 % ) ; 0 / 18480 ( 0 % )              ;
 ; ALMs needed [=A-B+C]                                        ; 49                   ; 0                              ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 49 / 18480 ( < 1 % ) ; 0 / 18480 ( 0 % )              ;
-;         [a] ALMs used for LUT logic and registers           ; 21                   ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 24                   ; 0                              ;
-;         [c] ALMs used for registers                         ; 4                    ; 0                              ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 51 / 18480 ( < 1 % ) ; 0 / 18480 ( 0 % )              ;
+;         [a] ALMs used for LUT logic and registers           ; 20                   ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 25                   ; 0                              ;
+;         [c] ALMs used for registers                         ; 6                    ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                    ; 0                              ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 0 / 18480 ( 0 % )    ; 0 / 18480 ( 0 % )              ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 2 / 18480 ( < 1 % )  ; 0 / 18480 ( 0 % )              ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 18480 ( 0 % )    ; 0 / 18480 ( 0 % )              ;
 ;         [a] Due to location constrained logic               ; 0                    ; 0                              ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                    ; 0                              ;
@@ -548,7 +555,7 @@ The pin-out file can be found in C:/Users/cvis514/OneDrive - The University of A
 ;     -- 5 input functions                                    ; 16                   ; 0                              ;
 ;     -- 4 input functions                                    ; 8                    ; 0                              ;
 ;     -- <=3 input functions                                  ; 43                   ; 0                              ;
-; Combinational ALUT usage for route-throughs                 ; 0                    ; 0                              ;
+; Combinational ALUT usage for route-throughs                 ; 1                    ; 0                              ;
 ; Memory ALUT usage                                           ; 0                    ; 0                              ;
 ;     -- 64-address deep                                      ; 0                    ; 0                              ;
 ;     -- 32-address deep                                      ; 0                    ; 0                              ;
@@ -556,10 +563,10 @@ The pin-out file can be found in C:/Users/cvis514/OneDrive - The University of A
 ; Dedicated logic registers                                   ; 0                    ; 0                              ;
 ;     -- By type:                                             ;                      ;                                ;
 ;         -- Primary logic registers                          ; 50 / 36960 ( < 1 % ) ; 0 / 36960 ( 0 % )              ;
-;         -- Secondary logic registers                        ; 17 / 36960 ( < 1 % ) ; 0 / 36960 ( 0 % )              ;
+;         -- Secondary logic registers                        ; 24 / 36960 ( < 1 % ) ; 0 / 36960 ( 0 % )              ;
 ;     -- By function:                                         ;                      ;                                ;
 ;         -- Design implementation registers                  ; 50                   ; 0                              ;
-;         -- Routing optimization registers                   ; 17                   ; 0                              ;
+;         -- Routing optimization registers                   ; 24                   ; 0                              ;
 ;                                                             ;                      ;                                ;
 ;                                                             ;                      ;                                ;
 ; Virtual pins                                                ; 0                    ; 0                              ;
@@ -574,18 +581,18 @@ The pin-out file can be found in C:/Users/cvis514/OneDrive - The University of A
 ; PLL Reference Clock Select Block                            ; 0 / 4 ( 0 % )        ; 1 / 4 ( 25 % )                 ;
 ;                                                             ;                      ;                                ;
 ; Connections                                                 ;                      ;                                ;
-;     -- Input Connections                                    ; 46                   ; 0                              ;
-;     -- Registered Input Connections                         ; 46                   ; 0                              ;
-;     -- Output Connections                                   ; 0                    ; 46                             ;
+;     -- Input Connections                                    ; 53                   ; 0                              ;
+;     -- Registered Input Connections                         ; 53                   ; 0                              ;
+;     -- Output Connections                                   ; 0                    ; 53                             ;
 ;     -- Registered Output Connections                        ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; Internal Connections                                        ;                      ;                                ;
-;     -- Total Connections                                    ; 470                  ; 78                             ;
-;     -- Registered Connections                               ; 281                  ; 0                              ;
+;     -- Total Connections                                    ; 493                  ; 85                             ;
+;     -- Registered Connections                               ; 293                  ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; External Connections                                        ;                      ;                                ;
-;     -- Top                                                  ; 0                    ; 46                             ;
-;     -- hard_block:auto_generated_inst                       ; 46                   ; 0                              ;
+;     -- Top                                                  ; 0                    ; 53                             ;
+;     -- hard_block:auto_generated_inst                       ; 53                   ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; Partition Interface                                         ;                      ;                                ;
 ;     -- Input Ports                                          ; 1                    ; 1                              ;
@@ -1206,13 +1213,13 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node         ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                             ; Entity Name ; Library Name ;
 +------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------+-------------+--------------+
-; |Bird_Block                        ; 48.5 (0.5)           ; 48.5 (0.5)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 79 (1)              ; 67 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 6    ; 0            ; |Bird_Block                                                     ; Bird_Block  ; work         ;
-;    |MAIN:inst1|                    ; 23.7 (0.0)           ; 24.3 (0.0)                       ; 0.6 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 39 (0)              ; 21 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                          ; MAIN        ; work         ;
-;       |PIPE:pipe_component|        ; 23.7 (23.7)          ; 24.3 (24.3)                      ; 0.6 (0.6)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 39 (39)             ; 21 (21)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                      ; PIPE        ; work         ;
+; |Bird_Block                        ; 48.5 (0.5)           ; 49.5 (0.5)                       ; 1.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 79 (1)              ; 74 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 6    ; 0            ; |Bird_Block                                                     ; Bird_Block  ; work         ;
+;    |MAIN:inst1|                    ; 22.7 (0.0)           ; 22.7 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 39 (0)              ; 21 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                          ; MAIN        ; work         ;
+;       |PIPE:pipe_component|        ; 22.7 (22.7)          ; 22.7 (22.7)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 39 (39)             ; 21 (21)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                      ; PIPE        ; work         ;
 ;    |PLL:inst3|                     ; 0.0 (0.0)            ; 0.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                           ; PLL         ; pll          ;
 ;       |PLL_0002:pll_inst|          ; 0.0 (0.0)            ; 0.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                         ; PLL_0002    ; PLL          ;
 ;          |altera_pll:altera_pll_i| ; 0.0 (0.0)            ; 0.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i ; altera_pll  ; work         ;
-;    |VGA_SYNC:inst|                 ; 23.8 (23.8)          ; 23.8 (23.8)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 39 (39)             ; 46 (46)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|VGA_SYNC:inst                                       ; VGA_SYNC    ; work         ;
+;    |VGA_SYNC:inst|                 ; 24.3 (24.3)          ; 26.3 (26.3)                      ; 1.9 (1.9)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 39 (39)             ; 53 (53)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |Bird_Block|VGA_SYNC:inst                                       ; VGA_SYNC    ; work         ;
 +------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1245,12 +1252,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------------------------+---------------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 ; Name                                                               ; Location                  ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +--------------------------------------------------------------------+---------------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ; PLLOUTPUTCOUNTER_X0_Y0_N1 ; 46      ; Clock        ; yes    ; Global Clock         ; GCLK3            ; --                        ;
-; VGA_SYNC:inst|Equal0~1                                             ; LABCELL_X19_Y43_N39       ; 16      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; VGA_SYNC:inst|LessThan6~0                                          ; LABCELL_X20_Y43_N39       ; 12      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; VGA_SYNC:inst|horiz_sync_out                                       ; FF_X17_Y43_N41            ; 22      ; Clock        ; no     ; --                   ; --               ; --                        ;
-; VGA_SYNC:inst|process_0~7                                          ; LABCELL_X20_Y43_N57       ; 11      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; VGA_SYNC:inst|v_count[9]~0                                         ; LABCELL_X20_Y43_N54       ; 11      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ; PLLOUTPUTCOUNTER_X0_Y0_N1 ; 53      ; Clock        ; yes    ; Global Clock         ; GCLK3            ; --                        ;
+; VGA_SYNC:inst|Equal0~1                                             ; MLABCELL_X18_Y43_N51      ; 17      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; VGA_SYNC:inst|LessThan6~0                                          ; LABCELL_X19_Y43_N33       ; 17      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; VGA_SYNC:inst|process_0~7                                          ; LABCELL_X19_Y42_N57       ; 12      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; VGA_SYNC:inst|v_count[9]~0                                         ; LABCELL_X19_Y42_N54       ; 12      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; VGA_SYNC:inst|vert_sync_out                                        ; FF_X21_Y43_N41            ; 22      ; Clock        ; no     ; --                   ; --               ; --                        ;
 +--------------------------------------------------------------------+---------------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
@@ -1259,7 +1266,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------------------------+---------------------------+---------+----------------------+------------------+---------------------------+
 ; Name                                                               ; Location                  ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +--------------------------------------------------------------------+---------------------------+---------+----------------------+------------------+---------------------------+
-; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ; PLLOUTPUTCOUNTER_X0_Y0_N1 ; 46      ; Global Clock         ; GCLK3            ; --                        ;
+; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ; PLLOUTPUTCOUNTER_X0_Y0_N1 ; 53      ; Global Clock         ; GCLK3            ; --                        ;
 +--------------------------------------------------------------------+---------------------------+---------+----------------------+------------------+---------------------------+
 
 
@@ -1268,21 +1275,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------+-------------------------+
 ; Routing Resource Type        ; Usage                   ;
 +------------------------------+-------------------------+
-; Block interconnects          ; 124 / 140,056 ( < 1 % ) ;
-; C12 interconnects            ; 7 / 6,048 ( < 1 % )     ;
-; C2 interconnects             ; 58 / 54,648 ( < 1 % )   ;
-; C4 interconnects             ; 49 / 25,920 ( < 1 % )   ;
+; Block interconnects          ; 119 / 140,056 ( < 1 % ) ;
+; C12 interconnects            ; 2 / 6,048 ( < 1 % )     ;
+; C2 interconnects             ; 34 / 54,648 ( < 1 % )   ;
+; C4 interconnects             ; 37 / 25,920 ( < 1 % )   ;
 ; DQS bus muxes                ; 0 / 17 ( 0 % )          ;
 ; DQS-18 I/O buses             ; 0 / 17 ( 0 % )          ;
 ; DQS-9 I/O buses              ; 0 / 17 ( 0 % )          ;
-; Direct links                 ; 17 / 140,056 ( < 1 % )  ;
+; Direct links                 ; 22 / 140,056 ( < 1 % )  ;
 ; Global clocks                ; 1 / 16 ( 6 % )          ;
-; Local interconnects          ; 40 / 36,960 ( < 1 % )   ;
+; Local interconnects          ; 50 / 36,960 ( < 1 % )   ;
 ; Quadrant clocks              ; 0 / 88 ( 0 % )          ;
-; R14 interconnects            ; 68 / 5,984 ( 1 % )      ;
-; R14/C12 interconnect drivers ; 74 / 9,504 ( < 1 % )    ;
-; R3 interconnects             ; 96 / 60,192 ( < 1 % )   ;
-; R6 interconnects             ; 165 / 127,072 ( < 1 % ) ;
+; R14 interconnects            ; 53 / 5,984 ( < 1 % )    ;
+; R14/C12 interconnect drivers ; 55 / 9,504 ( < 1 % )    ;
+; R3 interconnects             ; 99 / 60,192 ( < 1 % )   ;
+; R6 interconnects             ; 97 / 127,072 ( < 1 % )  ;
 ; Spine clocks                 ; 1 / 120 ( < 1 % )       ;
 ; Wire stub REs                ; 0 / 7,344 ( 0 % )       ;
 +------------------------------+-------------------------+
@@ -1399,15 +1406,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------+--------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Estimated Delay Added for Hold Timing Summary                                                                                                                                                  ;
-+----------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+-------------------+
-; Source Clock(s)                                                                                    ; Destination Clock(s)                                                  ; Delay Added in ns ;
-+----------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+-------------------+
-; VGA_SYNC:inst|horiz_sync_out                                                                       ; inst3|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 98.8              ;
-; inst3|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk,VGA_SYNC:inst|horiz_sync_out ; inst3|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 33.3              ;
-; VGA_SYNC:inst|horiz_sync_out                                                                       ; VGA_SYNC:inst|horiz_sync_out                                          ; 31.6              ;
-+----------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+-------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Summary                                                                                                                                                 ;
++---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+-------------------+
+; Source Clock(s)                                                                                   ; Destination Clock(s)                                                  ; Delay Added in ns ;
++---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+-------------------+
+; VGA_SYNC:inst|vert_sync_out                                                                       ; inst3|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 98.2              ;
+; inst3|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk,VGA_SYNC:inst|vert_sync_out ; inst3|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 34.0              ;
+; VGA_SYNC:inst|vert_sync_out                                                                       ; VGA_SYNC:inst|vert_sync_out                                           ; 31.8              ;
+; inst3|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                             ; inst3|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.5               ;
++---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
 
@@ -1417,46 +1425,46 @@ This will disable optimization of problematic paths and expose them for further 
 +-------------------------------------------------+-----------------------------------------------+-------------------+
 ; Source Register                                 ; Destination Register                          ; Delay Added in ns ;
 +-------------------------------------------------+-----------------------------------------------+-------------------+
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[5]    ; VGA_SYNC:inst|blue_out                        ; 7.926             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[4]    ; VGA_SYNC:inst|blue_out                        ; 7.920             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[8]    ; VGA_SYNC:inst|blue_out                        ; 7.720             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[10]   ; VGA_SYNC:inst|blue_out                        ; 7.664             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[7]    ; VGA_SYNC:inst|blue_out                        ; 7.530             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[6]    ; VGA_SYNC:inst|blue_out                        ; 7.520             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[9]    ; VGA_SYNC:inst|blue_out                        ; 7.494             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[2]    ; VGA_SYNC:inst|blue_out                        ; 7.377             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[3]    ; VGA_SYNC:inst|blue_out                        ; 7.359             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[0]    ; VGA_SYNC:inst|blue_out                        ; 7.232             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[1]    ; VGA_SYNC:inst|blue_out                        ; 7.221             ;
-; VGA_SYNC:inst|pixel_column[7]                   ; VGA_SYNC:inst|blue_out                        ; 5.685             ;
-; VGA_SYNC:inst|pixel_column[6]                   ; VGA_SYNC:inst|blue_out                        ; 5.685             ;
-; VGA_SYNC:inst|pixel_column[4]                   ; VGA_SYNC:inst|blue_out                        ; 5.685             ;
-; VGA_SYNC:inst|pixel_column[5]                   ; VGA_SYNC:inst|blue_out                        ; 5.685             ;
-; VGA_SYNC:inst|pixel_column[1]                   ; VGA_SYNC:inst|blue_out                        ; 5.672             ;
-; VGA_SYNC:inst|pixel_column[0]                   ; VGA_SYNC:inst|blue_out                        ; 5.672             ;
-; VGA_SYNC:inst|pixel_column[3]                   ; VGA_SYNC:inst|blue_out                        ; 5.476             ;
-; VGA_SYNC:inst|pixel_column[2]                   ; VGA_SYNC:inst|blue_out                        ; 5.422             ;
-; VGA_SYNC:inst|pixel_column[9]                   ; VGA_SYNC:inst|blue_out                        ; 4.820             ;
-; VGA_SYNC:inst|pixel_column[8]                   ; VGA_SYNC:inst|blue_out                        ; 4.820             ;
-; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[4] ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[10] ; 1.704             ;
-; VGA_SYNC:inst|h_count[4]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.289             ;
-; VGA_SYNC:inst|video_on_v                        ; VGA_SYNC:inst|green_out                       ; 0.289             ;
-; VGA_SYNC:inst|v_count[3]                        ; VGA_SYNC:inst|vert_sync                       ; 0.276             ;
-; VGA_SYNC:inst|v_count[8]                        ; VGA_SYNC:inst|video_on_v                      ; 0.266             ;
-; VGA_SYNC:inst|video_on_h                        ; VGA_SYNC:inst|green_out                       ; 0.261             ;
-; VGA_SYNC:inst|h_count[3]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.253             ;
-; VGA_SYNC:inst|v_count[2]                        ; VGA_SYNC:inst|vert_sync                       ; 0.252             ;
-; VGA_SYNC:inst|v_count[6]                        ; VGA_SYNC:inst|video_on_v                      ; 0.250             ;
-; VGA_SYNC:inst|h_count[8]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.221             ;
-; VGA_SYNC:inst|h_count[7]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.221             ;
-; VGA_SYNC:inst|h_count[9]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.221             ;
-; VGA_SYNC:inst|v_count[5]                        ; VGA_SYNC:inst|video_on_v                      ; 0.215             ;
-; VGA_SYNC:inst|v_count[7]                        ; VGA_SYNC:inst|vert_sync                       ; 0.200             ;
-; VGA_SYNC:inst|v_count[9]                        ; VGA_SYNC:inst|video_on_v                      ; 0.179             ;
-; VGA_SYNC:inst|v_count[4]                        ; VGA_SYNC:inst|vert_sync                       ; 0.055             ;
-; VGA_SYNC:inst|v_count[1]                        ; VGA_SYNC:inst|vert_sync                       ; 0.055             ;
-; VGA_SYNC:inst|v_count[0]                        ; VGA_SYNC:inst|vert_sync                       ; 0.055             ;
-; VGA_SYNC:inst|h_count[6]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.043             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[5]    ; VGA_SYNC:inst|blue_out                        ; 8.023             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[8]    ; VGA_SYNC:inst|blue_out                        ; 7.737             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[10]   ; VGA_SYNC:inst|blue_out                        ; 7.667             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[2]    ; VGA_SYNC:inst|blue_out                        ; 7.651             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[4]    ; VGA_SYNC:inst|blue_out                        ; 7.616             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[9]    ; VGA_SYNC:inst|blue_out                        ; 7.606             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[3]    ; VGA_SYNC:inst|blue_out                        ; 7.604             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[7]    ; VGA_SYNC:inst|blue_out                        ; 7.542             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[6]    ; VGA_SYNC:inst|blue_out                        ; 7.521             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[1]    ; VGA_SYNC:inst|blue_out                        ; 7.496             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[0]    ; VGA_SYNC:inst|blue_out                        ; 7.448             ;
+; VGA_SYNC:inst|pixel_column[1]                   ; VGA_SYNC:inst|blue_out                        ; 5.828             ;
+; VGA_SYNC:inst|pixel_column[0]                   ; VGA_SYNC:inst|blue_out                        ; 5.828             ;
+; VGA_SYNC:inst|pixel_column[7]                   ; VGA_SYNC:inst|blue_out                        ; 5.800             ;
+; VGA_SYNC:inst|pixel_column[6]                   ; VGA_SYNC:inst|blue_out                        ; 5.800             ;
+; VGA_SYNC:inst|pixel_column[4]                   ; VGA_SYNC:inst|blue_out                        ; 5.800             ;
+; VGA_SYNC:inst|pixel_column[5]                   ; VGA_SYNC:inst|blue_out                        ; 5.800             ;
+; VGA_SYNC:inst|pixel_column[2]                   ; VGA_SYNC:inst|blue_out                        ; 5.738             ;
+; VGA_SYNC:inst|pixel_column[3]                   ; VGA_SYNC:inst|blue_out                        ; 5.710             ;
+; VGA_SYNC:inst|pixel_column[9]                   ; VGA_SYNC:inst|blue_out                        ; 4.870             ;
+; VGA_SYNC:inst|pixel_column[8]                   ; VGA_SYNC:inst|blue_out                        ; 4.870             ;
+; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[4] ; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[10] ; 1.706             ;
+; VGA_SYNC:inst|h_count[4]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.308             ;
+; VGA_SYNC:inst|v_count[3]                        ; VGA_SYNC:inst|vert_sync                       ; 0.303             ;
+; VGA_SYNC:inst|v_count[8]                        ; VGA_SYNC:inst|video_on_v                      ; 0.291             ;
+; VGA_SYNC:inst|video_on_v                        ; VGA_SYNC:inst|green_out                       ; 0.284             ;
+; VGA_SYNC:inst|v_count[2]                        ; VGA_SYNC:inst|vert_sync                       ; 0.277             ;
+; VGA_SYNC:inst|v_count[6]                        ; VGA_SYNC:inst|video_on_v                      ; 0.277             ;
+; VGA_SYNC:inst|h_count[3]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.274             ;
+; VGA_SYNC:inst|h_count[9]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.260             ;
+; VGA_SYNC:inst|h_count[8]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.260             ;
+; VGA_SYNC:inst|h_count[7]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.260             ;
+; VGA_SYNC:inst|video_on_h                        ; VGA_SYNC:inst|green_out                       ; 0.255             ;
+; VGA_SYNC:inst|v_count[5]                        ; VGA_SYNC:inst|video_on_v                      ; 0.240             ;
+; VGA_SYNC:inst|v_count[7]                        ; VGA_SYNC:inst|vert_sync                       ; 0.226             ;
+; VGA_SYNC:inst|v_count[9]                        ; VGA_SYNC:inst|video_on_v                      ; 0.205             ;
+; VGA_SYNC:inst|v_count[4]                        ; VGA_SYNC:inst|vert_sync                       ; 0.077             ;
+; VGA_SYNC:inst|v_count[0]                        ; VGA_SYNC:inst|vert_sync                       ; 0.077             ;
+; VGA_SYNC:inst|v_count[1]                        ; VGA_SYNC:inst|vert_sync                       ; 0.077             ;
+; VGA_SYNC:inst|h_count[6]                        ; VGA_SYNC:inst|horiz_sync                      ; 0.066             ;
 +-------------------------------------------------+-----------------------------------------------+-------------------+
 Note: This table only shows the top 40 path(s) that have the largest delay added for hold.
 
@@ -1692,32 +1700,33 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "VGA_R[0]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_R[1]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_R[2]" is assigned to location or region, but does not exist in design
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:02
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:03
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:03
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:02
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 2% of the available device resources in the region that extends from location X11_Y34 to location X21_Y45
+Info (188005): Design requires adding a large amount of routing delay for some signals to meet hold time requirements, and there is an excessive demand for the available routing resources. The Fitter is reducing the routing delays of some signals to help the routing algorithm converge, but doing so may cause hold time failures. For more information, refer to the "Estimated Delay Added for Hold Timing" section in the Fitter report.
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 0.26 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.27 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:02
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/output_files/BIRD.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 207 warnings
-    Info: Peak virtual memory: 7664 megabytes
-    Info: Processing ended: Thu May 02 19:57:40 2024
+    Info: Peak virtual memory: 7645 megabytes
+    Info: Processing ended: Thu May 02 20:22:38 2024
     Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Total CPU time (on all processors): 00:00:14
 
 
 +----------------------------+
