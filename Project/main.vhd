@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY MAIN IS 
 
-	PORT(Clk, background_on, clk_input, vertical_sync, horizontal_sync: IN STD_LOGIC;
+	PORT(background_on, clk_input, vertical_sync, horizontal_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output: OUT STD_LOGIC);
 
@@ -56,9 +56,9 @@ BEGIN
 						);
 						
 						
-	screen_display: PROCESS(clk)
+	screen_display: PROCESS(clk_input)
 	BEGIN
-		IF (RISING_EDGE(clk)) THEN
+		IF (RISING_EDGE(clk_input)) THEN
 			IF (t_bird_on = '1') THEN
 				red_output <= bird_red;
 				green_output <= bird_green;

@@ -276,6 +276,9 @@ zdbfbclk <> <GND>
 |Bird_Block|MAIN:inst1
 background_on => ~NO_FANOUT~
 clk_input => BIRD:bird_component.clk
+clk_input => blue_output~reg0.CLK
+clk_input => green_output~reg0.CLK
+clk_input => red_output~reg0.CLK
 clk_input => PIPE:pipe_component.clk
 vertical_sync => BIRD:bird_component.vert_sync
 vertical_sync => PIPE:pipe_component.horz_sync
@@ -320,9 +323,9 @@ pixel_column_input[8] => BIRD:bird_component.pixel_column[8]
 pixel_column_input[8] => PIPE:pipe_component.pixel_column[8]
 pixel_column_input[9] => BIRD:bird_component.pixel_column[9]
 pixel_column_input[9] => PIPE:pipe_component.pixel_column[9]
-red_output <= red_output.DB_MAX_OUTPUT_PORT_TYPE
-green_output <= green_output.DB_MAX_OUTPUT_PORT_TYPE
-blue_output <= blue_output.DB_MAX_OUTPUT_PORT_TYPE
+red_output <= red_output~reg0.DB_MAX_OUTPUT_PORT_TYPE
+green_output <= green_output~reg0.DB_MAX_OUTPUT_PORT_TYPE
+blue_output <= blue_output~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Bird_Block|MAIN:inst1|BIRD:bird_component

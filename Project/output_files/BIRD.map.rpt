@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Thu May 02 20:22:18 2024
+Thu May 02 21:02:22 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -15,10 +15,10 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis IP Cores Summary
   9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Parameter Settings for User Entity Instance: PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i
- 13. Port Connectivity Checks: "MAIN:inst1|BIRD:bird_component"
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i
  14. Post-Synthesis Netlist Statistics for Top Partition
  15. Elapsed Time Per Partition
  16. Analysis & Synthesis Messages
@@ -47,13 +47,13 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu May 02 20:22:18 2024           ;
+; Analysis & Synthesis Status     ; Successful - Thu May 02 21:02:22 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 50                                              ;
+; Total registers                 ; 72                                              ;
 ; Total pins                      ; 6                                               ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0                                               ;
@@ -192,16 +192,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 46                                                                 ;
+; Estimate of Logic utilization (ALMs needed) ; 97                                                                 ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 78                                                                 ;
+; Combinational ALUT usage for logic          ; 159                                                                ;
 ;     -- 7 input functions                    ; 1                                                                  ;
-;     -- 6 input functions                    ; 11                                                                 ;
-;     -- 5 input functions                    ; 16                                                                 ;
-;     -- 4 input functions                    ; 8                                                                  ;
-;     -- <=3 input functions                  ; 42                                                                 ;
+;     -- 6 input functions                    ; 31                                                                 ;
+;     -- 5 input functions                    ; 19                                                                 ;
+;     -- 4 input functions                    ; 11                                                                 ;
+;     -- <=3 input functions                  ; 97                                                                 ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 50                                                                 ;
+; Dedicated logic registers                   ; 72                                                                 ;
 ;                                             ;                                                                    ;
 ; I/O pins                                    ; 6                                                                  ;
 ;                                             ;                                                                    ;
@@ -211,8 +211,8 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 39                                                                 ;
-; Total fan-out                               ; 430                                                                ;
+; Maximum fan-out                             ; 51                                                                 ;
+; Total fan-out                               ; 745                                                                ;
 ; Average fan-out                             ; 3.05                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
@@ -222,13 +222,14 @@ refer to the applicable agreement for further details.
 +------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node         ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                             ; Entity Name ; Library Name ;
 +------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------+-------------+--------------+
-; |Bird_Block                        ; 78 (0)              ; 50 (0)                    ; 0                 ; 0          ; 6    ; 0            ; |Bird_Block                                                     ; Bird_Block  ; work         ;
-;    |MAIN:inst1|                    ; 39 (0)              ; 12 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                          ; MAIN        ; work         ;
-;       |PIPE:pipe_component|        ; 39 (39)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                      ; PIPE        ; work         ;
+; |Bird_Block                        ; 159 (0)             ; 72 (0)                    ; 0                 ; 0          ; 6    ; 0            ; |Bird_Block                                                     ; Bird_Block  ; work         ;
+;    |MAIN:inst1|                    ; 119 (1)             ; 24 (2)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                          ; MAIN        ; work         ;
+;       |BIRD:bird_component|        ; 77 (77)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|BIRD:bird_component                      ; BIRD        ; work         ;
+;       |PIPE:pipe_component|        ; 41 (41)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                      ; PIPE        ; work         ;
 ;    |PLL:inst3|                     ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                           ; PLL         ; pll          ;
 ;       |PLL_0002:pll_inst|          ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                         ; PLL_0002    ; PLL          ;
 ;          |altera_pll:altera_pll_i| ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i ; altera_pll  ; work         ;
-;    |VGA_SYNC:inst|                 ; 39 (39)             ; 38 (38)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|VGA_SYNC:inst                                       ; VGA_SYNC    ; work         ;
+;    |VGA_SYNC:inst|                 ; 40 (40)             ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|VGA_SYNC:inst                                       ; VGA_SYNC    ; work         ;
 +------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -247,11 +248,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------+-------------------------------------------------------------+
 ; Register name                                            ; Reason for Removal                                          ;
 +----------------------------------------------------------+-------------------------------------------------------------+
-; VGA_SYNC:inst|red_out                                    ; Stuck at GND due to stuck port data_in                      ;
+; MAIN:inst1|green_output                                  ; Stuck at VCC due to stuck port data_in                      ;
 ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[1..3,5..10] ; Merged with MAIN:inst1|PIPE:pipe_component|pipe_x_motion[4] ;
+; MAIN:inst1|BIRD:bird_component|ball_y_motion[3..9]       ; Merged with MAIN:inst1|BIRD:bird_component|ball_y_motion[2] ;
+; MAIN:inst1|BIRD:bird_component|ball_y_motion[0]          ; Stuck at GND due to stuck port data_in                      ;
+; MAIN:inst1|BIRD:bird_component|ball_y_pos[0]             ; Stuck at GND due to stuck port data_in                      ;
 ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[0]          ; Stuck at VCC due to stuck port data_in                      ;
-; Total Number of Removed Registers = 11                   ;                                                             ;
+; MAIN:inst1|BIRD:bird_component|ball_y_motion[1]          ; Stuck at VCC due to stuck port data_in                      ;
+; VGA_SYNC:inst|pixel_row[9]                               ; Stuck at GND due to stuck port data_in                      ;
+; Total Number of Removed Registers = 22                   ;                                                             ;
 +----------------------------------------------------------+-------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                ;
++----------------------------------------------+---------------------------+-------------------------------------------------+
+; Register name                                ; Reason for Removal        ; Registers Removed due to This Register          ;
++----------------------------------------------+---------------------------+-------------------------------------------------+
+; MAIN:inst1|BIRD:bird_component|ball_y_pos[0] ; Stuck at GND              ; MAIN:inst1|BIRD:bird_component|ball_y_motion[1] ;
+;                                              ; due to stuck port data_in ;                                                 ;
++----------------------------------------------+---------------------------+-------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -259,12 +275,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 50    ;
+; Total registers                              ; 72    ;
 ; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 20    ;
+; Number of registers using Clock Enable       ; 29    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -276,6 +292,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
 ; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst|v_count[9]                        ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component|pipe_x_motion[4] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|BIRD:bird_component|ball_y_motion[1] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
 
 
@@ -526,47 +543,34 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|BIRD:bird_component"                                                        ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type   ; Severity ; Details                                                                             ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; red     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; green   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; blue    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; bird_on ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 50                          ;
-;     ENA               ; 10                          ;
+; arriav_ff             ; 72                          ;
+;     ENA               ; 19                          ;
 ;     ENA SCLR          ; 10                          ;
 ;     SCLR              ; 10                          ;
-;     plain             ; 20                          ;
-; arriav_lcell_comb     ; 79                          ;
-;     arith             ; 38                          ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 26                          ;
-;         2 data inputs ; 11                          ;
+;     plain             ; 33                          ;
+; arriav_lcell_comb     ; 159                         ;
+;     arith             ; 77                          ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 55                          ;
+;         2 data inputs ; 19                          ;
 ;     extend            ; 1                           ;
 ;         7 data inputs ; 1                           ;
-;     normal            ; 40                          ;
-;         0 data inputs ; 1                           ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 3                           ;
-;         4 data inputs ; 8                           ;
-;         5 data inputs ; 16                          ;
-;         6 data inputs ; 11                          ;
+;     normal            ; 81                          ;
+;         2 data inputs ; 15                          ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 11                          ;
+;         5 data inputs ; 19                          ;
+;         6 data inputs ; 31                          ;
 ; boundary_port         ; 6                           ;
 ; generic_pll           ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.45                        ;
+; Max LUT depth         ; 5.50                        ;
+; Average LUT depth     ; 3.39                        ;
 +-----------------------+-----------------------------+
 
 
@@ -585,7 +589,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Thu May 02 20:22:12 2024
+    Info: Processing started: Thu May 02 21:02:16 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -677,16 +681,10 @@ Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
 Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst1"
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(17): object "bird_red" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/main.vhd Line: 17
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(17): object "bird_green" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/main.vhd Line: 17
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(17): object "bird_blue" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/main.vhd Line: 17
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(17): object "t_bird_on" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/main.vhd Line: 17
 Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/main.vhd Line: 34
 Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/main.vhd Line: 46
 Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(19): object "size_y" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/pipe.vhd Line: 19
 Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(21): object "pipe_y_pos" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/305-team-19/Project/pipe.vhd Line: 21
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_R[3]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
 Warning (20013): Ignored 230 assignments for entity "DE0_CV_Default" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK2_50 -entity DE0_CV_Default was ignored
@@ -923,14 +921,14 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
     Info: Must be connected
-Info (21057): Implemented 99 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 190 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 92 logic cells
+    Info (21061): Implemented 183 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 241 warnings
-    Info: Peak virtual memory: 4932 megabytes
-    Info: Processing ended: Thu May 02 20:22:18 2024
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 235 warnings
+    Info: Peak virtual memory: 4912 megabytes
+    Info: Processing ended: Thu May 02 21:02:22 2024
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:03
 
