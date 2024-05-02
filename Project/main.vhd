@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY MAIN IS 
 
-	PORT(background_on, clk_input, vertical_sync, horizontal_sync: IN STD_LOGIC;
+	PORT(Clk, background_on, clk_input, vertical_sync, horizontal_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output: OUT STD_LOGIC);
 
@@ -56,13 +56,24 @@ BEGIN
 						);
 						
 						
---	red_output <= bird_red when t_bird_on = '1' else '0';
---	green_output <= bird_green when t_bird_on = '1' else '1';
---	blue_output <= bird_blue when t_bird_on = '1' else '1';
-	
-	red_output <= pipe_red when t_pipe_on = '1' else '0';
-	green_output <= pipe_green when t_pipe_on = '1' else '1';
-	blue_output <= pipe_blue when t_pipe_on = '1' else '1';
+	screen_display: PROCESS(clk)
+	BEGIN
+		IF (RISING_EDGE(clk)) THEN
+			IF (t_bird_on = '1') THEN
+				red_output <= bird_red;
+				green_output <= bird_green;
+				blue_output <= bird_blue;
+			ELSIF (t_pipe_on = '1') THEN
+				red_output <= pipe_red;
+				green_output <= pipe_green;
+				blue_output <= pipe_blue;
+			ELSE
+				red_output <= '0';
+				green_output <= '1';
+				blue_output <= '1';
+			END IF;
+		END IF;
+	END PROCESS screen_display;
 	
 END ARCHITECTURE;
 	
