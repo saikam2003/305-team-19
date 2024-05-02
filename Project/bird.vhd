@@ -43,11 +43,11 @@ BEGIN
 	
 	BEGIN
 	
-		IF (RISING_EDGE(vert_sync)) then
+		IF (RISING_EDGE(vert_sync)) THEN
 			-- Bounce off top or bottom of the screen
-			IF ( ('0' & ball_y_pos >= CONV_STD_LOGIC_VECTOR(479, 10) - size)) then
+			IF ( ('0' & ball_y_pos >= CONV_STD_LOGIC_VECTOR(479, 10) - size)) THEN
 				ball_y_motion <= - CONV_STD_LOGIC_VECTOR(2, 10);
-			ELSIF (ball_y_pos <= size) then
+			ELSIF (ball_y_pos <= size) THEN
 				ball_y_motion <= CONV_STD_LOGIC_VECTOR(2, 10);
 			END IF;
 			-- Compute next ball Y position
