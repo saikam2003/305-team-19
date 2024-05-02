@@ -8,7 +8,7 @@ ENTITY background IS
 	PORT
 		( clk, vert_sync, horz_sync	: IN std_logic;
 		  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
-		  red, green, blue 			: OUT std_logic);		
+		  red, green, blue, cloud_on 			: OUT std_logic);		
 END background;
 
 architecture behavior of background is
@@ -61,8 +61,11 @@ cloud_on_d <= '1' when ( ('0' & cloud_x_pos_d <= '0' & pixel_column + size) and 
 			'0';
 			
 -- Colours for pixel data on video signal
-Red <=  cloud_on_a or cloud_on_b or cloud_on_c or cloud_on_d;
+--Red <=  cloud_on_a or cloud_on_b or cloud_on_c or cloud_on_d;
+Red <=  '1';
 Green <= '1';
 Blue <=  '1';
+
+cloud_on <= cloud_on_a or cloud_on_b or cloud_on_c or cloud_on_d;
 
 END behavior;

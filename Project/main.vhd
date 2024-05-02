@@ -16,6 +16,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL bird_red, bird_green, bird_blue, t_bird_on: STD_LOGIC;
 	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on: STD_LOGIC;
+	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
 	
 	COMPONENT BIRD IS
 		PORT(clk, vert_sync: IN STD_LOGIC;
@@ -27,6 +28,13 @@ ARCHITECTURE behvaiour OF MAIN IS
 		PORT(clk, horz_sync: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue, pipe_on: OUT STD_LOGIC);
+	END COMPONENT;
+	
+	COMPONENT BACKGROUND IS
+		PORT
+		( clk, vert_sync, horz_sync	: IN std_logic;
+		  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
+		  red, green, blue, cloud_on 			: OUT std_logic);	
 	END COMPONENT;
 	
 BEGIN 
@@ -54,6 +62,19 @@ BEGIN
 							blue => pipe_blue,
 							pipe_on => t_pipe_on
 						);
+	
+	background_component: BACKGROUND
+								PORT MAP(
+									clk => clk_input,
+									vert_sync => vertical_sync,
+									horz_sync => horizontal_sync,
+									pixel_row => pixel_row_input,
+									pixel_column => pixel_column_input,
+									red => background_red,
+									green => background_green,
+									blue => background_blue,
+									cloud_on => t_background_on
+								);
 						
 						
 	screen_display: PROCESS(clk_input)
@@ -67,6 +88,10 @@ BEGIN
 				red_output <= pipe_red;
 				green_output <= pipe_green;
 				blue_output <= pipe_blue;
+			ELSIF (t_background_on = '1') THEN
+				red_output <= background_red;
+				green_output <= background_green;
+				blue_output <= background_blue;
 			ELSE
 				red_output <= '0';
 				green_output <= '1';
