@@ -6,8 +6,8 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 ENTITY BIRD IS 
 
 	PORT(clk, vert_sync: IN STD_LOGIC;
-			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
-			red, green, blue: OUT STD_LOGIC);
+			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			red, green, blue, bird_on: OUT STD_LOGIC);
 
 END ENTITY BIRD;
 
@@ -34,9 +34,10 @@ BEGIN
 			'0';
 	
 	-- Setting the colour of the bird
-	red <= ball_on;
+	red <= '1';
 	green <= '1';
-	blue <= NOT ball_on;
+	blue <= '0';
+	bird_on <= ball_on;
 	
 	Move_Bird: PROCESS (vert_sync)
 	
