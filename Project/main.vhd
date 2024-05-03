@@ -17,6 +17,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL bird_red, bird_green, bird_blue, t_bird_on: STD_LOGIC;
 	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on: STD_LOGIC;
+	SIGNAL pipe_red_2, pipe_green_2, pipe_blue_2, t_pipe_on_2: STD_LOGIC;
+	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
 	
 	COMPONENT BIRD IS
@@ -26,16 +28,16 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT PIPE IS
-		PORT(clk, horz_sync: IN STD_LOGIC;
+		PORT(enable, horz_sync: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue, pipe_on: OUT STD_LOGIC);
 	END COMPONENT;
 	
 	COMPONENT BACKGROUND IS
 		PORT
-		( clk, vert_sync, horz_sync	: IN std_logic;
-		  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
-		  red, green, blue, cloud_on 			: OUT std_logic);	
+		( clk, vert_sync, horz_sync: IN std_logic;
+		  pixel_row, pixel_column: IN std_logic_vector(9 DOWNTO 0);
+		  red, green, blue, cloud_on: OUT std_logic);	
 	END COMPONENT;
 	
 BEGIN 
@@ -54,7 +56,7 @@ BEGIN
 	
 	pipe_component: PIPE
 						PORT MAP(
-							clk => clk_input,
+							enable => '1',
 							horz_sync => vertical_sync,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
@@ -62,6 +64,17 @@ BEGIN
 							green => pipe_green,
 							blue => pipe_blue,
 							pipe_on => t_pipe_on
+						);
+	pipe_component_2: PIPE
+						PORT MAP(
+							enable => t_pipe_enable_2,
+							horz_sync => vertical_sync,
+							pixel_row => pixel_row_input,
+							pixel_column => pixel_column_input,
+							red => pipe_red_2,
+							green => pipe_green_2,
+							blue => pipe_blue_2,
+							pipe_on => t_pipe_on_2
 						);
 	
 	background_component: BACKGROUND
@@ -76,8 +89,11 @@ BEGIN
 									blue => background_blue,
 									cloud_on => t_background_on
 								);
+								
+								
+	
 						
-						
+	t_pipe_enable_2 <= '1' WHEN ('0' & pixel_column) <= CONV_STD_LOGIC_VECTOR(320,11);		
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
@@ -89,6 +105,10 @@ BEGIN
 				red_output <= pipe_red;
 				green_output <= pipe_green;
 				blue_output <= pipe_blue;
+			ELSIF (t_pipe_on_2 = '1') THEN
+				red_output <= pipe_red_2;
+				green_output <= pipe_green_2;
+				blue_output <= pipe_blue_2;
 			ELSIF (t_background_on = '1') THEN
 				red_output <= background_red;
 				green_output <= background_green;
