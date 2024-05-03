@@ -7,7 +7,8 @@ ENTITY PIPE is
 
 	PORT(enable, horz_sync: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
-			red, green, blue, pipe_on: OUT STD_LOGIC);
+			red, green, blue, pipe_on: OUT STD_LOGIC;
+			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
 END ENTITY PIPE;
 
@@ -43,7 +44,7 @@ BEGIN
 	gap_x_pos <= pipe_x_pos;
 	
 	
-	pipe_on_output <= '0' WHEN enable = '1' ELSE
+	pipe_on_output <= '0' WHEN enable = '0' ELSE
 			'0' WHEN ( ('0' & gap_x_pos <= '0' & pixel_column + gap_size_x) AND ('0' & pixel_column <= '0' & gap_x_pos + gap_size_x) 	-- x_pos - size <= pixel_column <= x_pos + size
 			AND ('0' & gap_y_pos <= pixel_row + gap_size_y) AND ('0' & pixel_row <= gap_y_pos + gap_size_y) )  ELSE
 			'1' WHEN ( ('0' & pipe_x_pos <= '0' & pixel_column + size_x) AND ('0' & pixel_column <= '0' & pipe_x_pos + size_x)) ELSE	-- x_pos - size <= pixel_column <= x_pos + size
@@ -56,7 +57,7 @@ BEGIN
 	green <= '1';
 	blue <= '0';
 	pipe_on <= pipe_on_output;
-	
+	pipe_position <= pixel_column WHEN pipe_on_output = '1' else CONV_STD_LOGIC_VECTOR(0, 10);
 	Move_Pipe: PROCESS (horz_sync)
 	
 	BEGIN

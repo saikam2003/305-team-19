@@ -18,6 +18,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL bird_red, bird_green, bird_blue, t_bird_on: STD_LOGIC;
 	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on: STD_LOGIC;
 	SIGNAL pipe_red_2, pipe_green_2, pipe_blue_2, t_pipe_on_2: STD_LOGIC;
+	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
 	
@@ -30,7 +31,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 	COMPONENT PIPE IS
 		PORT(enable, horz_sync: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
-			red, green, blue, pipe_on: OUT STD_LOGIC);
+			red, green, blue, pipe_on: OUT STD_LOGIC;
+			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
 	
 	COMPONENT BACKGROUND IS
@@ -56,14 +58,15 @@ BEGIN
 	
 	pipe_component: PIPE
 						PORT MAP(
-							enable => '1',
+							enable => '0',
 							horz_sync => vertical_sync,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => pipe_red,
 							green => pipe_green,
 							blue => pipe_blue,
-							pipe_on => t_pipe_on
+							pipe_on => t_pipe_on,
+							pipe_position => t_pipe_position
 						);
 	pipe_component_2: PIPE
 						PORT MAP(
@@ -74,7 +77,8 @@ BEGIN
 							red => pipe_red_2,
 							green => pipe_green_2,
 							blue => pipe_blue_2,
-							pipe_on => t_pipe_on_2
+							pipe_on => t_pipe_on_2,
+							pipe_position => t_pipe_position_2
 						);
 	
 	background_component: BACKGROUND
@@ -93,7 +97,7 @@ BEGIN
 								
 	
 						
-	t_pipe_enable_2 <= '1' WHEN ('0' & pixel_column) <= CONV_STD_LOGIC_VECTOR(320,11);		
+	t_pipe_enable_2 <= '1' WHEN (t_pipe_position < CONV_STD_LOGIC_VECTOR(320,10)) AND t_pipe_on ='1';		
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
