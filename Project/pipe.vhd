@@ -20,8 +20,16 @@ ARCHITECTURE behaviour OF PIPE IS
 	SIGNAL pipe_x_pos: STD_LOGIC_VECTOR(10 DOWNTO 0);
 	SIGNAL pipe_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL pipe_x_motion: STD_LOGIC_VECTOR(10 DOWNTO 0);
+	SIGNAL gap_x_pos: STD_LOGIC_VECTOR(10 DOWNTO 0);
+	SIGNAL gap_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	CONSTANT gap_size_y: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	CONSTANT gap_size_x: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	
 BEGIN
+
+	-- Setting the size of the gap between the pipes
+	gap_size_y <= CONV_STD_LOGIC_VECTOR(56, 10);
+	gap_size_x <= CONV_STD_LOGIC_VECTOR(16, 10);
 	
 	-- Setting the size of the pipe and converting it into a 10 bit std_logic_vector
 	size_x <= CONV_STD_LOGIC_VECTOR(16, 10);
@@ -30,8 +38,12 @@ BEGIN
 	-- Setting the y position of the pipe and converting it into a 10 bit std_logic_vector
 	
 	pipe_y_pos <= CONV_STD_LOGIC_VECTOR(218, 10);
+	gap_y_pos <= CONV_STD_LOGIC_VECTOR(218, 10);
+	gap_x_pos <= pipe_x_pos;
 	
-	pipe_on_output <= '1' WHEN ( ('0' & pipe_x_pos <= '0' & pixel_column + size_x) AND ('0' & pixel_column <= '0' & pipe_x_pos + size_x)) ELSE	-- x_pos - size <= pixel_column <= x_pos + size 
+	pipe_on_output <= '0' WHEN ( ('0' & gap_x_pos <= '0' & pixel_column + gap_size_x) AND ('0' & pixel_column <= '0' & gap_x_pos + gap_size_x) 	-- x_pos - size <= pixel_column <= x_pos + size
+			AND ('0' & gap_y_pos <= pixel_row + gap_size_y) AND ('0' & pixel_row <= gap_y_pos + gap_size_y) )  ELSE
+			'1' WHEN ( ('0' & pipe_x_pos <= '0' & pixel_column + size_x) AND ('0' & pixel_column <= '0' & pipe_x_pos + size_x)) ELSE	-- x_pos - size <= pixel_column <= x_pos + size
 			'0';
 	
 	
