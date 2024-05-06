@@ -8,63 +8,68 @@ ENTITY background IS
 	PORT
 		( clk, vert_sync, horz_sync	: IN std_logic;
 		  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
-		  red, green, blue, cloud_on 			: OUT std_logic);		
+		  red, green, blue, background_on 			: OUT std_logic);		
 END background;
 
 architecture behavior of background is
 
-SIGNAL cloud_on_a					: std_logic;
-SIGNAL cloud_on_b					: std_logic;
-SIGNAL cloud_on_c					: std_logic;
-SIGNAL size_a 						: std_logic_vector(9 DOWNTO 0);  
-SIGNAL size_b_horizontal 			: std_logic_vector(9 DOWNTO 0);  
-SIGNAL size_c 						: std_logic_vector(9 DOWNTO 0);  
-SIGNAL cloud_y_pos_a				: std_logic_vector(9 DOWNTO 0);
-SiGNAL cloud_x_pos_a				: std_logic_vector(10 DOWNTO 0);
-SIGNAL cloud_y_pos_b				: std_logic_vector(9 DOWNTO 0);
-SiGNAL cloud_x_pos_b				: std_logic_vector(10 DOWNTO 0);
-SIGNAL cloud_y_pos_c				: std_logic_vector(9 DOWNTO 0);
-SiGNAL cloud_x_pos_c				: std_logic_vector(10 DOWNTO 0);
-constant top_cloud_x 				: integer range 0 to 639 := 500;
-constant top_cloud_y 				: integer range 0 to 639 := 200;
+	SIGNAL cloud_red_1, cloud_green_1, cloud_blue_1, t_cloud_on_1: STD_LOGIC;
+	SIGNAL cloud_red_2, cloud_green_2, cloud_blue_2, t_cloud_on_2: STD_LOGIC;
 
 
-BEGIN           
+	COMPONENT cloud IS
+		PORT
+			( clk 						: IN std_logic;
+			  top_x_pos, top_y_pos  : IN integer range 0 to 639;
+			  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
+			  red, green, blue, cloud_on 			: OUT std_logic);		
+	END COMPONENT;
+	
+BEGIN          
+	cloud_component: CLOUD
+						  PORT MAP (
+								clk => clk,
+								top_x_pos => 500,
+								top_y_pos => 200,
+								pixel_row => pixel_row,
+								pixel_column => pixel_column,
+								red => cloud_red_1,
+								green => cloud_green_1,
+								blue => cloud_blue_1,
+								cloud_on => t_cloud_on_1
+							);
+	cloud_component_2: CLOUD
+						  PORT MAP (
+								clk => clk,
+								top_x_pos => 200,
+								top_y_pos => 400,
+								pixel_row => pixel_row,
+								pixel_column => pixel_column,
+								red => cloud_red_2,
+								green => cloud_green_2,
+								blue => cloud_blue_2,
+								cloud_on => t_cloud_on_2
+							);
+							
+	background_on <= t_cloud_on_1 or t_cloud_on_2;
 
-size_a <= CONV_STD_LOGIC_VECTOR(10,10);
-size_b_horizontal <= CONV_STD_LOGIC_VECTOR(30,10);
-size_c <= CONV_STD_LOGIC_VECTOR(5,10);
-
---top box where x = 500, y = 200
-cloud_x_pos_a <= CONV_STD_LOGIC_VECTOR(top_cloud_x,11);
-cloud_y_pos_a <= CONV_STD_LOGIC_VECTOR(top_cloud_y,10);
-
---bottom
-cloud_x_pos_b <= CONV_STD_LOGIC_VECTOR(top_cloud_x,11);
-cloud_y_pos_b <= CONV_STD_LOGIC_VECTOR(top_cloud_y + 20,10);
-
---right
-cloud_x_pos_c <= CONV_STD_LOGIC_VECTOR(top_cloud_x + 35,11);
-cloud_y_pos_c <= CONV_STD_LOGIC_VECTOR(top_cloud_y + 25,10);
-
-cloud_on_a <= '1' when ( ('0' & cloud_x_pos_a <= '0' & pixel_column + size_a) and ('0' & pixel_column <= '0' & cloud_x_pos_a + size_a) 	-- x_pos - size <= pixel_column <= x_pos + size
-					and ('0' & cloud_y_pos_a <= pixel_row + size_a) and ('0' & pixel_row <= cloud_y_pos_a + size_a) )  else	-- y_pos - size <= pixel_row <= y_pos + size
-			'0';
-			
-cloud_on_b <= '1' when ( ('0' & cloud_x_pos_b <= '0' & pixel_column + size_b_horizontal) and ('0' & pixel_column <= '0' & cloud_x_pos_b + size_b_horizontal) 	-- x_pos - size <= pixel_column <= x_pos + size
-					and ('0' & cloud_y_pos_b <= pixel_row + size_a) and ('0' & pixel_row <= cloud_y_pos_b + size_a) )  else	-- y_pos - size <= pixel_row <= y_pos + size
-			'0';
-			
-cloud_on_c <= '1' when ( ('0' & cloud_x_pos_c <= '0' & pixel_column + size_c) and ('0' & pixel_column <= '0' & cloud_x_pos_c + size_c) 	-- x_pos - size <= pixel_column <= x_pos + size
-					and ('0' & cloud_y_pos_c <= pixel_row + size_c) and ('0' & pixel_row <= cloud_y_pos_c + size_c) )  else	-- y_pos - size <= pixel_row <= y_pos + size
-			'0';
-			
--- Colours for pixel data on video signal
---Red <=  cloud_on_a or cloud_on_b or cloud_on_c or cloud_on_d;
-Red <=  '1';
-Green <= '1';
-Blue <=  '1';
-
-cloud_on <= cloud_on_a or cloud_on_b or cloud_on_c;
+	background_display: PROCESS(clk)
+	BEGIN
+		IF (RISING_EDGE(clk)) THEN
+			IF (t_cloud_on_1 = '1') THEN
+				red   <=  cloud_red_1;
+				green <=  cloud_green_1;
+				blue  <=  cloud_blue_1;
+			ELSIF (t_cloud_on_2 = '1') THEN
+				red   <=  cloud_red_2;
+				green <=  cloud_green_2;
+				blue  <=  cloud_blue_2;
+			ELSE
+				red <= '0';
+				green <= '1';
+				blue <= '1';
+			END IF;
+		END IF;
+	END PROCESS background_display;
 
 END behavior;

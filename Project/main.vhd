@@ -39,7 +39,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 		PORT
 		( clk, vert_sync, horz_sync: IN std_logic;
 		  pixel_row, pixel_column: IN std_logic_vector(9 DOWNTO 0);
-		  red, green, blue, cloud_on: OUT std_logic);	
+		  red, green, blue, background_on: OUT std_logic);	
 	END COMPONENT;
 	
 BEGIN 
@@ -91,7 +91,7 @@ BEGIN
 									red => background_red,
 									green => background_green,
 									blue => background_blue,
-									cloud_on => t_background_on
+									background_on => t_background_on
 								);
 								
 								
