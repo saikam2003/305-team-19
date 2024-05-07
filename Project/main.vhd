@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY MAIN IS 
 
-	PORT(background_on, clk_input, vertical_sync, horizontal_sync: IN STD_LOGIC;
+	PORT(background_on, clk_input, vertical_sync, horizontal_sync, mouse_clicked_input: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output: OUT STD_LOGIC);
 
@@ -24,7 +24,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
 	
 	COMPONENT BIRD IS
-		PORT(clk, vert_sync: IN STD_LOGIC;
+		PORT(clk, vert_sync, mouse_clicked: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			red, green, blue, bird_on: OUT STD_LOGIC);
 	END COMPONENT;
@@ -51,6 +51,7 @@ BEGIN
 						PORT MAP(
 							clk => clk_input,
 							vert_sync => vertical_sync,
+							mouse_clicked => mouse_clicked_input,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => bird_red,

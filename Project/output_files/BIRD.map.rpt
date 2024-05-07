@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Tue May 07 13:58:33 2024
+Tue May 07 14:23:35 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -21,10 +21,10 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
  13. Inverted Register Statistics
  14. Multiplexer Restructuring Statistics (Restructuring Performed)
  15. Parameter Settings for User Entity Instance: PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i
- 16. Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component_2"
- 17. Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component"
- 18. Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component_2"
- 19. Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component"
+ 16. Port Connectivity Checks: "MAIN:inst2|background:background_component|cloud:cloud_component_2"
+ 17. Port Connectivity Checks: "MAIN:inst2|background:background_component|cloud:cloud_component"
+ 18. Port Connectivity Checks: "MAIN:inst2|PIPE:pipe_component_2"
+ 19. Port Connectivity Checks: "MAIN:inst2|PIPE:pipe_component"
  20. Post-Synthesis Netlist Statistics for Top Partition
  21. Elapsed Time Per Partition
  22. Analysis & Synthesis Messages
@@ -53,14 +53,14 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue May 07 13:58:33 2024           ;
+; Analysis & Synthesis Status     ; Successful - Tue May 07 14:23:35 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 152                                             ;
-; Total pins                      ; 10                                              ;
+; Total registers                 ; 154                                             ;
+; Total pins                      ; 9                                               ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0                                               ;
 ; Total DSP Blocks                ; 0                                               ;
@@ -183,17 +183,17 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                               ; Library ;
 +----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------+---------+
-; background.vhd                   ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd ;         ;
-; pipe.vhd                         ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd       ;         ;
-; main.vhd                         ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd       ;         ;
-; vga_sync.vhd                     ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd   ;         ;
-; bird.vhd                         ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd       ;         ;
-; Bird_Block.bdf                   ; yes             ; User Block Diagram/Schematic File  ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/Bird_Block.bdf ;         ;
-; PLL.v                            ; yes             ; User Wizard-Generated File         ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v          ; PLL     ;
-; PLL/PLL_0002.v                   ; yes             ; User Verilog HDL File              ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v ; PLL     ;
+; background.vhd                   ; yes             ; User VHDL File                     ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd ;         ;
+; pipe.vhd                         ; yes             ; User VHDL File                     ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd       ;         ;
+; main.vhd                         ; yes             ; User VHDL File                     ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd       ;         ;
+; vga_sync.vhd                     ; yes             ; User VHDL File                     ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd   ;         ;
+; bird.vhd                         ; yes             ; User VHDL File                     ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd       ;         ;
+; Bird_Block.bdf                   ; yes             ; User Block Diagram/Schematic File  ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/Bird_Block.bdf ;         ;
+; PLL.v                            ; yes             ; User Wizard-Generated File         ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v          ; PLL     ;
+; PLL/PLL_0002.v                   ; yes             ; User Verilog HDL File              ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v ; PLL     ;
 ; altera_pll.v                     ; yes             ; Megafunction                       ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v                                             ;         ;
-; cloud.vhd                        ; yes             ; Auto-Found VHDL File               ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd      ;         ;
-; mouse.vhd                        ; yes             ; Auto-Found VHDL File               ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd      ;         ;
+; cloud.vhd                        ; yes             ; Auto-Found VHDL File               ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd      ;         ;
+; mouse.vhd                        ; yes             ; Auto-Found VHDL File               ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd      ;         ;
 +----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -202,18 +202,18 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 233                                                                ;
+; Estimate of Logic utilization (ALMs needed) ; 231                                                                ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 378                                                                ;
+; Combinational ALUT usage for logic          ; 376                                                                ;
 ;     -- 7 input functions                    ; 1                                                                  ;
-;     -- 6 input functions                    ; 80                                                                 ;
-;     -- 5 input functions                    ; 52                                                                 ;
-;     -- 4 input functions                    ; 35                                                                 ;
-;     -- <=3 input functions                  ; 210                                                                ;
+;     -- 6 input functions                    ; 78                                                                 ;
+;     -- 5 input functions                    ; 55                                                                 ;
+;     -- 4 input functions                    ; 45                                                                 ;
+;     -- <=3 input functions                  ; 197                                                                ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 152                                                                ;
+; Dedicated logic registers                   ; 154                                                                ;
 ;                                             ;                                                                    ;
-; I/O pins                                    ; 10                                                                 ;
+; I/O pins                                    ; 9                                                                  ;
 ;                                             ;                                                                    ;
 ; Total DSP Blocks                            ; 0                                                                  ;
 ;                                             ;                                                                    ;
@@ -222,8 +222,8 @@ refer to the applicable agreement for further details.
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
 ; Maximum fan-out                             ; 81                                                                 ;
-; Total fan-out                               ; 1790                                                               ;
-; Average fan-out                             ; 3.24                                                               ;
+; Total fan-out                               ; 1809                                                               ;
+; Average fan-out                             ; 3.28                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
@@ -232,14 +232,14 @@ refer to the applicable agreement for further details.
 +-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                            ; Entity Name ; Library Name ;
 +-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------+-------------+--------------+
-; |Bird_Block                             ; 378 (1)             ; 152 (0)                   ; 0                 ; 0          ; 10   ; 0            ; |Bird_Block                                                                    ; Bird_Block  ; work         ;
-;    |MAIN:inst1|                         ; 290 (3)             ; 39 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                                         ; MAIN        ; work         ;
-;       |BIRD:bird_component|             ; 82 (82)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|BIRD:bird_component                                     ; BIRD        ; work         ;
-;       |PIPE:pipe_component_2|           ; 46 (46)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2                                   ; PIPE        ; work         ;
-;       |PIPE:pipe_component|             ; 40 (40)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                                     ; PIPE        ; work         ;
-;       |background:background_component| ; 119 (10)            ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component                         ; background  ; work         ;
-;          |cloud:cloud_component_2|      ; 33 (33)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component_2 ; cloud       ; work         ;
-;          |cloud:cloud_component|        ; 76 (76)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component   ; cloud       ; work         ;
+; |Bird_Block                             ; 376 (1)             ; 154 (0)                   ; 0                 ; 0          ; 9    ; 0            ; |Bird_Block                                                                    ; Bird_Block  ; work         ;
+;    |MAIN:inst2|                         ; 288 (4)             ; 41 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst2                                                         ; MAIN        ; work         ;
+;       |BIRD:bird_component|             ; 66 (66)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst2|BIRD:bird_component                                     ; BIRD        ; work         ;
+;       |PIPE:pipe_component_2|           ; 47 (47)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst2|PIPE:pipe_component_2                                   ; PIPE        ; work         ;
+;       |PIPE:pipe_component|             ; 44 (44)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst2|PIPE:pipe_component                                     ; PIPE        ; work         ;
+;       |background:background_component| ; 127 (11)            ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst2|background:background_component                         ; background  ; work         ;
+;          |cloud:cloud_component_2|      ; 36 (36)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst2|background:background_component|cloud:cloud_component_2 ; cloud       ; work         ;
+;          |cloud:cloud_component|        ; 80 (80)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst2|background:background_component|cloud:cloud_component   ; cloud       ; work         ;
 ;    |MOUSE:mouse_inst|                   ; 47 (47)             ; 65 (65)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                   ; MOUSE       ; work         ;
 ;    |PLL:inst3|                          ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                                          ; PLL         ; PLL          ;
 ;       |PLL_0002:pll_inst|               ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                                        ; PLL_0002    ; PLL          ;
@@ -278,35 +278,31 @@ Encoding Type:  One-Hot
 +----------------------------------------------------------+-------------------------------------------------------------+
 ; Register name                                            ; Reason for Removal                                          ;
 +----------------------------------------------------------+-------------------------------------------------------------+
-; MAIN:inst1|background:background_component|green         ; Stuck at VCC due to stuck port data_in                      ;
-; MAIN:inst1|background:background_component|blue          ; Stuck at VCC due to stuck port data_in                      ;
-; MAIN:inst1|green_output                                  ; Stuck at VCC due to stuck port data_in                      ;
+; MAIN:inst2|background:background_component|green         ; Stuck at VCC due to stuck port data_in                      ;
+; MAIN:inst2|background:background_component|blue          ; Stuck at VCC due to stuck port data_in                      ;
+; MAIN:inst2|green_output                                  ; Stuck at VCC due to stuck port data_in                      ;
 ; MOUSE:mouse_inst|CHAROUT[4..7]                           ; Stuck at VCC due to stuck port data_in                      ;
 ; MOUSE:mouse_inst|CHAROUT[3]                              ; Stuck at GND due to stuck port data_in                      ;
 ; MOUSE:mouse_inst|CHAROUT[2]                              ; Stuck at VCC due to stuck port data_in                      ;
 ; MOUSE:mouse_inst|CHAROUT[0,1]                            ; Stuck at GND due to stuck port data_in                      ;
 ; MOUSE:mouse_inst|SHIFTOUT[10]                            ; Stuck at VCC due to stuck port data_in                      ;
-; MAIN:inst1|PIPE:pipe_component_2|\Move_Pipe:counter[1,2] ; Stuck at GND due to stuck port data_in                      ;
-; MAIN:inst1|PIPE:pipe_component|\Move_Pipe:counter[1,2]   ; Stuck at GND due to stuck port data_in                      ;
-; MAIN:inst1|BIRD:bird_component|ball_y_motion[3..9]       ; Merged with MAIN:inst1|BIRD:bird_component|ball_y_motion[2] ;
-; MAIN:inst1|BIRD:bird_component|ball_y_motion[0]          ; Stuck at GND due to stuck port data_in                      ;
-; MAIN:inst1|BIRD:bird_component|ball_y_pos[0]             ; Stuck at GND due to stuck port data_in                      ;
-; MAIN:inst1|BIRD:bird_component|ball_y_motion[1]          ; Stuck at VCC due to stuck port data_in                      ;
+; MAIN:inst2|PIPE:pipe_component_2|\Move_Pipe:counter[1,2] ; Stuck at GND due to stuck port data_in                      ;
+; MAIN:inst2|PIPE:pipe_component|\Move_Pipe:counter[1,2]   ; Stuck at GND due to stuck port data_in                      ;
+; MAIN:inst2|BIRD:bird_component|ball_y_motion[3..9]       ; Merged with MAIN:inst2|BIRD:bird_component|ball_y_motion[1] ;
+; MAIN:inst2|BIRD:bird_component|ball_y_motion[2]          ; Merged with MAIN:inst2|BIRD:bird_component|ball_y_motion[0] ;
 ; VGA_SYNC:inst|pixel_row[9]                               ; Stuck at GND due to stuck port data_in                      ;
-; Total Number of Removed Registers = 27                   ;                                                             ;
+; Total Number of Removed Registers = 25                   ;                                                             ;
 +----------------------------------------------------------+-------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                    ;
-+--------------------------------------------------+---------------------------+-------------------------------------------------+
-; Register name                                    ; Reason for Removal        ; Registers Removed due to This Register          ;
-+--------------------------------------------------+---------------------------+-------------------------------------------------+
-; MAIN:inst1|background:background_component|green ; Stuck at VCC              ; MAIN:inst1|green_output                         ;
-;                                                  ; due to stuck port data_in ;                                                 ;
-; MAIN:inst1|BIRD:bird_component|ball_y_pos[0]     ; Stuck at GND              ; MAIN:inst1|BIRD:bird_component|ball_y_motion[1] ;
-;                                                  ; due to stuck port data_in ;                                                 ;
-+--------------------------------------------------+---------------------------+-------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                           ;
++--------------------------------------------------+---------------------------+----------------------------------------+
+; Register name                                    ; Reason for Removal        ; Registers Removed due to This Register ;
++--------------------------------------------------+---------------------------+----------------------------------------+
+; MAIN:inst2|background:background_component|green ; Stuck at VCC              ; MAIN:inst2|green_output                ;
+;                                                  ; due to stuck port data_in ;                                        ;
++--------------------------------------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -314,7 +310,7 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 152   ;
+; Total registers                              ; 154   ;
 ; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 22    ;
 ; Number of registers using Asynchronous Clear ; 16    ;
@@ -344,10 +340,9 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst|v_count[8]                        ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2|pipe_x_pos[9]  ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component|pipe_x_pos[2]    ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|BIRD:bird_component|ball_y_motion[1] ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst|v_count[6]                        ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst2|PIPE:pipe_component_2|pipe_x_pos[10] ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst2|PIPE:pipe_component|pipe_x_pos[3]    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
 
 
@@ -599,7 +594,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component_2" ;
+; Port Connectivity Checks: "MAIN:inst2|background:background_component|cloud:cloud_component_2" ;
 +-----------------+-------+----------+-----------------------------------------------------------+
 ; Port            ; Type  ; Severity ; Details                                                   ;
 +-----------------+-------+----------+-----------------------------------------------------------+
@@ -617,7 +612,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component" ;
+; Port Connectivity Checks: "MAIN:inst2|background:background_component|cloud:cloud_component" ;
 +-----------------+-------+----------+---------------------------------------------------------+
 ; Port            ; Type  ; Severity ; Details                                                 ;
 +-----------------+-------+----------+---------------------------------------------------------+
@@ -635,7 +630,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component_2"                                                            ;
+; Port Connectivity Checks: "MAIN:inst2|PIPE:pipe_component_2"                                                            ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port          ; Type   ; Severity ; Details                                                                             ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -653,7 +648,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component"                                                              ;
+; Port Connectivity Checks: "MAIN:inst2|PIPE:pipe_component"                                                              ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port          ; Type   ; Severity ; Details                                                                             ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -675,7 +670,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 152                         ;
+; arriav_ff             ; 154                         ;
 ;     CLR               ; 1                           ;
 ;     ENA               ; 50                          ;
 ;     ENA CLR           ; 15                          ;
@@ -683,28 +678,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA SLD           ; 11                          ;
 ;     SCLR              ; 10                          ;
 ;     SLD               ; 11                          ;
-;     plain             ; 44                          ;
+;     plain             ; 46                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 378                         ;
-;     arith             ; 153                         ;
+; arriav_lcell_comb     ; 376                         ;
+;     arith             ; 155                         ;
 ;         0 data inputs ; 9                           ;
 ;         1 data inputs ; 130                         ;
-;         2 data inputs ; 14                          ;
+;         2 data inputs ; 16                          ;
 ;     extend            ; 1                           ;
 ;         7 data inputs ; 1                           ;
-;     normal            ; 224                         ;
+;     normal            ; 220                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 5                           ;
-;         2 data inputs ; 31                          ;
-;         3 data inputs ; 20                          ;
-;         4 data inputs ; 35                          ;
-;         5 data inputs ; 52                          ;
-;         6 data inputs ; 80                          ;
-; boundary_port         ; 10                          ;
+;         2 data inputs ; 18                          ;
+;         3 data inputs ; 18                          ;
+;         4 data inputs ; 45                          ;
+;         5 data inputs ; 55                          ;
+;         6 data inputs ; 78                          ;
+; boundary_port         ; 9                           ;
 ; generic_pll           ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.80                        ;
-; Average LUT depth     ; 3.57                        ;
+; Max LUT depth         ; 5.50                        ;
+; Average LUT depth     ; 3.43                        ;
 +-----------------------+-----------------------------+
 
 
@@ -723,39 +718,39 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Tue May 07 13:58:26 2024
+    Info: Processing started: Tue May 07 14:23:21 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file background.vhd
-    Info (12022): Found design unit 1: background-behavior File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 14
-    Info (12023): Found entity 1: background File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 7
+    Info (12022): Found design unit 1: background-behavior File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 14
+    Info (12023): Found entity 1: background File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file pipe.vhd
-    Info (12022): Found design unit 1: PIPE-behaviour File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 18
-    Info (12023): Found entity 1: PIPE File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 6
+    Info (12022): Found design unit 1: PIPE-behaviour File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 18
+    Info (12023): Found entity 1: PIPE File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file main.vhd
-    Info (12022): Found design unit 1: MAIN-behvaiour File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 16
-    Info (12023): Found entity 1: MAIN File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 7
+    Info (12022): Found design unit 1: MAIN-behvaiour File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 16
+    Info (12023): Found entity 1: MAIN File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file vga_sync.vhd
-    Info (12022): Found design unit 1: VGA_SYNC-a File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 13
-    Info (12023): Found entity 1: VGA_SYNC File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 7
+    Info (12022): Found design unit 1: VGA_SYNC-a File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 13
+    Info (12023): Found entity 1: VGA_SYNC File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file bird.vhd
-    Info (12022): Found design unit 1: BIRD-behaviour File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd Line: 14
-    Info (12023): Found entity 1: BIRD File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd Line: 6
+    Info (12022): Found design unit 1: BIRD-behaviour File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd Line: 14
+    Info (12023): Found entity 1: BIRD File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file bird_block.bdf
     Info (12023): Found entity 1: Bird_Block
 Info (12021): Found 1 design units, including 1 entities, in source file pll.v
-    Info (12023): Found entity 1: PLL File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v Line: 8
+    Info (12023): Found entity 1: PLL File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
-    Info (12023): Found entity 1: PLL_0002 File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 2
+    Info (12023): Found entity 1: PLL_0002 File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 2
 Info (12127): Elaborating entity "Bird_Block" for the top level hierarchy
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
 Info (12128): Elaborating entity "PLL" for hierarchy "PLL:inst3"
-Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:inst3|PLL_0002:pll_inst" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v Line: 20
-Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:inst3|PLL_0002:pll_inst" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v Line: 20
+Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
-Info (12130): Elaborated megafunction instantiation "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
-Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+Info (12130): Elaborated megafunction instantiation "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "100.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -816,32 +811,32 @@ Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "duty_cycle17" = "50"
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
-Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst1"
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(20): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 20
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(21): object "t_pipe_position" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 21
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(21): object "t_pipe_position_2" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 21
-Warning (10540): VHDL Signal Declaration warning at main.vhd(22): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 22
-Warning (10540): VHDL Signal Declaration warning at main.vhd(22): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 22
-Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 50
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 62
-Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(22): object "size_y" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 22
-Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(24): object "pipe_y_pos" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 24
-Warning (10492): VHDL Process Statement warning at pipe.vhd(69): signal "enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 69
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 91
+Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst2"
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(20): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 20
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(21): object "t_pipe_position" assigned a value but never read File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 21
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(21): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 21
+Warning (10540): VHDL Signal Declaration warning at main.vhd(22): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 22
+Warning (10540): VHDL Signal Declaration warning at main.vhd(22): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 22
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst2|BIRD:bird_component" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 50
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst2|PIPE:pipe_component" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 63
+Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(22): object "size_y" assigned a value but never read File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 22
+Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(24): object "pipe_y_pos" assigned a value but never read File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 24
+Warning (10492): VHDL Process Statement warning at pipe.vhd(69): signal "enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 69
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst2|background:background_component" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 92
 Warning (12125): Using design file cloud.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: cloud-behavior File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 15
-    Info (12023): Found entity 1: cloud File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 7
-Info (12128): Elaborating entity "cloud" for hierarchy "MAIN:inst1|background:background_component|cloud:cloud_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 29
+    Info (12022): Found design unit 1: cloud-behavior File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 15
+    Info (12023): Found entity 1: cloud File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 7
+Info (12128): Elaborating entity "cloud" for hierarchy "MAIN:inst2|background:background_component|cloud:cloud_component" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 29
 Warning (12125): Using design file mouse.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: MOUSE-behavior File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 18
-    Info (12023): Found entity 1: MOUSE File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 9
+    Info (12022): Found design unit 1: MOUSE-behavior File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 18
+    Info (12023): Found entity 1: MOUSE File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 9
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:mouse_inst"
-Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(25): object "CHARIN" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 25
-Warning (10492): VHDL Process Statement warning at mouse.vhd(151): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 151
-Warning (10492): VHDL Process Statement warning at mouse.vhd(155): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 155
-Warning (10492): VHDL Process Statement warning at mouse.vhd(156): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 156
-Warning (10492): VHDL Process Statement warning at mouse.vhd(157): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 157
-Info (13000): Registers with preset signals will power-up high File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 146
+Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(25): object "CHARIN" assigned a value but never read File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 25
+Warning (10492): VHDL Process Statement warning at mouse.vhd(151): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 151
+Warning (10492): VHDL Process Statement warning at mouse.vhd(155): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 155
+Warning (10492): VHDL Process Statement warning at mouse.vhd(156): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 156
+Warning (10492): VHDL Process Statement warning at mouse.vhd(157): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 157
+Info (13000): Registers with preset signals will power-up high File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 146
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286030): Timing-Driven Synthesis is running
 Warning (20013): Ignored 230 assignments for entity "DE0_CV_Default" -- entity does not exist in design
@@ -1079,16 +1074,16 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
     Info: Must be connected
-Info (21057): Implemented 442 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 439 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 7 output pins
+    Info (21059): Implemented 6 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 431 logic cells
+    Info (21061): Implemented 429 logic cells
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 248 warnings
-    Info: Peak virtual memory: 4967 megabytes
-    Info: Processing ended: Tue May 07 13:58:33 2024
-    Info: Elapsed time: 00:00:07
+    Info: Peak virtual memory: 4946 megabytes
+    Info: Processing ended: Tue May 07 14:23:35 2024
+    Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:04
 
 

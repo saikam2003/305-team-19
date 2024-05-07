@@ -1,10 +1,9 @@
 |Bird_Block
 VGA_HS <= VGA_SYNC:inst.horiz_sync_out
 CLOCK_50 => PLL:inst3.refclk
-VGA_VS <= VGA_SYNC:inst.vert_sync_out
-PS2_CLK <> MOUSE:mouse_inst.mouse_clk
 PS2_DAT <> MOUSE:mouse_inst.mouse_data
-LEDR[0] <= MOUSE:mouse_inst.left_button
+PS2_CLK <> MOUSE:mouse_inst.mouse_clk
+VGA_VS <= VGA_SYNC:inst.vert_sync_out
 LEDR[1] <= MOUSE:mouse_inst.right_button
 VGA_B[3] <= VGA_SYNC:inst.blue_out
 VGA_G[3] <= VGA_SYNC:inst.green_out
@@ -277,7 +276,7 @@ cascade_out[0] <= <GND>
 zdbfbclk <> <GND>
 
 
-|Bird_Block|MAIN:inst1
+|Bird_Block|MAIN:inst2
 background_on => ~NO_FANOUT~
 clk_input => BIRD:bird_component.clk
 clk_input => t_pipe_enable_2.CLK
@@ -290,6 +289,7 @@ vertical_sync => PIPE:pipe_component.horz_sync
 vertical_sync => PIPE:pipe_component_2.horz_sync
 vertical_sync => BACKGROUND:background_component.vert_sync
 horizontal_sync => BACKGROUND:background_component.horz_sync
+mouse_clicked_input => BIRD:bird_component.mouse_clicked
 pixel_row_input[0] => BIRD:bird_component.pixel_row[0]
 pixel_row_input[0] => PIPE:pipe_component.pixel_row[0]
 pixel_row_input[0] => PIPE:pipe_component_2.pixel_row[0]
@@ -375,7 +375,7 @@ green_output <= green_output~reg0.DB_MAX_OUTPUT_PORT_TYPE
 blue_output <= blue_output~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Bird_Block|MAIN:inst1|BIRD:bird_component
+|Bird_Block|MAIN:inst2|BIRD:bird_component
 clk => ~NO_FANOUT~
 vert_sync => ball_y_pos[0].CLK
 vert_sync => ball_y_pos[1].CLK
@@ -397,6 +397,8 @@ vert_sync => ball_y_motion[6].CLK
 vert_sync => ball_y_motion[7].CLK
 vert_sync => ball_y_motion[8].CLK
 vert_sync => ball_y_motion[9].CLK
+mouse_clicked => ball_y_motion.OUTPUTSELECT
+mouse_clicked => ball_y_motion.OUTPUTSELECT
 pixel_row[0] => Add2.IN20
 pixel_row[0] => LessThan3.IN22
 pixel_row[1] => Add2.IN19
@@ -443,7 +445,7 @@ blue <= <GND>
 bird_on <= ball_on.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Bird_Block|MAIN:inst1|PIPE:pipe_component
+|Bird_Block|MAIN:inst2|PIPE:pipe_component
 enable => pipe_on_output.OUTPUTSELECT
 enable => pipe_x_pos[4].ENA
 enable => pipe_x_pos[3].ENA
@@ -553,7 +555,7 @@ pipe_position[8] <= pipe_position.DB_MAX_OUTPUT_PORT_TYPE
 pipe_position[9] <= pipe_position.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Bird_Block|MAIN:inst1|PIPE:pipe_component_2
+|Bird_Block|MAIN:inst2|PIPE:pipe_component_2
 enable => pipe_on_output.OUTPUTSELECT
 enable => pipe_x_pos[4].ENA
 enable => pipe_x_pos[3].ENA
@@ -663,7 +665,7 @@ pipe_position[8] <= pipe_position.DB_MAX_OUTPUT_PORT_TYPE
 pipe_position[9] <= pipe_position.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Bird_Block|MAIN:inst1|background:background_component
+|Bird_Block|MAIN:inst2|background:background_component
 clk => cloud:cloud_component.clk
 clk => blue~reg0.CLK
 clk => green~reg0.CLK
@@ -717,7 +719,7 @@ blue <= blue~reg0.DB_MAX_OUTPUT_PORT_TYPE
 background_on <= background_on.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component
+|Bird_Block|MAIN:inst2|background:background_component|cloud:cloud_component
 clk => ~NO_FANOUT~
 top_x_pos[0] => LessThan0.IN22
 top_x_pos[0] => Add4.IN22
@@ -927,7 +929,7 @@ blue <= <VCC>
 cloud_on <= cloud_on.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component_2
+|Bird_Block|MAIN:inst2|background:background_component|cloud:cloud_component_2
 clk => ~NO_FANOUT~
 top_x_pos[0] => LessThan0.IN22
 top_x_pos[0] => Add4.IN22
