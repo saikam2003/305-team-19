@@ -45,15 +45,15 @@ BEGIN
 	
 		IF (RISING_EDGE(vert_sync)) THEN
 			IF(mouse_clicked = '0' and mouse_pressed = '1' and jumping = '0') THEN
-				mouse_pressed = '0';
-				jumping = '1';
+				mouse_pressed := '0';
+				jumping := '1';
 			ELSIF(mouse_clicked = '1' and mouse_pressed = '0') THEN	
-				mouse_pressed = '1';
+				mouse_pressed := '1';
 			END IF;
 			
 			-- Bounce off top or bottom of the screen
 			IF (jumping = '1') THEN
-				jumping = '0';
+				jumping := '0';
 				ball_y_motion <= - CONV_STD_LOGIC_VECTOR(60, 10);
 			ELSIF (ball_y_pos >= (CONV_STD_LOGIC_VECTOR(479, 10) - size)) THEN
 				ball_y_motion <= CONV_STD_LOGIC_VECTOR(0, 10);
