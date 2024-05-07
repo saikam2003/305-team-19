@@ -9,7 +9,7 @@ ENTITY PIPE is
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue, pipe_on: OUT STD_LOGIC;
-			pipe_halfway: OUT STD_LOGIC;
+			pipe_halfway, collision_chance: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
 END ENTITY PIPE;
@@ -81,6 +81,12 @@ BEGIN
 					pipe_halfway <= '0';
 				END IF;
 				-- Computer next ball X position
+				
+				IF ((pipe_x_pos >= 295) AND (pipe_x_pos <= 345)) THEN
+					collision_chance <= '1';
+				ELSE
+					collision_chance <= '0';
+				END IF;
 			ELSE
 				pipe_x_pos <= pipe_x;
 				counter:= 1;

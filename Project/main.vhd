@@ -16,17 +16,20 @@ END ENTITY MAIN;
 ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL bird_red, bird_green, bird_blue, t_bird_on: STD_LOGIC;
-	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on, t_pipe_halfway: STD_LOGIC;
-	SIGNAL pipe_red_2, pipe_green_2, pipe_blue_2, t_pipe_on_2, t_pipe_halfway_2: STD_LOGIC;
+	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected: STD_LOGIC;
+	SIGNAL pipe_red_2, pipe_green_2, pipe_blue_2, t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
+	SIGNAL t_pipe_enable: STD_LOGIC:= '1';
 	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
 	
 	COMPONENT BIRD IS
 		PORT(clk, vert_sync, mouse_clicked: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			red, green, blue, bird_on: OUT STD_LOGIC);
+			red, green, blue, bird_on: OUT STD_LOGIC;
+			bird_y_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
 	
 	COMPONENT PIPE IS
@@ -34,7 +37,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue, pipe_on: OUT STD_LOGIC;
-			pipe_halfway: OUT STD_LOGIC;
+			pipe_halfway, collision_chance: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
 	
@@ -43,6 +46,12 @@ ARCHITECTURE behvaiour OF MAIN IS
 		( clk, vert_sync, horz_sync: IN std_logic;
 		  pixel_row, pixel_column: IN std_logic_vector(9 DOWNTO 0);
 		  red, green, blue, background_on: OUT std_logic);	
+	END COMPONENT;
+	
+	COMPONENT COLLISION IS
+		PORT(clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
+			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			collision_detected: OUT STD_LOGIC);
 	END COMPONENT;
 	
 BEGIN 
@@ -57,12 +66,13 @@ BEGIN
 							red => bird_red,
 							green => bird_green,
 							blue => bird_blue,
-							bird_on => t_bird_on
+							bird_on => t_bird_on,
+							bird_y_position => t_bird_position
 						);
 	
 	pipe_component: PIPE
 						PORT MAP(
-							enable => '1',
+							enable => t_pipe_enable,
 							horz_sync => vertical_sync,
 							pipe_x => t_pipe_x,
 							pixel_row => pixel_row_input,
@@ -72,7 +82,27 @@ BEGIN
 							blue => pipe_blue,
 							pipe_on => t_pipe_on,
 							pipe_halfway => t_pipe_halfway,
+							collision_chance => t_collision_chance,
 							pipe_position => t_pipe_position
+						);
+						
+	collision_detection_pipe: COLLISION 
+						PORT MAP(
+							clk => clk_input,
+							pipe_on => t_pipe_on,
+							pipe_collision_chance => t_collision_chance,
+							pipe_y_position => CONV_STD_LOGIC_VECTOR(218, 10),
+							bird_y_position => t_bird_position,
+							collision_detected => t_collision_detected
+						);
+	collision_detection_pipe_2: COLLISION 
+						PORT MAP(
+							clk => clk_input,
+							pipe_on => t_pipe_on_2,
+							pipe_collision_chance => t_collision_chance_2,
+							pipe_y_position => CONV_STD_LOGIC_VECTOR(218, 10),
+							bird_y_position => t_bird_position,
+							collision_detected => t_collision_detected_2
 						);
 	pipe_component_2: PIPE
 						PORT MAP(
@@ -86,6 +116,7 @@ BEGIN
 							blue => pipe_blue_2,
 							pipe_on => t_pipe_on_2,
 							pipe_halfway => t_pipe_halfway_2,
+							collision_chance => t_collision_chance_2,
 							pipe_position => t_pipe_position_2
 						);
 	
@@ -104,7 +135,16 @@ BEGIN
 								
 								
 	
-								
+	collision_detection: PROCESS(clk_input)
+	BEGIN
+		IF RISING_EDGE(clk_input) THEN
+			IF (t_collision_detected = '1' OR t_collision_detected_2 = '1') then
+				t_pipe_enable <= '0';
+				t_pipe_enable_2 <= '0';
+			END IF;
+		END IF;
+	END PROCESS collision_detection;
+	
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
