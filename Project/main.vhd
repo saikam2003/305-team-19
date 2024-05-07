@@ -16,9 +16,10 @@ END ENTITY MAIN;
 ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL bird_red, bird_green, bird_blue, t_bird_on: STD_LOGIC;
-	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on: STD_LOGIC;
-	SIGNAL pipe_red_2, pipe_green_2, pipe_blue_2, t_pipe_on_2: STD_LOGIC;
+	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on, t_pipe_halfway: STD_LOGIC;
+	SIGNAL pipe_red_2, pipe_green_2, pipe_blue_2, t_pipe_on_2, t_pipe_halfway_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
 	
@@ -30,8 +31,10 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	COMPONENT PIPE IS
 		PORT(enable, horz_sync: IN STD_LOGIC;
+			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue, pipe_on: OUT STD_LOGIC;
+			pipe_halfway: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
 	
@@ -58,26 +61,30 @@ BEGIN
 	
 	pipe_component: PIPE
 						PORT MAP(
-							enable => '0',
+							enable => '1',
 							horz_sync => vertical_sync,
+							pipe_x => t_pipe_x,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => pipe_red,
 							green => pipe_green,
 							blue => pipe_blue,
 							pipe_on => t_pipe_on,
+							pipe_halfway => t_pipe_halfway,
 							pipe_position => t_pipe_position
 						);
 	pipe_component_2: PIPE
 						PORT MAP(
 							enable => t_pipe_enable_2,
 							horz_sync => vertical_sync,
+							pipe_x => t_pipe_x_2,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => pipe_red_2,
 							green => pipe_green_2,
 							blue => pipe_blue_2,
 							pipe_on => t_pipe_on_2,
+							pipe_halfway => t_pipe_halfway_2,
 							pipe_position => t_pipe_position_2
 						);
 	
@@ -96,8 +103,7 @@ BEGIN
 								
 								
 	
-						
-	t_pipe_enable_2 <= '1' WHEN (t_pipe_position < CONV_STD_LOGIC_VECTOR(320,10)) AND t_pipe_on ='1';		
+								
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
@@ -121,6 +127,9 @@ BEGIN
 				red_output <= '0';
 				green_output <= '1';
 				blue_output <= '1';
+			END IF;
+			IF (t_pipe_halfway = '1') THEN
+				t_pipe_enable_2 <= '1';
 			END IF;
 		END IF;
 	END PROCESS screen_display;

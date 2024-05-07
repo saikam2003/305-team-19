@@ -1,5 +1,9 @@
 Analysis & Synthesis report for BIRD
+<<<<<<< Updated upstream
 Tue May 07 12:43:46 2024
+=======
+Tue May 07 13:52:47 2024
+>>>>>>> Stashed changes
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -53,14 +57,23 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
+<<<<<<< Updated upstream
 ; Analysis & Synthesis Status     ; Successful - Tue May 07 12:43:46 2024           ;
+=======
+; Analysis & Synthesis Status     ; Successful - Tue May 07 13:52:47 2024           ;
+>>>>>>> Stashed changes
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
+<<<<<<< Updated upstream
 ; Total registers                 ; 138                                             ;
 ; Total pins                      ; 10                                              ;
+=======
+; Total registers                 ; 87                                              ;
+; Total pins                      ; 6                                               ;
+>>>>>>> Stashed changes
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0                                               ;
 ; Total DSP Blocks                ; 0                                               ;
@@ -173,8 +186,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-16        ;   0.0%      ;
+;     Processors 2-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -183,6 +195,7 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                               ; Library ;
 +----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------+---------+
+<<<<<<< Updated upstream
 ; background.vhd                   ; yes             ; User VHDL File                     ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd ;         ;
 ; pipe.vhd                         ; yes             ; User VHDL File                     ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd       ;         ;
 ; main.vhd                         ; yes             ; User VHDL File                     ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd       ;         ;
@@ -194,6 +207,18 @@ refer to the applicable agreement for further details.
 ; altera_pll.v                     ; yes             ; Megafunction                       ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v                                             ;         ;
 ; cloud.vhd                        ; yes             ; Auto-Found VHDL File               ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd      ;         ;
 ; mouse.vhd                        ; yes             ; Auto-Found VHDL File               ; C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd      ;         ;
+=======
+; background.vhd                   ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd ;         ;
+; pipe.vhd                         ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd       ;         ;
+; main.vhd                         ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd       ;         ;
+; vga_sync.vhd                     ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd   ;         ;
+; bird.vhd                         ; yes             ; User VHDL File                     ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd       ;         ;
+; Bird_Block.bdf                   ; yes             ; User Block Diagram/Schematic File  ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/Bird_Block.bdf ;         ;
+; PLL.v                            ; yes             ; User Wizard-Generated File         ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v          ; PLL     ;
+; PLL/PLL_0002.v                   ; yes             ; User Verilog HDL File              ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v ; PLL     ;
+; altera_pll.v                     ; yes             ; Megafunction                       ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v                                             ;         ;
+; cloud.vhd                        ; yes             ; Auto-Found VHDL File               ; C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd      ;         ;
+>>>>>>> Stashed changes
 +----------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -202,6 +227,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
+<<<<<<< Updated upstream
 ; Estimate of Logic utilization (ALMs needed) ; 203                                                                ;
 ;                                             ;                                                                    ;
 ; Combinational ALUT usage for logic          ; 332                                                                ;
@@ -212,6 +238,18 @@ refer to the applicable agreement for further details.
 ;     -- <=3 input functions                  ; 187                                                                ;
 ;                                             ;                                                                    ;
 ; Dedicated logic registers                   ; 138                                                                ;
+=======
+; Estimate of Logic utilization (ALMs needed) ; 206                                                                ;
+;                                             ;                                                                    ;
+; Combinational ALUT usage for logic          ; 331                                                                ;
+;     -- 7 input functions                    ; 1                                                                  ;
+;     -- 6 input functions                    ; 77                                                                 ;
+;     -- 5 input functions                    ; 44                                                                 ;
+;     -- 4 input functions                    ; 25                                                                 ;
+;     -- <=3 input functions                  ; 184                                                                ;
+;                                             ;                                                                    ;
+; Dedicated logic registers                   ; 87                                                                 ;
+>>>>>>> Stashed changes
 ;                                             ;                                                                    ;
 ; I/O pins                                    ; 10                                                                 ;
 ;                                             ;                                                                    ;
@@ -221,9 +259,15 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
+<<<<<<< Updated upstream
 ; Maximum fan-out                             ; 80                                                                 ;
 ; Total fan-out                               ; 1562                                                               ;
 ; Average fan-out                             ; 3.17                                                               ;
+=======
+; Maximum fan-out                             ; 53                                                                 ;
+; Total fan-out                               ; 1435                                                               ;
+; Average fan-out                             ; 3.33                                                               ;
+>>>>>>> Stashed changes
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
@@ -232,10 +276,17 @@ refer to the applicable agreement for further details.
 +-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                            ; Entity Name ; Library Name ;
 +-----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------+-------------+--------------+
+<<<<<<< Updated upstream
 ; |Bird_Block                             ; 332 (0)             ; 138 (0)                   ; 0                 ; 0          ; 10   ; 0            ; |Bird_Block                                                                    ; Bird_Block  ; work         ;
 ;    |MAIN:inst1|                         ; 245 (3)             ; 25 (2)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                                         ; MAIN        ; work         ;
 ;       |BIRD:bird_component|             ; 77 (77)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|BIRD:bird_component                                     ; BIRD        ; work         ;
+=======
+; |Bird_Block                             ; 331 (1)             ; 87 (0)                    ; 0                 ; 0          ; 6    ; 0            ; |Bird_Block                                                                    ; Bird_Block  ; work         ;
+;    |MAIN:inst1|                         ; 290 (3)             ; 39 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                                         ; MAIN        ; work         ;
+;       |BIRD:bird_component|             ; 82 (82)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|BIRD:bird_component                                     ; BIRD        ; work         ;
+>>>>>>> Stashed changes
 ;       |PIPE:pipe_component_2|           ; 46 (46)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2                                   ; PIPE        ; work         ;
+;       |PIPE:pipe_component|             ; 40 (40)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                                     ; PIPE        ; work         ;
 ;       |background:background_component| ; 119 (10)            ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component                         ; background  ; work         ;
 ;          |cloud:cloud_component_2|      ; 33 (33)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component_2 ; cloud       ; work         ;
 ;          |cloud:cloud_component|        ; 76 (76)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component   ; cloud       ; work         ;
@@ -257,6 +308,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+-----------------------+-----------------+
 
 
+<<<<<<< Updated upstream
 Encoding Type:  One-Hot
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; State Machine - |Bird_Block|MOUSE:mouse_inst|mouse_state                                                                                                                                                ;
@@ -296,27 +348,37 @@ Encoding Type:  One-Hot
 ; VGA_SYNC:inst|pixel_row[9]                            ; Stuck at GND due to stuck port data_in                        ;
 ; Total Number of Removed Registers = 55                ;                                                               ;
 +-------------------------------------------------------+---------------------------------------------------------------+
+=======
++------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                     ;
++----------------------------------------------------------+-------------------------------------------------------------+
+; Register name                                            ; Reason for Removal                                          ;
++----------------------------------------------------------+-------------------------------------------------------------+
+; MAIN:inst1|background:background_component|green         ; Stuck at VCC due to stuck port data_in                      ;
+; MAIN:inst1|background:background_component|blue          ; Stuck at VCC due to stuck port data_in                      ;
+; MAIN:inst1|green_output                                  ; Stuck at VCC due to stuck port data_in                      ;
+; MAIN:inst1|PIPE:pipe_component_2|\Move_Pipe:counter[1,2] ; Stuck at GND due to stuck port data_in                      ;
+; MAIN:inst1|PIPE:pipe_component|\Move_Pipe:counter[1,2]   ; Stuck at GND due to stuck port data_in                      ;
+; MAIN:inst1|BIRD:bird_component|ball_y_motion[3..9]       ; Merged with MAIN:inst1|BIRD:bird_component|ball_y_motion[2] ;
+; MAIN:inst1|BIRD:bird_component|ball_y_motion[0]          ; Stuck at GND due to stuck port data_in                      ;
+; MAIN:inst1|BIRD:bird_component|ball_y_pos[0]             ; Stuck at GND due to stuck port data_in                      ;
+; MAIN:inst1|BIRD:bird_component|ball_y_motion[1]          ; Stuck at VCC due to stuck port data_in                      ;
+; VGA_SYNC:inst|pixel_row[9]                               ; Stuck at GND due to stuck port data_in                      ;
+; Total Number of Removed Registers = 18                   ;                                                             ;
++----------------------------------------------------------+-------------------------------------------------------------+
+>>>>>>> Stashed changes
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                               ;
-+----------------------------------------------+--------------------------------+---------------------------------------------------------------------------+
-; Register name                                ; Reason for Removal             ; Registers Removed due to This Register                                    ;
-+----------------------------------------------+--------------------------------+---------------------------------------------------------------------------+
-; MAIN:inst1|PIPE:pipe_component|pipe_x_pos[5] ; Stuck at GND                   ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[0],                          ;
-;                                              ; due to stuck port clock_enable ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[1],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[2],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[3],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[4],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[5],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[6],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[7],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[8],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[9],                          ;
-;                                              ;                                ; MAIN:inst1|PIPE:pipe_component|pipe_x_motion[10], MAIN:inst1|green_output ;
-; MAIN:inst1|BIRD:bird_component|ball_y_pos[0] ; Stuck at GND                   ; MAIN:inst1|BIRD:bird_component|ball_y_motion[1]                           ;
-;                                              ; due to stuck port data_in      ;                                                                           ;
-+----------------------------------------------+--------------------------------+---------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                    ;
++--------------------------------------------------+---------------------------+-------------------------------------------------+
+; Register name                                    ; Reason for Removal        ; Registers Removed due to This Register          ;
++--------------------------------------------------+---------------------------+-------------------------------------------------+
+; MAIN:inst1|background:background_component|green ; Stuck at VCC              ; MAIN:inst1|green_output                         ;
+;                                                  ; due to stuck port data_in ;                                                 ;
+; MAIN:inst1|BIRD:bird_component|ball_y_pos[0]     ; Stuck at GND              ; MAIN:inst1|BIRD:bird_component|ball_y_motion[1] ;
+;                                                  ; due to stuck port data_in ;                                                 ;
++--------------------------------------------------+---------------------------+-------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -324,16 +386,26 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
+<<<<<<< Updated upstream
 ; Total registers                              ; 138   ;
 ; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 75    ;
+=======
+; Total registers                              ; 87    ;
+; Number of registers using Synchronous Clear  ; 20    ;
+; Number of registers using Synchronous Load   ; 22    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 40    ;
+>>>>>>> Stashed changes
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
+<<<<<<< Updated upstream
 +--------------------------------------------------+
 ; Inverted Register Statistics                     ;
 +----------------------------------------+---------+
@@ -358,6 +430,18 @@ Encoding Type:  One-Hot
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2|pipe_x_motion[1] ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|BIRD:bird_component|ball_y_motion[1]   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+=======
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst|v_count[9]                        ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2|pipe_x_pos[0]  ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component|pipe_x_pos[0]    ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|BIRD:bird_component|ball_y_motion[1] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
+>>>>>>> Stashed changes
 
 
 +--------------------------------------------------------------------------------------------------+
@@ -648,7 +732,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port          ; Type   ; Severity ; Details                                                                             ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
-; enable        ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[2..0]  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[4..3]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[10]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[9]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[8]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[7]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[6]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[5]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_halfway  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; pipe_position ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -658,7 +750,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port          ; Type   ; Severity ; Details                                                                             ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
-; enable        ; Input  ; Info     ; Stuck at GND                                                                        ;
+; enable        ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[2..0]  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[4..3]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[10]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[9]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[8]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[7]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[6]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[5]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; pipe_position ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -668,12 +768,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
+<<<<<<< Updated upstream
 ; arriav_ff             ; 138                         ;
 ;     CLR               ; 1                           ;
 ;     ENA               ; 50                          ;
 ;     ENA CLR           ; 15                          ;
+=======
+; arriav_ff             ; 87                          ;
+;     ENA               ; 19                          ;
+>>>>>>> Stashed changes
 ;     ENA SCLR          ; 10                          ;
+;     ENA SLD           ; 11                          ;
 ;     SCLR              ; 10                          ;
+<<<<<<< Updated upstream
 ;     plain             ; 52                          ;
 ; arriav_io_obuf        ; 2                           ;
 ; arriav_lcell_comb     ; 332                         ;
@@ -695,6 +802,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;                       ;                             ;
 ; Max LUT depth         ; 5.80                        ;
 ; Average LUT depth     ; 3.53                        ;
+=======
+;     SLD               ; 11                          ;
+;     plain             ; 26                          ;
+; arriav_lcell_comb     ; 331                         ;
+;     arith             ; 142                         ;
+;         0 data inputs ; 9                           ;
+;         1 data inputs ; 120                         ;
+;         2 data inputs ; 13                          ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 188                         ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 28                          ;
+;         3 data inputs ; 13                          ;
+;         4 data inputs ; 25                          ;
+;         5 data inputs ; 44                          ;
+;         6 data inputs ; 77                          ;
+; boundary_port         ; 6                           ;
+; generic_pll           ; 1                           ;
+;                       ;                             ;
+; Max LUT depth         ; 5.80                        ;
+; Average LUT depth     ; 4.14                        ;
+>>>>>>> Stashed changes
 +-----------------------+-----------------------------+
 
 
@@ -713,11 +843,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+<<<<<<< Updated upstream
     Info: Processing started: Tue May 07 12:43:40 2024
+=======
+    Info: Processing started: Tue May 07 13:52:41 2024
+>>>>>>> Stashed changes
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file background.vhd
+<<<<<<< Updated upstream
     Info (12022): Found design unit 1: background-behavior File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 14
     Info (12023): Found entity 1: background File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file pipe.vhd
@@ -746,6 +881,36 @@ Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:inst3|PLL_0002:
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
 Info (12130): Elaborated megafunction instantiation "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
 Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+=======
+    Info (12022): Found design unit 1: background-behavior File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 14
+    Info (12023): Found entity 1: background File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file pipe.vhd
+    Info (12022): Found design unit 1: PIPE-behaviour File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 18
+    Info (12023): Found entity 1: PIPE File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file main.vhd
+    Info (12022): Found design unit 1: MAIN-behvaiour File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 16
+    Info (12023): Found entity 1: MAIN File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file vga_sync.vhd
+    Info (12022): Found design unit 1: VGA_SYNC-a File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 13
+    Info (12023): Found entity 1: VGA_SYNC File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file bird.vhd
+    Info (12022): Found design unit 1: BIRD-behaviour File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd Line: 14
+    Info (12023): Found entity 1: BIRD File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/bird.vhd Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file bird_block.bdf
+    Info (12023): Found entity 1: Bird_Block
+Info (12021): Found 1 design units, including 1 entities, in source file pll.v
+    Info (12023): Found entity 1: PLL File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
+    Info (12023): Found entity 1: PLL_0002 File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 2
+Info (12127): Elaborating entity "Bird_Block" for the top level hierarchy
+Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
+Info (12128): Elaborating entity "PLL" for hierarchy "PLL:inst3"
+Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:inst3|PLL_0002:pll_inst" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL.v Line: 20
+Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
+Info (12130): Elaborated megafunction instantiation "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+>>>>>>> Stashed changes
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "100.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -807,6 +972,7 @@ Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
 Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst1"
+<<<<<<< Updated upstream
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(21): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 21
 Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(100) File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 100
 Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 47
@@ -830,6 +996,23 @@ Warning (10492): VHDL Process Statement warning at mouse.vhd(156): signal "CHARO
 Warning (10492): VHDL Process Statement warning at mouse.vhd(157): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 157
 Info (13000): Registers with preset signals will power-up high File: C:/Users/vdis663/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 146
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+=======
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(20): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 20
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(21): object "t_pipe_position" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 21
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(21): object "t_pipe_position_2" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 21
+Warning (10540): VHDL Signal Declaration warning at main.vhd(22): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 22
+Warning (10540): VHDL Signal Declaration warning at main.vhd(22): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 22
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 50
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 62
+Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(22): object "size_y" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 22
+Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(24): object "pipe_y_pos" assigned a value but never read File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 24
+Warning (10492): VHDL Process Statement warning at pipe.vhd(69): signal "enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 69
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/main.vhd Line: 91
+Warning (12125): Using design file cloud.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: cloud-behavior File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 15
+    Info (12023): Found entity 1: cloud File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 7
+Info (12128): Elaborating entity "cloud" for hierarchy "MAIN:inst1|background:background_component|cloud:cloud_component" File: C:/Users/cvis514/OneDrive - The University of Auckland/Documents/GitHub/305-team-19/Project/background.vhd Line: 29
+>>>>>>> Stashed changes
 Info (286030): Timing-Driven Synthesis is running
 Warning (20013): Ignored 230 assignments for entity "DE0_CV_Default" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK2_50 -entity DE0_CV_Default was ignored
@@ -1066,6 +1249,7 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
     Info: Must be connected
+<<<<<<< Updated upstream
 Info (21057): Implemented 395 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 7 output pins
@@ -1075,6 +1259,16 @@ Info (21057): Implemented 395 device resources after synthesis - the final resou
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 244 warnings
     Info: Peak virtual memory: 4965 megabytes
     Info: Processing ended: Tue May 07 12:43:46 2024
+=======
+Info (21057): Implemented 363 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 5 output pins
+    Info (21061): Implemented 356 logic cells
+    Info (21065): Implemented 1 PLLs
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 242 warnings
+    Info: Peak virtual memory: 4917 megabytes
+    Info: Processing ended: Tue May 07 13:52:47 2024
+>>>>>>> Stashed changes
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:04
 

@@ -6,8 +6,10 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 ENTITY PIPE is
 
 	PORT(enable, horz_sync: IN STD_LOGIC;
+			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue, pipe_on: OUT STD_LOGIC;
+			pipe_halfway: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
 END ENTITY PIPE;
@@ -42,7 +44,7 @@ BEGIN
 	pipe_y_pos <= CONV_STD_LOGIC_VECTOR(218, 10);
 	gap_y_pos <= CONV_STD_LOGIC_VECTOR(218, 10);
 	gap_x_pos <= pipe_x_pos;
-	
+	pipe_x_motion <= - CONV_STD_LOGIC_VECTOR(1, 11);
 	
 	pipe_on_output <= '0' WHEN enable = '0' ELSE
 			'0' WHEN ( ('0' & gap_x_pos <= '0' & pixel_column + gap_size_x) AND ('0' & pixel_column <= '0' & gap_x_pos + gap_size_x) 	-- x_pos - size <= pixel_column <= x_pos + size
@@ -58,20 +60,31 @@ BEGIN
 	blue <= '0';
 	pipe_on <= pipe_on_output;
 	pipe_position <= pixel_column WHEN pipe_on_output = '1' else CONV_STD_LOGIC_VECTOR(0, 10);
-	Move_Pipe: PROCESS (horz_sync)
 	
+	
+	Move_Pipe: PROCESS (horz_sync)
+		variable counter: integer range 0 to 5:= 0;
 	BEGIN
 		
 		IF (RISING_EDGE(horz_sync) AND enable = '1') THEN
 			-- Bounce the pipe off the left or right of the screen
-			IF (('0' & pipe_x_pos >= CONV_STD_LOGIC_VECTOR(679, 11) - size_x)) THEN
-				pipe_x_motion <= - CONV_STD_LOGIC_VECTOR(1, 11);
-			ELSIF (pipe_x_pos <=  size_x) THEN
-				pipe_x_motion <= CONV_STD_LOGIC_VECTOR(1, 11);
+			IF (counter = 1) THEN
+				IF (pipe_x_pos <=  CONV_STD_LOGIC_VECTOR(0, 11)) THEN
+					pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
+				ELSE
+					pipe_x_pos <= pipe_x_pos + pipe_x_motion;
+				END IF;
+				
+				IF (('0' & pipe_x_pos <= CONV_STD_LOGIC_VECTOR(339, 11) - size_x)) THEN
+					pipe_halfway <= '1';
+				ELSE
+					pipe_halfway <= '0';
+				END IF;
+				-- Computer next ball X position
+			ELSE
+				pipe_x_pos <= pipe_x;
+				counter:= 1;
 			END IF;
-			
-			-- Computer next ball X position
-			pipe_x_pos <= pipe_x_pos + pipe_x_motion;
 		END IF;
 	END PROCESS Move_Pipe;
 END behaviour;
