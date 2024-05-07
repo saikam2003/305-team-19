@@ -62,7 +62,7 @@ BEGIN
 			ball_y_pos <= ball_y_pos + ball_y_motion;
 			
 			IF(ball_y_pos < CONV_STD_LOGIC_VECTOR(0, 10)) THEN
-				ball_y_pos <= CONV_STD_LOGIC_VECTOR(0, 10);
+				ball_y_pos <= CONV_STD_LOGIC_VECTOR(0 + size, 10);
 			END IF;
 		END IF;
 	END PROCESS Move_Bird;
