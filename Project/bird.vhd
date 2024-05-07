@@ -46,11 +46,11 @@ BEGIN
 		IF (RISING_EDGE(vert_sync)) THEN
 			-- Bounce off top or bottom of the screen
 			IF (mouse_clicked = '1') THEN
-				ball_y_motion <= CONV_STD_LOGIC_VECTOR(5, 10);
-			ELSIF (ball_y_pos <= size) THEN
+				ball_y_motion <= - CONV_STD_LOGIC_VECTOR(5, 10);
+			ELSIF (ball_y_pos >= (CONV_STD_LOGIC_VECTOR(479, 10) - size)) THEN
 				ball_y_motion <= CONV_STD_LOGIC_VECTOR(0, 10);
 			ELSE
-				ball_y_motion <= - CONV_STD_LOGIC_VECTOR(1, 10);
+				ball_y_motion <= CONV_STD_LOGIC_VECTOR(1, 10);
 			END IF;
 			-- Compute next ball Y position
 			ball_y_pos <= ball_y_pos + ball_y_motion;
