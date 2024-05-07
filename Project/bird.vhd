@@ -40,17 +40,14 @@ BEGIN
 	bird_on <= ball_on;
 	
 	Move_Bird: PROCESS (vert_sync)
-	VARIABLE mouse_pressed, jumping: STD_LOGIC;
+	VARIABLE mouse_prev, jumping: STD_LOGIC;
 	BEGIN
 	
 		IF (RISING_EDGE(vert_sync)) THEN
-			IF(mouse_clicked = '0' and mouse_pressed = '1' and jumping = '0') THEN
-				mouse_pressed := '0';
+			IF(mouse_prev = '0' and mouse_clicked = '1' and jumping = '0') THEN
 				jumping := '1';
-			ELSIF(mouse_clicked = '1' and mouse_pressed = '0') THEN	
-				mouse_pressed := '1';
 			END IF;
-			
+			mouse_prev := mouse_clicked;
 			-- Bounce off top or bottom of the screen
 			IF (jumping = '1') THEN
 				jumping := '0';
@@ -58,11 +55,15 @@ BEGIN
 			ELSIF (ball_y_pos >= (CONV_STD_LOGIC_VECTOR(479, 10) - size)) THEN
 				ball_y_motion <= CONV_STD_LOGIC_VECTOR(0, 10);
 			ELSE
-				ball_y_motion <= CONV_STD_LOGIC_VECTOR(1, 10);
+				ball_y_motion <= CONV_STD_LOGIC_VECTOR(2, 10);
 			END IF;
 			
 			-- Compute next ball Y position
 			ball_y_pos <= ball_y_pos + ball_y_motion;
+			
+			IF(ball_y_pos < CONV_STD_LOGIC_VECTOR(0, 10)) THEN
+				ball_y_pos <= CONV_STD_LOGIC_VECTOR(0, 10);
+			END IF;
 		END IF;
 	END PROCESS Move_Bird;
 END behaviour;
