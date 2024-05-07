@@ -1,22 +1,13 @@
-<<<<<<< Updated upstream
-Fitter Status : Successful - Tue May 07 12:44:23 2024
-=======
-Fitter Status : Successful - Tue May 07 13:53:19 2024
->>>>>>> Stashed changes
+Fitter Status : Successful - Tue May 07 13:59:07 2024
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : BIRD
 Top-level Entity Name : Bird_Block
 Family : Cyclone V
 Device : 5CEBA4F23C7
 Timing Models : Final
-Logic utilization (in ALMs) : 204 / 18,480 ( 1 % )
-<<<<<<< Updated upstream
-Total registers : 163
+Logic utilization (in ALMs) : 228 / 18,480 ( 1 % )
+Total registers : 176
 Total pins : 10 / 224 ( 4 % )
-=======
-Total registers : 113
-Total pins : 6 / 224 ( 3 % )
->>>>>>> Stashed changes
 Total virtual pins : 0
 Total block memory bits : 0 / 3,153,920 ( 0 % )
 Total RAM Blocks : 0 / 308 ( 0 % )
