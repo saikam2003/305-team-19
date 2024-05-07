@@ -7,7 +7,8 @@ ENTITY BIRD IS
 
 	PORT(clk, vert_sync, mouse_clicked: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			red, green, blue, bird_on: OUT STD_LOGIC);
+			red, green, blue, bird_on: OUT STD_LOGIC;
+			bird_y_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
 END ENTITY BIRD;
 
@@ -67,12 +68,10 @@ BEGIN
 				-- Compute next ball Y position
 				ball_y_pos <= ball_y_pos + ball_y_motion;
 			END IF;
-			
-
-			
 			IF(ball_y_pos < CONV_STD_LOGIC_VECTOR(0, 10)) THEN
 				ball_y_pos <= size;
 			END IF;
+			bird_y_position <= ball_y_pos;
 		END IF;
 	END PROCESS Move_Bird;
 END behaviour;
