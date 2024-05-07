@@ -55,7 +55,7 @@ BEGIN
 			ELSIF (ball_y_pos >= (CONV_STD_LOGIC_VECTOR(479, 10) - size)) THEN
 				ball_y_motion <= CONV_STD_LOGIC_VECTOR(0, 10);
 			ELSE
-				ball_y_motion <= CONV_STD_LOGIC_VECTOR(2, 10);
+				ball_y_motion <= CONV_STD_LOGIC_VECTOR(1, 10);
 			END IF;
 			
 			-- Compute next ball Y position
