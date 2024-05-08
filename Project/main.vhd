@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY MAIN IS 
 
-	PORT(background_on, clk_input, vertical_sync, horizontal_sync, mouse_left, mouse_right: IN STD_LOGIC;
+	PORT(background_on, clk_input, vertical_sync, horizontal_sync, jump_input, start_input, reset_input, colour_input: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output: OUT STD_LOGIC;
 		led1, led2: OUT STD_LOGIC);
@@ -61,7 +61,7 @@ BEGIN
 						PORT MAP(
 							clk => clk_input,
 							vert_sync => vertical_sync,
-							mouse_clicked => mouse_left,
+							mouse_clicked => jump_input,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => bird_red,
@@ -142,12 +142,12 @@ BEGIN
 		VARIABLE counter: INTEGER RANGE 0 TO 1:= 0;
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
-			IF (t_collision_detected = '1' OR t_collision_detected_2 = '1') then
+			IF ((t_collision_detected = '1' OR t_collision_detected_2 = '1')) then
 				t_pipe_enable <= '0';
 				t_pipe_enable_2 <= '0';
 			END IF;
 			
-			IF((t_pipe_enable = '0') AND mouse_right = '1') THEN
+			IF((t_pipe_enable = '0') AND start_input = '1') THEN
 				t_pipe_enable <= '1';
 --				t_pipe_enable_2 <= '1';
 			END IF;
@@ -174,12 +174,12 @@ BEGIN
 				green_output <= '1';
 				blue_output <= '1';
 			END IF;
-			IF (counter = 0) THEN
-				IF (t_pipe_halfway = '1') THEN
+--			IF (counter = 0) THEN
+				IF (t_pipe_halfway = '1' and t_collision_detected = '0' and t_collision_detected_2 = '0') THEN
 					t_pipe_enable_2 <= '1';
 					counter:= 1;
 				END IF;
-			END IF;
+--			END IF;
 		END IF;
 	END PROCESS screen_display;
 	led1 <= t_collision_detected;

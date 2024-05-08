@@ -66,30 +66,34 @@ BEGIN
 		variable counter: integer range 0 to 5:= 0;
 	BEGIN
 		
-		IF (RISING_EDGE(horz_sync) AND enable = '1') THEN
-			-- Bounce the pipe off the left or right of the screen
-			IF (counter = 1) THEN
-				IF (pipe_x_pos <=  CONV_STD_LOGIC_VECTOR(0, 11)) THEN
-					pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
+		IF (RISING_EDGE(horz_sync)) THEN
+			IF (enable = '1') THEN
+				-- Bounce the pipe off the left or right of the screen
+				IF (counter = 1) THEN
+					IF (pipe_x_pos <=  CONV_STD_LOGIC_VECTOR(0, 11)) THEN
+						pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
+					ELSE
+						pipe_x_pos <= pipe_x_pos + pipe_x_motion;
+					END IF;
+					
+					IF (('0' & pipe_x_pos <= CONV_STD_LOGIC_VECTOR(339, 11) - size_x)) THEN
+						pipe_halfway <= '1';
+					ELSE
+						pipe_halfway <= '0';
+					END IF;
+					-- Computer next ball X position
+					
+					IF ((pipe_x_pos >= 295) AND (pipe_x_pos <= 345)) THEN
+						collision_chance <= '1';
+					ELSE
+						collision_chance <= '0';
+					END IF;
 				ELSE
-					pipe_x_pos <= pipe_x_pos + pipe_x_motion;
-				END IF;
-				
-				IF (('0' & pipe_x_pos <= CONV_STD_LOGIC_VECTOR(339, 11) - size_x)) THEN
-					pipe_halfway <= '1';
-				ELSE
-					pipe_halfway <= '0';
-				END IF;
-				-- Computer next ball X position
-				
-				IF ((pipe_x_pos >= 295) AND (pipe_x_pos <= 345)) THEN
-					collision_chance <= '1';
-				ELSE
-					collision_chance <= '0';
+					pipe_x_pos <= CONV_STD_LOGIC_VECTOR(639, 11);
+					counter:= 1;
 				END IF;
 			ELSE
 				pipe_x_pos <= CONV_STD_LOGIC_VECTOR(639, 11);
-				counter:= 1;
 			END IF;
 		END IF;
 	END PROCESS Move_Pipe;
