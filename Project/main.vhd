@@ -58,8 +58,9 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT TEXT_DISPLAY IS
-		PORT(Clk, enable: IN STD_LOGIC;
+		PORT(Clk, enable, size: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
+			row_start, row_stop, col_start, col_stop: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green, text_on: OUT STD_LOGIC);
 	END COMPONENT;
 	
@@ -148,8 +149,13 @@ BEGIN
 	text_component: TEXT_DISPLAY
 						PORT MAP(Clk => clk_input,
 							enable => '1',
+							size => '1',
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
+							row_start => CONV_STD_LOGIC_VECTOR(31, 10), 
+							row_stop => CONV_STD_LOGIC_VECTOR(63, 10), 
+							col_start => CONV_STD_LOGIC_VECTOR(319, 10), 
+							col_stop => CONV_STD_LOGIC_VECTOR(335, 10),
 							red => text_red, 
 							blue => text_blue, 
 							green => text_green, 
