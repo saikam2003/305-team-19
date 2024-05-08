@@ -88,7 +88,7 @@ BEGIN
 					collision_chance <= '0';
 				END IF;
 			ELSE
-				pipe_x_pos <= pipe_x;
+				pipe_x_pos <= CONV_STD_LOGIC_VECTOR(639, 11);
 				counter:= 1;
 			END IF;
 		END IF;

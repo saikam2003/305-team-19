@@ -42,7 +42,7 @@ BEGIN
 	
 	Move_Bird: PROCESS (vert_sync)
 	VARIABLE mouse_prev, jumping: STD_LOGIC;
-	VARIABLE counter: INTEGER RANGE 0 to 30:= 0;
+	VARIABLE counter: INTEGER RANGE 0 to 15:= 0;
 	BEGIN
 	
 	--Logic for the bird to move uop and down with gravity logic
@@ -56,13 +56,13 @@ BEGIN
 			
 			--Now, if the bird is jumping
 			IF (jumping = '1') THEN
-				-- if the counter is equal to 30 (then the bird has jumped 30 times upwards by 5 pixel distance and now should not be jumping)
-				IF (counter = 30) THEN
+				-- if the counter is equal to 15 (then the bird has jumped 15 times upwards by 5 pixel distance and now should not be jumping)
+				IF (counter = 15) THEN
 					jumping := '0'; --bird is not jumping
 					counter := 0; -- reset the counter
 				ELSE
-					-- otherwise keep making the bird jump by 2 pixels for 30 times
-					ball_y_pos<= ball_y_pos - CONV_STD_LOGIC_VECTOR(2, 10);
+					-- otherwise keep making the bird jump by 4 pixels for 15 times
+					ball_y_pos<= ball_y_pos - CONV_STD_LOGIC_VECTOR(4, 10);
 					counter:= counter + 1;
 				END IF;
 			ELSE
@@ -76,11 +76,7 @@ BEGIN
 				-- Compute next ball Y position
 				ball_y_pos <= ball_y_pos + ball_y_motion;
 			END IF;
-<<<<<<< Updated upstream
-=======
 			
-			
->>>>>>> Stashed changes
 			IF(ball_y_pos < CONV_STD_LOGIC_VECTOR(0, 10)) THEN
 				ball_y_pos <= size;
 			END IF;

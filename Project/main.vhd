@@ -6,9 +6,10 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY MAIN IS 
 
-	PORT(background_on, clk_input, vertical_sync, horizontal_sync, mouse_clicked_input: IN STD_LOGIC;
+	PORT(background_on, clk_input, vertical_sync, horizontal_sync, mouse_left, mouse_right: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-		red_output, green_output, blue_output: OUT STD_LOGIC);
+		red_output, green_output, blue_output: OUT STD_LOGIC;
+		led1, led2: OUT STD_LOGIC);
 
 END ENTITY MAIN;
 
@@ -22,7 +23,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
-	SIGNAL t_pipe_enable: STD_LOGIC:= '1';
+	SIGNAL t_pipe_enable: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
 	
 	COMPONENT BIRD IS
@@ -60,7 +61,7 @@ BEGIN
 						PORT MAP(
 							clk => clk_input,
 							vert_sync => vertical_sync,
-							mouse_clicked => mouse_clicked_input,
+							mouse_clicked => mouse_left,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => bird_red,
@@ -135,19 +136,23 @@ BEGIN
 								
 								
 	
-	collision_detection: PROCESS(clk_input)
+
+	
+	screen_display: PROCESS(clk_input)
+		VARIABLE counter: INTEGER RANGE 0 TO 1:= 0;
 	BEGIN
-		IF RISING_EDGE(clk_input) THEN
+		IF (RISING_EDGE(clk_input)) THEN
 			IF (t_collision_detected = '1' OR t_collision_detected_2 = '1') then
 				t_pipe_enable <= '0';
 				t_pipe_enable_2 <= '0';
 			END IF;
-		END IF;
-	END PROCESS collision_detection;
-	
-	screen_display: PROCESS(clk_input)
-	BEGIN
-		IF (RISING_EDGE(clk_input)) THEN
+			
+			IF((t_pipe_enable = '0') AND mouse_right = '1') THEN
+				t_pipe_enable <= '1';
+--				t_pipe_enable_2 <= '1';
+			END IF;
+			
+			
 			IF (t_bird_on = '1') THEN
 				red_output <= bird_red;
 				green_output <= bird_green;
@@ -169,12 +174,16 @@ BEGIN
 				green_output <= '1';
 				blue_output <= '1';
 			END IF;
-			IF (t_pipe_halfway = '1') THEN
-				t_pipe_enable_2 <= '1';
+			IF (counter = 0) THEN
+				IF (t_pipe_halfway = '1') THEN
+					t_pipe_enable_2 <= '1';
+					counter:= 1;
+				END IF;
 			END IF;
 		END IF;
 	END PROCESS screen_display;
-	
+	led1 <= t_collision_detected;
+	led2 <= t_collision_detected_2;
 END ARCHITECTURE;
 	
 	
