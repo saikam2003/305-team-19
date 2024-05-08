@@ -45,29 +45,42 @@ BEGIN
 	VARIABLE counter: INTEGER RANGE 0 to 30:= 0;
 	BEGIN
 	
+	--Logic for the bird to move uop and down with gravity logic
 		IF (RISING_EDGE(vert_sync)) THEN
+		--if the mouse was not clicked previously but is now clicked, and the bird is not currently jumping
 			IF(mouse_prev = '0' and mouse_clicked = '1' and jumping = '0') THEN
-				jumping := '1';
+				jumping := '1'; -- the brd will now jump
 			END IF;
+			--now, the previous state of the mouse is updated to the current mouse state
 			mouse_prev := mouse_clicked;
-			-- Bounce off top or bottom of the screen
+			
+			--Now, if the bird is jumping
 			IF (jumping = '1') THEN
+				-- if the counter is equal to 30 (then the bird has jumped 30 times upwards by 5 pixel distance and now should not be jumping)
 				IF (counter = 30) THEN
-					jumping := '0';
-					counter := 0;
+					jumping := '0'; --bird is not jumping
+					counter := 0; -- reset the counter
 				ELSE
+					-- otherwise keep making the bird jump by 2 pixels for 30 times
 					ball_y_pos<= ball_y_pos - CONV_STD_LOGIC_VECTOR(2, 10);
 					counter:= counter + 1;
 				END IF;
 			ELSE
 				IF (ball_y_pos >= (CONV_STD_LOGIC_VECTOR(479, 10) - size)) THEN
+					--if the ball reaches less than or equal to the bottom of the screen set motion to 0
 					ball_y_motion <= CONV_STD_LOGIC_VECTOR(0, 10);
 				ELSE
-					ball_y_motion <= CONV_STD_LOGIC_VECTOR(1, 10);
+					--otherwise keep increasing the motion eeent by 2 pixels
+					ball_y_motion <= CONV_STD_LOGIC_VECTOR(2, 10);
 				END IF;
 				-- Compute next ball Y position
 				ball_y_pos <= ball_y_pos + ball_y_motion;
 			END IF;
+<<<<<<< Updated upstream
+=======
+			
+			
+>>>>>>> Stashed changes
 			IF(ball_y_pos < CONV_STD_LOGIC_VECTOR(0, 10)) THEN
 				ball_y_pos <= size;
 			END IF;
