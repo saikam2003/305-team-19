@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY PIPE is
 
-	PORT(enable, horz_sync: IN STD_LOGIC;
+	PORT(enable, horz_sync, colour_input: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue, pipe_on: OUT STD_LOGIC;
@@ -55,8 +55,6 @@ BEGIN
 	
 	
 	-- Setting the colour of the pipe
-	red <= '0';
-	green <= '1';
 	blue <= '0';
 	pipe_on <= pipe_on_output;
 	pipe_position <= pixel_column WHEN pipe_on_output = '1' else CONV_STD_LOGIC_VECTOR(0, 10);
@@ -68,6 +66,14 @@ BEGIN
 		
 		IF (RISING_EDGE(horz_sync)) THEN
 			IF (enable = '1') THEN
+				IF(colour_input = '1') THEN
+					red <= '1';
+					green <= '0';
+				ELSE
+					green <= '1';
+					red <= '0';
+				END IF;
+				
 				-- Bounce the pipe off the left or right of the screen
 				IF (counter = 1) THEN
 					IF (pipe_x_pos <=  CONV_STD_LOGIC_VECTOR(0, 11)) THEN

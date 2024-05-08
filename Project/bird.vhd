@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY BIRD IS 
 
-	PORT(clk, vert_sync, mouse_clicked: IN STD_LOGIC;
+	PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			red, green, blue, bird_on: OUT STD_LOGIC;
 			bird_y_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
@@ -37,9 +37,9 @@ BEGIN
 	-- Setting the colour of the bird
 	red <= '1';
 	green <= '1';
-	blue <= '0';
+
 	bird_on <= ball_on;
-	
+			
 	Move_Bird: PROCESS (vert_sync)
 	VARIABLE mouse_prev, jumping: STD_LOGIC;
 	VARIABLE counter: INTEGER RANGE 0 to 15:= 0;
@@ -53,6 +53,12 @@ BEGIN
 			END IF;
 			--now, the previous state of the mouse is updated to the current mouse state
 			mouse_prev := mouse_clicked;
+			
+			IF(colour_input = '1') THEN
+				blue <= '1';
+			ELSE
+				blue <= '0';
+			END IF;
 			
 			--Now, if the bird is jumping
 			IF (jumping = '1') THEN
@@ -83,4 +89,5 @@ BEGIN
 			bird_y_position <= ball_y_pos;
 		END IF;
 	END PROCESS Move_Bird;
+	
 END behaviour;

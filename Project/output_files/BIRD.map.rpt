@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Wed May 08 17:24:06 2024
+Wed May 08 17:55:22 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -55,13 +55,13 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed May 08 17:24:05 2024           ;
+; Analysis & Synthesis Status     ; Successful - Wed May 08 17:55:22 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 227                                             ;
+; Total registers                 ; 231                                             ;
 ; Total pins                      ; 27                                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0                                               ;
@@ -175,7 +175,8 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-16        ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -205,16 +206,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------------------------------+
 ; Resource                                    ; Usage                             ;
 +---------------------------------------------+-----------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 323                               ;
+; Estimate of Logic utilization (ALMs needed) ; 317                               ;
 ;                                             ;                                   ;
-; Combinational ALUT usage for logic          ; 520                               ;
+; Combinational ALUT usage for logic          ; 512                               ;
 ;     -- 7 input functions                    ; 2                                 ;
-;     -- 6 input functions                    ; 115                               ;
-;     -- 5 input functions                    ; 69                                ;
-;     -- 4 input functions                    ; 61                                ;
-;     -- <=3 input functions                  ; 273                               ;
+;     -- 6 input functions                    ; 111                               ;
+;     -- 5 input functions                    ; 71                                ;
+;     -- 4 input functions                    ; 60                                ;
+;     -- <=3 input functions                  ; 268                               ;
 ;                                             ;                                   ;
-; Dedicated logic registers                   ; 227                               ;
+; Dedicated logic registers                   ; 231                               ;
 ;                                             ;                                   ;
 ; I/O pins                                    ; 27                                ;
 ;                                             ;                                   ;
@@ -224,9 +225,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                 ;
 ;                                             ;                                   ;
 ; Maximum fan-out node                        ; MOUSE:mouse_inst|MOUSE_CLK_FILTER ;
-; Maximum fan-out                             ; 93                                ;
-; Total fan-out                               ; 2597                              ;
-; Average fan-out                             ; 3.23                              ;
+; Maximum fan-out                             ; 91                                ;
+; Total fan-out                               ; 2574                              ;
+; Average fan-out                             ; 3.22                              ;
 +---------------------------------------------+-----------------------------------+
 
 
@@ -235,19 +236,19 @@ refer to the applicable agreement for further details.
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                            ; Entity Name     ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------+-----------------+--------------+
-; |Bird_Block                                  ; 520 (1)             ; 227 (0)                   ; 0                 ; 0          ; 27   ; 0            ; |Bird_Block                                                                    ; Bird_Block      ; work         ;
+; |Bird_Block                                  ; 512 (1)             ; 231 (0)                   ; 0                 ; 0          ; 27   ; 0            ; |Bird_Block                                                                    ; Bird_Block      ; work         ;
 ;    |BCD_to_SevenSeg:inst2|                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst2                                              ; BCD_to_SevenSeg ; work         ;
 ;    |BCD_to_SevenSeg:inst6|                   ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                              ; BCD_to_SevenSeg ; work         ;
-;    |MAIN:inst1|                              ; 358 (5)             ; 59 (4)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                                         ; MAIN            ; work         ;
-;       |BIRD:bird_component|                  ; 88 (88)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|BIRD:bird_component                                     ; BIRD            ; work         ;
+;    |MAIN:inst1|                              ; 349 (8)             ; 65 (5)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                                         ; MAIN            ; work         ;
+;       |BIRD:bird_component|                  ; 88 (88)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|BIRD:bird_component                                     ; BIRD            ; work         ;
 ;       |COLLISION:collision_detection_pipe_2| ; 23 (23)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|COLLISION:collision_detection_pipe_2                    ; COLLISION       ; work         ;
 ;       |COLLISION:collision_detection_pipe|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|COLLISION:collision_detection_pipe                      ; COLLISION       ; work         ;
-;       |PIPE:pipe_component_2|                ; 61 (61)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2                                   ; PIPE            ; work         ;
-;       |PIPE:pipe_component|                  ; 61 (61)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                                     ; PIPE            ; work         ;
-;       |background:background_component|      ; 119 (10)            ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component                         ; background      ; work         ;
-;          |cloud:cloud_component_2|           ; 33 (33)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component_2 ; cloud           ; work         ;
-;          |cloud:cloud_component|             ; 76 (76)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component   ; cloud           ; work         ;
-;    |MOUSE:mouse_inst|                        ; 106 (106)           ; 120 (120)                 ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                   ; MOUSE           ; work         ;
+;       |PIPE:pipe_component_2|                ; 64 (64)             ; 15 (15)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2                                   ; PIPE            ; work         ;
+;       |PIPE:pipe_component|                  ; 60 (60)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                                     ; PIPE            ; work         ;
+;       |background:background_component|      ; 105 (5)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component                         ; background      ; work         ;
+;          |cloud:cloud_component_2|           ; 28 (28)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component_2 ; cloud           ; work         ;
+;          |cloud:cloud_component|             ; 72 (72)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component   ; cloud           ; work         ;
+;    |MOUSE:mouse_inst|                        ; 107 (107)           ; 118 (118)                 ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                   ; MOUSE           ; work         ;
 ;    |PLL:inst3|                               ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                                          ; PLL             ; PLL          ;
 ;       |PLL_0002:pll_inst|                    ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                                        ; PLL_0002        ; PLL          ;
 ;          |altera_pll:altera_pll_i|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i                ; altera_pll      ; work         ;
@@ -288,7 +289,6 @@ Encoding Type:  One-Hot
 ; MAIN:inst1|BIRD:bird_component|ball_y_motion[0,2..9]     ; Stuck at GND due to stuck port data_in ;
 ; MAIN:inst1|background:background_component|green         ; Stuck at VCC due to stuck port data_in ;
 ; MAIN:inst1|background:background_component|blue          ; Stuck at VCC due to stuck port data_in ;
-; MAIN:inst1|green_output                                  ; Stuck at VCC due to stuck port data_in ;
 ; MOUSE:mouse_inst|CHAROUT[4..7]                           ; Stuck at VCC due to stuck port data_in ;
 ; MOUSE:mouse_inst|CHAROUT[3]                              ; Stuck at GND due to stuck port data_in ;
 ; MOUSE:mouse_inst|CHAROUT[2]                              ; Stuck at VCC due to stuck port data_in ;
@@ -300,20 +300,18 @@ Encoding Type:  One-Hot
 ; MAIN:inst1|BIRD:bird_component|bird_y_position[0]        ; Stuck at VCC due to stuck port data_in ;
 ; MOUSE:mouse_inst|cursor_row[9]                           ; Stuck at GND due to stuck port data_in ;
 ; VGA_SYNC:inst|pixel_row[9]                               ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 29                   ;                                        ;
+; Total Number of Removed Registers = 28                   ;                                        ;
 +----------------------------------------------------------+----------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                      ;
-+--------------------------------------------------+---------------------------+---------------------------------------------------+
-; Register name                                    ; Reason for Removal        ; Registers Removed due to This Register            ;
-+--------------------------------------------------+---------------------------+---------------------------------------------------+
-; MAIN:inst1|background:background_component|green ; Stuck at VCC              ; MAIN:inst1|green_output                           ;
-;                                                  ; due to stuck port data_in ;                                                   ;
-; MAIN:inst1|BIRD:bird_component|ball_y_pos[0]     ; Stuck at VCC              ; MAIN:inst1|BIRD:bird_component|bird_y_position[0] ;
-;                                                  ; due to stuck port data_in ;                                                   ;
-+--------------------------------------------------+---------------------------+---------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                  ;
++----------------------------------------------+---------------------------+---------------------------------------------------+
+; Register name                                ; Reason for Removal        ; Registers Removed due to This Register            ;
++----------------------------------------------+---------------------------+---------------------------------------------------+
+; MAIN:inst1|BIRD:bird_component|ball_y_pos[0] ; Stuck at VCC              ; MAIN:inst1|BIRD:bird_component|bird_y_position[0] ;
+;                                              ; due to stuck port data_in ;                                                   ;
++----------------------------------------------+---------------------------+---------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -321,12 +319,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 227   ;
+; Total registers                              ; 231   ;
 ; Number of registers using Synchronous Clear  ; 34    ;
 ; Number of registers using Synchronous Load   ; 22    ;
 ; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 140   ;
+; Number of registers using Clock Enable       ; 143   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -351,17 +349,17 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_row[3]             ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_row[4]             ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst|v_count[7]                       ;
 ; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|BIRD:bird_component|ball_y_pos[9]   ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2|pipe_x_pos[2] ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component|pipe_x_pos[3]   ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2|pipe_x_pos[1] ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component|pipe_x_pos[4]   ;
 ; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[0]              ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[8]              ;
 ; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[3]                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[5]                 ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[7]                 ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[0]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[3]          ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[0]          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
 
 
@@ -718,39 +716,39 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 227                         ;
+; arriav_ff             ; 231                         ;
 ;     CLR               ; 1                           ;
-;     ENA               ; 81                          ;
+;     ENA               ; 84                          ;
 ;     ENA CLR           ; 15                          ;
 ;     ENA SCLR          ; 24                          ;
 ;     ENA SLD           ; 20                          ;
 ;     SCLR              ; 10                          ;
 ;     SLD               ; 2                           ;
-;     plain             ; 74                          ;
+;     plain             ; 75                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 523                         ;
+; arriav_lcell_comb     ; 515                         ;
 ;     arith             ; 180                         ;
 ;         0 data inputs ; 10                          ;
 ;         1 data inputs ; 152                         ;
 ;         2 data inputs ; 18                          ;
 ;     extend            ; 2                           ;
 ;         7 data inputs ; 2                           ;
-;     normal            ; 322                         ;
+;     normal            ; 314                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 9                           ;
-;         2 data inputs ; 34                          ;
+;         1 data inputs ; 11                          ;
+;         2 data inputs ; 27                          ;
 ;         3 data inputs ; 33                          ;
-;         4 data inputs ; 61                          ;
-;         5 data inputs ; 69                          ;
-;         6 data inputs ; 115                         ;
+;         4 data inputs ; 60                          ;
+;         5 data inputs ; 71                          ;
+;         6 data inputs ; 111                         ;
 ;     shared            ; 19                          ;
 ;         1 data inputs ; 10                          ;
 ;         2 data inputs ; 9                           ;
 ; boundary_port         ; 27                          ;
 ; generic_pll           ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.80                        ;
-; Average LUT depth     ; 3.19                        ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.22                        ;
 +-----------------------+-----------------------------+
 
 
@@ -769,7 +767,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Wed May 08 17:23:59 2024
+    Info: Processing started: Wed May 08 17:55:15 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -877,13 +875,13 @@ Warning (10036): Verilog HDL or VHDL warning at main.vhd(24): object "t_pipe_pos
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(24): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 24
 Warning (10540): VHDL Signal Declaration warning at main.vhd(25): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 25
 Warning (10540): VHDL Signal Declaration warning at main.vhd(25): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 25
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(143): object "counter" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 143
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(146): object "counter" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 146
 Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 61
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 75
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 76
 Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(22): object "size_y" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 22
 Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(24): object "pipe_y_pos" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 24
-Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst1|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 91
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 125
+Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst1|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 93
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 128
 Warning (12125): Using design file cloud.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: cloud-behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 15
     Info (12023): Found entity 1: cloud File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 7
@@ -1133,16 +1131,16 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
     Info: Must be connected
-Info (21057): Implemented 628 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 23 output pins
+Info (21057): Implemented 622 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 21 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 600 logic cells
+    Info (21061): Implemented 594 logic cells
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 247 warnings
-    Info: Peak virtual memory: 4936 megabytes
-    Info: Processing ended: Wed May 08 17:24:06 2024
+    Info: Peak virtual memory: 4960 megabytes
+    Info: Processing ended: Wed May 08 17:55:22 2024
     Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 

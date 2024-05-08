@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY MAIN IS 
 
-	PORT(background_on, clk_input, jump_input, start_input, reset_input, colour_input: IN STD_LOGIC;
+	PORT(background_on, clk_input, jump_input, start_input, reset_input, colour_bird, colour_pipe: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output: OUT STD_LOGIC;
@@ -28,14 +28,14 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
 	
 	COMPONENT BIRD IS
-		PORT(clk, vert_sync, mouse_clicked: IN STD_LOGIC;
+		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			red, green, blue, bird_on: OUT STD_LOGIC;
 			bird_y_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
 	
 	COMPONENT PIPE IS
-		PORT(enable, horz_sync: IN STD_LOGIC;
+		PORT(enable, horz_sync, colour_input: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue, pipe_on: OUT STD_LOGIC;
@@ -63,6 +63,7 @@ BEGIN
 							clk => clk_input,
 							vert_sync => vertical_sync,
 							mouse_clicked => jump_input,
+							colour_input => colour_bird,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => bird_red,
@@ -76,6 +77,7 @@ BEGIN
 						PORT MAP(
 							enable => t_pipe_enable,
 							horz_sync => vertical_sync,
+							colour_input => colour_pipe,
 							pipe_x => t_pipe_x,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
@@ -110,6 +112,7 @@ BEGIN
 						PORT MAP(
 							enable => t_pipe_enable_2,
 							horz_sync => vertical_sync,
+							colour_input => colour_pipe,
 							pipe_x => t_pipe_x_2,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
