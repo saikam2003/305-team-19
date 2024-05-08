@@ -6,7 +6,8 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY MAIN IS 
 
-	PORT(background_on, clk_input, vertical_sync, horizontal_sync, jump_input, start_input, reset_input, colour_input: IN STD_LOGIC;
+	PORT(background_on, clk_input, jump_input, start_input, reset_input, colour_input: IN STD_LOGIC;
+		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output: OUT STD_LOGIC;
 		led1, led2: OUT STD_LOGIC);
@@ -147,7 +148,7 @@ BEGIN
 				t_pipe_enable_2 <= '0';
 			END IF;
 			
-			IF((t_pipe_enable = '0') AND start_input = '1') THEN
+			IF((t_pipe_enable = '0') AND start_input = '0') THEN
 				t_pipe_enable <= '1';
 --				t_pipe_enable_2 <= '1';
 			END IF;

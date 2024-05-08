@@ -68,19 +68,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "LEDR1",
+					"name" : "LEDR[4]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR2",
+					"name" : "LEDR[3]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR3",
+					"name" : "LEDR[2]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR6",
+					"name" : "LEDR[1]",
 					"strict" : false
 				},
 				{

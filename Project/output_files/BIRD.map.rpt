@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Wed May 08 16:43:29 2024
+Wed May 08 17:24:06 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -55,7 +55,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed May 08 16:43:29 2024           ;
+; Analysis & Synthesis Status     ; Successful - Wed May 08 17:24:05 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
@@ -175,8 +175,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-16        ;   0.0%      ;
+;     Processors 2-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -241,8 +240,8 @@ refer to the applicable agreement for further details.
 ;    |BCD_to_SevenSeg:inst6|                   ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                              ; BCD_to_SevenSeg ; work         ;
 ;    |MAIN:inst1|                              ; 358 (5)             ; 59 (4)                    ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                                         ; MAIN            ; work         ;
 ;       |BIRD:bird_component|                  ; 88 (88)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|BIRD:bird_component                                     ; BIRD            ; work         ;
-;       |COLLISION:collision_detection_pipe_2| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|COLLISION:collision_detection_pipe_2                    ; COLLISION       ; work         ;
-;       |COLLISION:collision_detection_pipe|   ; 23 (23)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|COLLISION:collision_detection_pipe                      ; COLLISION       ; work         ;
+;       |COLLISION:collision_detection_pipe_2| ; 23 (23)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|COLLISION:collision_detection_pipe_2                    ; COLLISION       ; work         ;
+;       |COLLISION:collision_detection_pipe|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|COLLISION:collision_detection_pipe                      ; COLLISION       ; work         ;
 ;       |PIPE:pipe_component_2|                ; 61 (61)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2                                   ; PIPE            ; work         ;
 ;       |PIPE:pipe_component|                  ; 61 (61)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                                     ; PIPE            ; work         ;
 ;       |background:background_component|      ; 119 (10)            ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component                         ; background      ; work         ;
@@ -355,8 +354,8 @@ Encoding Type:  One-Hot
 ; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_row[3]             ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst|v_count[7]                       ;
 ; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|BIRD:bird_component|ball_y_pos[9]   ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component|pipe_x_pos[2]   ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2|pipe_x_pos[3] ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2|pipe_x_pos[2] ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component|pipe_x_pos[3]   ;
 ; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[0]              ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[8]              ;
 ; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[3]                 ;
@@ -770,7 +769,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Wed May 08 16:43:23 2024
+    Info: Processing started: Wed May 08 17:23:59 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -790,7 +789,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file pipe.vh
     Info (12022): Found design unit 1: PIPE-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 18
     Info (12023): Found entity 1: PIPE File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file main.vhd
-    Info (12022): Found design unit 1: MAIN-behvaiour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 17
+    Info (12022): Found design unit 1: MAIN-behvaiour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 18
     Info (12023): Found entity 1: MAIN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file vga_sync.vhd
     Info (12022): Found design unit 1: VGA_SYNC-a File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 13
@@ -805,12 +804,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: PLL_0002 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 2
 Info (12127): Elaborating entity "Bird_Block" for the top level hierarchy
-Warning (275089): Not all bits in bus "LEDR[6..1]" are used
-Warning (275080): Converted elements in bus name "LEDR" using legacy naming rules. Make any assignments on the new names, not on the original names.
-    Warning (275081): Converted element name(s) from "LEDR[1]" to "LEDR1"
-    Warning (275081): Converted element name(s) from "LEDR[2]" to "LEDR2"
-    Warning (275081): Converted element name(s) from "LEDR[3]" to "LEDR3"
-    Warning (275081): Converted element name(s) from "LEDR[6]" to "LEDR6"
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
 Info (12128): Elaborating entity "PLL" for hierarchy "PLL:inst3"
 Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:inst3|PLL_0002:pll_inst" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL.v Line: 20
@@ -879,18 +872,18 @@ Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
 Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst1"
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(22): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 22
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(23): object "t_pipe_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 23
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(23): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 23
-Warning (10540): VHDL Signal Declaration warning at main.vhd(24): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 24
-Warning (10540): VHDL Signal Declaration warning at main.vhd(24): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 24
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(142): object "counter" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 142
-Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 60
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 74
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(23): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 23
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(24): object "t_pipe_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 24
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(24): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 24
+Warning (10540): VHDL Signal Declaration warning at main.vhd(25): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 25
+Warning (10540): VHDL Signal Declaration warning at main.vhd(25): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 25
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(143): object "counter" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 143
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 61
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 75
 Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(22): object "size_y" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 22
 Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(24): object "pipe_y_pos" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 24
-Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst1|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 90
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 124
+Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst1|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 91
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 125
 Warning (12125): Using design file cloud.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: cloud-behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 15
     Info (12023): Found entity 1: cloud File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 7
@@ -1146,10 +1139,10 @@ Info (21057): Implemented 628 device resources after synthesis - the final resou
     Info (21060): Implemented 2 bidirectional pins
     Info (21061): Implemented 600 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 253 warnings
-    Info: Peak virtual memory: 4967 megabytes
-    Info: Processing ended: Wed May 08 16:43:29 2024
-    Info: Elapsed time: 00:00:06
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 247 warnings
+    Info: Peak virtual memory: 4936 megabytes
+    Info: Processing ended: Wed May 08 17:24:06 2024
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:04
 
 
