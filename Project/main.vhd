@@ -19,6 +19,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL bird_red, bird_green, bird_blue, t_bird_on: STD_LOGIC;
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL text_red, text_blue, text_green, t_text_on: STD_LOGIC;
 	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected: STD_LOGIC;
 	SIGNAL pipe_red_2, pipe_green_2, pipe_blue_2, t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -54,6 +55,12 @@ ARCHITECTURE behvaiour OF MAIN IS
 		PORT(clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
 			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			collision_detected: OUT STD_LOGIC);
+	END COMPONENT;
+	
+	COMPONENT TEXT_DISPLAY IS
+		PORT(Clk, enable: IN STD_LOGIC;
+			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
+			red, blue, green, text_on: OUT STD_LOGIC);
 	END COMPONENT;
 	
 BEGIN 
@@ -138,8 +145,15 @@ BEGIN
 									background_on => t_background_on
 								);
 								
-								
-	
+	text_component: TEXT_DISPLAY
+						PORT MAP(Clk => clk_input,
+							enable => '1',
+							pixel_row => pixel_row_input, 
+							pixel_column => pixel_column_input,
+							red => text_red, 
+							blue => text_blue, 
+							green => text_green, 
+							text_on => t_text_on);
 
 	
 	screen_display: PROCESS(clk_input)
@@ -157,7 +171,11 @@ BEGIN
 			END IF;
 			
 			
-			IF (t_bird_on = '1') THEN
+			IF (t_text_on = '1') THEN
+				red_output <= text_red;
+				green_output <= text_green;
+				blue_output <= text_blue;
+			ELSIF (t_bird_on = '1') THEN
 				red_output <= bird_red;
 				green_output <= bird_green;
 				blue_output <= bird_blue;
