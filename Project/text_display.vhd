@@ -5,6 +5,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.all;
 
 ENTITY text_display IS
 	PORT(Clk, enable, size: IN STD_LOGIC;
+			input_address: IN STD_LOGIC_VECTOR(5 downto 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			row_start, row_stop, col_start, col_stop: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green, text_on: OUT STD_LOGIC);
@@ -38,8 +39,8 @@ BEGIN
 
 	t_text_on <= char_output WHEN (pixel_row >= row_start and pixel_row <= row_stop
 											and pixel_column >= col_start and pixel_column <= col_stop) ELSE '0';
-	t_address <= (CONV_STD_LOGIC_VECTOR(7,6));
-	t_font_row <= pixel_row(4 downto 2);
+	t_address <= ("0" & input_address(5 downto 1)) when size = '1' ELSE input_address(5 downto 0);
+	t_font_row <= pixel_row(4 downto 2) when size = '1' else pixel_row(3 downto 1);
 	t_font_col <= pixel_column(3 downto 1);		
 	red <= t_text_on;
 	text_on <= t_text_on;

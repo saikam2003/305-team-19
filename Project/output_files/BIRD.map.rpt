@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Wed May 08 19:33:20 2024
+Wed May 08 19:44:51 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -25,17 +25,16 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
  17. Parameter Settings for User Entity Instance: PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i
  18. Parameter Settings for User Entity Instance: MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component
  19. altsyncram Parameter Settings by Entity Instance
- 20. Port Connectivity Checks: "MAIN:inst1|text_display:text_component|char_rom:char_comp"
- 21. Port Connectivity Checks: "MAIN:inst1|text_display:text_component"
- 22. Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component_2"
- 23. Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component"
- 24. Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component_2"
- 25. Port Connectivity Checks: "MAIN:inst1|COLLISION:collision_detection_pipe_2"
- 26. Port Connectivity Checks: "MAIN:inst1|COLLISION:collision_detection_pipe"
- 27. Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component"
- 28. Post-Synthesis Netlist Statistics for Top Partition
- 29. Elapsed Time Per Partition
- 30. Analysis & Synthesis Messages
+ 20. Port Connectivity Checks: "MAIN:inst1|text_display:text_component"
+ 21. Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component_2"
+ 22. Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component"
+ 23. Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component_2"
+ 24. Port Connectivity Checks: "MAIN:inst1|COLLISION:collision_detection_pipe_2"
+ 25. Port Connectivity Checks: "MAIN:inst1|COLLISION:collision_detection_pipe"
+ 26. Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component"
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
 
 
 
@@ -61,7 +60,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed May 08 19:33:20 2024           ;
+; Analysis & Synthesis Status     ; Successful - Wed May 08 19:44:51 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
@@ -225,12 +224,12 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 324                                                                ;
+; Estimate of Logic utilization (ALMs needed) ; 323                                                                ;
 ;                                             ;                                                                    ;
 ; Combinational ALUT usage for logic          ; 531                                                                ;
 ;     -- 7 input functions                    ; 4                                                                  ;
-;     -- 6 input functions                    ; 103                                                                ;
-;     -- 5 input functions                    ; 77                                                                 ;
+;     -- 6 input functions                    ; 102                                                                ;
+;     -- 5 input functions                    ; 78                                                                 ;
 ;     -- 4 input functions                    ; 72                                                                 ;
 ;     -- <=3 input functions                  ; 275                                                                ;
 ;                                             ;                                                                    ;
@@ -247,7 +246,7 @@ refer to the applicable agreement for further details.
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
 ; Maximum fan-out                             ; 93                                                                 ;
-; Total fan-out                               ; 2670                                                               ;
+; Total fan-out                               ; 2669                                                               ;
 ; Average fan-out                             ; 3.23                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
@@ -734,38 +733,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+-------------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|text_display:text_component|char_rom:char_comp" ;
-+-------------------------+-------+----------+------------------------------------------+
-; Port                    ; Type  ; Severity ; Details                                  ;
-+-------------------------+-------+----------+------------------------------------------+
-; character_address[2..0] ; Input ; Info     ; Stuck at VCC                             ;
-; character_address[5..3] ; Input ; Info     ; Stuck at GND                             ;
-+-------------------------+-------+----------+------------------------------------------+
-
-
 +--------------------------------------------------------------------+
 ; Port Connectivity Checks: "MAIN:inst1|text_display:text_component" ;
-+-----------------+-------+----------+-------------------------------+
-; Port            ; Type  ; Severity ; Details                       ;
-+-----------------+-------+----------+-------------------------------+
-; enable          ; Input ; Info     ; Stuck at VCC                  ;
-; size            ; Input ; Info     ; Stuck at VCC                  ;
-; row_start[4..0] ; Input ; Info     ; Stuck at VCC                  ;
-; row_start[9..5] ; Input ; Info     ; Stuck at GND                  ;
-; row_stop[5..0]  ; Input ; Info     ; Stuck at VCC                  ;
-; row_stop[9..6]  ; Input ; Info     ; Stuck at GND                  ;
-; col_start[5..0] ; Input ; Info     ; Stuck at VCC                  ;
-; col_start[7..6] ; Input ; Info     ; Stuck at GND                  ;
-; col_start[9]    ; Input ; Info     ; Stuck at GND                  ;
-; col_start[8]    ; Input ; Info     ; Stuck at VCC                  ;
-; col_stop[3..0]  ; Input ; Info     ; Stuck at VCC                  ;
-; col_stop[5..4]  ; Input ; Info     ; Stuck at GND                  ;
-; col_stop[9]     ; Input ; Info     ; Stuck at GND                  ;
-; col_stop[8]     ; Input ; Info     ; Stuck at VCC                  ;
-; col_stop[7]     ; Input ; Info     ; Stuck at GND                  ;
-; col_stop[6]     ; Input ; Info     ; Stuck at VCC                  ;
-+-----------------+-------+----------+-------------------------------+
++---------------------+-------+----------+---------------------------+
+; Port                ; Type  ; Severity ; Details                   ;
++---------------------+-------+----------+---------------------------+
+; enable              ; Input ; Info     ; Stuck at VCC              ;
+; size                ; Input ; Info     ; Stuck at VCC              ;
+; input_address[2..0] ; Input ; Info     ; Stuck at VCC              ;
+; input_address[5..3] ; Input ; Info     ; Stuck at GND              ;
+; row_start[4..0]     ; Input ; Info     ; Stuck at VCC              ;
+; row_start[9..5]     ; Input ; Info     ; Stuck at GND              ;
+; row_stop[5..0]      ; Input ; Info     ; Stuck at VCC              ;
+; row_stop[9..6]      ; Input ; Info     ; Stuck at GND              ;
+; col_start[5..0]     ; Input ; Info     ; Stuck at VCC              ;
+; col_start[7..6]     ; Input ; Info     ; Stuck at GND              ;
+; col_start[9]        ; Input ; Info     ; Stuck at GND              ;
+; col_start[8]        ; Input ; Info     ; Stuck at VCC              ;
+; col_stop[4..0]      ; Input ; Info     ; Stuck at VCC              ;
+; col_stop[9]         ; Input ; Info     ; Stuck at GND              ;
+; col_stop[8]         ; Input ; Info     ; Stuck at VCC              ;
+; col_stop[7]         ; Input ; Info     ; Stuck at GND              ;
+; col_stop[6]         ; Input ; Info     ; Stuck at VCC              ;
+; col_stop[5]         ; Input ; Info     ; Stuck at GND              ;
++---------------------+-------+----------+---------------------------+
 
 
 +------------------------------------------------------------------------------------------------+
@@ -897,8 +888,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         2 data inputs ; 28                          ;
 ;         3 data inputs ; 39                          ;
 ;         4 data inputs ; 72                          ;
-;         5 data inputs ; 77                          ;
-;         6 data inputs ; 103                         ;
+;         5 data inputs ; 78                          ;
+;         6 data inputs ; 102                         ;
 ;     shared            ; 19                          ;
 ;         1 data inputs ; 10                          ;
 ;         2 data inputs ; 9                           ;
@@ -926,7 +917,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Wed May 08 19:33:14 2024
+    Info: Processing started: Wed May 08 19:44:45 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -961,7 +952,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: PLL_0002 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 2
 Info (12021): Found 2 design units, including 1 entities, in source file text_display.vhd
-    Info (12022): Found design unit 1: text_display-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 13
+    Info (12022): Found design unit 1: text_display-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 14
     Info (12023): Found entity 1: text_display File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 6
 Info (12127): Elaborating entity "Bird_Block" for the top level hierarchy
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
@@ -1037,22 +1028,22 @@ Warning (10036): Verilog HDL or VHDL warning at main.vhd(25): object "t_pipe_pos
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(25): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 25
 Warning (10540): VHDL Signal Declaration warning at main.vhd(26): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 26
 Warning (10540): VHDL Signal Declaration warning at main.vhd(26): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 26
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(166): object "counter" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 166
-Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 69
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 84
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(168): object "counter" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 168
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 70
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 85
 Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(22): object "size_y" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 22
 Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(24): object "pipe_y_pos" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 24
-Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst1|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 101
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 136
+Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst1|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 102
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 137
 Warning (12125): Using design file cloud.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: cloud-behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 15
     Info (12023): Found entity 1: cloud File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 7
 Info (12128): Elaborating entity "cloud" for hierarchy "MAIN:inst1|background:background_component|cloud:cloud_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 29
-Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst1|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 149
+Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst1|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 150
 Warning (12125): Using design file char_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: char_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 20
     Info (12023): Found entity 1: char_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 9
-Info (12128): Elaborating entity "char_rom" for hierarchy "MAIN:inst1|text_display:text_component|char_rom:char_comp" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 28
+Info (12128): Elaborating entity "char_rom" for hierarchy "MAIN:inst1|text_display:text_component|char_rom:char_comp" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 29
 Info (12128): Elaborating entity "altsyncram" for hierarchy "MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
 Info (12130): Elaborated megafunction instantiation "MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
 Info (12133): Instantiated megafunction "MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
@@ -1327,9 +1318,9 @@ Info (21057): Implemented 649 device resources after synthesis - the final resou
     Info (21064): Implemented 8 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 248 warnings
-    Info: Peak virtual memory: 4973 megabytes
-    Info: Processing ended: Wed May 08 19:33:20 2024
+    Info: Peak virtual memory: 4978 megabytes
+    Info: Processing ended: Wed May 08 19:44:51 2024
     Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Total CPU time (on all processors): 00:00:04
 
 
