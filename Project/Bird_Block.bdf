@@ -520,8 +520,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 112)
 		(input)
-		(text "colour_bird" (rect 0 0 53 12)(font "Arial" ))
-		(text "colour_bird" (rect 21 107 74 119)(font "Arial" ))
+		(text "text_on" (rect 0 0 36 12)(font "Arial" ))
+		(text "text_on" (rect 21 107 57 119)(font "Arial" ))
 		(line (pt 0 112)(pt 16 112))
 	)
 	(port

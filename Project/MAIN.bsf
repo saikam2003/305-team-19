@@ -61,8 +61,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 112)
 		(input)
-		(text "colour_bird" (rect 0 0 43 12)(font "Arial" ))
-		(text "colour_bird" (rect 21 107 64 119)(font "Arial" ))
+		(text "text_on" (rect 0 0 29 12)(font "Arial" ))
+		(text "text_on" (rect 21 107 50 119)(font "Arial" ))
 		(line (pt 0 112)(pt 16 112)(line_width 1))
 	)
 	(port
