@@ -74,7 +74,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 360 304 528 320)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "SW[1]" (rect 5 0 36 12)(font "Arial" ))
+	(text "SW[1]" (rect 5 0 35 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -605,8 +605,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 112)
 		(input)
-		(text "colour_bird" (rect 0 0 53 12)(font "Arial" ))
-		(text "colour_bird" (rect 21 107 74 119)(font "Arial" ))
+		(text "text_on" (rect 0 0 36 12)(font "Arial" ))
+		(text "text_on" (rect 21 107 57 119)(font "Arial" ))
 		(line (pt 0 112)(pt 16 112))
 	)
 	(port
