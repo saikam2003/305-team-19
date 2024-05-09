@@ -9,7 +9,7 @@ ENTITY MAIN IS
 	PORT(background_on, clk_input, jump_input, start_input, reset_input, colour_bird, colour_pipe: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-		red_output, green_output, blue_output: OUT STD_LOGIC;
+		red_output, green_output, blue_output: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 		led1, led2: OUT STD_LOGIC);
 
 END ENTITY MAIN;
@@ -17,21 +17,23 @@ END ENTITY MAIN;
 
 ARCHITECTURE behvaiour OF MAIN IS
 	
-	SIGNAL bird_red, bird_green, bird_blue, t_bird_on: STD_LOGIC;
+	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
-	SIGNAL text_red, text_blue, text_green, t_text_on: STD_LOGIC;
-	SIGNAL pipe_red, pipe_green, pipe_blue, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected: STD_LOGIC;
-	SIGNAL pipe_red_2, pipe_green_2, pipe_blue_2, t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2: STD_LOGIC;
+	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on: STD_LOGIC;
+	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_background_on: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL t_pipe_enable: STD_LOGIC:= '0';
-	SIGNAL background_red, background_green, background_blue, t_background_on: STD_LOGIC;
+	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	
 	COMPONENT BIRD IS
 		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			red, green, blue, bird_on: OUT STD_LOGIC;
+			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
+			bird_on: OUT STD_LOGIC;
 			bird_y_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
 	
@@ -39,16 +41,18 @@ ARCHITECTURE behvaiour OF MAIN IS
 		PORT(enable, horz_sync, colour_input: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
-			red, green, blue, pipe_on: OUT STD_LOGIC;
+			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
+			pipe_on: OUT STD_LOGIC;
 			pipe_halfway, collision_chance: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
 	
 	COMPONENT BACKGROUND IS
 		PORT
-		( clk, vert_sync, horz_sync: IN std_logic;
-		  pixel_row, pixel_column: IN std_logic_vector(9 DOWNTO 0);
-		  red, green, blue, background_on: OUT std_logic);	
+		( clk, vert_sync, horz_sync	: IN std_logic;
+		  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
+		  red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
+		  background_on 			: OUT std_logic);		
 	END COMPONENT;
 	
 	COMPONENT COLLISION IS
@@ -62,7 +66,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 			input_address: IN STD_LOGIC_VECTOR(5 downto 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			row_start, row_stop, col_start, col_stop: IN STD_LOGIC_VECTOR(9 downto 0);
-			red, blue, green, text_on: OUT STD_LOGIC);
+			red, blue, green : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+			text_on: OUT STD_LOGIC);
 	END COMPONENT;
 	
 BEGIN 
@@ -200,9 +205,9 @@ BEGIN
 				green_output <= background_green;
 				blue_output <= background_blue;
 			ELSE
-				red_output <= '0';
-				green_output <= '1';
-				blue_output <= '1';
+				red_output <= "0000";
+				green_output <= "1010";
+				blue_output <= "1011";
 			END IF;
 --			IF (counter = 0) THEN
 				IF (t_pipe_halfway = '1' and t_collision_detected = '0' and t_collision_detected_2 = '0') THEN

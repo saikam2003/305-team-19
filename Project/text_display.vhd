@@ -8,7 +8,8 @@ ENTITY text_display IS
 			input_address: IN STD_LOGIC_VECTOR(5 downto 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			row_start, row_stop, col_start, col_stop: IN STD_LOGIC_VECTOR(9 downto 0);
-			red, blue, green, text_on: OUT STD_LOGIC);
+			red, blue, green : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+			text_on: OUT STD_LOGIC);
 END ENTITY;
 
 ARCHITECTURE behaviour OF text_display IS
@@ -33,8 +34,8 @@ BEGIN
 		clock => clk,
 		rom_mux_output => char_output);
 		
-	blue <= '0';
-	green <= '0';
+	blue <= "0000";
+	green <= "0000";
 	
 
 	t_text_on <= char_output WHEN (pixel_row >= row_start and pixel_row <= row_stop
@@ -42,8 +43,9 @@ BEGIN
 	t_address <= ("0" & input_address(5 downto 1)) when size = '1' ELSE input_address(5 downto 0);
 	t_font_row <= pixel_row(4 downto 2) when size = '1' else pixel_row(3 downto 1);
 	t_font_col <= pixel_column(3 downto 1);		
-	red <= t_text_on;
+	red <= (t_text_on,t_text_on,t_text_on,t_text_on);
 	text_on <= t_text_on;
+	
 END ARCHITECTURE behaviour;
 			
 		

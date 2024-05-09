@@ -7,7 +7,8 @@ ENTITY BIRD IS
 
 	PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			red, green, blue, bird_on: OUT STD_LOGIC;
+			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
+			bird_on: OUT STD_LOGIC;
 			bird_y_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
 END ENTITY BIRD;
@@ -35,8 +36,8 @@ BEGIN
 			'0';
 	
 	-- Setting the colour of the bird
-	red <= '1';
-	green <= '1';
+	red <= "1111";
+	green <= "1100";
 
 	bird_on <= ball_on;
 			
@@ -55,9 +56,9 @@ BEGIN
 			mouse_prev := mouse_clicked;
 			
 			IF(colour_input = '1') THEN
-				blue <= '1';
+				blue <= "0001";
 			ELSE
-				blue <= '0';
+				blue <= "0000";
 			END IF;
 			
 			--Now, if the bird is jumping
