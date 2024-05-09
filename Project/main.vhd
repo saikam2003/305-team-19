@@ -21,10 +21,11 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on: STD_LOGIC;
-	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_background_on: STD_LOGIC;
+	SIGNAL t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
+	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
+	SIGNAL t_pipe_y, t_pipe_y_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL t_pipe_enable: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -40,9 +41,11 @@ ARCHITECTURE behvaiour OF MAIN IS
 	COMPONENT PIPE IS
 		PORT(enable, horz_sync, colour_input: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			random_flag: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
-			pipe_on: OUT STD_LOGIC;
+			pipe_on, random_enable: OUT STD_LOGIC;
 			pipe_halfway, collision_chance: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
@@ -70,6 +73,11 @@ ARCHITECTURE behvaiour OF MAIN IS
 			text_on: OUT STD_LOGIC);
 	END COMPONENT;
 	
+	COMPONENT LFSR IS
+		PORT(clk, enable: IN STD_LOGIC;
+			rnd: OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+			flag: OUT STD_LOGIC);
+	END COMPONENT;
 BEGIN 
 	
 	bird_component: BIRD
@@ -93,12 +101,15 @@ BEGIN
 							horz_sync => vertical_sync,
 							colour_input => colour_pipe,
 							pipe_x => t_pipe_x,
+							pipe_y => t_pipe_y,
+							random_flag => t_random_flag,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => pipe_red,
 							green => pipe_green,
 							blue => pipe_blue,
 							pipe_on => t_pipe_on,
+							random_enable => t_random_enable,
 							pipe_halfway => t_pipe_halfway,
 							collision_chance => t_collision_chance,
 							pipe_position => t_pipe_position
@@ -128,12 +139,15 @@ BEGIN
 							horz_sync => vertical_sync,
 							colour_input => colour_pipe,
 							pipe_x => t_pipe_x_2,
+							pipe_y => t_pipe_y_2,
+							random_flag => t_random_flag_2,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => pipe_red_2,
 							green => pipe_green_2,
 							blue => pipe_blue_2,
 							pipe_on => t_pipe_on_2,
+							random_enable => t_random_enable_2,
 							pipe_halfway => t_pipe_halfway_2,
 							collision_chance => t_collision_chance_2,
 							pipe_position => t_pipe_position_2
@@ -167,7 +181,22 @@ BEGIN
 							blue => text_blue, 
 							green => text_green, 
 							text_on => t_text_on);
-
+	
+	prng: LFSR
+			PORT MAP(
+				clk => clk_input,
+				enable => t_random_enable,
+				rnd => t_pipe_y,
+				flag => t_random_flag
+			);
+			
+	prng_2: LFSR
+			PORT MAP(
+				clk => clk_input,
+				enable => t_random_enable_2,
+				rnd => t_pipe_y_2,
+				flag => t_random_flag_2
+			);
 	
 	screen_display: PROCESS(clk_input)
 		VARIABLE counter: INTEGER RANGE 0 TO 1:= 0;
