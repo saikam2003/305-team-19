@@ -1,6 +1,6 @@
 Analysis & Synthesis report for BIRD
-Thu May 09 16:25:20 2024
-Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Thu May 09 22:29:41 2024
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -16,23 +16,23 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
  10. State Machine - |Bird_Block|MOUSE:mouse_inst|mouse_state
- 11. Registers Removed During Synthesis
- 12. Removed Registers Triggering Further Register Optimizations
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Source assignments for MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated
- 17. Parameter Settings for User Entity Instance: PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i
- 18. Parameter Settings for User Entity Instance: MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component
- 19. altsyncram Parameter Settings by Entity Instance
- 20. Port Connectivity Checks: "MAIN:inst1|text_display:text_component"
- 21. Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component_2"
- 22. Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component"
- 23. Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component_2"
- 24. Port Connectivity Checks: "MAIN:inst1|COLLISION:collision_detection_pipe_2"
- 25. Port Connectivity Checks: "MAIN:inst1|COLLISION:collision_detection_pipe"
- 26. Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component"
- 27. Port Connectivity Checks: "MAIN:inst1|BIRD:bird_component"
+ 11. User-Specified and Inferred Latches
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated
+ 18. Parameter Settings for User Entity Instance: PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i
+ 19. Parameter Settings for User Entity Instance: MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component
+ 20. altsyncram Parameter Settings by Entity Instance
+ 21. Port Connectivity Checks: "MAIN:inst|text_display:text_component"
+ 22. Port Connectivity Checks: "MAIN:inst|background:background_component|cloud:cloud_component_2"
+ 23. Port Connectivity Checks: "MAIN:inst|background:background_component|cloud:cloud_component"
+ 24. Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component_2"
+ 25. Port Connectivity Checks: "MAIN:inst|COLLISION:collision_detection_pipe_2"
+ 26. Port Connectivity Checks: "MAIN:inst|COLLISION:collision_detection_pipe"
+ 27. Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component"
  28. Post-Synthesis Netlist Statistics for Top Partition
  29. Elapsed Time Per Partition
  30. Analysis & Synthesis Messages
@@ -58,27 +58,27 @@ refer to the applicable agreement for further details.
 
 
 
-+-----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                      ;
-+---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu May 09 16:25:20 2024           ;
-; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
-; Revision Name                   ; BIRD                                            ;
-; Top-level Entity Name           ; Bird_Block                                      ;
-; Family                          ; Cyclone V                                       ;
-; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 230                                             ;
-; Total pins                      ; 27                                              ;
-; Total virtual pins              ; 0                                               ;
-; Total block memory bits         ; 4,096                                           ;
-; Total DSP Blocks                ; 0                                               ;
-; Total HSSI RX PCSs              ; 0                                               ;
-; Total HSSI PMA RX Deserializers ; 0                                               ;
-; Total HSSI TX PCSs              ; 0                                               ;
-; Total HSSI PMA TX Serializers   ; 0                                               ;
-; Total PLLs                      ; 1                                               ;
-; Total DLLs                      ; 0                                               ;
-+---------------------------------+-------------------------------------------------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu May 09 22:29:41 2024       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; BIRD                                        ;
+; Top-level Entity Name           ; Bird_Block                                  ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 255                                         ;
+; Total pins                      ; 36                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 64                                          ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 1                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -173,16 +173,15 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 24          ;
-; Maximum allowed            ; 16          ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 16          ;
+; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-16        ;   0.0%      ;
+;     Processors 2-8         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -191,32 +190,33 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                 ; Library ;
 +----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
-; mouse.vhd                        ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd              ;         ;
-; BCD_to_7Seg.vhd                  ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd        ;         ;
-; collision.vhd                    ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd          ;         ;
-; background.vhd                   ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd         ;         ;
-; pipe.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd               ;         ;
-; main.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd               ;         ;
-; vga_sync.vhd                     ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd           ;         ;
-; bird.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird.vhd               ;         ;
-; Bird_Block.bdf                   ; yes             ; User Block Diagram/Schematic File      ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/Bird_Block.bdf         ;         ;
-; PLL.v                            ; yes             ; User Wizard-Generated File             ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL.v                  ; PLL     ;
-; PLL/PLL_0002.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v         ; PLL     ;
-; text_display.vhd                 ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd       ;         ;
-; altera_pll.v                     ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v               ;         ;
-; cloud.vhd                        ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd              ;         ;
-; char_rom.vhd                     ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd           ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf             ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc      ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/lpm_mux.inc                ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/lpm_decode.inc             ;         ;
-; aglobal181.inc                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/aglobal181.inc             ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/a_rdenreg.inc              ;         ;
-; altrom.inc                       ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altrom.inc                 ;         ;
-; altram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altram.inc                 ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altdpram.inc               ;         ;
-; db/altsyncram_d5g1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_d5g1.tdf ;         ;
-; tcgrom.mif                       ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/tcgrom.mif             ;         ;
+; cloud.vhd                        ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/cloud.vhd                ;         ;
+; mouse.vhd                        ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd                ;         ;
+; BCD_to_7Seg.vhd                  ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/BCD_to_7Seg.vhd          ;         ;
+; collision.vhd                    ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/collision.vhd            ;         ;
+; background.vhd                   ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/background.vhd           ;         ;
+; pipe.vhd                         ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd                 ;         ;
+; main.vhd                         ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd                 ;         ;
+; vga_sync.vhd                     ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/vga_sync.vhd             ;         ;
+; bird.vhd                         ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/bird.vhd                 ;         ;
+; Bird_Block.bdf                   ; yes             ; User Block Diagram/Schematic File      ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/Bird_Block.bdf           ;         ;
+; PLL.v                            ; yes             ; User Wizard-Generated File             ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/PLL.v                    ; PLL     ;
+; PLL/PLL_0002.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/PLL/PLL_0002.v           ; PLL     ;
+; text_display.vhd                 ; yes             ; User VHDL File                         ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/text_display.vhd         ;         ;
+; altera_pll.v                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altera_pll.v          ;         ;
+; char_rom.vhd                     ; yes             ; Auto-Found VHDL File                   ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/char_rom.vhd             ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_d5g1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/db/altsyncram_d5g1.tdf   ;         ;
+; tcgrom.mif                       ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/tcgrom.mif               ;         ;
+; lfsr.vhd                         ; yes             ; Auto-Found VHDL File                   ; C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/lfsr.vhd                 ;         ;
 +----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
 
 
@@ -225,20 +225,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 324                                                                ;
+; Estimate of Logic utilization (ALMs needed) ; 347                                                                ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 533                                                                ;
-;     -- 7 input functions                    ; 9                                                                  ;
-;     -- 6 input functions                    ; 96                                                                 ;
-;     -- 5 input functions                    ; 83                                                                 ;
-;     -- 4 input functions                    ; 71                                                                 ;
-;     -- <=3 input functions                  ; 274                                                                ;
+; Combinational ALUT usage for logic          ; 575                                                                ;
+;     -- 7 input functions                    ; 5                                                                  ;
+;     -- 6 input functions                    ; 105                                                                ;
+;     -- 5 input functions                    ; 99                                                                 ;
+;     -- 4 input functions                    ; 72                                                                 ;
+;     -- <=3 input functions                  ; 294                                                                ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 230                                                                ;
+; Dedicated logic registers                   ; 255                                                                ;
 ;                                             ;                                                                    ;
-; I/O pins                                    ; 27                                                                 ;
+; I/O pins                                    ; 36                                                                 ;
 ; Total MLAB memory bits                      ; 0                                                                  ;
-; Total block memory bits                     ; 4096                                                               ;
+; Total block memory bits                     ; 64                                                                 ;
 ;                                             ;                                                                    ;
 ; Total DSP Blocks                            ; 0                                                                  ;
 ;                                             ;                                                                    ;
@@ -246,49 +246,50 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 93                                                                 ;
-; Total fan-out                               ; 2733                                                               ;
-; Average fan-out                             ; 3.30                                                               ;
+; Maximum fan-out                             ; 111                                                                ;
+; Total fan-out                               ; 2923                                                               ;
+; Average fan-out                             ; 3.20                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                              ;
-+-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                  ; Entity Name     ; Library Name ;
-+-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |Bird_Block                                     ; 533 (1)             ; 230 (0)                   ; 4096              ; 0          ; 27   ; 0            ; |Bird_Block                                                                                                                          ; Bird_Block      ; work         ;
-;    |BCD_to_SevenSeg:inst2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst2                                                                                                    ; BCD_to_SevenSeg ; work         ;
-;    |BCD_to_SevenSeg:inst6|                      ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                                                                                    ; BCD_to_SevenSeg ; work         ;
-;    |MAIN:inst1|                                 ; 370 (11)            ; 64 (5)                    ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1                                                                                                               ; MAIN            ; work         ;
-;       |BIRD:bird_component|                     ; 94 (94)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|BIRD:bird_component                                                                                           ; BIRD            ; work         ;
-;       |COLLISION:collision_detection_pipe_2|    ; 23 (23)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|COLLISION:collision_detection_pipe_2                                                                          ; COLLISION       ; work         ;
-;       |COLLISION:collision_detection_pipe|      ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|COLLISION:collision_detection_pipe                                                                            ; COLLISION       ; work         ;
-;       |PIPE:pipe_component_2|                   ; 65 (65)             ; 15 (15)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2                                                                                         ; PIPE            ; work         ;
-;       |PIPE:pipe_component|                     ; 60 (60)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|PIPE:pipe_component                                                                                           ; PIPE            ; work         ;
-;       |background:background_component|         ; 99 (5)              ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component                                                                               ; background      ; work         ;
-;          |cloud:cloud_component_2|              ; 25 (25)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component_2                                                       ; cloud           ; work         ;
-;          |cloud:cloud_component|                ; 69 (69)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|background:background_component|cloud:cloud_component                                                         ; cloud           ; work         ;
-;       |text_display:text_component|             ; 17 (15)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|text_display:text_component                                                                                   ; text_display    ; work         ;
-;          |char_rom:char_comp|                   ; 2 (2)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|text_display:text_component|char_rom:char_comp                                                                ; char_rom        ; work         ;
-;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
-;                |altsyncram_d5g1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated ; altsyncram_d5g1 ; work         ;
-;    |MOUSE:mouse_inst|                           ; 107 (107)           ; 118 (118)                 ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                                                                         ; MOUSE           ; work         ;
-;    |PLL:inst3|                                  ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                                                                                                ; PLL             ; PLL          ;
-;       |PLL_0002:pll_inst|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                                                                                              ; PLL_0002        ; PLL          ;
-;          |altera_pll:altera_pll_i|              ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i                                                                      ; altera_pll      ; work         ;
-;    |VGA_SYNC:inst|                              ; 40 (40)             ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|VGA_SYNC:inst                                                                                                            ; VGA_SYNC        ; work         ;
-+-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                             ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                 ; Entity Name     ; Library Name ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; |Bird_Block                                     ; 575 (2)             ; 255 (0)                   ; 64                ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                         ; Bird_Block      ; work         ;
+;    |BCD_to_SevenSeg:inst2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst2                                                                                                   ; BCD_to_SevenSeg ; work         ;
+;    |BCD_to_SevenSeg:inst6|                      ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                                                                                   ; BCD_to_SevenSeg ; work         ;
+;    |MAIN:inst|                                  ; 405 (21)            ; 80 (11)                   ; 64                ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                               ; MAIN            ; work         ;
+;       |BIRD:bird_component|                     ; 95 (95)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                           ; BIRD            ; work         ;
+;       |COLLISION:collision_detection_pipe_2|    ; 22 (22)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:collision_detection_pipe_2                                                                          ; COLLISION       ; work         ;
+;       |COLLISION:collision_detection_pipe|      ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:collision_detection_pipe                                                                            ; COLLISION       ; work         ;
+;       |LFSR:prng_2|                             ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|LFSR:prng_2                                                                                                   ; LFSR            ; work         ;
+;       |PIPE:pipe_component_2|                   ; 78 (78)             ; 18 (18)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                         ; PIPE            ; work         ;
+;       |PIPE:pipe_component|                     ; 73 (73)             ; 19 (19)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                           ; PIPE            ; work         ;
+;       |background:background_component|         ; 107 (7)             ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component                                                                               ; background      ; work         ;
+;          |cloud:cloud_component_2|              ; 24 (24)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component_2                                                       ; cloud           ; work         ;
+;          |cloud:cloud_component|                ; 76 (76)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component                                                         ; cloud           ; work         ;
+;       |text_display:text_component|             ; 7 (5)               ; 0 (0)                     ; 64                ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component                                                                                   ; text_display    ; work         ;
+;          |char_rom:char_comp|                   ; 2 (2)               ; 0 (0)                     ; 64                ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp                                                                ; char_rom        ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 64                ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
+;                |altsyncram_d5g1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 64                ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated ; altsyncram_d5g1 ; work         ;
+;    |MOUSE:mouse_inst|                           ; 107 (107)           ; 118 (118)                 ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                                                                        ; MOUSE           ; work         ;
+;    |PLL:inst3|                                  ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                                                                                               ; PLL             ; PLL          ;
+;       |PLL_0002:pll_inst|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                                                                                             ; PLL_0002        ; PLL          ;
+;          |altera_pll:altera_pll_i|              ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i                                                                     ; altera_pll      ; work         ;
+;    |VGA_SYNC:inst1|                             ; 46 (46)             ; 57 (57)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|VGA_SYNC:inst1                                                                                                          ; VGA_SYNC        ; work         ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                                  ;
-+-------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
-; Name                                                                                                                                ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF        ;
-+-------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
-; MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 512          ; 8            ; --           ; --           ; 4096 ; tcgrom.mif ;
-+-------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                 ;
++------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
+; Name                                                                                                                               ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF        ;
++------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
+; MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 512          ; 8            ; --           ; --           ; 4096 ; tcgrom.mif ;
++------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
 
 
 +---------------------------------------------------------------------------------------------------------+
@@ -315,38 +316,63 @@ Encoding Type:  One-Hot
 +-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                ;
-+----------------------------------------------------------+----------------------------------------+
-; Register name                                            ; Reason for Removal                     ;
-+----------------------------------------------------------+----------------------------------------+
-; MAIN:inst1|BIRD:bird_component|ball_y_motion[0,2..9]     ; Stuck at GND due to stuck port data_in ;
-; MAIN:inst1|BIRD:bird_component|blue                      ; Stuck at GND due to stuck port data_in ;
-; MAIN:inst1|background:background_component|green         ; Stuck at VCC due to stuck port data_in ;
-; MAIN:inst1|background:background_component|blue          ; Stuck at VCC due to stuck port data_in ;
-; MOUSE:mouse_inst|CHAROUT[4..7]                           ; Stuck at VCC due to stuck port data_in ;
-; MOUSE:mouse_inst|CHAROUT[3]                              ; Stuck at GND due to stuck port data_in ;
-; MOUSE:mouse_inst|CHAROUT[2]                              ; Stuck at VCC due to stuck port data_in ;
-; MOUSE:mouse_inst|CHAROUT[0,1]                            ; Stuck at GND due to stuck port data_in ;
-; MOUSE:mouse_inst|SHIFTOUT[10]                            ; Stuck at VCC due to stuck port data_in ;
-; MAIN:inst1|PIPE:pipe_component_2|\Move_Pipe:counter[1,2] ; Stuck at GND due to stuck port data_in ;
-; MAIN:inst1|PIPE:pipe_component|\Move_Pipe:counter[1,2]   ; Stuck at GND due to stuck port data_in ;
-; MAIN:inst1|BIRD:bird_component|ball_y_pos[0]             ; Stuck at VCC due to stuck port data_in ;
-; MAIN:inst1|BIRD:bird_component|bird_y_position[0]        ; Stuck at VCC due to stuck port data_in ;
-; MOUSE:mouse_inst|cursor_row[9]                           ; Stuck at GND due to stuck port data_in ;
-; VGA_SYNC:inst|pixel_row[9]                               ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 29                   ;                                        ;
-+----------------------------------------------------------+----------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                         ;
++----------------------------------------------------+-----------------------------------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal                           ; Free of Timing Hazards ;
++----------------------------------------------------+-----------------------------------------------+------------------------+
+; MAIN:inst|PIPE:pipe_component_2|pipe_y_pos[7]      ; MAIN:inst|PIPE:pipe_component_2|random_enable ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|pipe_y_pos[7]        ; MAIN:inst|PIPE:pipe_component|random_enable   ; yes                    ;
+; Number of user-specified and inferred latches = 2  ;                                               ;                        ;
++----------------------------------------------------+-----------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                  ;
-+----------------------------------------------+---------------------------+---------------------------------------------------+
-; Register name                                ; Reason for Removal        ; Registers Removed due to This Register            ;
-+----------------------------------------------+---------------------------+---------------------------------------------------+
-; MAIN:inst1|BIRD:bird_component|ball_y_pos[0] ; Stuck at VCC              ; MAIN:inst1|BIRD:bird_component|bird_y_position[0] ;
-;                                              ; due to stuck port data_in ;                                                   ;
-+----------------------------------------------+---------------------------+---------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                       ;
++---------------------------------------------------------+----------------------------------------------------------------+
+; Register name                                           ; Reason for Removal                                             ;
++---------------------------------------------------------+----------------------------------------------------------------+
+; MAIN:inst|background:background_component|green[2]      ; Stuck at VCC due to stuck port data_in                         ;
+; MAIN:inst|BIRD:bird_component|ball_y_motion[0,2..9]     ; Stuck at GND due to stuck port data_in                         ;
+; MAIN:inst|BIRD:bird_component|blue[1..3]                ; Stuck at GND due to stuck port data_in                         ;
+; MAIN:inst|background:background_component|blue[0]       ; Stuck at VCC due to stuck port data_in                         ;
+; MOUSE:mouse_inst|CHAROUT[4..7]                          ; Stuck at VCC due to stuck port data_in                         ;
+; MOUSE:mouse_inst|CHAROUT[3]                             ; Stuck at GND due to stuck port data_in                         ;
+; MOUSE:mouse_inst|CHAROUT[2]                             ; Stuck at VCC due to stuck port data_in                         ;
+; MOUSE:mouse_inst|CHAROUT[0,1]                           ; Stuck at GND due to stuck port data_in                         ;
+; MOUSE:mouse_inst|SHIFTOUT[10]                           ; Stuck at VCC due to stuck port data_in                         ;
+; MAIN:inst|PIPE:pipe_component_2|\Move_Pipe:counter[1,2] ; Stuck at GND due to stuck port data_in                         ;
+; MAIN:inst|PIPE:pipe_component|\Move_Pipe:counter[1,2]   ; Stuck at GND due to stuck port data_in                         ;
+; MAIN:inst|LFSR:prng|level_easy_reg[7]                   ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[7]            ;
+; MAIN:inst|blue_output[3]                                ; Merged with MAIN:inst|blue_output[1]                           ;
+; MAIN:inst|red_output[3]                                 ; Merged with MAIN:inst|red_output[2]                            ;
+; MAIN:inst|red_output[1]                                 ; Merged with MAIN:inst|red_output[0]                            ;
+; MAIN:inst|background:background_component|blue[3]       ; Merged with MAIN:inst|background:background_component|blue[1]  ;
+; MAIN:inst|background:background_component|green[3]      ; Merged with MAIN:inst|background:background_component|blue[1]  ;
+; MAIN:inst|background:background_component|green[0]      ; Merged with MAIN:inst|background:background_component|blue[2]  ;
+; MAIN:inst|background:background_component|red[0,1]      ; Merged with MAIN:inst|background:background_component|blue[2]  ;
+; MAIN:inst|PIPE:pipe_component_2|green[1..3]             ; Merged with MAIN:inst|PIPE:pipe_component_2|green[0]           ;
+; MAIN:inst|PIPE:pipe_component|green[1..3]               ; Merged with MAIN:inst|PIPE:pipe_component|green[0]             ;
+; MAIN:inst|background:background_component|red[2,3]      ; Merged with MAIN:inst|background:background_component|green[1] ;
+; MAIN:inst|PIPE:pipe_component_2|red[1..3]               ; Merged with MAIN:inst|PIPE:pipe_component_2|red[0]             ;
+; MAIN:inst|PIPE:pipe_component|red[1..3]                 ; Merged with MAIN:inst|PIPE:pipe_component|red[0]               ;
+; MAIN:inst|BIRD:bird_component|ball_y_pos[0]             ; Stuck at VCC due to stuck port data_in                         ;
+; MAIN:inst|BIRD:bird_component|bird_y_position[0]        ; Stuck at VCC due to stuck port data_in                         ;
+; MOUSE:mouse_inst|cursor_row[9]                          ; Stuck at GND due to stuck port data_in                         ;
+; VGA_SYNC:inst1|pixel_row[9]                             ; Stuck at GND due to stuck port data_in                         ;
+; Total Number of Removed Registers = 54                  ;                                                                ;
++---------------------------------------------------------+----------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                ;
++---------------------------------------------+---------------------------+--------------------------------------------------+
+; Register name                               ; Reason for Removal        ; Registers Removed due to This Register           ;
++---------------------------------------------+---------------------------+--------------------------------------------------+
+; MAIN:inst|BIRD:bird_component|ball_y_pos[0] ; Stuck at VCC              ; MAIN:inst|BIRD:bird_component|bird_y_position[0] ;
+;                                             ; due to stuck port data_in ;                                                  ;
++---------------------------------------------+---------------------------+--------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -354,12 +380,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 230   ;
+; Total registers                              ; 255   ;
 ; Number of registers using Synchronous Clear  ; 34    ;
-; Number of registers using Synchronous Load   ; 22    ;
+; Number of registers using Synchronous Load   ; 24    ;
 ; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 143   ;
+; Number of registers using Clock Enable       ; 153   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -379,32 +405,35 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_column[9]          ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst|v_count[5]                       ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|BIRD:bird_component|ball_y_pos[9]   ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component_2|pipe_x_pos[5] ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst1|PIPE:pipe_component|pipe_x_pos[10]  ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[7]              ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[6]              ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[3]                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[5]                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[2]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[5]          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_row[1]                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|green[1] ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[8]                          ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[9]        ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[9]                  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[6]                  ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[9]                     ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[5]                     ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[1]                           ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 9 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|green_output[2]                          ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[5]      ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[6]        ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[2]              ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[0]              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated ;
-+---------------------------------+--------------------+------+-----------------------------------------------------------------------------------+
-; Assignment                      ; Value              ; From ; To                                                                                ;
-+---------------------------------+--------------------+------+-----------------------------------------------------------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                 ;
-+---------------------------------+--------------------+------+-----------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                               ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                ;
++---------------------------------+--------------------+------+----------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------+
@@ -654,134 +683,151 @@ Encoding Type:  One-Hot
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component ;
-+------------------------------------+----------------------+----------------------------------------------------------------------------+
-; Parameter Name                     ; Value                ; Type                                                                       ;
-+------------------------------------+----------------------+----------------------------------------------------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                                    ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                                 ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                               ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                               ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                             ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                                    ;
-; OPERATION_MODE                     ; ROM                  ; Untyped                                                                    ;
-; WIDTH_A                            ; 8                    ; Signed Integer                                                             ;
-; WIDTHAD_A                          ; 9                    ; Signed Integer                                                             ;
-; NUMWORDS_A                         ; 512                  ; Signed Integer                                                             ;
-; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                                                    ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                                    ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                                    ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                                    ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                                    ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                                    ;
-; WIDTH_B                            ; 1                    ; Untyped                                                                    ;
-; WIDTHAD_B                          ; 1                    ; Untyped                                                                    ;
-; NUMWORDS_B                         ; 1                    ; Untyped                                                                    ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                                    ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                                    ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                                    ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                                    ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                                    ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                                    ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                                    ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                    ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                                    ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                                    ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                    ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                                    ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                             ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                                    ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                                    ;
-; BYTE_SIZE                          ; 8                    ; Untyped                                                                    ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                                    ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                    ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                    ;
-; INIT_FILE                          ; tcgrom.mif           ; Untyped                                                                    ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                                    ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                                    ;
-; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                                    ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                                    ;
-; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                                    ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                                    ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                                    ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                                    ;
-; ENABLE_ECC                         ; FALSE                ; Untyped                                                                    ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                                    ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                                    ;
-; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                                    ;
-; CBXI_PARAMETER                     ; altsyncram_d5g1      ; Untyped                                                                    ;
-+------------------------------------+----------------------+----------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                                      ;
++------------------------------------+----------------------+---------------------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                                   ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                                ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                              ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                              ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                            ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                                   ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                                                   ;
+; WIDTH_A                            ; 8                    ; Signed Integer                                                            ;
+; WIDTHAD_A                          ; 9                    ; Signed Integer                                                            ;
+; NUMWORDS_A                         ; 512                  ; Signed Integer                                                            ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                                                   ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                                   ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                                   ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                                   ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                                   ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                                   ;
+; WIDTH_B                            ; 1                    ; Untyped                                                                   ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                                   ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                                   ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                                   ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                                   ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                                   ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                                   ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                                   ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                                   ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                                   ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                   ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                                   ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                                   ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                                   ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                                   ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                            ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                                   ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                                   ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                                   ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                                   ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                   ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                                   ;
+; INIT_FILE                          ; tcgrom.mif           ; Untyped                                                                   ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                                   ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                                   ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                                   ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                                   ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                                   ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                                   ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                                   ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                                   ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                                   ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                                   ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                                   ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                                   ;
+; CBXI_PARAMETER                     ; altsyncram_d5g1      ; Untyped                                                                   ;
++------------------------------------+----------------------+---------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                                                                                      ;
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-; Name                                      ; Value                                                                                     ;
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-; Number of entity instances                ; 1                                                                                         ;
-; Entity Instance                           ; MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component ;
-;     -- OPERATION_MODE                     ; ROM                                                                                       ;
-;     -- WIDTH_A                            ; 8                                                                                         ;
-;     -- NUMWORDS_A                         ; 512                                                                                       ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                              ;
-;     -- WIDTH_B                            ; 1                                                                                         ;
-;     -- NUMWORDS_B                         ; 1                                                                                         ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                                                                    ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                              ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                                      ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                 ;
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                                     ;
++-------------------------------------------+------------------------------------------------------------------------------------------+
+; Name                                      ; Value                                                                                    ;
++-------------------------------------------+------------------------------------------------------------------------------------------+
+; Number of entity instances                ; 1                                                                                        ;
+; Entity Instance                           ; MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                                                      ;
+;     -- WIDTH_A                            ; 8                                                                                        ;
+;     -- NUMWORDS_A                         ; 512                                                                                      ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                             ;
+;     -- WIDTH_B                            ; 1                                                                                        ;
+;     -- NUMWORDS_B                         ; 1                                                                                        ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                                   ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                             ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                                     ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                ;
++-------------------------------------------+------------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|text_display:text_component" ;
-+--------+-------+----------+----------------------------------------+
-; Port   ; Type  ; Severity ; Details                                ;
-+--------+-------+----------+----------------------------------------+
-; enable ; Input ; Info     ; Stuck at VCC                           ;
-+--------+-------+----------+----------------------------------------+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "MAIN:inst|text_display:text_component" ;
++---------------------+-------+----------+--------------------------+
+; Port                ; Type  ; Severity ; Details                  ;
++---------------------+-------+----------+--------------------------+
+; enable              ; Input ; Info     ; Stuck at VCC             ;
+; size                ; Input ; Info     ; Stuck at VCC             ;
+; input_address[2..0] ; Input ; Info     ; Stuck at VCC             ;
+; input_address[5..3] ; Input ; Info     ; Stuck at GND             ;
+; row_start[4..0]     ; Input ; Info     ; Stuck at VCC             ;
+; row_start[9..5]     ; Input ; Info     ; Stuck at GND             ;
+; row_stop[5..0]      ; Input ; Info     ; Stuck at VCC             ;
+; row_stop[9..6]      ; Input ; Info     ; Stuck at GND             ;
+; col_start[5..0]     ; Input ; Info     ; Stuck at VCC             ;
+; col_start[7..6]     ; Input ; Info     ; Stuck at GND             ;
+; col_start[9]        ; Input ; Info     ; Stuck at GND             ;
+; col_start[8]        ; Input ; Info     ; Stuck at VCC             ;
+; col_stop[4..0]      ; Input ; Info     ; Stuck at VCC             ;
+; col_stop[9]         ; Input ; Info     ; Stuck at GND             ;
+; col_stop[8]         ; Input ; Info     ; Stuck at VCC             ;
+; col_stop[7]         ; Input ; Info     ; Stuck at GND             ;
+; col_stop[6]         ; Input ; Info     ; Stuck at VCC             ;
+; col_stop[5]         ; Input ; Info     ; Stuck at GND             ;
++---------------------+-------+----------+--------------------------+
 
 
-+------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component_2" ;
-+-----------------+-------+----------+-----------------------------------------------------------+
-; Port            ; Type  ; Severity ; Details                                                   ;
-+-----------------+-------+----------+-----------------------------------------------------------+
-; top_x_pos[7..6] ; Input ; Info     ; Stuck at VCC                                              ;
-; top_x_pos[9..8] ; Input ; Info     ; Stuck at GND                                              ;
-; top_x_pos[5..4] ; Input ; Info     ; Stuck at GND                                              ;
-; top_x_pos[2..0] ; Input ; Info     ; Stuck at GND                                              ;
-; top_x_pos[3]    ; Input ; Info     ; Stuck at VCC                                              ;
-; top_y_pos[8..7] ; Input ; Info     ; Stuck at VCC                                              ;
-; top_y_pos[6..5] ; Input ; Info     ; Stuck at GND                                              ;
-; top_y_pos[3..0] ; Input ; Info     ; Stuck at GND                                              ;
-; top_y_pos[9]    ; Input ; Info     ; Stuck at GND                                              ;
-; top_y_pos[4]    ; Input ; Info     ; Stuck at VCC                                              ;
-+-----------------+-------+----------+-----------------------------------------------------------+
++-----------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MAIN:inst|background:background_component|cloud:cloud_component_2" ;
++-----------------+-------+----------+----------------------------------------------------------+
+; Port            ; Type  ; Severity ; Details                                                  ;
++-----------------+-------+----------+----------------------------------------------------------+
+; top_x_pos[7..6] ; Input ; Info     ; Stuck at VCC                                             ;
+; top_x_pos[9..8] ; Input ; Info     ; Stuck at GND                                             ;
+; top_x_pos[5..4] ; Input ; Info     ; Stuck at GND                                             ;
+; top_x_pos[2..0] ; Input ; Info     ; Stuck at GND                                             ;
+; top_x_pos[3]    ; Input ; Info     ; Stuck at VCC                                             ;
+; top_y_pos[8..7] ; Input ; Info     ; Stuck at VCC                                             ;
+; top_y_pos[6..5] ; Input ; Info     ; Stuck at GND                                             ;
+; top_y_pos[3..0] ; Input ; Info     ; Stuck at GND                                             ;
+; top_y_pos[9]    ; Input ; Info     ; Stuck at GND                                             ;
+; top_y_pos[4]    ; Input ; Info     ; Stuck at VCC                                             ;
++-----------------+-------+----------+----------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|background:background_component|cloud:cloud_component" ;
-+-----------------+-------+----------+---------------------------------------------------------+
-; Port            ; Type  ; Severity ; Details                                                 ;
-+-----------------+-------+----------+---------------------------------------------------------+
-; top_x_pos[8..4] ; Input ; Info     ; Stuck at VCC                                            ;
-; top_x_pos[1..0] ; Input ; Info     ; Stuck at GND                                            ;
-; top_x_pos[9]    ; Input ; Info     ; Stuck at GND                                            ;
-; top_x_pos[3]    ; Input ; Info     ; Stuck at GND                                            ;
-; top_x_pos[2]    ; Input ; Info     ; Stuck at VCC                                            ;
-; top_y_pos[7..6] ; Input ; Info     ; Stuck at VCC                                            ;
-; top_y_pos[9..8] ; Input ; Info     ; Stuck at GND                                            ;
-; top_y_pos[5..4] ; Input ; Info     ; Stuck at GND                                            ;
-; top_y_pos[2..0] ; Input ; Info     ; Stuck at GND                                            ;
-; top_y_pos[3]    ; Input ; Info     ; Stuck at VCC                                            ;
-+-----------------+-------+----------+---------------------------------------------------------+
++---------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MAIN:inst|background:background_component|cloud:cloud_component" ;
++-----------------+-------+----------+--------------------------------------------------------+
+; Port            ; Type  ; Severity ; Details                                                ;
++-----------------+-------+----------+--------------------------------------------------------+
+; top_x_pos[8..4] ; Input ; Info     ; Stuck at VCC                                           ;
+; top_x_pos[1..0] ; Input ; Info     ; Stuck at GND                                           ;
+; top_x_pos[9]    ; Input ; Info     ; Stuck at GND                                           ;
+; top_x_pos[3]    ; Input ; Info     ; Stuck at GND                                           ;
+; top_x_pos[2]    ; Input ; Info     ; Stuck at VCC                                           ;
+; top_y_pos[7..6] ; Input ; Info     ; Stuck at VCC                                           ;
+; top_y_pos[9..8] ; Input ; Info     ; Stuck at GND                                           ;
+; top_y_pos[5..4] ; Input ; Info     ; Stuck at GND                                           ;
+; top_y_pos[2..0] ; Input ; Info     ; Stuck at GND                                           ;
+; top_y_pos[3]    ; Input ; Info     ; Stuck at VCC                                           ;
++-----------------+-------+----------+--------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component_2"                                                            ;
+; Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component_2"                                                             ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port          ; Type   ; Severity ; Details                                                                             ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -798,38 +844,38 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|COLLISION:collision_detection_pipe_2" ;
-+-----------------------+-------+----------+----------------------------------+
-; Port                  ; Type  ; Severity ; Details                          ;
-+-----------------------+-------+----------+----------------------------------+
-; pipe_y_position[7..6] ; Input ; Info     ; Stuck at VCC                     ;
-; pipe_y_position[4..3] ; Input ; Info     ; Stuck at VCC                     ;
-; pipe_y_position[9..8] ; Input ; Info     ; Stuck at GND                     ;
-; pipe_y_position[5]    ; Input ; Info     ; Stuck at GND                     ;
-; pipe_y_position[2]    ; Input ; Info     ; Stuck at GND                     ;
-; pipe_y_position[1]    ; Input ; Info     ; Stuck at VCC                     ;
-; pipe_y_position[0]    ; Input ; Info     ; Stuck at GND                     ;
-+-----------------------+-------+----------+----------------------------------+
++----------------------------------------------------------------------------+
+; Port Connectivity Checks: "MAIN:inst|COLLISION:collision_detection_pipe_2" ;
++-----------------------+-------+----------+---------------------------------+
+; Port                  ; Type  ; Severity ; Details                         ;
++-----------------------+-------+----------+---------------------------------+
+; pipe_y_position[7..6] ; Input ; Info     ; Stuck at VCC                    ;
+; pipe_y_position[4..3] ; Input ; Info     ; Stuck at VCC                    ;
+; pipe_y_position[9..8] ; Input ; Info     ; Stuck at GND                    ;
+; pipe_y_position[5]    ; Input ; Info     ; Stuck at GND                    ;
+; pipe_y_position[2]    ; Input ; Info     ; Stuck at GND                    ;
+; pipe_y_position[1]    ; Input ; Info     ; Stuck at VCC                    ;
+; pipe_y_position[0]    ; Input ; Info     ; Stuck at GND                    ;
++-----------------------+-------+----------+---------------------------------+
 
 
-+---------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|COLLISION:collision_detection_pipe" ;
-+-----------------------+-------+----------+--------------------------------+
-; Port                  ; Type  ; Severity ; Details                        ;
-+-----------------------+-------+----------+--------------------------------+
-; pipe_y_position[7..6] ; Input ; Info     ; Stuck at VCC                   ;
-; pipe_y_position[4..3] ; Input ; Info     ; Stuck at VCC                   ;
-; pipe_y_position[9..8] ; Input ; Info     ; Stuck at GND                   ;
-; pipe_y_position[5]    ; Input ; Info     ; Stuck at GND                   ;
-; pipe_y_position[2]    ; Input ; Info     ; Stuck at GND                   ;
-; pipe_y_position[1]    ; Input ; Info     ; Stuck at VCC                   ;
-; pipe_y_position[0]    ; Input ; Info     ; Stuck at GND                   ;
-+-----------------------+-------+----------+--------------------------------+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "MAIN:inst|COLLISION:collision_detection_pipe" ;
++-----------------------+-------+----------+-------------------------------+
+; Port                  ; Type  ; Severity ; Details                       ;
++-----------------------+-------+----------+-------------------------------+
+; pipe_y_position[7..6] ; Input ; Info     ; Stuck at VCC                  ;
+; pipe_y_position[4..3] ; Input ; Info     ; Stuck at VCC                  ;
+; pipe_y_position[9..8] ; Input ; Info     ; Stuck at GND                  ;
+; pipe_y_position[5]    ; Input ; Info     ; Stuck at GND                  ;
+; pipe_y_position[2]    ; Input ; Info     ; Stuck at GND                  ;
+; pipe_y_position[1]    ; Input ; Info     ; Stuck at VCC                  ;
+; pipe_y_position[0]    ; Input ; Info     ; Stuck at GND                  ;
++-----------------------+-------+----------+-------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|PIPE:pipe_component"                                                              ;
+; Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component"                                                               ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port          ; Type   ; Severity ; Details                                                                             ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -845,54 +891,45 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst1|BIRD:bird_component" ;
-+--------------+-------+----------+--------------------------+
-; Port         ; Type  ; Severity ; Details                  ;
-+--------------+-------+----------+--------------------------+
-; colour_input ; Input ; Info     ; Stuck at GND             ;
-+--------------+-------+----------+--------------------------+
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 230                         ;
+; arriav_ff             ; 255                         ;
 ;     CLR               ; 1                           ;
-;     ENA               ; 84                          ;
+;     ENA               ; 94                          ;
 ;     ENA CLR           ; 15                          ;
 ;     ENA SCLR          ; 24                          ;
 ;     ENA SLD           ; 20                          ;
 ;     SCLR              ; 10                          ;
-;     SLD               ; 2                           ;
-;     plain             ; 74                          ;
+;     SLD               ; 4                           ;
+;     plain             ; 87                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 536                         ;
+; arriav_lcell_comb     ; 578                         ;
 ;     arith             ; 180                         ;
 ;         0 data inputs ; 10                          ;
 ;         1 data inputs ; 152                         ;
 ;         2 data inputs ; 18                          ;
-;     extend            ; 9                           ;
-;         7 data inputs ; 9                           ;
-;     normal            ; 328                         ;
+;     extend            ; 5                           ;
+;         7 data inputs ; 5                           ;
+;     normal            ; 374                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 12                          ;
-;         2 data inputs ; 25                          ;
-;         3 data inputs ; 40                          ;
-;         4 data inputs ; 71                          ;
-;         5 data inputs ; 83                          ;
-;         6 data inputs ; 96                          ;
+;         1 data inputs ; 16                          ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 51                          ;
+;         4 data inputs ; 72                          ;
+;         5 data inputs ; 99                          ;
+;         6 data inputs ; 105                         ;
 ;     shared            ; 19                          ;
 ;         1 data inputs ; 10                          ;
 ;         2 data inputs ; 9                           ;
-; boundary_port         ; 27                          ;
+; boundary_port         ; 36                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 8                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.20                        ;
-; Average LUT depth     ; 3.59                        ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 3.70                        ;
 +-----------------------+-----------------------------+
 
 
@@ -901,7 +938,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -910,55 +947,55 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Thu May 09 16:25:14 2024
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Thu May 09 22:29:29 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file cloud.vhd
+    Info (12022): Found design unit 1: cloud-behavior File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/cloud.vhd Line: 16
+    Info (12023): Found entity 1: cloud File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/cloud.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file mouse.vhd
-    Info (12022): Found design unit 1: MOUSE-behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 18
-    Info (12023): Found entity 1: MOUSE File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 9
+    Info (12022): Found design unit 1: MOUSE-behavior File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd Line: 18
+    Info (12023): Found entity 1: MOUSE File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file bcd_to_7seg.vhd
-    Info (12022): Found design unit 1: BCD_to_SevenSeg-arc1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd Line: 12
-    Info (12023): Found entity 1: BCD_to_SevenSeg File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd Line: 7
+    Info (12022): Found design unit 1: BCD_to_SevenSeg-arc1 File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/BCD_to_7Seg.vhd Line: 12
+    Info (12023): Found entity 1: BCD_to_SevenSeg File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/BCD_to_7Seg.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file collision.vhd
-    Info (12022): Found design unit 1: COLLISION-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd Line: 15
-    Info (12023): Found entity 1: COLLISION File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd Line: 6
+    Info (12022): Found design unit 1: COLLISION-behaviour File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/collision.vhd Line: 15
+    Info (12023): Found entity 1: COLLISION File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/collision.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file background.vhd
-    Info (12022): Found design unit 1: background-behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 14
-    Info (12023): Found entity 1: background File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 7
+    Info (12022): Found design unit 1: background-behavior File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/background.vhd Line: 15
+    Info (12023): Found entity 1: background File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/background.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file pipe.vhd
-    Info (12022): Found design unit 1: PIPE-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 18
-    Info (12023): Found entity 1: PIPE File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 6
+    Info (12022): Found design unit 1: PIPE-behaviour File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 21
+    Info (12023): Found entity 1: PIPE File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file main.vhd
-    Info (12022): Found design unit 1: MAIN-behvaiour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 18
-    Info (12023): Found entity 1: MAIN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 7
+    Info (12022): Found design unit 1: MAIN-behvaiour File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 18
+    Info (12023): Found entity 1: MAIN File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file vga_sync.vhd
-    Info (12022): Found design unit 1: VGA_SYNC-a File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 13
-    Info (12023): Found entity 1: VGA_SYNC File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 7
+    Info (12022): Found design unit 1: VGA_SYNC-a File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/vga_sync.vhd Line: 15
+    Info (12023): Found entity 1: VGA_SYNC File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/vga_sync.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file bird.vhd
-    Info (12022): Found design unit 1: BIRD-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird.vhd Line: 15
-    Info (12023): Found entity 1: BIRD File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird.vhd Line: 6
+    Info (12022): Found design unit 1: BIRD-behaviour File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/bird.vhd Line: 16
+    Info (12023): Found entity 1: BIRD File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/bird.vhd Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file bird_block.bdf
     Info (12023): Found entity 1: Bird_Block
 Info (12021): Found 1 design units, including 1 entities, in source file pll.v
-    Info (12023): Found entity 1: PLL File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL.v Line: 8
+    Info (12023): Found entity 1: PLL File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/PLL.v Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
-    Info (12023): Found entity 1: PLL_0002 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 2
-Info (12021): Found 2 design units, including 1 entities, in source file text.vhd
-    Info (12022): Found design unit 1: text-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text.vhd Line: 12
-    Info (12023): Found entity 1: text File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text.vhd Line: 6
+    Info (12023): Found entity 1: PLL_0002 File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/PLL/PLL_0002.v Line: 2
 Info (12021): Found 2 design units, including 1 entities, in source file text_display.vhd
-    Info (12022): Found design unit 1: text_display-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 12
-    Info (12023): Found entity 1: text_display File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 6
+    Info (12022): Found design unit 1: text_display-behaviour File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/text_display.vhd Line: 15
+    Info (12023): Found entity 1: text_display File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/text_display.vhd Line: 6
 Info (12127): Elaborating entity "Bird_Block" for the top level hierarchy
-Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
+Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst1"
 Info (12128): Elaborating entity "PLL" for hierarchy "PLL:inst3"
-Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:inst3|PLL_0002:pll_inst" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL.v Line: 20
-Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:inst3|PLL_0002:pll_inst" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/PLL.v Line: 20
+Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/PLL/PLL_0002.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
-Info (12130): Elaborated megafunction instantiation "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
-Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 85
+Info (12130): Elaborated megafunction instantiation "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/PLL/PLL_0002.v Line: 85
+Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/PLL/PLL_0002.v Line: 85
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "100.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -1019,31 +1056,37 @@ Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "duty_cycle17" = "50"
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
-Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst1"
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(24): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 24
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(25): object "t_pipe_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 25
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(25): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 25
-Warning (10540): VHDL Signal Declaration warning at main.vhd(26): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 26
-Warning (10540): VHDL Signal Declaration warning at main.vhd(26): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 26
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(160): object "counter" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 160
-Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst1|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 68
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst1|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 83
-Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(22): object "size_y" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 22
-Warning (10036): Verilog HDL or VHDL warning at pipe.vhd(24): object "pipe_y_pos" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 24
-Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst1|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 100
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst1|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 135
-Warning (12125): Using design file cloud.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: cloud-behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 15
-    Info (12023): Found entity 1: cloud File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 7
-Info (12128): Elaborating entity "cloud" for hierarchy "MAIN:inst1|background:background_component|cloud:cloud_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 29
-Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst1|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 148
+Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst"
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(25): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 25
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(26): object "t_pipe_position" assigned a value but never read File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 26
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(26): object "t_pipe_position_2" assigned a value but never read File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 26
+Warning (10540): VHDL Signal Declaration warning at main.vhd(27): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 27
+Warning (10540): VHDL Signal Declaration warning at main.vhd(27): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 27
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(202): object "counter" assigned a value but never read File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 202
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 83
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 98
+Info (10041): Inferred latch for "pipe_y_pos[0]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[1]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[2]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[3]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[4]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[5]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[6]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[7]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[8]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (10041): Inferred latch for "pipe_y_pos[9]" at pipe.vhd(46) File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/pipe.vhd Line: 46
+Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst|COLLISION:collision_detection_pipe" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 118
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 156
+Warning (10540): VHDL Signal Declaration warning at background.vhd(20): used explicit default value for signal "ground" because signal was never assigned a value File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/background.vhd Line: 20
+Info (12128): Elaborating entity "cloud" for hierarchy "MAIN:inst|background:background_component|cloud:cloud_component" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/background.vhd Line: 32
+Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 169
 Warning (12125): Using design file char_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: char_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 20
-    Info (12023): Found entity 1: char_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 9
-Info (12128): Elaborating entity "char_rom" for hierarchy "MAIN:inst1|text_display:text_component|char_rom:char_comp" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 27
-Info (12128): Elaborating entity "altsyncram" for hierarchy "MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
-Info (12130): Elaborated megafunction instantiation "MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
-Info (12133): Instantiated megafunction "MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
+    Info (12022): Found design unit 1: char_rom-SYN File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/char_rom.vhd Line: 20
+    Info (12023): Found entity 1: char_rom File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/char_rom.vhd Line: 9
+Info (12128): Elaborating entity "char_rom" for hierarchy "MAIN:inst|text_display:text_component|char_rom:char_comp" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/text_display.vhd Line: 30
+Info (12128): Elaborating entity "altsyncram" for hierarchy "MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/char_rom.vhd Line: 51
+Info (12130): Elaborated megafunction instantiation "MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/char_rom.vhd Line: 51
+Info (12133): Instantiated megafunction "MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/char_rom.vhd Line: 51
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
@@ -1059,18 +1102,23 @@ Info (12133): Instantiated megafunction "MAIN:inst1|text_display:text_component|
     Info (12134): Parameter "width_a" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_d5g1.tdf
-    Info (12023): Found entity 1: altsyncram_d5g1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_d5g1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_d5g1" for hierarchy "MAIN:inst1|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+    Info (12023): Found entity 1: altsyncram_d5g1 File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/db/altsyncram_d5g1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_d5g1" for hierarchy "MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Warning (12125): Using design file lfsr.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: LFSR-behaviour File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/lfsr.vhd Line: 12
+    Info (12023): Found entity 1: LFSR File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/lfsr.vhd Line: 6
+Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/main.vhd Line: 185
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:mouse_inst"
-Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(25): object "CHARIN" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 25
-Warning (10492): VHDL Process Statement warning at mouse.vhd(151): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 151
-Warning (10492): VHDL Process Statement warning at mouse.vhd(155): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 155
-Warning (10492): VHDL Process Statement warning at mouse.vhd(156): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 156
-Warning (10492): VHDL Process Statement warning at mouse.vhd(157): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 157
+Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(25): object "CHARIN" assigned a value but never read File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd Line: 25
+Warning (10492): VHDL Process Statement warning at mouse.vhd(151): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd Line: 151
+Warning (10492): VHDL Process Statement warning at mouse.vhd(155): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd Line: 155
+Warning (10492): VHDL Process Statement warning at mouse.vhd(156): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd Line: 156
+Warning (10492): VHDL Process Statement warning at mouse.vhd(157): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd Line: 157
 Info (12128): Elaborating entity "BCD_to_SevenSeg" for hierarchy "BCD_to_SevenSeg:inst6"
-Info (13000): Registers with preset signals will power-up high File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 146
+Info (13000): Registers with preset signals will power-up high File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/mouse.vhd Line: 146
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286030): Timing-Driven Synthesis is running
+Info (17036): Removed 6 MSB VCC or GND address nodes from RAM block "MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated|ALTSYNCRAM" File: C:/Users/svcha/OneDrive/Desktop/305-team-19/Project/db/altsyncram_d5g1.tdf Line: 31
 Warning (20013): Ignored 230 assignments for entity "DE0_CV_Default" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK2_50 -entity DE0_CV_Default was ignored
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK3_50 -entity DE0_CV_Default was ignored
@@ -1304,19 +1352,19 @@ Warning (20013): Ignored 230 assignments for entity "DE0_CV_Default" -- entity d
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity DE0_CV_Default -section_id Top was ignored
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
+Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
     Info: Must be connected
-Info (21057): Implemented 650 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 709 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 21 output pins
+    Info (21059): Implemented 30 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 614 logic cells
+    Info (21061): Implemented 664 logic cells
     Info (21064): Implemented 8 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 248 warnings
-    Info: Peak virtual memory: 4939 megabytes
-    Info: Processing ended: Thu May 09 16:25:20 2024
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 247 warnings
+    Info: Peak virtual memory: 4899 megabytes
+    Info: Processing ended: Thu May 09 22:29:41 2024
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:10
 
 

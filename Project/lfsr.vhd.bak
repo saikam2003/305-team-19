@@ -1,0 +1,32 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.all;
+USE IEEE.STD_LOGIC_ARITH.all;
+USE IEEE.STD_LOGIC_SIGNED.all;
+
+ENTITY LFSR IS
+	PORT(clk, enable, level: IN STD_LOGIC;
+			rnd: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
+END ENTITY LFSR;
+
+ARCHITECTURE behaviour OF LFSR IS
+	SIGNAL level_easy_reg: STD_LOGIC_VECTOR(7 DOWNTO 0):="00000001";
+	SIGNAL level_hard_reg: STD_LOGIC_VECTOR(8 DOWNTO 0):="000000001";
+	
+BEGIN
+	PROCESS(clk, enable)
+		VARIABLE feedback: STD_LOGIC;
+	BEGIN
+		IF RISING_EDGE(clk) THEN
+			IF (level = '1') THEN
+				feedback:= level_easy_reg(7) XOR level_easy_reg(5) XOR level_easy_reg(4) XOR level_easy_reg(0);
+				level_easy_reg <= feedback & level_easy_reg(6 DOWNTO 0);
+			ELSE
+				feedback:= level_hard_reg(8) XOR level_hard_reg(3);
+				level_hard_reg <= feedback & level_hard_reg(7 DOWNTO 0);
+			END IF;
+		END IF;
+	END PROCESS;
+	
+	rnd <= (UNSIGNED("00" & level_easy_reg))*(161/256) WHEN level = '0' else
+			"0" & level_hard_reg;
+END ARCHITECTURE

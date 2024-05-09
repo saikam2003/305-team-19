@@ -9,7 +9,8 @@ ENTITY cloud IS
 		( clk 						: IN std_logic;
 		  top_x_pos, top_y_pos  : IN integer range 0 to 639;
 		  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
-		  red, green, blue, cloud_on 			: OUT std_logic);		
+		  red, green, blue : OUT std_logic_vector(3 DOWNTO 0);
+		  cloud_on 			: OUT std_logic);		
 END cloud;
 
 architecture behavior of cloud is
@@ -18,7 +19,7 @@ SIGNAL cloud_on_a					: std_logic;
 SIGNAL cloud_on_b					: std_logic;
 SIGNAL cloud_on_c					: std_logic;
 SIGNAL size_a 						: std_logic_vector(9 DOWNTO 0);  
-SIGNAL size_b_horizontal 			: std_logic_vector(9 DOWNTO 0);  
+SIGNAL size_b_horizontal 		: std_logic_vector(9 DOWNTO 0);  
 SIGNAL size_c 						: std_logic_vector(9 DOWNTO 0);  
 SIGNAL cloud_y_pos_a				: std_logic_vector(9 DOWNTO 0);
 SiGNAL cloud_x_pos_a				: std_logic_vector(10 DOWNTO 0);
@@ -65,9 +66,9 @@ cloud_on_c <= '1' when ( ('0' & cloud_x_pos_c <= '0' & pixel_column + size_c) an
 			
 -- Colours for pixel data on video signal
 --Red <=  cloud_on_a or cloud_on_b or cloud_on_c or cloud_on_d;
-Red <=  '1';
-Green <= '1';
-Blue <=  '1';
+Red <=  "1111";
+Green <= "1111";
+Blue <=  "1111";
 
 cloud_on <= cloud_on_a or cloud_on_b or cloud_on_c;
 
