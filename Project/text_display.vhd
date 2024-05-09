@@ -6,7 +6,8 @@ USE IEEE.STD_LOGIC_UNSIGNED.all;
 ENTITY text_display IS
 	PORT(Clk, enable: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
-			red, blue, green, text_on: OUT STD_LOGIC);
+			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
+			text_on: OUT STD_LOGIC);
 END ENTITY;
 
 ARCHITECTURE behaviour OF text_display IS
@@ -31,10 +32,11 @@ BEGIN
 		clock => clk,
 		rom_mux_output => t_text_on);
 		
-	blue <= '0';
-	green <= '0';
+	blue  <= "0000" ;
+	green <= "0000" ;
 	
-	red <= t_text_on;
+	red <= (t_text_on,t_text_on,t_text_on,t_text_on);
+	
 	text_on <= t_text_on when (pixel_row <= 47 and pixel_column <= 300) else '0';
 	char_address_final <= char_address_2 when (pixel_row <= 47 and pixel_row > 31) else char_address_1;
 	size_row <= pixel_row(3 downto 1) when (pixel_row <= 47 and pixel_row > 31) else pixel_row(4 downto 2) ;
