@@ -6,7 +6,7 @@ USE  IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY background IS
 	PORT
-		( clk, vert_sync, horz_sync	: IN std_logic;
+		( clk, enable, vert_sync, horz_sync	: IN std_logic;
 		  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
 		  red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 		  background_on 			: OUT std_logic);		
@@ -21,7 +21,7 @@ architecture behavior of background is
 
 	COMPONENT cloud IS
 		PORT
-			( clk 						: IN std_logic;
+			( clk, enable, vert_sync 						: IN std_logic;
 			  top_x_pos, top_y_pos  : IN integer range 0 to 639;
 			  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
 			  red, green, blue : OUT std_logic_vector(3 downto 0);
@@ -32,6 +32,8 @@ BEGIN
 	cloud_component: CLOUD
 						  PORT MAP (
 								clk => clk,
+								enable => enable,
+								vert_sync => vert_sync,
 								top_x_pos => 500,
 								top_y_pos => 200,
 								pixel_row => pixel_row,
@@ -44,6 +46,8 @@ BEGIN
 	cloud_component_2: CLOUD
 						  PORT MAP (
 								clk => clk,
+								enable => enable,
+								vert_sync => vert_sync,
 								top_x_pos => 200,
 								top_y_pos => 400,
 								pixel_row => pixel_row,

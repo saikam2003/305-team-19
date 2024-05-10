@@ -4,7 +4,7 @@ USE IEEE.STD_LOGIC_1164.all;
 USE IEEE.STD_LOGIC_ARITH.all;
 USE IEEE.STD_LOGIC_SIGNED.all;
 
-ENTITY MAIN IS 
+
 
 	PORT(background_on, clk_input, jump_input, start_input, reset_input, text_on, colour_pipe: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
@@ -39,7 +39,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT PIPE IS
-		PORT(enable, horz_sync, colour_input: IN STD_LOGIC;
+		PORT(enable, vert_sync, colour_input: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			random_flag: IN STD_LOGIC;
@@ -65,11 +65,9 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT TEXT_DISPLAY IS
-		PORT(Clk, enable, size: IN STD_LOGIC;
-			input_address: IN STD_LOGIC_VECTOR(5 downto 0);
+		PORT(Clk, enable: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
-			row_start, row_stop, col_start, col_stop: IN STD_LOGIC_VECTOR(9 downto 0);
-			red, blue, green : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
 			text_on: OUT STD_LOGIC);
 	END COMPONENT;
 	
@@ -98,7 +96,7 @@ BEGIN
 	pipe_component: PIPE
 						PORT MAP(
 							enable => t_pipe_enable,
-							horz_sync => vertical_sync,
+							vert_sync => vertical_sync,
 							colour_input => colour_pipe,
 							pipe_x => t_pipe_x,
 							pipe_y => t_pipe_y,
@@ -120,7 +118,7 @@ BEGIN
 							clk => clk_input,
 							pipe_on => t_pipe_on,
 							pipe_collision_chance => t_collision_chance,
-							pipe_y_position => CONV_STD_LOGIC_VECTOR(218, 10),
+							pipe_y_position => t_pipe_position,
 							bird_y_position => t_bird_position,
 							collision_detected => t_collision_detected
 						);
@@ -129,14 +127,14 @@ BEGIN
 							clk => clk_input,
 							pipe_on => t_pipe_on_2,
 							pipe_collision_chance => t_collision_chance_2,
-							pipe_y_position => CONV_STD_LOGIC_VECTOR(218, 10),
+							pipe_y_position => t_pipe_position_2,
 							bird_y_position => t_bird_position,
 							collision_detected => t_collision_detected_2
 						);
 	pipe_component_2: PIPE
 						PORT MAP(
 							enable => t_pipe_enable_2,
-							horz_sync => vertical_sync,
+							vert_sync => vertical_sync,
 							colour_input => colour_pipe,
 							pipe_x => t_pipe_x_2,
 							pipe_y => t_pipe_y_2,
@@ -169,14 +167,8 @@ BEGIN
 	text_component: TEXT_DISPLAY
 						PORT MAP(Clk => clk_input,
 							enable => '1',
-							size => '1',
-							input_address => CONV_STD_LOGIC_VECTOR(7, 6),
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
-							row_start => CONV_STD_LOGIC_VECTOR(31, 10), 
-							row_stop => CONV_STD_LOGIC_VECTOR(63, 10), 
-							col_start => CONV_STD_LOGIC_VECTOR(319, 10), 
-							col_stop => CONV_STD_LOGIC_VECTOR(351, 10),
 							red => text_red, 
 							blue => text_blue, 
 							green => text_green, 

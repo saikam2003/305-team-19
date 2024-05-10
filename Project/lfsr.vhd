@@ -13,15 +13,15 @@ ARCHITECTURE behaviour OF LFSR IS
 	SIGNAL level_easy_reg: STD_LOGIC_VECTOR(7 DOWNTO 0):="00000001";
 	
 BEGIN
-	PROCESS(clk, enable)
+	PROCESS(clk)
 		VARIABLE feedback: STD_LOGIC;
 	BEGIN
 		IF RISING_EDGE(clk) THEN
 			feedback:= level_easy_reg(7) XOR level_easy_reg(5) XOR level_easy_reg(4) XOR level_easy_reg(0);
-			level_easy_reg <= feedback & level_easy_reg(6 DOWNTO 0);
+			level_easy_reg <= level_easy_reg(6 DOWNTO 0) & feedback;
 		END IF;
 	END PROCESS;
 	
-	rnd <= (("00" & level_easy_reg) + CONV_STD_LOGIC_VECTOR(100, 10));
+	rnd <= (("00" & level_easy_reg) + CONV_STD_LOGIC_VECTOR(150, 10));
 	flag <= '1' WHEN enable = '1' ELSE '0';
 END ARCHITECTURE;

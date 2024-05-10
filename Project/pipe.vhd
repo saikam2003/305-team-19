@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY PIPE is
 
-	PORT(enable, horz_sync, colour_input: IN STD_LOGIC;
+	PORT(enable, vert_sync, colour_input: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			random_flag: IN STD_LOGIC;
@@ -43,12 +43,11 @@ BEGIN
 	
 	-- Setting the y position of the pipe and converting it into a 10 bit std_logic_vector
 	
-	pipe_y_pos <= pipe_y WHEN random_flag = '1';
-	gap_y_pos <= pipe_y_pos;
+	gap_y_pos <= pipe_y WHEN random_flag = '1';
 	gap_x_pos <= pipe_x_pos;
 	pipe_x_motion <= - CONV_STD_LOGIC_VECTOR(1, 11);
 	
-	pipe_on_output <= '0' WHEN enable = '0' ELSE
+	pipe_on_output <= --'0' WHEN enable = '0' ELSE
 			'0' WHEN ( ('0' & gap_x_pos <= '0' & pixel_column + gap_size_x) AND ('0' & pixel_column <= '0' & gap_x_pos + gap_size_x) 	-- x_pos - size <= pixel_column <= x_pos + size
 			AND ('0' & gap_y_pos <= pixel_row + gap_size_y) AND ('0' & pixel_row <= gap_y_pos + gap_size_y) )  ELSE
 			'1' WHEN ( ('0' & pipe_x_pos <= '0' & pixel_column + size_x) AND ('0' & pixel_column <= '0' & pipe_x_pos + size_x)) ELSE	-- x_pos - size <= pixel_column <= x_pos + size
@@ -59,15 +58,15 @@ BEGIN
 	-- Setting the colour of the pipe
 	blue <= "0000";
 	pipe_on <= pipe_on_output;
-	pipe_position <= pixel_column WHEN pipe_on_output = '1' else CONV_STD_LOGIC_VECTOR(0, 10);
+	pipe_position <= gap_y_pos;
 	
 	
-	Move_Pipe: PROCESS (horz_sync)
+	Move_Pipe: PROCESS (vert_sync, random_flag)
 		variable counter: integer range 0 to 5:= 0;
 		variable half_counter: integer range 0 to 2:= 0;
 	BEGIN
 		
-		IF (RISING_EDGE(horz_sync)) THEN
+		IF (RISING_EDGE(vert_sync)) THEN
 			IF (enable = '1') THEN
 				IF(colour_input = '1') THEN
 					red <= "1111";
@@ -76,7 +75,9 @@ BEGIN
 					green <= "1111";
 					red <= "0000";
 				END IF;
-							half_counter:= half_counter + 1;
+							
+				-- INCREMENTING THE HALF COUNTER
+				half_counter:= half_counter + 1;
 
 				-- Bounce the pipe off the left or right of the screen
 				IF (counter = 1) THEN
@@ -108,9 +109,6 @@ BEGIN
 					random_enable <= '1';
 					counter:= 1;
 				END IF;
-			ELSE
-				random_enable <= '1';
-				pipe_x_pos <= CONV_STD_LOGIC_VECTOR(639, 11);
 			END IF;
 		END IF;
 	END PROCESS Move_Pipe;
