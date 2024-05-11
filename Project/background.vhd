@@ -16,7 +16,8 @@ architecture behavior of background is
 
 	SIGNAL cloud_red_1, cloud_green_1, cloud_blue_1: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL cloud_red_2, cloud_green_2, cloud_blue_2: STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL ground_on, grass_on, t_cloud_on_1, t_cloud_on_2 : STD_LOGIC;
+	SIGNAL cloud_red_3, cloud_green_3, cloud_blue_3: STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL ground_on, grass_on, t_cloud_on_1, t_cloud_on_2, t_cloud_on_3 : STD_LOGIC;
 	SIGNAL grass : STD_LOGIC_VECTOR(11 downto 0) := "000001100000";
 	SIGNAL ground : STD_LOGIC_VECTOR(11 downto 0) := "010000100000";
 
@@ -35,7 +36,7 @@ BEGIN
 								clk => clk,
 								enable => enable,
 								vert_sync => vert_sync,
-								top_x_pos => 500,
+								top_x_pos => 550,
 								top_y_pos => 200,
 								pixel_row => pixel_row,
 								pixel_column => pixel_column,
@@ -49,8 +50,8 @@ BEGIN
 								clk => clk,
 								enable => enable,
 								vert_sync => vert_sync,
-								top_x_pos => 200,
-								top_y_pos => 400,
+								top_x_pos => 150,
+								top_y_pos => 300,
 								pixel_row => pixel_row,
 								pixel_column => pixel_column,
 								red => cloud_red_2,
@@ -58,12 +59,27 @@ BEGIN
 								blue => cloud_blue_2,
 								cloud_on => t_cloud_on_2
 							);
+
+	cloud_component_3: CLOUD
+						  PORT MAP (
+								clk => clk,
+								enable => enable,
+								vert_sync => vert_sync,
+								top_x_pos => 350,
+								top_y_pos => 150,
+								pixel_row => pixel_row,
+								pixel_column => pixel_column,
+								red => cloud_red_3,
+								green => cloud_green_3,
+								blue => cloud_blue_3,
+								cloud_on => t_cloud_on_3
+							);
 	
 	grass_on <= '1' when pixel_row >= CONV_STD_LOGIC_VECTOR(454,10) and pixel_row < CONV_STD_LOGIC_VECTOR(459,10) else '0';
 	ground_on <= '1' when pixel_row >= CONV_STD_LOGIC_VECTOR(459,10) else '0';
 	
 	
-	background_on <= t_cloud_on_1 or t_cloud_on_2 or ground_on or grass_on;
+	background_on <= t_cloud_on_1 or t_cloud_on_2 or t_cloud_on_3 or ground_on or grass_on;
 
 	
 	
@@ -78,6 +94,10 @@ BEGIN
 				red   <=  cloud_red_2;
 				green <=  cloud_green_2;
 				blue  <=  cloud_blue_2;
+			ELSIF (t_cloud_on_3 = '1') THEN
+				red   <=  cloud_red_3;
+				green <=  cloud_green_3;
+				blue  <=  cloud_blue_3;
 			ELSIF (ground_on = '1') THEN
 				red <= ground(11 downto 8);
 				green <= ground(7 downto 4);
