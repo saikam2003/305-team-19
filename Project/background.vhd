@@ -58,7 +58,6 @@ BEGIN
 								blue => cloud_blue_2,
 								cloud_on => t_cloud_on_2
 							);
-							
 	
 	grass_on <= '1' when pixel_row >= CONV_STD_LOGIC_VECTOR(454,10) and pixel_row < CONV_STD_LOGIC_VECTOR(459,10) else '0';
 	ground_on <= '1' when pixel_row >= CONV_STD_LOGIC_VECTOR(459,10) else '0';
