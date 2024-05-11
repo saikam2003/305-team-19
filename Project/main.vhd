@@ -227,31 +227,61 @@ BEGIN
 		END IF;
 	END PROCESS screen_display;
 
-	pipe_logic: PROCESS(clk_input)
+	pipe_logic: PROCESS(clk_input,start_input)
+	variable v_pipe_reset,v_pipe_reset_2,v_collision_reset,v_collision_reset_2  :STD_LOGIC;
+	variable v_pipe_start,v_pipe_enable,v_pipe_enable_2 : STD_LOGIC := '0';
+	variable v_first_time : STD_LOGIC := '0';
 	BEGIN
-		IF (RISING_EDGE(clk_input)) THEN
-			IF ((t_collision_detected = '1' OR t_collision_detected_2 = '1')) AND
-				t_pipe_enable <= '0';
-				t_pipe_enable_2 <= '0';
-			END IF;
-			
-			IF((t_pipe_enable = '0') AND start_input = '0') THEN
+		
+		IF (start_input = '0' AND t_pipe_enable = '0') THEN -- if the game is restarted after a collision
+			if (v_first_time = '1') then
+				
+				v_pipe_start := '1'; -- flag for start bit pressed
 				t_pipe_reset <= '1';
 				t_pipe_reset_2 <= '1';
 				t_collision_reset <= '1';
 				t_collision_reset_2 <= '1';
 				t_pipe_enable <= '1';
-			ELSIF (t_collision_detected = '0' AND t_collision_detected_2 = '0') THEN
+
+			else
+
+				v_first_time := '1';
+				
+			end IF;
+
+		ELSIF (RISING_EDGE(clk_input)) THEN
+			IF (v_pipe_start = '1') THEN
+				t_pipe_reset <= '0';
+				t_pipe_reset_2 <= '0';
 				t_collision_reset <= '0';
 				t_collision_reset_2 <= '0';
-				t_pipe_reset <= '0';
-				t_pipe_reset_2 <= '0'; 
-			END IF;	
-			
-			IF (t_pipe_halfway = '1' AND t_collision_detected = '0' AND t_collision_detected_2 = '0') THEN
+				v_pipe_start := '0';
+			ELSE
+				IF ((t_collision_detected = '1' OR t_collision_detected_2 = '1')) THEN
+					t_pipe_enable <= '0';
+					t_pipe_enable_2 <= '0';
+				-- ELSIF (start_input = '1' AND t_collision_detected = '0' AND t_collision_detected_2 = '0') THEN
+				-- 	v_collision_reset := '0';
+				-- 	v_collision_reset_2 := '0';
+				-- 	v_pipe_reset := '0';
+				-- 	v_pipe_reset_2 := '0';
+				-- 	v_pipe_enable := '1';
+				-- 	v_pipe_enable_2 := '1';
+				END IF;  
+
+				IF (t_pipe_halfway = '1' AND t_collision_detected = '0' AND t_collision_detected_2 = '0' AND v_pipe_start = '0') THEN
 					t_pipe_enable_2 <= '1';
+					
+				END IF;
 			END IF;
-		END IF;
+   		END IF;
+		-- t_pipe_enable <= v_pipe_enable;
+		-- t_pipe_enable_2 <= v_pipe_enable_2;
+		-- t_pipe_reset <= v_pipe_reset;
+		-- t_pipe_reset_2 <= v_pipe_reset_2;
+ 		-- t_collision_reset <= v_collision_reset;
+		-- t_collision_reset_2 <= v_collision_reset_2;
+		
 	END PROCESS pipe_logic;
 
 END ARCHITECTURE;

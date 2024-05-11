@@ -1,0 +1,13 @@
+
+*.cdb
+*.qmsg
+*.rdb
+*.bpm
+*.kpt
+*.hsd
+*.qws
+*.jdi
+*.rpt
+*.pin
+/Project/output_files
+/Project/output_files
