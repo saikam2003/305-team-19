@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY PIPE is
 
-	PORT(enable, vert_sync, colour_input: IN STD_LOGIC;
+	PORT(pipe_reset, enable, vert_sync, colour_input: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			random_flag: IN STD_LOGIC;
@@ -67,6 +67,10 @@ BEGIN
 	BEGIN
 		
 		IF (RISING_EDGE(vert_sync)) THEN
+			IF (pipe_reset = '1') THEN
+				pipe_x_pos <= pipe_x;
+			END IF;
+			
 			IF (enable = '1') THEN
 				IF(colour_input = '1') THEN
 					red <= "1111";

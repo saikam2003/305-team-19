@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY COLLISION IS
 
-	PORT(clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
+	PORT(reset, clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
 			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			collision_detected: OUT STD_LOGIC);
 			
@@ -23,6 +23,7 @@ BEGIN
 	BEGIN
 		
 		IF RISING_EDGE(clk) THEN
+
 			IF (pipe_collision_chance = '1') THEN
 				IF ((bird_y_position + bird_size >= pipe_y_position + gap_size_y) OR (bird_y_position - bird_size <= pipe_y_position - gap_size_y)) THEN
 					collision_detected <= '1';
@@ -30,6 +31,11 @@ BEGIN
 					collision_detected <= '0';
 				END IF;
 			END IF;
+
+			IF (reset = '1') THEN
+				collision_detected <= '0';
+			END IF;
+	
 		END IF;
 	
 	END PROCESS;
