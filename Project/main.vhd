@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_ARITH.all;
 USE IEEE.STD_LOGIC_SIGNED.all;
 
 
-
+ENTITY MAIN IS
 	PORT(background_on, clk_input, jump_input, start_input, reset_input, text_on, colour_pipe: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -230,14 +230,9 @@ BEGIN
 	pipe_logic: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
-			IF ((t_collision_detected = '1' OR t_collision_detected_2 = '1')) then
+			IF ((t_collision_detected = '1' OR t_collision_detected_2 = '1')) AND
 				t_pipe_enable <= '0';
 				t_pipe_enable_2 <= '0';
-			ELSE
-				t_collision_reset <= '0';
-				t_collision_reset_2 <= '0';
-				t_pipe_reset <= '0';
-				t_pipe_reset_2 <= '0';
 			END IF;
 			
 			IF((t_pipe_enable = '0') AND start_input = '0') THEN
@@ -246,9 +241,14 @@ BEGIN
 				t_collision_reset <= '1';
 				t_collision_reset_2 <= '1';
 				t_pipe_enable <= '1';
+			ELSIF (t_collision_detected = '0' AND t_collision_detected_2 = '0') THEN
+				t_collision_reset <= '0';
+				t_collision_reset_2 <= '0';
+				t_pipe_reset <= '0';
+				t_pipe_reset_2 <= '0'; 
 			END IF;	
 			
-			IF (t_pipe_halfway = '1' and t_collision_detected = '0' and t_collision_detected_2 = '0') THEN
+			IF (t_pipe_halfway = '1' AND t_collision_detected = '0' AND t_collision_detected_2 = '0') THEN
 					t_pipe_enable_2 <= '1';
 			END IF;
 		END IF;
