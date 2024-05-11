@@ -62,15 +62,17 @@ BEGIN
 	
 	
 	Move_Pipe: PROCESS (vert_sync, random_flag)
-		variable counter: integer range 0 to 5:= 0;
+		variable counter: integer range 0 to 1:= 0;
 		variable half_counter: integer range 0 to 2:= 0;
 	BEGIN
 		
 		IF (RISING_EDGE(vert_sync)) THEN
-			IF (pipe_reset = '1') THEN
-				pipe_x_pos <= pipe_x;
-			END IF;
-			
+		IF (pipe_reset = '1') THEN
+				pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
+				random_enable <= '0';
+				counter := 0;
+				half_counter := 0;
+		END IF;
 			IF (enable = '1') THEN
 				IF(colour_input = '1') THEN
 					red <= "1111";
@@ -79,7 +81,6 @@ BEGIN
 					green <= "1111";
 					red <= "0000";
 				END IF;
-							
 				-- INCREMENTING THE HALF COUNTER
 				half_counter:= half_counter + 1;
 
