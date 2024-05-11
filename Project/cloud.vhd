@@ -75,15 +75,19 @@ cloud_on_c <= '1' when ( ('0' & cloud_x_pos_c <= '0' & pixel_column + size_c) an
 			IF (RISING_EDGE(vert_sync)) THEN
 			 IF (enable = '1') THEN
 				IF (pos_init_flag = '1') THEN
-				
 					  half_counter := half_counter + 1;
 					  If(half_counter  = 5) THEN
-							cloud_x_pos_a <= cloud_x_pos_a + cloud_x_motion;
-							cloud_x_pos_b <= cloud_x_pos_b + cloud_x_motion;
-							cloud_x_pos_c <= cloud_x_pos_c + cloud_x_motion;
+							IF(cloud_x_pos_a + size_a + size_c < CONV_STD_LOGIC_VECTOR(0,11)) THEN
+								cloud_x_pos_a <= CONV_STD_LOGIC_VECTOR(669 , 11);
+								cloud_x_pos_b <= CONV_STD_LOGIC_VECTOR(669 , 11);
+								cloud_x_pos_c <= CONV_STD_LOGIC_VECTOR(704 , 11);
+							ELSE
+								cloud_x_pos_a <= cloud_x_pos_a + cloud_x_motion;
+								cloud_x_pos_b <= cloud_x_pos_b + cloud_x_motion;
+								cloud_x_pos_c <= cloud_x_pos_c + cloud_x_motion;
 							half_counter := 0;
+							END IF;
 					  END IF;
-	
 				ELSE 
 					pos_init_flag := '1';
 					cloud_x_pos_a <= CONV_STD_LOGIC_VECTOR(top_x_pos,11);

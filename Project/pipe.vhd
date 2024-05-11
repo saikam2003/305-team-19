@@ -67,14 +67,15 @@ BEGIN
 	BEGIN
 		
 		IF (RISING_EDGE(vert_sync)) THEN
-			IF (enable = '1') THEN
-				IF(colour_input = '1') THEN
+			IF(colour_input = '1') THEN
 					red <= "1111";
 					green <= "0000";
 				ELSE
 					green <= "1111";
 					red <= "0000";
 				END IF;
+			IF (enable = '1') THEN
+				
 							
 				-- INCREMENTING THE HALF COUNTER
 				half_counter:= half_counter + 1;

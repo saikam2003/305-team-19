@@ -16,8 +16,9 @@ architecture behavior of background is
 
 	SIGNAL cloud_red_1, cloud_green_1, cloud_blue_1: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL cloud_red_2, cloud_green_2, cloud_blue_2: STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL ground_on, t_cloud_on_1, t_cloud_on_2 : STD_LOGIC;
-	SIGNAL ground : STD_LOGIC_VECTOR(11 downto 0) := "110001100001";
+	SIGNAL ground_on, grass_on, t_cloud_on_1, t_cloud_on_2 : STD_LOGIC;
+	SIGNAL grass : STD_LOGIC_VECTOR(11 downto 0) := "000001100000";
+	SIGNAL ground : STD_LOGIC_VECTOR(11 downto 0) := "010000100000";
 
 	COMPONENT cloud IS
 		PORT
@@ -59,11 +60,11 @@ BEGIN
 							);
 							
 	
-	
+	grass_on <= '1' when pixel_row >= CONV_STD_LOGIC_VECTOR(454,10) and pixel_row < CONV_STD_LOGIC_VECTOR(459,10) else '0';
 	ground_on <= '1' when pixel_row >= CONV_STD_LOGIC_VECTOR(459,10) else '0';
 	
 	
-	background_on <= t_cloud_on_1 or t_cloud_on_2 or ground_on;
+	background_on <= t_cloud_on_1 or t_cloud_on_2 or ground_on or grass_on;
 
 	
 	
@@ -82,6 +83,10 @@ BEGIN
 				red <= ground(11 downto 8);
 				green <= ground(7 downto 4);
 				blue <= ground(3 downto 0);
+			ELSIF (grass_on = '1') THEN
+				red <= grass(11 downto 8);
+				green <= grass(7 downto 4);
+				blue <= grass(3 downto 0);
 			ELSE
 				red <= "0000";
 				green <= "1100";
