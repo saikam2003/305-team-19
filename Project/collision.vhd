@@ -21,9 +21,9 @@ BEGIN
 
 	PROCESS(clk)
 	BEGIN
-		
-		IF RISING_EDGE(clk) THEN
-
+		IF (reset = '1') THEN
+				collision_detected <= '0';
+		ELSIF RISING_EDGE(clk) THEN
 			IF (pipe_collision_chance = '1') THEN
 				IF ((bird_y_position + bird_size >= pipe_y_position + gap_size_y) OR (bird_y_position - bird_size <= pipe_y_position - gap_size_y)) THEN
 					collision_detected <= '1';
@@ -31,13 +31,7 @@ BEGIN
 					collision_detected <= '0';
 				END IF;
 			END IF;
-
-			IF (reset = '1') THEN
-				collision_detected <= '0';
-			END IF;
-	
 		END IF;
-	
 	END PROCESS;
 
 END ARCHITECTURE behaviour;

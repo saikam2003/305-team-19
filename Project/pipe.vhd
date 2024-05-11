@@ -61,18 +61,16 @@ BEGIN
 	pipe_position <= gap_y_pos;
 	
 	
-	Move_Pipe: PROCESS (vert_sync, random_flag)
+	Move_Pipe: PROCESS (vert_sync, pipe_reset)
 		variable counter: integer range 0 to 1:= 0;
 		variable half_counter: integer range 0 to 2:= 0;
 	BEGIN
-		
-		IF (RISING_EDGE(vert_sync)) THEN
 		IF (pipe_reset = '1') THEN
 				pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
 				random_enable <= '0';
 				counter := 0;
 				half_counter := 0;
-		END IF;
+		ELSIF (RISING_EDGE(vert_sync)) THEN
 			IF (enable = '1') THEN
 				IF(colour_input = '1') THEN
 					red <= "1111";
