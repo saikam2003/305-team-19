@@ -27,8 +27,6 @@ BEGIN
 			IF (pipe_collision_chance = '1') THEN
 				IF ((bird_y_position + bird_size >= pipe_y_position + gap_size_y) OR (bird_y_position - bird_size <= pipe_y_position - gap_size_y)) THEN
 					collision_detected <= '1';
-				ELSE
-					collision_detected <= '0';
 				END IF;
 			END IF;
 		END IF;

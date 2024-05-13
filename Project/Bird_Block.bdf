@@ -38,23 +38,6 @@ refer to the applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 360 256 528 272)
-	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "KEY[0]" (rect 5 0 40 12)(font "Arial" ))
-	(pt 168 8)
-	(drawing
-		(line (pt 84 12)(pt 109 12))
-		(line (pt 84 4)(pt 109 4))
-		(line (pt 113 8)(pt 168 8))
-		(line (pt 84 12)(pt 84 4))
-		(line (pt 109 4)(pt 113 8))
-		(line (pt 109 12)(pt 113 8))
-	)
-	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 304 248 360 272))
-)
-(pin
-	(input)
 	(rect 360 288 528 304)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
 	(text "SW[0]" (rect 5 0 35 12)(font "Arial" ))
@@ -86,6 +69,23 @@ refer to the applicable agreement for further details.
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
 	(annotation_block (location)(rect 296 312 360 336))
+)
+(pin
+	(input)
+	(rect 376 256 544 272)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "KEY[0]" (rect 5 0 41 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 320 240 376 264))
 )
 (pin
 	(output)
@@ -882,10 +882,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 528 264)
-	(pt 544 264)
-)
-(connector
 	(pt 528 136)
 	(pt 528 232)
 )
@@ -900,18 +896,6 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 528 136)
 	(pt 816 136)
-)
-(connector
-	(pt 24 264)
-	(pt 296 264)
-)
-(connector
-	(pt 296 264)
-	(pt 296 280)
-)
-(connector
-	(pt 296 280)
-	(pt 544 280)
 )
 (connector
 	(pt 528 296)
@@ -990,6 +974,18 @@ refer to the applicable agreement for further details.
 	(pt 1048 232)
 	(pt 1112 232)
 	(bus)
+)
+(connector
+	(pt 24 264)
+	(pt 328 264)
+)
+(connector
+	(pt 328 264)
+	(pt 328 280)
+)
+(connector
+	(pt 544 280)
+	(pt 328 280)
 )
 (junction (pt 400 136))
 (junction (pt 16 16))

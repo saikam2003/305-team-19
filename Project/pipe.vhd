@@ -42,7 +42,7 @@ BEGIN
 	-- Setting the y position of the gap to the y position of the pipe only when random flag is 1
 	gap_y_pos <= pipe_y WHEN random_flag = '1' ELSE gap_y_pos;
 	gap_x_pos <= pipe_x_pos; -- gap position is always the same as pipe center
-	pipe_x_motion <= - CONV_STD_LOGIC_VECTOR(1, 11); -- the pipe moves by 1 pixel by default
+	pipe_x_motion <= - CONV_STD_LOGIC_VECTOR(2, 11); -- the pipe moves by 1 pixel by default
 	
 	-- setting when the pipe should be on
 	pipe_on_output <= --'0' WHEN enable = '0' ELSE
@@ -63,15 +63,15 @@ BEGIN
 	
 	Move_Pipe: PROCESS (vert_sync, pipe_reset)
 		variable first_iteration: STD_LOGIC := '0';
-		variable half_counter: integer range 0 to 2:= 0;
+		--variable half_counter: integer range 0 to 2:= 0;
 	BEGIN
 		IF (pipe_reset = '1') THEN
 			--if the pipe is reset, then
 				pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11); -- send the pipe all the way to the end
-				--random_enable <= '0'; -- reset random_enable as 0
+				random_enable <= '1'; -- reset random_enable as 0
 				-- reset counters
 				first_iteration := '0';
-				half_counter := 0;
+				--half_counter := 0;
 				-- reset chance of collision because pipe is reset to the end
 				collision_chance <= '0';
 				pipe_halfway <= '0';
@@ -92,12 +92,12 @@ BEGIN
 				END IF;
 
 				-- INCREMENTING THE HALF COUNTER
-				half_counter:= half_counter + 1;
+				--half_counter:= half_counter + 1;
 
 				-- if the counter is 1
 				IF (first_iteration = '1') THEN
 					-- then check if the pipe os going beyond 0
-					IF ((pipe_x_pos + size_x) <=  CONV_STD_LOGIC_VECTOR(0, 11)) THEN
+					IF ((pipe_x_pos + size_x) <  - CONV_STD_LOGIC_VECTOR(39, 11)) THEN
 						--if so resest pipecenter to the right end of screen
 						pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
 						random_enable <= '1'; -- re-enable random_enable
@@ -106,12 +106,12 @@ BEGIN
 						random_enable <= '0';
 
 						-- moving the pipe every 2 vertical syncs to slow down the pipes
-						IF (half_counter = 2) THEN
+						--IF (half_counter = 2) THEN
 						-- if the half counter is 2 only then move pipe
 							pipe_x_pos <= pipe_x_pos + pipe_x_motion;
 							-- and reset the counter
-							half_counter:= 0;
-						END IF;
+							--half_counter:= 0;
+						--END IF;
 
 					END IF;
 					
@@ -134,7 +134,7 @@ BEGIN
 				ELSE
 
 					-- setting the default position at the very end
-					pipe_x_pos <= CONV_STD_LOGIC_VECTOR(639, 11);
+					pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
 					random_enable <= '1'; -- random enable is always 1
 					first_iteration:= '1'; -- resetting counter to 1
 

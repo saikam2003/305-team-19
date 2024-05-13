@@ -23,7 +23,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
-	SIGNAL t_pipe_reset_2, t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
+	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_y, t_pipe_y_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -137,7 +137,7 @@ BEGIN
 						);
 	pipe_component_2: PIPE
 						PORT MAP(
-							pipe_reset => t_pipe_reset_2,
+							pipe_reset => t_pipe_reset,
 							enable => t_pipe_enable_2,
 							vert_sync => vertical_sync,
 							colour_input => colour_pipe,
@@ -195,6 +195,20 @@ BEGIN
 				flag => t_random_flag_2
 			);
 
+	
+	t_pipe_reset <= '1' WHEN (start_input = '0') ELSE '0';
+	t_collision_reset <= '1' WHEN (start_input = '0') ELSE '0';
+	t_collision_reset_2 <= '1' WHEN (start_input = '0') ELSE '0';
+	
+	t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE
+						'0' WHEN (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE t_pipe_enable;
+	
+	--t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE '0';
+							
+	t_pipe_enable_2 <= '0' WHEN  (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE
+								'1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2;
+
+
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
@@ -227,62 +241,6 @@ BEGIN
 		END IF;
 	END PROCESS screen_display;
 
-	pipe_logic: PROCESS(clk_input,start_input)
-	variable v_pipe_reset,v_pipe_reset_2,v_collision_reset,v_collision_reset_2  :STD_LOGIC;
-	variable v_pipe_start,v_pipe_enable,v_pipe_enable_2 : STD_LOGIC := '0';
-	variable v_first_time : STD_LOGIC := '0';
-	BEGIN
-		
-		IF (start_input = '0' AND t_pipe_enable = '0') THEN -- if the game is restarted after a collision
-			if (v_first_time = '1') then
-				
-				v_pipe_start := '1'; -- flag for start bit pressed
-				t_pipe_reset <= '1';
-				t_pipe_reset_2 <= '1';
-				t_collision_reset <= '1';
-				t_collision_reset_2 <= '1';
-				t_pipe_enable <= '1';
-
-			else
-
-				v_first_time := '1';
-				
-			end IF;
-
-		ELSIF (RISING_EDGE(clk_input)) THEN
-			IF (v_pipe_start = '1') THEN
-				t_pipe_reset <= '0';
-				t_pipe_reset_2 <= '0';
-				t_collision_reset <= '0';
-				t_collision_reset_2 <= '0';
-				v_pipe_start := '0';
-			ELSE
-				IF ((t_collision_detected = '1' OR t_collision_detected_2 = '1')) THEN
-					t_pipe_enable <= '0';
-					t_pipe_enable_2 <= '0';
-				-- ELSIF (start_input = '1' AND t_collision_detected = '0' AND t_collision_detected_2 = '0') THEN
-				-- 	v_collision_reset := '0';
-				-- 	v_collision_reset_2 := '0';
-				-- 	v_pipe_reset := '0';
-				-- 	v_pipe_reset_2 := '0';
-				-- 	v_pipe_enable := '1';
-				-- 	v_pipe_enable_2 := '1';
-				END IF;  
-
-				IF (t_pipe_halfway = '1' AND t_collision_detected = '0' AND t_collision_detected_2 = '0' AND v_pipe_start = '0') THEN
-					t_pipe_enable_2 <= '1';
-					
-				END IF;
-			END IF;
-   		END IF;
-		-- t_pipe_enable <= v_pipe_enable;
-		-- t_pipe_enable_2 <= v_pipe_enable_2;
-		-- t_pipe_reset <= v_pipe_reset;
-		-- t_pipe_reset_2 <= v_pipe_reset_2;
- 		-- t_collision_reset <= v_collision_reset;
-		-- t_collision_reset_2 <= v_collision_reset_2;
-		
-	END PROCESS pipe_logic;
 
 END ARCHITECTURE;
 	
