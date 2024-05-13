@@ -17,11 +17,12 @@ END ENTITY MAIN;
 
 ARCHITECTURE behvaiour OF MAIN IS
 	
+	SIGNAL t_collision_reset, t_collision_reset_2: STD_LOGIC:= '0';
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
+	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
 	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
@@ -39,7 +40,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT PIPE IS
-		PORT(enable, vert_sync, colour_input: IN STD_LOGIC;
+		PORT(pipe_reset, enable, vert_sync, colour_input: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			random_flag: IN STD_LOGIC;
@@ -59,7 +60,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT COLLISION IS
-		PORT(clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
+		PORT(reset, clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
 			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			collision_detected: OUT STD_LOGIC);
 	END COMPONENT;
@@ -95,6 +96,7 @@ BEGIN
 	
 	pipe_component: PIPE
 						PORT MAP(
+							pipe_reset => t_pipe_reset,
 							enable => t_pipe_enable,
 							vert_sync => vertical_sync,
 							colour_input => colour_pipe,
@@ -115,6 +117,7 @@ BEGIN
 						
 	collision_detection_pipe: COLLISION 
 						PORT MAP(
+							reset => t_collision_reset,
 							clk => clk_input,
 							pipe_on => t_pipe_on,
 							pipe_collision_chance => t_collision_chance,
@@ -124,6 +127,7 @@ BEGIN
 						);
 	collision_detection_pipe_2: COLLISION 
 						PORT MAP(
+							reset => t_collision_reset_2,
 							clk => clk_input,
 							pipe_on => t_pipe_on_2,
 							pipe_collision_chance => t_collision_chance_2,
@@ -133,6 +137,7 @@ BEGIN
 						);
 	pipe_component_2: PIPE
 						PORT MAP(
+							pipe_reset => t_pipe_reset,
 							enable => t_pipe_enable_2,
 							vert_sync => vertical_sync,
 							colour_input => colour_pipe,
@@ -190,22 +195,25 @@ BEGIN
 				rnd => t_pipe_y_2,
 				flag => t_random_flag_2
 			);
+
 	
+	t_pipe_reset <= '1' WHEN (start_input = '0') ELSE '0';
+	t_collision_reset <= '1' WHEN (start_input = '0') ELSE '0';
+	t_collision_reset_2 <= '1' WHEN (start_input = '0') ELSE '0';
+	
+	t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE
+						'0' WHEN (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE t_pipe_enable;
+	
+	--t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE '0';
+							
+	t_pipe_enable_2 <= '0' WHEN  (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE
+								'1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2;
+
+
 	screen_display: PROCESS(clk_input)
-		VARIABLE counter: INTEGER RANGE 0 TO 1:= 0;
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
-			IF ((t_collision_detected = '1' OR t_collision_detected_2 = '1')) then
-				t_pipe_enable <= '0';
-				t_pipe_enable_2 <= '0';
-			END IF;
-			
-			IF((t_pipe_enable = '0') AND start_input = '0') THEN
-				t_pipe_enable <= '1';
---				t_pipe_enable_2 <= '1';
-			END IF;
-			
-			
+
 			IF (t_text_on = '1' and text_on = '1') THEN
 				red_output <= text_red;
 				green_output <= text_green;
@@ -231,16 +239,10 @@ BEGIN
 				green_output <= "1010";
 				blue_output <= "1011";
 			END IF;
---			IF (counter = 0) THEN
-				IF (t_pipe_halfway = '1' and t_collision_detected = '0' and t_collision_detected_2 = '0') THEN
-					t_pipe_enable_2 <= '1';
-					counter:= 1;
-				END IF;
---			END IF;
 		END IF;
 	END PROCESS screen_display;
-	led1 <= t_collision_detected;
-	led2 <= t_collision_detected_2;
+
+
 END ARCHITECTURE;
 	
 	
