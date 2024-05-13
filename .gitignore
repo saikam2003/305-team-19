@@ -1,13 +1,2 @@
 
-*.cdb
-*.qmsg
-*.rdb
-*.bpm
-*.kpt
-*.hsd
-*.qws
-*.jdi
-*.rpt
-*.pin
-/Project/output_files
-/Project/output_files
+Project/incremental_db/compiled_partitions/BIRD.rrs.cdb

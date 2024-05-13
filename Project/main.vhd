@@ -53,7 +53,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	COMPONENT BACKGROUND IS
 		PORT
-		( clk, vert_sync, horz_sync	: IN std_logic;
+		( clk, enable, vert_sync, horz_sync	: IN std_logic;
 		  pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
 		  red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 		  background_on 			: OUT std_logic);		
@@ -159,6 +159,7 @@ BEGIN
 	background_component: BACKGROUND
 								PORT MAP(
 									clk => clk_input,
+									enable => start_input,
 									vert_sync => vertical_sync,
 									horz_sync => horizontal_sync,
 									pixel_row => pixel_row_input,
