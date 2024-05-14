@@ -31,12 +31,14 @@ ARCHITECTURE behaviour OF PIPE IS
 	SIGNAL gap_size_x: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	
 BEGIN
+	-- Setting the size of the pipe and converting it into a 10 bit std_logic_vector
+	size_x <= CONV_STD_LOGIC_VECTOR(20, 10);
+	
 	-- Setting the size of the gap between the pipes
 	gap_size_y <= CONV_STD_LOGIC_VECTOR(56, 10);
-	gap_size_x <= CONV_STD_LOGIC_VECTOR(16, 10);
+	gap_size_x <= size_x;
 	
-	-- Setting the size of the pipe and converting it into a 10 bit std_logic_vector
-	size_x <= CONV_STD_LOGIC_VECTOR(16, 10);
+	
 	
 	
 	-- Setting the y position of the gap to the y position of the pipe only when random flag is 1
@@ -84,10 +86,10 @@ BEGIN
 				
 			-- changing color according to switch input
 				IF(colour_input = '1') THEN
-					red <= "1111";
+					red <= "1011";
 					green <= "0000";
 				ELSE
-					green <= "1111";
+					green <= "1100";
 					red <= "0000";
 				END IF;
 
