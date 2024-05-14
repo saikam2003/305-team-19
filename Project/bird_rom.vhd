@@ -11,7 +11,9 @@ ENTITY bird_rom IS
 	(
 		font_row, font_col	:	IN STD_LOGIC_VECTOR (3 DOWNTO 0);
 		clock				: 	IN STD_LOGIC ;
-		bird_data_output		:	OUT STD_LOGIC
+		bird_data_red		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+		bird_data_green		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+		bird_data_blue		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
 	);
 END bird_rom;
 
@@ -71,6 +73,8 @@ BEGIN
 	);
 
 	rom_address <= font_row & font_col;
-	bird_data_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+	bird_data_red <= rom_data (11 downto 8);
+	bird_data_green <= rom_data (7 downto 4);
+	bird_data_blue <= rom_data (3 downto 0);
 
 END SYN;

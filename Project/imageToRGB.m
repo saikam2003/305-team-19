@@ -1,7 +1,7 @@
 clear
 clc
 
-[img, ~, t] = imread("flappy1.png");
+[img, ~, t] = imread("flappy2.png");
 
 [height, width, ~] = size(img);
 
@@ -42,7 +42,7 @@ tile = 0;
 count = 0;
 for i = 1 : height
     for j = 1 : width
-       fprintf(fileID, "%02s\t:\t", num2str(dec2hex(count)));
+       fprintf(fileID, "%02s\t:\t", num2str(dec2hex (count)));
        r = dec2bin(rgba(i,j, 1),4);
        g = dec2bin(rgba(i,j, 2),4);
        b = dec2bin(rgba(i,j, 3),4);
