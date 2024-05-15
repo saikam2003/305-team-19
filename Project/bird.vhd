@@ -43,8 +43,8 @@ ARCHITECTURE behaviour OF BIRD IS
 BEGIN
 
 	bird_sprite: bird_rom PORT MAP(
-		font_row => pixel_row(7 downto 4),
-		font_col => pixel_column(3 downto 0),
+		font_row => pixel_row(4 downto 1) - (ball_y_pos(4 downto 1) + size(4 downto 1)) ,
+		font_col => pixel_column(4 downto 1),
 		clock => clk,
 		bird_data_alpha	=>	t_bird_alpha,
 		bird_data_red	=>	t_bird_red,
@@ -54,16 +54,19 @@ BEGIN
 		
 
 	-- Setting the size of the bird and converting it into a 10 bit std_logic_vector
-	size <= CONV_STD_LOGIC_VECTOR(8, 10);
+	size <= CONV_STD_LOGIC_VECTOR(16, 10);
 	
 	-- Setting the x position of the ball and converting it into a 10 bit std_logic_vector
-	ball_x_pos <= CONV_STD_LOGIC_VECTOR(320, 11);
+	ball_x_pos <= CONV_STD_LOGIC_VECTOR(303, 11);
 	
 	-- Logic to determine if we are inside the ball (haven't reached the end of the ball according to the size)
 	-- to decide whether or not we want to display the ball
 	bird_on <= '1' WHEN ( ('0' & ball_x_pos <= '0' & pixel_column + size) AND ('0' & pixel_column <= '0' & ball_x_pos + size) 	-- x_pos - size <= pixel_column <= x_pos + size
-					AND ('0' & ball_y_pos <= pixel_row + size) AND ('0' & pixel_row <= ball_y_pos + size) AND t_bird_alpha = "0001" )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
+					AND ('0' & ball_y_pos <= pixel_row + size) AND ('0' & pixel_row <= ball_y_pos + size) AND (t_bird_alpha = "0001") )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
 			'0';
+	
+	
+	--bird_on <= '1' when (pixel_column >= CONV_STD_LOGIC_VECTOR(314,10) AND pixel_column <= CONV_STD_LOGIC_VECTOR(336,10)) AND (T_BIRD_ALPHA = "0001") ELSE '0';
 	
 	-- Setting the colour of the bird
 	red <= t_bird_red;
@@ -71,7 +74,7 @@ BEGIN
 	green <= t_bird_green;
 
 	--bird_on <= ball_on;
-			
+
 	Move_Bird: PROCESS (vert_sync)
 	VARIABLE mouse_prev, jumping: STD_LOGIC;
 	VARIABLE counter: INTEGER RANGE 0 to 15:= 0;
