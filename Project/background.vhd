@@ -20,7 +20,16 @@ architecture behavior of background is
 	SIGNAL ground_on, grass_on, t_cloud_on_1, t_cloud_on_2, t_cloud_on_3 : STD_LOGIC;
 	SIGNAL grass : STD_LOGIC_VECTOR(11 downto 0) := "000001100000";
 	SIGNAL ground : STD_LOGIC_VECTOR(11 downto 0) := "010000100000";
+	
+	-- signals for the custom cloud sprite
+	SIGNAL t_cloud_sprite_on : STD_LOGIC;
+	SIGNAL cloud_sprite_x_pos : STD_LOGIC_VECTOR(10 DOWNTO 0);
+	SIGNAL cloud_sprite_y_pos : STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL cloud_sprite_x_motion : STD_LOGIC_VECTOR(10 DOWNTO 0);
+	SIGNAL t_cloud_sprite_alpha,t_cloud_sprite_red,t_cloud_sprite_green,t_cloud_sprite_blue : STD_LOGIC_VECTOR(3 DOWNTO 0); 
 
+
+	-- old cloud
 	COMPONENT cloud IS
 		PORT
 			( clk, enable, vert_sync 						: IN std_logic;
@@ -30,7 +39,31 @@ architecture behavior of background is
 			  cloud_on 			: OUT std_logic);		
 	END COMPONENT;
 	
+	-- custom cloud sprite
+	COMPONENT cloud_rom IS
+		PORT(
+				font_row	:	IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+				font_col	:	IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+				clock				: 	IN STD_LOGIC ;
+				bird_data_alpha		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+				bird_data_red		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+				bird_data_green		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+				bird_data_blue		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+			);		
+	END COMPONENT;
+	
 BEGIN          
+	cloud_sprite: CLOUD_ROM
+						PORT MAP (
+								font_row => pixel_row(7 DOWNTO 0),
+								font_col => pixel_column(3 DOWNTO 0),
+								clk => clk,								
+								cloud_data_alpha => t_cloud_sprite_alpha,
+								cloud_data_red	=> t_cloud_sprite_red,
+								cloud_data_green => t_cloud_sprite_green,
+								cloud_data_blue	=> t_cloud_sprite_blue
+							);
+				
 	cloud_component: CLOUD
 						  PORT MAP (
 								clk => clk,
@@ -74,6 +107,8 @@ BEGIN
 								blue => cloud_blue_3,
 								cloud_on => t_cloud_on_3
 							);
+							
+		
 	
 	grass_on <= '1' when pixel_row >= CONV_STD_LOGIC_VECTOR(454,10) and pixel_row < CONV_STD_LOGIC_VECTOR(459,10) else '0';
 	ground_on <= '1' when pixel_row >= CONV_STD_LOGIC_VECTOR(459,10) else '0';
@@ -81,12 +116,45 @@ BEGIN
 	
 	background_on <= t_cloud_on_1 or t_cloud_on_2 or t_cloud_on_3 or ground_on or grass_on;
 
+	t_cloud_sprite_on <= '1' when t_cloud_sprite_alpha = "0001" else '0';
 	
+	Move_Cloud_Sprite: PROCESS(vert_sync)
+	variable pos_init_flag : STD_LOGIC := '0';
+		variable half_counter: integer range 0 to 5:= 0;
+		BEGIN 
+			IF (RISING_EDGE(vert_sync)) THEN
+					IF (pos_init_flag = '1') THEN
+						half_counter := half_counter + 1;
+						If(half_counter  = 5) THEN
+								IF(cloud_x_pos_a + size_a + size_c < CONV_STD_LOGIC_VECTOR(0,11)) THEN
+									cloud_x_pos_a <= CONV_STD_LOGIC_VECTOR(669 , 11);
+									cloud_x_pos_b <= CONV_STD_LOGIC_VECTOR(669 , 11);
+									cloud_x_pos_c <= CONV_STD_LOGIC_VECTOR(704 , 11);
+								ELSE
+									cloud_x_pos_a <= cloud_x_pos_a + cloud_x_motion;
+									cloud_x_pos_b <= cloud_x_pos_b + cloud_x_motion;
+									cloud_x_pos_c <= cloud_x_pos_c + cloud_x_motion;
+								half_counter := 0;
+								END IF;
+						END IF;
+					ELSE 
+						pos_init_flag := '1';
+						cloud_x_pos_a <= CONV_STD_LOGIC_VECTOR(top_x_pos,11);
+						cloud_x_pos_b <= CONV_STD_LOGIC_VECTOR(top_x_pos,11);
+						cloud_x_pos_c <= CONV_STD_LOGIC_VECTOR(top_x_pos + 35,11);
+
+					END IF;
+			END IF;  
+	END PROCESS Move_Cloud_Sprite; 
 	
 	background_display: PROCESS(clk)
 	BEGIN
 		IF (RISING_EDGE(clk)) THEN
-			IF (t_cloud_on_1 = '1') THEN
+			IF (t_cloud_sprite_on = '1') THEN
+				red   <=  t_cloud_sprite_red;
+				green <=  t_cloud_sprite_green;
+				blue  <=  t_cloud_sprite_blue;
+			ELSIF (t_cloud_on_1 = '1') THEN
 				red   <=  cloud_red_1;
 				green <=  cloud_green_1;
 				blue  <=  cloud_blue_1;

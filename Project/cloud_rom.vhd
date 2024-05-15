@@ -9,12 +9,13 @@ USE altera_mf.all;
 ENTITY cloud_rom IS
 	PORT
 	(
-		font_row, font_col	:	IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+		font_row	:	IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+		font_col	:	IN STD_LOGIC_VECTOR (3 DOWNTO 0);
 		clock				: 	IN STD_LOGIC ;
-		bird_data_alpha		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-		bird_data_red		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-		bird_data_green		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-		bird_data_blue		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+		cloud_data_alpha		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+		cloud_data_red		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+		cloud_data_green		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+		cloud_data_blue		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
 	);
 END cloud_rom;
 
@@ -74,9 +75,9 @@ BEGIN
 	);
 
 	rom_address <= font_row & font_col;
-	bird_data_alpha <= rom_data(15 downto 12);
-	bird_data_red <= rom_data (11 downto 8);
-	bird_data_green <= rom_data (7 downto 4);
-	bird_data_blue <= rom_data (3 downto 0);
+	cloud_data_alpha <= rom_data(15 downto 12);
+	cloud_data_red <= rom_data (11 downto 8);
+	cloud_data_green <= rom_data (7 downto 4);
+	cloud_data_blue <= rom_data (3 downto 0);
 
 END SYN;
