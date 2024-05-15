@@ -19,10 +19,10 @@ ENTITY bird_rom IS
 END bird_rom;
 
 
-ARCHITECTURE SYN OF char_rom IS
+ARCHITECTURE SYN OF bird_rom IS
 
 	SIGNAL rom_data		: STD_LOGIC_VECTOR (15 DOWNTO 0);
-	SIGNAL rom_address	: STD_LOGIC_VECTOR (8 DOWNTO 0);
+	SIGNAL rom_address	: STD_LOGIC_VECTOR (7 DOWNTO 0);
 
 	COMPONENT altsyncram
 	GENERIC (

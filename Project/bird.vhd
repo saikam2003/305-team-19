@@ -21,25 +21,56 @@ ARCHITECTURE behaviour OF BIRD IS
 	SIGNAL ball_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL ball_y_motion: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	
+	SIGNAL t_bird_alpha	: STD_LOGIC_VECTOR(3 downto 0);
+	SIGNAL t_bird_red	: STD_LOGIC_VECTOR(3 downto 0);
+	SIGNAL t_bird_green : STD_LOGIC_VECTOR(3 downto 0);
+	SIGNAL t_bird_blue	: STD_LOGIC_VECTOR(3 downto 0);
+	
+	
+	
+	COMPONENT bird_rom IS
+		PORT(
+			font_row, font_col	:	IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+			clock				: 	IN STD_LOGIC ;
+			bird_data_alpha		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+			bird_data_red		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+			bird_data_green		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+			bird_data_blue		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+			);
+	END COMPONENT;
+			
 
 BEGIN
+
+	bird_sprite: bird_rom PORT MAP(
+		font_row => pixel_row(7 downto 4),
+		font_col => pixel_column(3 downto 0),
+		clock => clk,
+		bird_data_alpha	=>	t_bird_alpha,
+		bird_data_red	=>	t_bird_red,
+		bird_data_green	=>	t_bird_green,
+		bird_data_blue	=>	t_bird_blue
+	);
+		
+
 	-- Setting the size of the bird and converting it into a 10 bit std_logic_vector
-	size <= CONV_STD_LOGIC_VECTOR(7, 10);
+	size <= CONV_STD_LOGIC_VECTOR(8, 10);
 	
 	-- Setting the x position of the ball and converting it into a 10 bit std_logic_vector
 	ball_x_pos <= CONV_STD_LOGIC_VECTOR(320, 11);
 	
 	-- Logic to determine if we are inside the ball (haven't reached the end of the ball according to the size)
 	-- to decide whether or not we want to display the ball
-	ball_on <= '1' WHEN ( ('0' & ball_x_pos <= '0' & pixel_column + size) AND ('0' & pixel_column <= '0' & ball_x_pos + size) 	-- x_pos - size <= pixel_column <= x_pos + size
-					AND ('0' & ball_y_pos <= pixel_row + size) AND ('0' & pixel_row <= ball_y_pos + size) )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
+	bird_on <= '1' WHEN ( ('0' & ball_x_pos <= '0' & pixel_column + size) AND ('0' & pixel_column <= '0' & ball_x_pos + size) 	-- x_pos - size <= pixel_column <= x_pos + size
+					AND ('0' & ball_y_pos <= pixel_row + size) AND ('0' & pixel_row <= ball_y_pos + size) AND t_bird_alpha = "0001" )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
 			'0';
 	
 	-- Setting the colour of the bird
-	red <= "1111";
-	green <= "1100";
+	red <= t_bird_red;
+	blue <= t_bird_blue;
+	green <= t_bird_green;
 
-	bird_on <= ball_on;
+	--bird_on <= ball_on;
 			
 	Move_Bird: PROCESS (vert_sync)
 	VARIABLE mouse_prev, jumping: STD_LOGIC;
@@ -55,11 +86,11 @@ BEGIN
 			--now, the previous state of the mouse is updated to the current mouse state
 			mouse_prev := mouse_clicked;
 			
-			IF(colour_input = '1') THEN
-				blue <= "0001";
-			ELSE
-				blue <= "0000";
-			END IF;
+			--IF(colour_input = '1') THEN
+			--	blue <= "0001";
+			--ELSE
+			--	blue <= "0000";
+			--END IF;
 			
 			--Now, if the bird is jumping
 			IF (jumping = '1') THEN
