@@ -17,6 +17,7 @@ ARCHITECTURE behaviour OF BIRD IS
 	
 	SIGNAL ball_on: STD_LOGIC;
 	SIGNAL size: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL size: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL ball_x_pos: STD_LOGIC_VECTOR(10 DOWNTO 0);
 	SIGNAL ball_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL ball_y_motion: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -42,22 +43,23 @@ ARCHITECTURE behaviour OF BIRD IS
 
 BEGIN
 
-	bird_sprite: bird_rom PORT MAP(
-		font_row => pixel_row(4 downto 1) - (ball_y_pos(4 downto 1) + size(4 downto 1)) ,
-		font_col => pixel_column(4 downto 1),
+	bird_sprite_up: bird_rom PORT MAP(
+		font_row => pixel_row(3 downto 0) - (ball_y_pos(3 downto 0) + size(3 downto 0)) ,
+		font_col => pixel_column(3 downto 0),
 		clock => clk,
 		bird_data_alpha	=>	t_bird_alpha,
 		bird_data_red	=>	t_bird_red,
 		bird_data_green	=>	t_bird_green,
 		bird_data_blue	=>	t_bird_blue
 	);
-		
+	
+	
 
 	-- Setting the size of the bird and converting it into a 10 bit std_logic_vector
-	size <= CONV_STD_LOGIC_VECTOR(16, 10);
+	size <= CONV_STD_LOGIC_VECTOR(8, 10);
 	
 	-- Setting the x position of the ball and converting it into a 10 bit std_logic_vector
-	ball_x_pos <= CONV_STD_LOGIC_VECTOR(303, 11);
+	ball_x_pos <= CONV_STD_LOGIC_VECTOR(312, 11);
 	
 	-- Logic to determine if we are inside the ball (haven't reached the end of the ball according to the size)
 	-- to decide whether or not we want to display the ball

@@ -23,7 +23,7 @@ END cloud_rom;
 ARCHITECTURE SYN OF cloud_rom IS
 
 	SIGNAL rom_data		: STD_LOGIC_VECTOR (15 DOWNTO 0);
-	SIGNAL rom_address	: STD_LOGIC_VECTOR (7 DOWNTO 0);
+	SIGNAL rom_address	: STD_LOGIC_VECTOR (11 DOWNTO 0);
 
 	COMPONENT altsyncram
 	GENERIC (
@@ -44,7 +44,7 @@ ARCHITECTURE SYN OF cloud_rom IS
 	);
 	PORT (
 		clock0		: IN STD_LOGIC ;
-		address_a	: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+		address_a	: IN STD_LOGIC_VECTOR (11 DOWNTO 0);
 		q_a			: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
 	);
 	END COMPONENT;
@@ -56,15 +56,15 @@ BEGIN
 		address_aclr_a => "NONE",
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
-		init_file => "image_data.mif",
+		init_file => "cloud_data.mif",
 		intended_device_family => "Cyclone III",
 		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
 		lpm_type => "altsyncram",
-		numwords_a => 256,
+		numwords_a => 4096,
 		operation_mode => "ROM",
 		outdata_aclr_a => "NONE",
 		outdata_reg_a => "UNREGISTERED",
-		widthad_a => 8,
+		widthad_a => 12,
 		width_a => 16,
 		width_byteena_a => 1
 	)
