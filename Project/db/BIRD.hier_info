@@ -5,7 +5,7 @@ PS2_DAT <> MOUSE:mouse_inst.mouse_data
 PS2_CLK <> MOUSE:mouse_inst.mouse_clk
 KEY[0] => MAIN:inst.start_input
 SW[0] => MAIN:inst.text_on
-SW[1] => MAIN:inst.colour_pipe
+SW[1] => MAIN:inst.select_input
 VGA_VS <= VGA_SYNC:inst1.vert_sync_out
 HEX1[0] <= BCD_to_SevenSeg:inst6.SevenSeg_out[0]
 HEX1[1] <= BCD_to_SevenSeg:inst6.SevenSeg_out[1]
@@ -351,20 +351,14 @@ clk_input => BACKGROUND:background_component.clk
 clk_input => TEXT_DISPLAY:text_component.Clk
 clk_input => LFSR:prng.clk
 clk_input => LFSR:prng_2.clk
+clk_input => FSM:FSM_DUT.clk
 jump_input => BIRD:bird_component.mouse_clicked
 start_input => BACKGROUND:background_component.enable
-start_input => comb.IN1
-start_input => PIPE:pipe_component.pipe_reset
-start_input => t_pipe_enable.IN1
-start_input => PIPE:pipe_component_2.pipe_reset
-start_input => comb.IN1
-start_input => COLLISION:collision_detection_pipe.reset
-start_input => COLLISION:collision_detection_pipe_2.reset
-reset_input => ~NO_FANOUT~
-text_on => TEXT_DISPLAY:text_component.game_mode
-colour_pipe => PIPE:pipe_component.colour_input
-colour_pipe => PIPE:pipe_component_2.colour_input
-colour_pipe => TEXT_DISPLAY:text_component.select_option
+start_input => t_pipe_reset.IN1
+select_input => TEXT_DISPLAY:text_component.select_option_in
+select_input => FSM:FSM_DUT.select_option
+text_on => ~NO_FANOUT~
+option_input => FSM:FSM_DUT.select_input
 horizontal_sync => BACKGROUND:background_component.horz_sync
 vertical_sync => BIRD:bird_component.vert_sync
 vertical_sync => PIPE:pipe_component.vert_sync
@@ -2537,30 +2531,17 @@ cloud_on <= cloud_on.DB_MAX_OUTPUT_PORT_TYPE
 
 |Bird_Block|MAIN:inst|text_display:text_component
 Clk => char_rom:char_comp.clock
-enable => ~NO_FANOUT~
-select_option => green.IN1
-select_option => green.IN1
-game_mode => char_address_1.OUTPUTSELECT
-game_mode => char_address_1.OUTPUTSELECT
-game_mode => char_address_1.OUTPUTSELECT
-game_mode => char_address_1.OUTPUTSELECT
-game_mode => char_address_1.OUTPUTSELECT
-game_mode => char_address_1.OUTPUTSELECT
-game_mode => char_1_on.OUTPUTSELECT
-game_mode => char_address_2.OUTPUTSELECT
-game_mode => char_address_2.OUTPUTSELECT
-game_mode => char_address_2.OUTPUTSELECT
-game_mode => char_address_2.OUTPUTSELECT
-game_mode => char_address_2.OUTPUTSELECT
-game_mode => char_address_2.OUTPUTSELECT
-game_mode => char_2_on.OUTPUTSELECT
-game_mode => char_address_3.OUTPUTSELECT
-game_mode => char_address_3.OUTPUTSELECT
-game_mode => char_address_3.OUTPUTSELECT
-game_mode => char_address_3.OUTPUTSELECT
-game_mode => char_address_3.OUTPUTSELECT
-game_mode => char_address_3.OUTPUTSELECT
-game_mode => char_3_on.OUTPUTSELECT
+enable => text_on.OUTPUTSELECT
+select_option_in => green.IN1
+select_option_in => green.IN1
+game_mode_in[0] => Equal0.IN3
+game_mode_in[0] => Equal1.IN3
+game_mode_in[0] => Equal2.IN3
+game_mode_in[0] => Equal3.IN3
+game_mode_in[1] => Equal0.IN2
+game_mode_in[1] => Equal1.IN2
+game_mode_in[1] => Equal2.IN2
+game_mode_in[1] => Equal3.IN2
 pixel_row[0] => LessThan0.IN20
 pixel_row[0] => LessThan1.IN20
 pixel_row[0] => LessThan2.IN20
@@ -2877,7 +2858,7 @@ green[0] <= green.DB_MAX_OUTPUT_PORT_TYPE
 green[1] <= green.DB_MAX_OUTPUT_PORT_TYPE
 green[2] <= green.DB_MAX_OUTPUT_PORT_TYPE
 green[3] <= green.DB_MAX_OUTPUT_PORT_TYPE
-text_on <= char_rom:char_comp.rom_mux_output
+text_on <= text_on.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp
@@ -3082,6 +3063,23 @@ rnd[7] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 rnd[8] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 rnd[9] <= <GND>
 flag <= enable.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Bird_Block|MAIN:inst|FSM:FSM_DUT
+clk => game_mode[0].CLK
+clk => game_mode[1].CLK
+clk => \FSM_game_mode:prev_select.CLK
+select_option => game_mode.OUTPUTSELECT
+select_option => game_mode.OUTPUTSELECT
+select_option => game_mode.OUTPUTSELECT
+select_option => game_mode.OUTPUTSELECT
+select_option => game_mode.OUTPUTSELECT
+select_input => \FSM_game_mode:prev_select.DATAIN
+select_input => FSM_game_mode.IN1
+game_over => game_mode.OUTPUTSELECT
+game_over => game_mode.OUTPUTSELECT
+game_mode_out[0] <= game_mode[0].DB_MAX_OUTPUT_PORT_TYPE
+game_mode_out[1] <= game_mode[1].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Bird_Block|MOUSE:mouse_inst

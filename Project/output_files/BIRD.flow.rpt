@@ -1,5 +1,5 @@
 Flow report for BIRD
-Thu May 16 19:47:09 2024
+Thu May 16 21:49:22 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Thu May 16 19:47:03 2024           ;
+; Flow Status                     ; Successful - Thu May 16 21:49:17 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Device                          ; 5CEBA4F23C7                                     ;
 ; Timing Models                   ; Final                                           ;
-; Logic utilization (in ALMs)     ; 745 / 18,480 ( 4 % )                            ;
-; Total registers                 ; 408                                             ;
+; Logic utilization (in ALMs)     ; 761 / 18,480 ( 4 % )                            ;
+; Total registers                 ; 423                                             ;
 ; Total pins                      ; 36 / 224 ( 16 % )                               ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 73,728 / 3,153,920 ( 2 % )                      ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/16/2024 19:45:00 ;
+; Start date & time ; 05/16/2024 21:47:06 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; BIRD                ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+----------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name    ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+----------------+------------+
-; COMPILER_SIGNATURE_ID               ; 224948462597378.171584550021760        ; --            ; --             ; --         ;
+; COMPILER_SIGNATURE_ID               ; 224948462597378.171585282613640        ; --            ; --             ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --             ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --             ; --         ;
 ; MISC_FILE                           ; PLL.cmp                                ; --            ; --             ; --         ;
@@ -103,11 +103,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4989 MB             ; 00:00:04                           ;
-; Fitter               ; 00:01:42     ; 1.1                     ; 7796 MB             ; 00:00:52                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 4832 MB             ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:15     ; 1.0                     ; 4988 MB             ; 00:00:03                           ;
+; Fitter               ; 00:01:51     ; 1.1                     ; 7786 MB             ; 00:01:03                           ;
+; Assembler            ; 00:00:04     ; 1.0                     ; 4835 MB             ; 00:00:01                           ;
 ; Timing Analyzer      ; 00:00:05     ; 2.1                     ; 5289 MB             ; 00:00:04                           ;
-; Total                ; 00:02:05     ; --                      ; --                  ; 00:01:01                           ;
+; Total                ; 00:02:15     ; --                      ; --                  ; 00:01:11                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

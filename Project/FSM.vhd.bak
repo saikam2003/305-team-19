@@ -1,0 +1,38 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.all;
+USE IEEE.STD_LOGIC_ARITH.all;
+USE IEEE.STD_LOGIC_SIGNED.all;
+
+ENTITY FSM IS
+	port(select_option, select_input, t_game_over: IN STD_LOGIC;
+		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0));
+END ENTITY;
+
+ARCHITECTURE BEHAVIOUR OF FSM IS
+	SIGNAL game_mode: STD_LOGIC_VECTOR := "00";
+	
+BEGIN 
+	
+	FSM_game_mode: PROCESS(select_input, t_game_over)
+	begin
+			if(rising_edge(select_input) and game_mode = "00") then
+				if(select_option = '0') then
+					game_mode <= "01";
+				elsif(select_option = '1') then
+					game_mode <= "10";
+				end if;
+			elsif(rising_edge(t_game_over) and game_mode = "01") then
+				game_mode <= "11";
+			elsif(rising_edge(t_game_over) and game_mode = "10") then
+				game_mode <= "11";
+			elsif(rising_edge(select_input) and game_mode = "11") then
+				if(select_option = '0') then
+					game_mode <= "00";
+				elsif(select_option = '1') then
+					game_mode <= "10";
+				end if;
+			end if;
+	end process FSM_game_mode;
+	
+	game_mode_out <= game_mode;
+end architecture;

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Thu May 16 19:45:14 2024
+Thu May 16 21:47:20 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -65,13 +65,13 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu May 16 19:45:14 2024           ;
+; Analysis & Synthesis Status     ; Successful - Thu May 16 21:47:20 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 341                                             ;
+; Total registers                 ; 342                                             ;
 ; Total pins                      ; 36                                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 73,728                                          ;
@@ -189,8 +189,7 @@ refer to the applicable agreement for further details.
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
-;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
+;     Processors 6-7         ;   0.0%      ;
 ;     Processors 8-16        ;   0.0%      ;
 +----------------------------+-------------+
 
@@ -213,6 +212,7 @@ refer to the applicable agreement for further details.
 ; PLL.v                            ; yes             ; User Wizard-Generated File             ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL.v                  ; PLL     ;
 ; PLL/PLL_0002.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v         ; PLL     ;
 ; text_display.vhd                 ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd       ;         ;
+; FSM.vhd                          ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd                ;         ;
 ; altera_pll.v                     ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v               ;         ;
 ; bird_rom.vhd                     ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd           ;         ;
 ; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf             ;         ;
@@ -241,16 +241,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 773                                                                ;
+; Estimate of Logic utilization (ALMs needed) ; 794                                                                ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 1245                                                               ;
-;     -- 7 input functions                    ; 3                                                                  ;
-;     -- 6 input functions                    ; 278                                                                ;
-;     -- 5 input functions                    ; 164                                                                ;
-;     -- 4 input functions                    ; 128                                                                ;
-;     -- <=3 input functions                  ; 672                                                                ;
+; Combinational ALUT usage for logic          ; 1265                                                               ;
+;     -- 7 input functions                    ; 4                                                                  ;
+;     -- 6 input functions                    ; 300                                                                ;
+;     -- 5 input functions                    ; 155                                                                ;
+;     -- 4 input functions                    ; 150                                                                ;
+;     -- <=3 input functions                  ; 656                                                                ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 341                                                                ;
+; Dedicated logic registers                   ; 342                                                                ;
 ;                                             ;                                                                    ;
 ; I/O pins                                    ; 36                                                                 ;
 ; Total MLAB memory bits                      ; 0                                                                  ;
@@ -262,9 +262,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 160                                                                ;
-; Total fan-out                               ; 6070                                                               ;
-; Average fan-out                             ; 3.57                                                               ;
+; Maximum fan-out                             ; 163                                                                ;
+; Total fan-out                               ; 6227                                                               ;
+; Average fan-out                             ; 3.62                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
@@ -273,31 +273,32 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                         ; Entity Name     ; Library Name ;
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |Bird_Block                                     ; 1245 (1)            ; 341 (0)                   ; 73728             ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                                 ; Bird_Block      ; work         ;
+; |Bird_Block                                     ; 1265 (1)            ; 342 (0)                   ; 73728             ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                                 ; Bird_Block      ; work         ;
 ;    |BCD_to_SevenSeg:inst2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst2                                                                                                           ; BCD_to_SevenSeg ; work         ;
 ;    |BCD_to_SevenSeg:inst6|                      ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                                                                                           ; BCD_to_SevenSeg ; work         ;
-;    |MAIN:inst|                                  ; 1073 (39)           ; 166 (12)                  ; 73728             ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                                       ; MAIN            ; work         ;
-;       |BIRD:bird_component|                     ; 97 (97)             ; 25 (25)                   ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                                   ; BIRD            ; work         ;
+;    |MAIN:inst|                                  ; 1094 (41)           ; 165 (12)                  ; 73728             ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                                       ; MAIN            ; work         ;
+;       |BIRD:bird_component|                     ; 100 (100)           ; 25 (25)                   ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                                   ; BIRD            ; work         ;
 ;          |bird_rom:bird_sprite_up|              ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up                                                                           ; bird_rom        ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component                                           ; altsyncram      ; work         ;
 ;                |altsyncram_gig1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated            ; altsyncram_gig1 ; work         ;
-;       |COLLISION:collision_detection_pipe_2|    ; 13 (13)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:collision_detection_pipe_2                                                                                  ; COLLISION       ; work         ;
-;       |COLLISION:collision_detection_pipe|      ; 26 (26)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:collision_detection_pipe                                                                                    ; COLLISION       ; work         ;
+;       |COLLISION:collision_detection_pipe_2|    ; 16 (16)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:collision_detection_pipe_2                                                                                  ; COLLISION       ; work         ;
+;       |COLLISION:collision_detection_pipe|      ; 29 (29)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:collision_detection_pipe                                                                                    ; COLLISION       ; work         ;
+;       |FSM:FSM_DUT|                             ; 2 (2)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|FSM:FSM_DUT                                                                                                           ; FSM             ; work         ;
 ;       |LFSR:prng_2|                             ; 8 (8)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|LFSR:prng_2                                                                                                           ; LFSR            ; work         ;
-;       |PIPE:pipe_component_2|                   ; 103 (103)           ; 15 (15)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                                 ; PIPE            ; work         ;
-;       |PIPE:pipe_component|                     ; 94 (94)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                                   ; PIPE            ; work         ;
-;       |background:background_component|         ; 618 (29)            ; 88 (13)                   ; 65536             ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component                                                                                       ; background      ; work         ;
-;          |cloud:cloud_component_2|              ; 173 (173)           ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component_2                                                               ; cloud           ; work         ;
+;       |PIPE:pipe_component_2|                   ; 101 (101)           ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                                 ; PIPE            ; work         ;
+;       |PIPE:pipe_component|                     ; 91 (91)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                                   ; PIPE            ; work         ;
+;       |background:background_component|         ; 626 (20)            ; 88 (13)                   ; 65536             ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component                                                                                       ; background      ; work         ;
+;          |cloud:cloud_component_2|              ; 185 (185)           ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component_2                                                               ; cloud           ; work         ;
 ;          |cloud:cloud_component_3|              ; 189 (189)           ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component_3                                                               ; cloud           ; work         ;
-;          |cloud:cloud_component|                ; 227 (227)           ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component                                                                 ; cloud           ; work         ;
+;          |cloud:cloud_component|                ; 232 (232)           ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component                                                                 ; cloud           ; work         ;
 ;          |cloud_rom:cloud_sprite|               ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud_rom:cloud_sprite                                                                ; cloud_rom       ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud_rom:cloud_sprite|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
 ;                |altsyncram_5mg1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 65536             ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|cloud_rom:cloud_sprite|altsyncram:altsyncram_component|altsyncram_5mg1:auto_generated ; altsyncram_5mg1 ; work         ;
-;       |text_display:text_component|             ; 75 (73)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component                                                                                           ; text_display    ; work         ;
+;       |text_display:text_component|             ; 80 (78)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component                                                                                           ; text_display    ; work         ;
 ;          |char_rom:char_comp|                   ; 2 (2)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp                                                                        ; char_rom        ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component                                        ; altsyncram      ; work         ;
 ;                |altsyncram_d5g1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated         ; altsyncram_d5g1 ; work         ;
-;    |MOUSE:mouse_inst|                           ; 107 (107)           ; 118 (118)                 ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                                                                                ; MOUSE           ; work         ;
+;    |MOUSE:mouse_inst|                           ; 106 (106)           ; 120 (120)                 ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                                                                                ; MOUSE           ; work         ;
 ;    |PLL:inst3|                                  ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                                                                                                       ; PLL             ; PLL          ;
 ;       |PLL_0002:pll_inst|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                                                                                                     ; PLL_0002        ; PLL          ;
 ;          |altera_pll:altera_pll_i|              ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i                                                                             ; altera_pll      ; work         ;
@@ -341,60 +342,61 @@ Encoding Type:  One-Hot
 +-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                                                        ;
-+---------------------------------------------------------+---------------------------------------------------------+------------------------+
-; Latch Name                                              ; Latch Enable Signal                                     ; Free of Timing Hazards ;
-+---------------------------------------------------------+---------------------------------------------------------+------------------------+
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[8]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[7]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[6]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[5]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[3]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[4]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[2]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[1]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[0]              ; MAIN:inst|PIPE:pipe_component|random_enable             ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[8]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[7]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[6]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[5]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[3]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[4]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[2]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[1]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[0]            ; MAIN:inst|PIPE:pipe_component_2|random_enable           ; yes                    ;
-; MAIN:inst|text_display:text_component|char_3_on         ; MAIN:inst|text_display:text_component|char_address_3[1] ; yes                    ;
-; MAIN:inst|text_display:text_component|char_2_on         ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|t_pipe_enable                                 ; GND                                                     ; yes                    ;
-; MAIN:inst|t_pipe_enable_2                               ; GND                                                     ; yes                    ;
-; MAIN:inst|text_display:text_component|size_col[2]       ; MAIN:inst|text_display:text_component|size_col[0]       ; yes                    ;
-; MAIN:inst|text_display:text_component|size_col[1]       ; MAIN:inst|text_display:text_component|size_col[0]       ; yes                    ;
-; MAIN:inst|text_display:text_component|size_row[0]       ; MAIN:inst|text_display:text_component|size_col[0]       ; yes                    ;
-; MAIN:inst|text_display:text_component|size_row[1]       ; MAIN:inst|text_display:text_component|size_col[0]       ; yes                    ;
-; MAIN:inst|text_display:text_component|size_row[2]       ; MAIN:inst|text_display:text_component|size_col[0]       ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_3[0] ; MAIN:inst|text_display:text_component|char_address_3[1] ; yes                    ;
-; MAIN:inst|text_display:text_component|char_1_on         ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_1[0] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_2[0] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_3[1] ; MAIN:inst|text_display:text_component|char_address_3[1] ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_1[1] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_2[1] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_3[2] ; MAIN:inst|text_display:text_component|char_address_3[1] ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_1[2] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_2[2] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_3[3] ; MAIN:inst|text_display:text_component|char_address_3[1] ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_1[3] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_2[3] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_3[4] ; MAIN:inst|text_display:text_component|char_address_3[1] ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_1[4] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_2[4] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_3[5] ; MAIN:inst|text_display:text_component|char_address_3[1] ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_1[5] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|char_address_2[5] ; MAIN:inst|text_display:text_component|process_0         ; yes                    ;
-; MAIN:inst|text_display:text_component|size_col[0]       ; MAIN:inst|text_display:text_component|size_col[0]       ; yes                    ;
-; Number of user-specified and inferred latches = 47      ;                                                         ;                        ;
-+---------------------------------------------------------+---------------------------------------------------------+------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                  ;
++---------------------------------------------------------+---------------------------------------------------+------------------------+
+; Latch Name                                              ; Latch Enable Signal                               ; Free of Timing Hazards ;
++---------------------------------------------------------+---------------------------------------------------+------------------------+
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[8]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[7]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[6]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[5]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[3]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[4]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[2]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[1]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[0]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[8]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[7]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[6]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[5]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[3]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[4]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[2]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[1]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[0]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|text_display:text_component|char_2_on         ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_1_on         ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_3_on         ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
+; MAIN:inst|t_pipe_enable                                 ; GND                                               ; yes                    ;
+; MAIN:inst|t_pipe_enable_2                               ; GND                                               ; yes                    ;
+; MAIN:inst|text_display:text_component|size_col[2]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
+; MAIN:inst|text_display:text_component|size_col[1]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
+; MAIN:inst|t_game_started                                ; GND                                               ; yes                    ;
+; MAIN:inst|text_display:text_component|size_row[0]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
+; MAIN:inst|text_display:text_component|size_row[1]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
+; MAIN:inst|text_display:text_component|size_row[2]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_3[0] ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_1[0] ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_2[0] ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_3[1] ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_1[1] ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_2[1] ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_3[2] ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_1[2] ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_2[2] ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_3[3] ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_1[3] ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_2[3] ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_3[4] ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_1[4] ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_2[4] ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_3[5] ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_1[5] ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_address_2[5] ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|size_col[0]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
+; Number of user-specified and inferred latches = 48      ;                                                   ;                        ;
++---------------------------------------------------------+---------------------------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
@@ -410,10 +412,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MOUSE:mouse_inst|CHAROUT[0,1]                                                               ; Stuck at GND due to stuck port data_in                                                                  ;
 ; MOUSE:mouse_inst|SHIFTOUT[10]                                                               ; Stuck at VCC due to stuck port data_in                                                                  ;
 ; MAIN:inst|PIPE:pipe_component_2|green[0]                                                    ; Stuck at GND due to stuck port data_in                                                                  ;
-; MAIN:inst|PIPE:pipe_component_2|red[2]                                                      ; Stuck at GND due to stuck port data_in                                                                  ;
+; MAIN:inst|PIPE:pipe_component_2|red[0..3]                                                   ; Stuck at GND due to stuck port data_in                                                                  ;
+; MAIN:inst|PIPE:pipe_component_2|green[2,3]                                                  ; Stuck at VCC due to stuck port data_in                                                                  ;
 ; MAIN:inst|PIPE:pipe_component_2|green[1]                                                    ; Stuck at GND due to stuck port data_in                                                                  ;
 ; MAIN:inst|PIPE:pipe_component|green[0]                                                      ; Stuck at GND due to stuck port data_in                                                                  ;
-; MAIN:inst|PIPE:pipe_component|red[2]                                                        ; Stuck at GND due to stuck port data_in                                                                  ;
+; MAIN:inst|PIPE:pipe_component|red[0..3]                                                     ; Stuck at GND due to stuck port data_in                                                                  ;
+; MAIN:inst|PIPE:pipe_component|green[2,3]                                                    ; Stuck at VCC due to stuck port data_in                                                                  ;
 ; MAIN:inst|PIPE:pipe_component|green[1]                                                      ; Stuck at GND due to stuck port data_in                                                                  ;
 ; MAIN:inst|background:background_component|cloud:cloud_component|\Move_Cloud:pos_init_flag   ; Merged with MAIN:inst|background:background_component|cloud:cloud_component_2|\Move_Cloud:pos_init_flag ;
 ; MAIN:inst|background:background_component|cloud:cloud_component_2|\Move_Cloud:pos_init_flag ; Merged with MAIN:inst|background:background_component|cloud:cloud_component_3|\Move_Cloud:pos_init_flag ;
@@ -451,10 +455,6 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MAIN:inst|background:background_component|cloud:cloud_component_3|cloud_x_pos_b[2]          ; Merged with MAIN:inst|background:background_component|cloud:cloud_component_3|cloud_x_pos_a[2]          ;
 ; MAIN:inst|background:background_component|cloud:cloud_component_3|cloud_x_pos_b[1]          ; Merged with MAIN:inst|background:background_component|cloud:cloud_component_3|cloud_x_pos_a[1]          ;
 ; MAIN:inst|background:background_component|cloud:cloud_component_3|cloud_x_pos_b[0]          ; Merged with MAIN:inst|background:background_component|cloud:cloud_component_3|cloud_x_pos_a[0]          ;
-; MAIN:inst|PIPE:pipe_component_2|green[3]                                                    ; Merged with MAIN:inst|PIPE:pipe_component_2|green[2]                                                    ;
-; MAIN:inst|PIPE:pipe_component|green[3]                                                      ; Merged with MAIN:inst|PIPE:pipe_component|green[2]                                                      ;
-; MAIN:inst|PIPE:pipe_component_2|red[1,3]                                                    ; Merged with MAIN:inst|PIPE:pipe_component_2|red[0]                                                      ;
-; MAIN:inst|PIPE:pipe_component|red[1,3]                                                      ; Merged with MAIN:inst|PIPE:pipe_component|red[0]                                                        ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[7]                                                       ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[7]                                                     ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[6]                                                       ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[6]                                                     ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[5]                                                       ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[5]                                                     ;
@@ -477,7 +477,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MAIN:inst|background:background_component|cloud_sprite_x_pos[0]                             ; Stuck at GND due to stuck port data_in                                                                  ;
 ; MAIN:inst|background:background_component|\Move_Cloud_Sprite:half_counter[0..2]             ; Lost fanout                                                                                             ;
 ; MAIN:inst|background:background_component|cloud_sprite_x_pos[5]                             ; Stuck at VCC due to stuck port data_in                                                                  ;
-; Total Number of Removed Registers = 94                                                      ;                                                                                                         ;
+; Total Number of Removed Registers = 98                                                      ;                                                                                                         ;
 +---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
 
 
@@ -501,12 +501,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 341   ;
+; Total registers                              ; 342   ;
 ; Number of registers using Synchronous Clear  ; 34    ;
-; Number of registers using Synchronous Load   ; 30    ;
+; Number of registers using Synchronous Load   ; 38    ;
 ; Number of registers using Asynchronous Clear ; 45    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 237   ;
+; Number of registers using Clock Enable       ; 236   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -516,13 +516,13 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------------------------------+---------+
 ; Inverted Register                             ; Fan out ;
 +-----------------------------------------------+---------+
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]   ; 6       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]   ; 4       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]   ; 7       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]   ; 5       ;
 ; MAIN:inst|PIPE:pipe_component|pipe_x_pos[7]   ; 7       ;
 ; MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]   ; 7       ;
 ; MAIN:inst|PIPE:pipe_component|pipe_x_pos[9]   ; 7       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[2] ; 6       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[1] ; 4       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[2] ; 7       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[1] ; 5       ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[7] ; 6       ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[5] ; 6       ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9] ; 6       ;
@@ -544,27 +544,26 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_column[4]                                              ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[4]                                                          ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[3]                                      ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[3]                                        ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|cloud_sprite_x_pos[6]                    ;
-; 4:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component|cloud_x_pos_c[10]  ;
-; 4:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component_2|cloud_x_pos_a[4] ;
-; 4:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component_3|cloud_x_pos_a[0] ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[9]                                        ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[7]                                                  ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[6]                                                  ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[9]                                                     ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_column[3]                                              ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[5]                                                          ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[10]                                     ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[4]                                        ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|cloud_sprite_x_pos[4]                    ;
+; 4:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component|cloud_x_pos_c[7]   ;
+; 4:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component_2|cloud_x_pos_a[9] ;
+; 4:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|cloud:cloud_component_3|cloud_x_pos_a[8] ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[2]                                        ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[4]                                                  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[8]                                                  ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[3]                                                     ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[7]                                                     ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|green[2]                                 ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|green_output[1]                                                          ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|red_output[1]                                                            ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|green_output[2]                                                          ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[1]                                                           ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|red[2]                                   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|green_output[3]                                                          ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[3]                                                           ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9]                                      ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]                                        ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[0]                        ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]                                        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_3_on                                    ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[3]                        ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[3]                                              ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[5]                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------+
@@ -1146,6 +1145,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port         ; Type   ; Severity ; Details                                                                             ;
 +--------------+--------+----------+-------------------------------------------------------------------------------------+
+; colour_input ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; pipe_x[2..0] ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; pipe_x[4..3] ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; pipe_x[10]   ; Input  ; Info     ; Stuck at GND                                                                        ;
@@ -1163,6 +1163,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------+-------+----------+-------------------------+
 ; Port         ; Type  ; Severity ; Details                 ;
 +--------------+-------+----------+-------------------------+
+; colour_input ; Input ; Info     ; Stuck at GND            ;
 ; pipe_x[2..0] ; Input ; Info     ; Stuck at VCC            ;
 ; pipe_x[4..3] ; Input ; Info     ; Stuck at GND            ;
 ; pipe_x[10]   ; Input ; Info     ; Stuck at GND            ;
@@ -1188,31 +1189,31 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 341                         ;
+; arriav_ff             ; 342                         ;
 ;     CLR               ; 4                           ;
-;     ENA               ; 152                         ;
+;     ENA               ; 151                         ;
 ;     ENA CLR           ; 41                          ;
 ;     ENA SCLR          ; 24                          ;
 ;     ENA SLD           ; 20                          ;
 ;     SCLR              ; 10                          ;
-;     SLD               ; 10                          ;
-;     plain             ; 80                          ;
+;     SLD               ; 18                          ;
+;     plain             ; 74                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 1248                        ;
+; arriav_lcell_comb     ; 1268                        ;
 ;     arith             ; 415                         ;
 ;         0 data inputs ; 18                          ;
 ;         1 data inputs ; 365                         ;
 ;         2 data inputs ; 32                          ;
-;     extend            ; 3                           ;
-;         7 data inputs ; 3                           ;
-;     normal            ; 816                         ;
+;     extend            ; 4                           ;
+;         7 data inputs ; 4                           ;
+;     normal            ; 835                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 11                          ;
-;         2 data inputs ; 51                          ;
-;         3 data inputs ; 183                         ;
-;         4 data inputs ; 128                         ;
-;         5 data inputs ; 164                         ;
-;         6 data inputs ; 278                         ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 49                          ;
+;         3 data inputs ; 171                         ;
+;         4 data inputs ; 150                         ;
+;         5 data inputs ; 155                         ;
+;         6 data inputs ; 300                         ;
 ;     shared            ; 14                          ;
 ;         1 data inputs ; 2                           ;
 ;         2 data inputs ; 12                          ;
@@ -1220,8 +1221,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 40                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 4.55                        ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 4.10                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1240,7 +1241,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Thu May 16 19:44:59 2024
+    Info: Processing started: Thu May 16 21:47:05 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1278,8 +1279,11 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: PLL_0002 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v Line: 2
 Info (12021): Found 2 design units, including 1 entities, in source file text_display.vhd
-    Info (12022): Found design unit 1: text_display-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 13
+    Info (12022): Found design unit 1: text_display-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 14
     Info (12023): Found entity 1: text_display File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file fsm.vhd
+    Info (12022): Found design unit 1: FSM-BEHAVIOUR File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 11
+    Info (12023): Found entity 1: FSM File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 6
 Info (12127): Elaborating entity "Bird_Block" for the top level hierarchy
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst1"
 Info (12128): Elaborating entity "PLL" for hierarchy "PLL:inst3"
@@ -1354,9 +1358,10 @@ Warning (10541): VHDL Signal Declaration warning at main.vhd(13): used implicit 
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(26): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 26
 Warning (10540): VHDL Signal Declaration warning at main.vhd(28): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 28
 Warning (10540): VHDL Signal Declaration warning at main.vhd(28): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 28
-Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(211) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 211
-Info (10041): Inferred latch for "t_pipe_enable" at main.vhd(206) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 206
-Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 82
+Info (10041): Inferred latch for "t_game_started" at main.vhd(231) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 231
+Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(225) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 225
+Info (10041): Inferred latch for "t_pipe_enable" at main.vhd(220) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 220
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 89
 Warning (12125): Using design file bird_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: bird_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 22
     Info (12023): Found entity 1: bird_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 9
@@ -1381,7 +1386,7 @@ Info (12133): Instantiated megafunction "MAIN:inst|BIRD:bird_component|bird_rom:
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_gig1.tdf
     Info (12023): Found entity 1: altsyncram_gig1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_gig1.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_gig1" for hierarchy "MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 97
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 104
 Info (10041): Inferred latch for "gap_y_pos[0]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[1]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[2]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
@@ -1392,8 +1397,8 @@ Info (10041): Inferred latch for "gap_y_pos[6]" at pipe.vhd(45) File: C:/Users/v
 Info (10041): Inferred latch for "gap_y_pos[7]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[8]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[9]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
-Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 118
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 159
+Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 125
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 166
 Warning (10540): VHDL Signal Declaration warning at background.vhd(21): used explicit default value for signal "grass" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 21
 Warning (10540): VHDL Signal Declaration warning at background.vhd(22): used explicit default value for signal "ground" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 22
 Warning (10540): VHDL Signal Declaration warning at background.vhd(27): used explicit default value for signal "cloud_sprite_y_pos" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 27
@@ -1424,49 +1429,53 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_5mg1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_5mg1.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_5mg1" for hierarchy "MAIN:inst|background:background_component|cloud_rom:cloud_sprite|altsyncram:altsyncram_component|altsyncram_5mg1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
 Info (12128): Elaborating entity "cloud" for hierarchy "MAIN:inst|background:background_component|cloud:cloud_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 68
-Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 173
-Warning (10492): VHDL Process Statement warning at text_display.vhd(49): signal "game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 49
-Warning (10492): VHDL Process Statement warning at text_display.vhd(103): signal "game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 103
-Warning (10492): VHDL Process Statement warning at text_display.vhd(162): signal "game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 162
-Warning (10631): VHDL Process Statement warning at text_display.vhd(43): inferring latch(es) for signal or variable "char_1_on", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Warning (10631): VHDL Process Statement warning at text_display.vhd(43): inferring latch(es) for signal or variable "size_row", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Warning (10631): VHDL Process Statement warning at text_display.vhd(43): inferring latch(es) for signal or variable "size_col", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Warning (10631): VHDL Process Statement warning at text_display.vhd(43): inferring latch(es) for signal or variable "char_address_1", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Warning (10631): VHDL Process Statement warning at text_display.vhd(43): inferring latch(es) for signal or variable "char_2_on", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Warning (10631): VHDL Process Statement warning at text_display.vhd(43): inferring latch(es) for signal or variable "char_address_2", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Warning (10631): VHDL Process Statement warning at text_display.vhd(43): inferring latch(es) for signal or variable "char_3_on", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Warning (10631): VHDL Process Statement warning at text_display.vhd(43): inferring latch(es) for signal or variable "char_address_3", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_3[0]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_3[1]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_3[2]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_3[3]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_3[4]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_3[5]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_3_on" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_2[0]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_2[1]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_2[2]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_2[3]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_2[4]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_2[5]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_2_on" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_1[0]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_1[1]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_1[2]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_1[3]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_1[4]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_address_1[5]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "size_col[0]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "size_col[1]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "size_col[2]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "size_row[0]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "size_row[1]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "size_row[2]" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
-Info (10041): Inferred latch for "char_1_on" at text_display.vhd(43) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
+Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 180
+Warning (10492): VHDL Process Statement warning at text_display.vhd(46): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 46
+Warning (10492): VHDL Process Statement warning at text_display.vhd(54): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 54
+Warning (10492): VHDL Process Statement warning at text_display.vhd(78): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 78
+Warning (10492): VHDL Process Statement warning at text_display.vhd(108): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 108
+Warning (10492): VHDL Process Statement warning at text_display.vhd(132): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 132
+Warning (10492): VHDL Process Statement warning at text_display.vhd(167): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 167
+Warning (10492): VHDL Process Statement warning at text_display.vhd(193): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 193
+Warning (10631): VHDL Process Statement warning at text_display.vhd(44): inferring latch(es) for signal or variable "char_address_1", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at text_display.vhd(44): inferring latch(es) for signal or variable "char_address_2", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at text_display.vhd(44): inferring latch(es) for signal or variable "char_address_3", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at text_display.vhd(44): inferring latch(es) for signal or variable "char_1_on", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at text_display.vhd(44): inferring latch(es) for signal or variable "size_row", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at text_display.vhd(44): inferring latch(es) for signal or variable "size_col", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at text_display.vhd(44): inferring latch(es) for signal or variable "char_2_on", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at text_display.vhd(44): inferring latch(es) for signal or variable "char_3_on", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_3_on" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_2_on" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "size_col[0]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "size_col[1]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "size_col[2]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "size_row[0]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "size_row[1]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "size_row[2]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_1_on" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_3[0]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_3[1]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_3[2]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_3[3]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_3[4]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_3[5]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_2[0]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_2[1]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_2[2]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_2[3]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_2[4]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_2[5]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_1[0]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_1[1]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_1[2]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_1[3]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_1[4]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
+Info (10041): Inferred latch for "char_address_1[5]" at text_display.vhd(44) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
 Warning (12125): Using design file char_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: char_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 20
     Info (12023): Found entity 1: char_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 9
-Info (12128): Elaborating entity "char_rom" for hierarchy "MAIN:inst|text_display:text_component|char_rom:char_comp" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 28
+Info (12128): Elaborating entity "char_rom" for hierarchy "MAIN:inst|text_display:text_component|char_rom:char_comp" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 29
 Info (12128): Elaborating entity "altsyncram" for hierarchy "MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
 Info (12130): Elaborated megafunction instantiation "MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
 Info (12133): Instantiated megafunction "MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd Line: 51
@@ -1490,7 +1499,9 @@ Info (12128): Elaborating entity "altsyncram_d5g1" for hierarchy "MAIN:inst|text
 Warning (12125): Using design file lfsr.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: LFSR-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 12
     Info (12023): Found entity 1: LFSR File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 6
-Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 185
+Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 192
+Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 208
+Warning (10492): VHDL Process Statement warning at FSM.vhd(20): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 20
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:mouse_inst"
 Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(25): object "CHARIN" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 25
 Warning (10492): VHDL Process Statement warning at mouse.vhd(151): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 151
@@ -1498,17 +1509,23 @@ Warning (10492): VHDL Process Statement warning at mouse.vhd(155): signal "CHARO
 Warning (10492): VHDL Process Statement warning at mouse.vhd(156): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 156
 Warning (10492): VHDL Process Statement warning at mouse.vhd(157): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 157
 Info (12128): Elaborating entity "BCD_to_SevenSeg" for hierarchy "BCD_to_SevenSeg:inst6"
-Warning (13012): Latch MAIN:inst|text_display:text_component|size_col[2] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
+Warning (13012): Latch MAIN:inst|text_display:text_component|char_2_on has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MAIN:inst|FSM:FSM_DUT|game_mode[0] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 20
+Warning (13012): Latch MAIN:inst|text_display:text_component|char_1_on has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MAIN:inst|FSM:FSM_DUT|game_mode[0] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 20
+Warning (13012): Latch MAIN:inst|text_display:text_component|char_3_on has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal MAIN:inst|FSM:FSM_DUT|game_mode[0] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 20
+Warning (13012): Latch MAIN:inst|text_display:text_component|size_col[2] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
     Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst1|pixel_row[7] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 90
-Warning (13012): Latch MAIN:inst|text_display:text_component|size_col[1] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
+Warning (13012): Latch MAIN:inst|text_display:text_component|size_col[1] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
     Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst1|pixel_row[7] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 90
-Warning (13012): Latch MAIN:inst|text_display:text_component|size_row[0] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
+Warning (13012): Latch MAIN:inst|text_display:text_component|size_row[0] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
     Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst1|pixel_row[2] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 90
-Warning (13012): Latch MAIN:inst|text_display:text_component|size_row[1] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
+Warning (13012): Latch MAIN:inst|text_display:text_component|size_row[1] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
     Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst1|pixel_row[3] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 90
-Warning (13012): Latch MAIN:inst|text_display:text_component|size_row[2] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
+Warning (13012): Latch MAIN:inst|text_display:text_component|size_row[2] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
     Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst1|pixel_row[4] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 90
-Warning (13012): Latch MAIN:inst|text_display:text_component|size_col[0] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 43
+Warning (13012): Latch MAIN:inst|text_display:text_component|size_col[0] has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 44
     Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst1|pixel_row[7] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 90
 Info (13000): Registers with preset signals will power-up high File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 146
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
@@ -1752,17 +1769,19 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
     Info: Must be connected
-Info (21057): Implemented 1418 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[0]"
+Info (21057): Implemented 1440 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 30 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 1341 logic cells
+    Info (21061): Implemented 1363 logic cells
     Info (21064): Implemented 40 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 278 warnings
-    Info: Peak virtual memory: 4989 megabytes
-    Info: Processing ended: Thu May 16 19:45:14 2024
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 291 warnings
+    Info: Peak virtual memory: 4988 megabytes
+    Info: Processing ended: Thu May 16 21:47:20 2024
     Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 

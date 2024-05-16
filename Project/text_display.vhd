@@ -4,7 +4,8 @@ USE IEEE.STD_LOGIC_ARITH.all;
 USE IEEE.STD_LOGIC_UNSIGNED.all;
 
 ENTITY text_display IS
-	PORT(Clk, enable, select_option, game_mode: IN STD_LOGIC;
+	PORT(Clk, enable, select_option_in: IN STD_LOGIC;
+			game_mode_in: IN STD_LOGIC_VECTOR(1 downto 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
 			text_on: OUT STD_LOGIC);
@@ -31,10 +32,10 @@ BEGIN
 		font_col => size_col,
 		clock => clk,
 		rom_mux_output => t_text_on);
-	text_on <= t_text_on;
+	text_on <= '0' when char_3_on = '0' and char_2_on = '0' and char_1_on = '0' else t_text_on when enable = '1' else '0';
 	blue  <= "0000" ;
-	green <= (t_text_on,t_text_on,t_text_on,t_text_on) when t_text_on = '1' and char_2_on = '1' and select_option = '1' else 
-				(t_text_on,t_text_on,t_text_on,t_text_on) when t_text_on = '1' and char_3_on = '1' and select_option = '0' else "0000";
+	green <= (t_text_on,t_text_on,t_text_on,t_text_on) when t_text_on = '1' and char_2_on = '1' and select_option_in = '1' else 
+				(t_text_on,t_text_on,t_text_on,t_text_on) when t_text_on = '1' and char_3_on = '1' and select_option_in = '0' else "0000";
 	
 	red <= (t_text_on,t_text_on,t_text_on,t_text_on);
 	char_address_final <= char_address_1 when char_1_on = '1'  else 
@@ -42,11 +43,15 @@ BEGIN
 								char_address_3 when char_3_on = '1'else "100000";
 	process(pixel_row,pixel_column)
 	begin
-		if(pixel_row >= 63 and pixel_row <= 95) then
+		if(game_mode_in = "01" or game_mode_in = "10") then
+			char_address_1<= "100000";
+			char_address_2<= "100000";
+			char_address_3<= "100000";
+		elsif(pixel_row >= 63 and pixel_row <= 95) then
 			char_1_on <= '1';
 			size_row <= pixel_row(4 downto 2);
 			size_col <= pixel_column(4 downto 2);
-			if(game_mode = '1') then
+			if(game_mode_in = "11") then
 				case pixel_column(9 downto 5) is
 					 when CONV_STD_LOGIC_VECTOR(0, 5) =>
 						  char_address_1 <= CONV_STD_LOGIC_VECTOR(7, 6);
@@ -70,7 +75,7 @@ BEGIN
 							char_address_1 <= CONV_STD_LOGIC_VECTOR(32, 6);
 						  char_1_on <= '0';
 				end case;
-			else
+			elsif(game_mode_in = "00") then
 				case "0" & pixel_column(9 downto 5) is
 					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
 						  char_address_1 <= CONV_STD_LOGIC_VECTOR(13, 6);
@@ -100,7 +105,7 @@ BEGIN
 			char_2_on <= '1';
 			size_row <= pixel_row(3 downto 1);
 			size_col <= pixel_column(3 downto 1);
-			if game_mode = '1' then
+			if game_mode_in = "11" then
 				case pixel_column(9 downto 4) is
 					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
 						  char_address_2 <= CONV_STD_LOGIC_VECTOR(13, 6);
@@ -124,7 +129,7 @@ BEGIN
 						char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6);
 						  char_2_on <= '0';
 				end case;
-			else
+			elsif(game_mode_in = "00") then
 				case pixel_column(9 downto 4) is
 					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
 						  char_address_2 <= CONV_STD_LOGIC_VECTOR(20, 6); -- T
@@ -159,7 +164,7 @@ BEGIN
 			char_3_on <= '1';
 			size_row <= pixel_row(3 downto 1);
 			size_col <= pixel_column(3 downto 1);
-			if game_mode = '1' then
+			if game_mode_in = "11" then
 				case pixel_column(9 downto 4) is
 					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
 						  char_address_3 <= CONV_STD_LOGIC_VECTOR(16, 6);
@@ -185,7 +190,7 @@ BEGIN
 							char_address_3 <= CONV_STD_LOGIC_VECTOR(32, 6);
 						  char_3_on <= '0';
 				end case;
-			else
+			elsif(game_mode_in = "00") then
 				case pixel_column(9 downto 4) is
 					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
 						  char_address_3 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
