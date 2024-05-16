@@ -4,7 +4,7 @@ USE IEEE.STD_LOGIC_ARITH.all;
 USE IEEE.STD_LOGIC_UNSIGNED.all;
 
 ENTITY text_display IS
-	PORT(Clk, enable, select_option: IN STD_LOGIC;
+	PORT(Clk, enable, select_option, game_mode: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
 			text_on: OUT STD_LOGIC);
@@ -46,86 +46,174 @@ BEGIN
 			char_1_on <= '1';
 			size_row <= pixel_row(4 downto 2);
 			size_col <= pixel_column(4 downto 2);
-			case pixel_column(9 downto 5) is
-				 when CONV_STD_LOGIC_VECTOR(0, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(7, 6);
-				 when CONV_STD_LOGIC_VECTOR(1, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(1, 6);
-				 when CONV_STD_LOGIC_VECTOR(2, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(13, 6);
-				 when CONV_STD_LOGIC_VECTOR(3, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(5, 6);
-				 when CONV_STD_LOGIC_VECTOR(4, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(32, 6);
-				 when CONV_STD_LOGIC_VECTOR(5, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(15, 6);
-				 when CONV_STD_LOGIC_VECTOR(6, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(22, 6);
-				 when CONV_STD_LOGIC_VECTOR(7, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(5, 6);
-				 when CONV_STD_LOGIC_VECTOR(8, 5) =>
-					  char_address_1 <= CONV_STD_LOGIC_VECTOR(18, 6);
-				 when others =>
+			if(game_mode = '1') then
+				case pixel_column(9 downto 5) is
+					 when CONV_STD_LOGIC_VECTOR(0, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(7, 6);
+					 when CONV_STD_LOGIC_VECTOR(1, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(1, 6);
+					 when CONV_STD_LOGIC_VECTOR(2, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(13, 6);
+					 when CONV_STD_LOGIC_VECTOR(3, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(5, 6);
+					 when CONV_STD_LOGIC_VECTOR(4, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(32, 6);
+					 when CONV_STD_LOGIC_VECTOR(5, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(15, 6);
+					 when CONV_STD_LOGIC_VECTOR(6, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(22, 6);
+					 when CONV_STD_LOGIC_VECTOR(7, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(5, 6);
+					 when CONV_STD_LOGIC_VECTOR(8, 5) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(18, 6);
+					 when others =>
+							char_address_1 <= CONV_STD_LOGIC_VECTOR(32, 6);
+						  char_1_on <= '0';
+				end case;
+			else
+				case "0" & pixel_column(9 downto 5) is
+					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(13, 6);
+					 when CONV_STD_LOGIC_VECTOR(1, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(1, 6);
+					 when CONV_STD_LOGIC_VECTOR(2, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(9, 6);
+					 when CONV_STD_LOGIC_VECTOR(3, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(14, 6);
+					 when CONV_STD_LOGIC_VECTOR(4, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(32, 6);
+					 when CONV_STD_LOGIC_VECTOR(5, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(13, 6);
+					 when CONV_STD_LOGIC_VECTOR(6, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(5, 6);
+					 when CONV_STD_LOGIC_VECTOR(7, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(14, 6);
+					 when CONV_STD_LOGIC_VECTOR(8, 6) =>
+						  char_address_1 <= CONV_STD_LOGIC_VECTOR(21, 6);
+					 when others =>
 						char_address_1 <= CONV_STD_LOGIC_VECTOR(32, 6);
-					  char_1_on <= '0';
-			end case;
+						  char_1_on <= '0';
+				end case;
+			end if;
 			
 		elsif(pixel_row >= 207 and pixel_row <= 223) then
 			char_2_on <= '1';
 			size_row <= pixel_row(3 downto 1);
 			size_col <= pixel_column(3 downto 1);
-			case pixel_column(9 downto 4) is
-				 when CONV_STD_LOGIC_VECTOR(0, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(13, 6);
-				 when CONV_STD_LOGIC_VECTOR(1, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(1, 6);
-				 when CONV_STD_LOGIC_VECTOR(2, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(9, 6);
-				 when CONV_STD_LOGIC_VECTOR(3, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6);
-				 when CONV_STD_LOGIC_VECTOR(4, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6);
-				 when CONV_STD_LOGIC_VECTOR(5, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(13, 6);
-				 when CONV_STD_LOGIC_VECTOR(6, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(5, 6);
-				 when CONV_STD_LOGIC_VECTOR(7, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6);
-				 when CONV_STD_LOGIC_VECTOR(8, 6) =>
-					  char_address_2 <= CONV_STD_LOGIC_VECTOR(21, 6);
-				 when others =>
-					char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6);
-					  char_2_on <= '0';
-			end case;
+			if game_mode = '1' then
+				case pixel_column(9 downto 4) is
+					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(13, 6);
+					 when CONV_STD_LOGIC_VECTOR(1, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(1, 6);
+					 when CONV_STD_LOGIC_VECTOR(2, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(9, 6);
+					 when CONV_STD_LOGIC_VECTOR(3, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6);
+					 when CONV_STD_LOGIC_VECTOR(4, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6);
+					 when CONV_STD_LOGIC_VECTOR(5, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(13, 6);
+					 when CONV_STD_LOGIC_VECTOR(6, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(5, 6);
+					 when CONV_STD_LOGIC_VECTOR(7, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6);
+					 when CONV_STD_LOGIC_VECTOR(8, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(21, 6);
+					 when others =>
+						char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6);
+						  char_2_on <= '0';
+				end case;
+			else
+				case pixel_column(9 downto 4) is
+					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(20, 6); -- T
+					 when CONV_STD_LOGIC_VECTOR(1, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(18, 6); -- R
+					 when CONV_STD_LOGIC_VECTOR(2, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(1, 6);  -- A
+					 when CONV_STD_LOGIC_VECTOR(3, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(9, 6);  -- I
+					 when CONV_STD_LOGIC_VECTOR(4, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
+					 when CONV_STD_LOGIC_VECTOR(5, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
+					 when CONV_STD_LOGIC_VECTOR(6, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(7, 6);  -- G
+					 when CONV_STD_LOGIC_VECTOR(7, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6); -- " "
+					 when CONV_STD_LOGIC_VECTOR(8, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(13, 6); -- M
+					 when CONV_STD_LOGIC_VECTOR(9, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(15, 6); -- O
+					 when CONV_STD_LOGIC_VECTOR(10, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(4, 6); -- D
+					 when CONV_STD_LOGIC_VECTOR(11, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(5, 6); -- E
+					 when others =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6); -- " "
+						  char_2_on <= '0';
+				end case;
+			end if;
 		elsif(pixel_row >= 255 and pixel_row <= 271) then
 			char_3_on <= '1';
 			size_row <= pixel_row(3 downto 1);
 			size_col <= pixel_column(3 downto 1);
-			case pixel_column(9 downto 4) is
-				 when CONV_STD_LOGIC_VECTOR(0, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(16, 6);
-				 when CONV_STD_LOGIC_VECTOR(1, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(12, 6);
-				 when CONV_STD_LOGIC_VECTOR(2, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(1, 6);
-				 when CONV_STD_LOGIC_VECTOR(3, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(25, 6);
-				 when CONV_STD_LOGIC_VECTOR(4, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(32, 6);
-				 when CONV_STD_LOGIC_VECTOR(5, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(1, 6);
-				 when CONV_STD_LOGIC_VECTOR(6, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(7, 6);
-				 when CONV_STD_LOGIC_VECTOR(7, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(1, 6);
-				 when CONV_STD_LOGIC_VECTOR(8, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(9, 6);
-				 when CONV_STD_LOGIC_VECTOR(9, 6) =>
-					  char_address_3 <= CONV_STD_LOGIC_VECTOR(14, 6);
-				 when others =>
-						char_address_3 <= CONV_STD_LOGIC_VECTOR(32, 6);
-					  char_3_on <= '0';
-			end case;
+			if game_mode = '1' then
+				case pixel_column(9 downto 4) is
+					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(16, 6);
+					 when CONV_STD_LOGIC_VECTOR(1, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(12, 6);
+					 when CONV_STD_LOGIC_VECTOR(2, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(1, 6);
+					 when CONV_STD_LOGIC_VECTOR(3, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(25, 6);
+					 when CONV_STD_LOGIC_VECTOR(4, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(32, 6);
+					 when CONV_STD_LOGIC_VECTOR(5, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(1, 6);
+					 when CONV_STD_LOGIC_VECTOR(6, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(7, 6);
+					 when CONV_STD_LOGIC_VECTOR(7, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(1, 6);
+					 when CONV_STD_LOGIC_VECTOR(8, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(9, 6);
+					 when CONV_STD_LOGIC_VECTOR(9, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(14, 6);
+					 when others =>
+							char_address_3 <= CONV_STD_LOGIC_VECTOR(32, 6);
+						  char_3_on <= '0';
+				end case;
+			else
+				case pixel_column(9 downto 4) is
+					 when CONV_STD_LOGIC_VECTOR(0, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
+					 when CONV_STD_LOGIC_VECTOR(1, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(15, 6); -- O
+					 when CONV_STD_LOGIC_VECTOR(2, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(18, 6);  -- R
+					 when CONV_STD_LOGIC_VECTOR(3, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(13, 6);  -- M
+					 when CONV_STD_LOGIC_VECTOR(4, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(1, 6); -- A
+					 when CONV_STD_LOGIC_VECTOR(5, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(12, 6); -- L
+					 when CONV_STD_LOGIC_VECTOR(6, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(32, 6); -- " "
+					 when CONV_STD_LOGIC_VECTOR(7, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(13, 6); -- M
+					 when CONV_STD_LOGIC_VECTOR(8, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(15, 6); -- O
+					 when CONV_STD_LOGIC_VECTOR(9, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(4, 6); -- D
+					 when CONV_STD_LOGIC_VECTOR(10, 6) =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(5, 6); -- E
+					 when others =>
+						  char_address_3 <= CONV_STD_LOGIC_VECTOR(32, 6); -- " "
+						  char_3_on <= '0';
+				end case;
+			end if;
 		end if;
 	end process;
 --	text_on <= t_text_on when (pixel_row <= 47 and pixel_column <= 300) else '0';

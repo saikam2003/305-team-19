@@ -66,7 +66,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT TEXT_DISPLAY IS
-		PORT(Clk, enable, select_option: IN STD_LOGIC;
+		PORT(Clk, enable, select_option, game_mode: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
 			text_on: OUT STD_LOGIC);
@@ -173,7 +173,8 @@ BEGIN
 	text_component: TEXT_DISPLAY
 						PORT MAP(Clk => clk_input,
 							enable => '1',
-							select_option => '1', -- change this to inputs later!!!!!!
+							select_option => colour_pipe, -- change this to inputs later!!!!!!
+							game_mode => text_on,
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
 							red => text_red, 
@@ -215,7 +216,7 @@ BEGIN
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
 
-			IF (t_text_on = '1' and text_on = '1') THEN
+			IF (t_text_on = '1') THEN
 				red_output <= text_red;
 				green_output <= text_green;
 				blue_output <= text_blue;
