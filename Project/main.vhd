@@ -66,7 +66,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT TEXT_DISPLAY IS
-		PORT(Clk, enable: IN STD_LOGIC;
+		PORT(Clk, enable, select_option: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
 			text_on: OUT STD_LOGIC);
@@ -173,6 +173,7 @@ BEGIN
 	text_component: TEXT_DISPLAY
 						PORT MAP(Clk => clk_input,
 							enable => '1',
+							select_option => '1', -- change this to inputs later!!!!!!
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
 							red => text_red, 
