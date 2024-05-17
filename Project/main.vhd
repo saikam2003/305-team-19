@@ -22,8 +22,9 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL heart_red, heart_green, heart_blue : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
-	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
+	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_heart_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_y, t_pipe_y_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -234,8 +235,11 @@ BEGIN
 	screen_display: PROCESS(clk_input, select_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
-
-			IF (t_text_on = '1') THEN
+			IF (t_heart_on = '1') THEN
+				red_output <=   heart_red;
+				green_output <= heart_green;
+				blue_output <=  heart_blue;
+			ELSIF (t_text_on = '1') THEN
 				red_output <= text_red;
 				green_output <= text_green;
 				blue_output <= text_blue;

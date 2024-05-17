@@ -17,9 +17,9 @@ END ENTITY HEART;
 ARCHITECTURE behaviour OF HEART IS
 	
 	SIGNAL ball_on: STD_LOGIC;
-	SIGNAL size: STD_LOGIC_VECTOR(9 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(16,10);
-	SIGNAL heart_x_pos: STD_LOGIC_VECTOR(10 DOWNTO 0);
-	SIGNAL heart_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL size: STD_LOGIC_VECTOR(9 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(8,10);
+	SIGNAL heart_x_pos: STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(600,11);
+	SIGNAL heart_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(50,10);
 	
 	SIGNAL t_heart_alpha	: STD_LOGIC_VECTOR(3 downto 0);
 	SIGNAL t_heart_red	: STD_LOGIC_VECTOR(3 downto 0);
@@ -44,8 +44,8 @@ ARCHITECTURE behaviour OF HEART IS
 BEGIN
 	
 	heart_sprite: heart_rom PORT MAP(
-		font_row => pixel_row(4 downto 1) - (heart_y_pos(4 downto 1) + size(4 downto 1)) ,
-		font_col => pixel_column(3 downto 0),
+		font_row => pixel_row(4 downto 1),
+		font_col => pixel_column(4 downto 1),
 		clock => clk,
 		heart_data_alpha	=>	t_heart_alpha,
 		heart_data_red	=>		t_heart_red,
@@ -54,7 +54,9 @@ BEGIN
 	);
 	
 	
-	heart_on <= '1' when ((pixel_row >= CONV_STD_LOGIC_VECTOR(19,10)) AND (pixel_row <= CONV_STD_LOGIC_VECTOR(51,10)) AND (pixel_column >= CONV_STD_LOGIC_VECTOR(549,10)) AND (pixel_column <= CONV_STD_LOGIC_VECTOR(581,10)) AND t_heart_alpha = "0001");
+	heart_on <= '1' WHEN ( ('0' & heart_x_pos <= '0' & pixel_column + size) AND ('0' & pixel_column <= '0' & heart_x_pos + size) 	-- x_pos - size <= pixel_column <= x_pos + size
+					AND ('0' & heart_y_pos <= pixel_row + size) AND ('0' & pixel_row <= heart_y_pos + size) AND (t_heart_alpha = "0001") )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
+			'0';
 	
 	red <= t_heart_red;
 	blue <= t_heart_blue;
