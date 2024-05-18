@@ -32,10 +32,8 @@ BEGIN
 	-- 	END IF;
 	-- END PROCESS;
 
-	collsion_detected <= '0' WHEN reset = '1' ELSE
-											'1' WHEN ((collision_chance = '1') AND 
-											((bird_y_position + bird_size >= pipe_y_position + gap_size_y) OR (bird_y_position - bird_size <= pipe_y_position - gap_size_y))) ELSE
-											collision_detected WHEN OTHERS;
+	collision_detected <= '0' WHEN reset = '1' ELSE
+											'1' WHEN ((pipe_collision_chance = '1') AND ((bird_y_position + bird_size >= pipe_y_position + gap_size_y) OR (bird_y_position - bird_size <= pipe_y_position - gap_size_y)));
 	
 
 END ARCHITECTURE behaviour;

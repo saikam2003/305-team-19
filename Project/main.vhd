@@ -23,8 +23,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL heart_red, heart_green, heart_blue : STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
-	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_heart_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
+	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable, t_bird_pass: STD_LOGIC;
+	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_heart_on, t_background_on, t_random_flag_2, t_random_enable_2, t_bird_pass_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_y, t_pipe_y_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -48,7 +48,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 			random_flag: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
-			pipe_on, random_enable: OUT STD_LOGIC;
+			pipe_on, random_enable, bird_pass: OUT STD_LOGIC;
 			pipe_halfway, collision_chance: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
@@ -85,8 +85,20 @@ ARCHITECTURE behvaiour OF MAIN IS
 		port(clk, select_option, select_input, game_over: IN STD_LOGIC;
 		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0));
 	END COMPONENT;
+
+	COMPONENT SCORE IS
+		  PORT(bird_pass, score_reset, collision: IN STD_LOGIC;
+        current_score: OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+	END COMPONENT;
 BEGIN 
 	
+	score_component: SCORE
+						PORT MAP(
+							bird_pass => t_bird_pass OR t_bird_pass_2,
+							score_reset => '0',
+							collision => t_collision_detected or t_collision_detected_2
+						);
+						
 	bird_component: BIRD
 						PORT MAP(
 							clk => clk_input,
@@ -118,6 +130,7 @@ BEGIN
 							blue => pipe_blue,
 							pipe_on => t_pipe_on,
 							random_enable => t_random_enable,
+							bird_pass => t_bird_pass,							
 							pipe_halfway => t_pipe_halfway,
 							collision_chance => t_collision_chance,
 							pipe_position => t_pipe_position
@@ -159,6 +172,7 @@ BEGIN
 							blue => pipe_blue_2,
 							pipe_on => t_pipe_on_2,
 							random_enable => t_random_enable_2,
+							bird_pass => t_bird_pass_2,		
 							pipe_halfway => t_pipe_halfway_2,
 							collision_chance => t_collision_chance_2,
 							pipe_position => t_pipe_position_2

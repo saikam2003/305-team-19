@@ -14,10 +14,11 @@ END ENTITY SCORE;
 ARCHITECTURE behaviour OF SCORE IS
 
   SIGNAL temp_score: STD_LOGIC_VECTOR(7 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(0, 8);
-
-  temp_score <= (temp_score + CONV_STD_LOGIC_VECTOR(1, 8)) WHEN (bird_pass = '1' AND collision = '0' AND) ELSE
+  
+BEGIN
+  temp_score <= (temp_score + CONV_STD_LOGIC_VECTOR(1, 8)) WHEN (bird_pass = '1' AND collision = '0') ELSE
                 CONV_STD_LOGIC_VECTOR(0, 8) WHEN score_reset = '1' ELSE
-                temp_score WHEN OTHERS;
+                temp_score;
 
   current_score <= temp_score;
 

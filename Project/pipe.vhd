@@ -136,6 +136,7 @@ BEGIN
 						END IF;
 						collision_chance <= '1'; -- the chance of collision is high
 					ELSE
+						bird_pass <= '0';
 						collision_chance <= '0';
 					END IF;
 				ELSE
