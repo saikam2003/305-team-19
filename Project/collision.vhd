@@ -19,17 +19,23 @@ ARCHITECTURE behaviour OF COLLISION IS
 	CONSTANT bird_size: STD_LOGIC_VECTOR(9 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(8, 10);
 BEGIN
 
-	PROCESS(clk,reset)
-	BEGIN
-		IF (reset = '1') THEN
-			collision_detected <= '0';
-		ELSIF RISING_EDGE(clk) THEN
-			IF (pipe_collision_chance = '1') THEN
-				IF ((bird_y_position + bird_size >= pipe_y_position + gap_size_y) OR (bird_y_position - bird_size <= pipe_y_position - gap_size_y)) THEN
-					collision_detected <= '1';
-				END IF;
-			END IF;
-		END IF;
-	END PROCESS;
+	-- PROCESS(clk,reset)
+	-- BEGIN
+	-- 	IF (reset = '1') THEN
+	-- 		collision_detected <= '0';
+	-- 	ELSIF RISING_EDGE(clk) THEN
+	-- 		IF (pipe_collision_chance = '1') THEN
+	-- 			IF ((bird_y_position + bird_size >= pipe_y_position + gap_size_y) OR (bird_y_position - bird_size <= pipe_y_position - gap_size_y)) THEN
+	-- 				collision_detected <= '1';
+	-- 			END IF;
+	-- 		END IF;
+	-- 	END IF;
+	-- END PROCESS;
+
+	collsion_detected <= '0' WHEN reset = '1' ELSE
+											'1' WHEN ((collision_chance = '1') AND 
+											((bird_y_position + bird_size >= pipe_y_position + gap_size_y) OR (bird_y_position - bird_size <= pipe_y_position - gap_size_y))) ELSE
+											collision_detected WHEN OTHERS;
+	
 
 END ARCHITECTURE behaviour;

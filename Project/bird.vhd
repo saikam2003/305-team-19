@@ -81,7 +81,7 @@ BEGIN
 	VARIABLE counter: INTEGER RANGE 0 to 15:= 0;
 	BEGIN
 	
-	--Logic for the bird to move uop and down with gravity logic
+	--Logic for the bird to move up and down with gravity logic
 		IF (RISING_EDGE(vert_sync)) THEN
 		--if the mouse was not clicked previously but is now clicked, and the bird is not currently jumping
 			IF(mouse_prev = '0' and mouse_clicked = '1' and jumping = '0') THEN

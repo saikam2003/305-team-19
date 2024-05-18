@@ -11,7 +11,7 @@ ENTITY PIPE is
 			random_flag: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
-			pipe_on, random_enable: OUT STD_LOGIC;
+			pipe_on, random_enable, bird_pass: OUT STD_LOGIC;
 			pipe_halfway, collision_chance: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
@@ -128,7 +128,12 @@ BEGIN
 					-- Compute next ball X position
 					
 					-- only when the pipe is coming towards the center (where the bird is)
-					IF ((pipe_x_pos >= 295) AND (pipe_x_pos <= 345)) THEN
+					IF ((pipe_x_pos >= 275) AND (pipe_x_pos <= 345)) THEN
+						IF (pipe_x_pos + size_x <= 300) THEN
+							bird_pass <= '1';
+						ELSE 
+							bird_pass <= '0';
+						END IF;
 						collision_chance <= '1'; -- the chance of collision is high
 					ELSE
 						collision_chance <= '0';
