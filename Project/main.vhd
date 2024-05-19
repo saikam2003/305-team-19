@@ -33,6 +33,16 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL game_mode: STD_LOGIC_VECTOR(1 downto 0) := "00";
 	
+	
+	COMPONENT HEART IS
+		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
+			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
+			heart_on: OUT STD_LOGIC
+		);
+	END COMPONENT;
+	
+	
 	COMPONENT BIRD IS
 		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -100,6 +110,20 @@ BEGIN
 							blue => bird_blue,
 							bird_on => t_bird_on,
 							bird_y_position => t_bird_position
+						);
+						
+	heart_component: HEART
+						PORT MAP (
+							clk => clk_input,
+							vert_sync => vertical_sync,
+							mouse_clicked => jump_input,
+							colour_input => '0',
+							pixel_row => pixel_row_input,
+							pixel_column => pixel_column_input,
+							red 	=> heart_red,
+							blue 	=> heart_blue,
+							green 	=> heart_green,
+							heart_on => t_heart_on
 						);
 	
 	pipe_component: PIPE

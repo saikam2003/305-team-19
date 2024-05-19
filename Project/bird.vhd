@@ -55,15 +55,15 @@ BEGIN
 	
 
 	-- Setting the size of the bird and converting it into a 10 bit std_logic_vector
-	size <= CONV_STD_LOGIC_VECTOR(8, 10);
+	size <= CONV_STD_LOGIC_VECTOR(7, 10);
 	
 	-- Setting the x position of the ball and converting it into a 10 bit std_logic_vector
 	ball_x_pos <= CONV_STD_LOGIC_VECTOR(312, 11);
 	
 	-- Logic to determine if we are inside the ball (haven't reached the end of the ball according to the size)
 	-- to decide whether or not we want to display the ball
-	bird_on <= '1' WHEN ( ('0' & ball_x_pos <= '0' & pixel_column + size) AND ('0' & pixel_column <= '0' & ball_x_pos + size) 	-- x_pos - size <= pixel_column <= x_pos + size
-					AND ('0' & ball_y_pos <= pixel_row + size) AND ('0' & pixel_row <= ball_y_pos + size) AND (t_bird_alpha = "0001") )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
+	bird_on <= '1' WHEN ( ('0' & ball_x_pos <= '0' & pixel_column + size) AND ('0' & pixel_column <= '0' & ball_x_pos + size + CONV_STD_LOGIC_VECTOR(1,10)) 	-- x_pos - size <= pixel_column <= x_pos + size
+					AND ('0' & ball_y_pos <= pixel_row + size + CONV_STD_LOGIC_VECTOR(1,10)) AND ('0' & pixel_row <= ball_y_pos + size) AND (t_bird_alpha = "0001") )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
 			'0';
 	
 	

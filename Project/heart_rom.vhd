@@ -11,9 +11,9 @@ ENTITY heart_rom IS
 	(
 		font_row, font_col	:	IN STD_LOGIC_VECTOR (3 DOWNTO 0);
 		clock				: 	IN STD_LOGIC ;
-		heart_data_alpha		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+		heart_data_alpha	:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
 		heart_data_red		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-		heart_data_green		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+		heart_data_green	:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
 		heart_data_blue		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
 	);
 END heart_rom;
