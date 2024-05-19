@@ -18,7 +18,7 @@ ARCHITECTURE behaviour OF HEART IS
 	
 	SIGNAL ball_on: STD_LOGIC;
 	SIGNAL size: STD_LOGIC_VECTOR(9 DOWNTO 0);
-	SIGNAL size_times_5: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL size_times_6: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL heart_x_pos: STD_LOGIC_VECTOR(10 DOWNTO 0);
 	SIGNAL heart_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	
@@ -57,8 +57,8 @@ BEGIN
 	size <= CONV_STD_LOGIC_VECTOR(7,10);
 	--size_times_5 <= CONV_STD_LOGIC_VECTOR(39,10);
 	--heart_x_pos <= CONV_STD_LOGIC_VECTOR(600,11);
-	size_times_5 <= CONV_STD_LOGIC_VECTOR(46,10);
-	heart_x_pos <= CONV_STD_LOGIC_VECTOR(607,11);
+	size_times_6 <= CONV_STD_LOGIC_VECTOR(48,10);
+	heart_x_pos <= CONV_STD_LOGIC_VECTOR(608,11);
 	heart_y_pos <= CONV_STD_LOGIC_VECTOR(39,10);
 	
 	
@@ -71,7 +71,7 @@ BEGIN
 	--				AND ('0' & heart_y_pos <= pixel_row + size) AND ('0' & pixel_row <= heart_y_pos + size + CONV_STD_LOGIC_VECTOR(1,10)) AND (t_heart_alpha = "0001") )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
 	--		'0';
 	
-	heart_on <= '1' WHEN ( ('0' & heart_x_pos <= '0' & pixel_column + size_times_5) AND ('0' & pixel_column <= '0' & heart_x_pos + CONV_STD_LOGIC_VECTOR(1,10) ) 	-- x_pos - size <= pixel_column <= x_pos + size
+	heart_on <= '1' WHEN ( ('0' & heart_x_pos <= '0' & pixel_column + size_times_6 - CONV_STD_LOGIC_VECTOR(1,10)) AND ('0' & pixel_column <= '0' & heart_x_pos) 	-- x_pos - size <= pixel_column <= x_pos + size
 					AND ('0' & heart_y_pos <= pixel_row + size) AND ('0' & pixel_row <= heart_y_pos + size + CONV_STD_LOGIC_VECTOR(1,10)) AND (t_heart_alpha = "0001") )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
 			'0';
 	
