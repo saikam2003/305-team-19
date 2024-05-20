@@ -31,7 +31,7 @@ ARCHITECTURE behaviour OF BIRD IS
 	COMPONENT bird_rom IS
 		PORT(
 			font_row, font_col	:	IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-			clock				: 	IN STD_LOGIC ;
+			clock, mouse_input	: 	IN STD_LOGIC ;
 			bird_data_alpha		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
 			bird_data_red		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
 			bird_data_green		:	OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -46,6 +46,7 @@ BEGIN
 		font_row => pixel_row(3 downto 0) - (ball_y_pos(3 downto 0) + size(3 downto 0)) ,
 		font_col => pixel_column(3 downto 0),
 		clock => clk,
+		mouse_input => mouse_clicked,
 		bird_data_alpha	=>	t_bird_alpha,
 		bird_data_red	=>	t_bird_red,
 		bird_data_green	=>	t_bird_green,
