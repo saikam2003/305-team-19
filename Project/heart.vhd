@@ -45,8 +45,8 @@ ARCHITECTURE behaviour OF HEART IS
 BEGIN
 	
 	heart_sprite: heart_rom PORT MAP(
-		font_row => pixel_row(3 downto 0),
-		font_col => pixel_column(3 downto 0),
+		font_row => pixel_row(4 downto 1),
+		font_col => pixel_column(4 downto 1),
 		clock => clk,
 		heart_data_alpha	=>	t_heart_alpha,
 		heart_data_red	=>		t_heart_red,
@@ -54,10 +54,10 @@ BEGIN
 		heart_data_blue	=>		t_heart_blue
 	);
 	
-	size <= CONV_STD_LOGIC_VECTOR(7,10);
+	--size <= CONV_STD_LOGIC_VECTOR(7,10);
 	--size_times_5 <= CONV_STD_LOGIC_VECTOR(39,10);
 	--heart_x_pos <= CONV_STD_LOGIC_VECTOR(600,11);
-	size_times_6 <= CONV_STD_LOGIC_VECTOR(48,10);
+	size_times_6 <= CONV_STD_LOGIC_VECTOR(96,10);
 	heart_x_pos <= CONV_STD_LOGIC_VECTOR(608,11);
 	heart_y_pos <= CONV_STD_LOGIC_VECTOR(39,10);
 	
@@ -74,8 +74,8 @@ BEGIN
 	heart_on <= '1' WHEN ( ('0' & heart_x_pos <= '0' & pixel_column + size_times_6 - CONV_STD_LOGIC_VECTOR(1,10)) AND ('0' & pixel_column <= '0' & heart_x_pos) 	-- x_pos - size <= pixel_column <= x_pos + size
 					AND ('0' & heart_y_pos <= pixel_row + size) AND ('0' & pixel_row <= heart_y_pos + size + CONV_STD_LOGIC_VECTOR(1,10)) AND (t_heart_alpha = "0001") )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
 			'0';
-	
-	
+
+
 	red <= t_heart_red;
 	blue <= t_heart_blue;
 	green <= t_heart_green;
