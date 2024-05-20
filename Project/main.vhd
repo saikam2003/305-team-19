@@ -18,6 +18,7 @@ END ENTITY MAIN;
 ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL t_collision_reset, t_collision_reset_2, t_game_over, t_game_started: STD_LOGIC:= '0';
+	SIGNAL t_collision_counter : INTEGER RANGE 0 TO 3;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -37,6 +38,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	COMPONENT HEART IS
 		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			collision_counter : IN INTEGER RANGE 0 TO 3;
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			heart_on: OUT STD_LOGIC
 		);
@@ -74,7 +76,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 	COMPONENT COLLISION IS
 		PORT(reset, clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
 			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			collision_detected: OUT STD_LOGIC);
+			collision_detected: OUT STD_LOGIC;
+			collision_counter: OUT integer range 0 to 3);
 	END COMPONENT;
 	
 	COMPONENT TEXT_DISPLAY IS
@@ -120,6 +123,7 @@ BEGIN
 							colour_input => '0',
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
+							collision_counter => t_collision_counter,
 							red 	=> heart_red,
 							blue 	=> heart_blue,
 							green 	=> heart_green,
@@ -155,7 +159,8 @@ BEGIN
 							pipe_collision_chance => t_collision_chance,
 							pipe_y_position => t_pipe_position,
 							bird_y_position => t_bird_position,
-							collision_detected => t_collision_detected
+							collision_detected => t_collision_detected,
+							collision_counter => t_collision_counter
 						);
 	collision_detection_pipe_2: COLLISION 
 						PORT MAP(
