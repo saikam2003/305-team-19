@@ -59,7 +59,7 @@ BEGIN
 	size <= CONV_STD_LOGIC_VECTOR(7, 10);
 	
 	-- Setting the x position of the ball and converting it into a 10 bit std_logic_vector
-	ball_x_pos <= CONV_STD_LOGIC_VECTOR(312, 11);
+	ball_x_pos <= CONV_STD_LOGIC_VECTOR(311, 11);
 	
 	-- Logic to determine if we are inside the ball (haven't reached the end of the ball according to the size)
 	-- to decide whether or not we want to display the ball
