@@ -19,7 +19,7 @@ architecture behavior of background is
 	COMPONENT custom_bg_rom
 		PORT(
         font_row:    IN STD_LOGIC_VECTOR (9 DOWNTO 0);
-        font_col:    IN STD_LOGIC_VECTOR (10 DOWNTO 0);
+        font_col:    IN STD_LOGIC_VECTOR (9 DOWNTO 0);
         clock                :     IN STD_LOGIC ;
         background_data_alpha        :    OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         background_data_red        :    OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -28,12 +28,14 @@ architecture behavior of background is
 		);
 	END COMPONENT;
 	
-BEGIN          
+BEGIN
 	
-	background_sprite: PORT MAP
+	background_on <= '1';
+	
+	background_sprite: custom_bg_rom PORT MAP
 									(
 										font_row => pixel_row,
-										font_column => pixel_column,
+										font_col => pixel_column,
 										clock => clk,
 										background_data_alpha => t_bg_alpha,
 										background_data_red => t_bg_red,

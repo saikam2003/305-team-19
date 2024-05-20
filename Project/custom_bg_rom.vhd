@@ -9,7 +9,7 @@ ENTITY custom_bg_rom IS
     PORT
     (
         font_row:    IN STD_LOGIC_VECTOR (9 DOWNTO 0);
-        font_col:    IN STD_LOGIC_VECTOR (10 DOWNTO 0);
+        font_col:    IN STD_LOGIC_VECTOR (9 DOWNTO 0);
         clock                :     IN STD_LOGIC ;
         background_data_alpha        :    OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         background_data_red        :    OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -22,7 +22,7 @@ ARCHITECTURE SYN OF custom_bg_rom IS
 
     SIGNAL rom_data        : STD_LOGIC_VECTOR (15 DOWNTO 0);
     SIGNAL rom_address    : STD_LOGIC_VECTOR (18 DOWNTO 0);
-
+	 
     COMPONENT altsyncram
     GENERIC (
         address_aclr_a            : STRING;
@@ -54,15 +54,15 @@ BEGIN
         address_aclr_a => "NONE",
         clock_enable_input_a => "BYPASS",
         clock_enable_output_a => "BYPASS",
-        init_file => "background_data.mif",
+        init_file => "new_background_data.mif",
         intended_device_family => "Cyclone III",
         lpm_hint => "ENABLE_RUNTIME_MOD=NO",
         lpm_type => "altsyncram",
-        numwords_a => 307200,
+        numwords_a => 491136,
         operation_mode => "ROM",
         outdata_aclr_a => "NONE",
         outdata_reg_a => "UNREGISTERED",
-        widthad_a => 29,
+        widthad_a => 19,
         width_a => 16,
         width_byteena_a => 1
     )
@@ -71,9 +71,9 @@ BEGIN
         address_a => rom_address,
         q_a => rom_data
     );
+    -- Perform the multiplication and addition with type conversion
+    rom_address <= font_row(8 DOWNTO 0) & font_col;
 
-    -- rom_address <= STD_LOGIC_VECTOR(to_unsigned((unsigned(font_row) * 640 + unsigned(font_col)), 19));
-    rom_address <= "0000000000000000000";
     background_data_alpha <= rom_data(15 downto 12);
     background_data_red <= rom_data (11 downto 8);
     background_data_green <= rom_data (7 downto 4);    
