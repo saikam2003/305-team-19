@@ -21,7 +21,7 @@ END custom_bg_rom;
 ARCHITECTURE SYN OF custom_bg_rom IS
 
     SIGNAL rom_data        : STD_LOGIC_VECTOR (15 DOWNTO 0);
-    SIGNAL rom_address    : STD_LOGIC_VECTOR (19 DOWNTO 0);
+    SIGNAL rom_address    : STD_LOGIC_VECTOR (18 DOWNTO 0);
 
     COMPONENT altsyncram
     GENERIC (
@@ -42,7 +42,7 @@ ARCHITECTURE SYN OF custom_bg_rom IS
     );
     PORT (
         clock0        : IN STD_LOGIC ;
-        address_a    : IN STD_LOGIC_VECTOR (19 DOWNTO 0);
+        address_a    : IN STD_LOGIC_VECTOR (18 DOWNTO 0);
         q_a            : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
     );
     END COMPONENT;
@@ -62,7 +62,7 @@ BEGIN
         operation_mode => "ROM",
         outdata_aclr_a => "NONE",
         outdata_reg_a => "UNREGISTERED",
-        widthad_a => 20,
+        widthad_a => 29,
         width_a => 16,
         width_byteena_a => 1
     )
@@ -72,7 +72,8 @@ BEGIN
         q_a => rom_data
     );
 
-    rom_address <= STD_LOGIC_VECTOR(unsigned(font_row) * 640 + unsigned(font_col));
+    -- rom_address <= STD_LOGIC_VECTOR(to_unsigned((unsigned(font_row) * 640 + unsigned(font_col)), 19));
+    rom_address <= "0000000000000000000";
     background_data_alpha <= rom_data(15 downto 12);
     background_data_red <= rom_data (11 downto 8);
     background_data_green <= rom_data (7 downto 4);    
