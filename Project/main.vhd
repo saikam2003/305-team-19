@@ -18,7 +18,7 @@ END ENTITY MAIN;
 ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL t_collision_reset, t_collision_reset_2, t_game_over, t_game_started: STD_LOGIC:= '0';
-	SIGNAL t_collision_counter : INTEGER RANGE 0 TO 3;
+	SIGNAL collision_counter : INTEGER RANGE 0 TO 3;
 	SIGNAL temp_coll_counter : INTEGER RANGE 0 TO 3 := 0;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -35,6 +35,9 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL game_mode: STD_LOGIC_VECTOR(1 downto 0) := "00";
 	
+	
+	CONSTANT bird_size : STD_LOGIC_VECTOR(9 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(7, 10);
+	CONSTANT gap_size_y: STD_LOGIC_VECTOR(9 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(56, 10);
 	
 	COMPONENT HEART IS
 		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
@@ -77,8 +80,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	COMPONENT COLLISION IS
 		PORT(reset, clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
 			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			collision_detected: OUT STD_LOGIC;
-			collision_counter: OUT integer range 0 to 3
+			collision_detected: OUT STD_LOGIC
 			);
 	END COMPONENT;
 	
@@ -126,7 +128,7 @@ BEGIN
 							colour_input => '0',
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
-							collision_counter => t_collision_counter,
+							collision_counter => collision_counter,
 							red 	=> heart_red,
 							blue 	=> heart_blue,
 							green 	=> heart_green,
@@ -162,8 +164,7 @@ BEGIN
 							pipe_collision_chance => t_collision_chance,
 							pipe_y_position => t_pipe_position,
 							bird_y_position => t_bird_position,
-							collision_detected => t_collision_detected,
-							collision_counter => t_collision_counter
+							collision_detected => t_collision_detected
 						);
 	collision_detection_pipe_2: COLLISION 
 						PORT MAP(
@@ -267,9 +268,22 @@ BEGIN
 	t_game_started <= '0' when t_game_over = '1' else
 							'1' when (t_pipe_reset = '1' and t_game_started = '0') else t_game_started;					
 	
-	screen_display: PROCESS(clk_input, select_input)
+	screen_display: PROCESS(clk_input, select_input, t_collision_chance,t_collision_chance_2)
+	variable q_collision_counter : integer range 0 to 3;
 	BEGIN
-		IF (RISING_EDGE(clk_input)) THEN
+		IF (t_collision_chance = '1' OR t_collision_chance_2 = '1') THEN
+		
+				IF(t_collision_detected = '1' OR t_collision_detected_2 = '1') then
+				
+					IF(q_collision_counter /= 3) then
+						q_collision_counter := q_collision_counter + 1;
+					ELSE
+						q_collision_counter := 0;
+					END IF;
+					
+				END IF;
+		
+		ELSIF (RISING_EDGE(clk_input)) THEN
 			IF (t_heart_on = '1') THEN
 				red_output <=   heart_red;
 				green_output <= heart_green;
@@ -300,8 +314,10 @@ BEGIN
 				blue_output <= "1011";
 			END IF;
 			
-
-		end if;	
+		END IF;	
+	
+		collision_counter <= q_collision_counter;
+		
 	END PROCESS screen_display;
 
 

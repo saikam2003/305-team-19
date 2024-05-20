@@ -7,8 +7,7 @@ ENTITY COLLISION IS
 
 	PORT(reset, clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
 			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			collision_detected: OUT STD_LOGIC;
-			collision_counter: OUT integer range 0 to 3
+			collision_detected: OUT STD_LOGIC
 			);
 			
 END ENTITY COLLISION;
@@ -27,14 +26,10 @@ BEGIN
 	
 	
 	PROCESS(pipe_collision_chance,reset)
-	variable q_collision_counter : integer range 0 to 3;
+	--variable q_collision_counter : integer range 0 to 3;
 	BEGIN
 		IF (reset = '1') THEN
 			collision_detected <= '0';
-			
-			--if (q_collision_counter = 3) then
-			--	q_collision_counter := 0;
-			--end if;
 			
 		ELSIF RISING_EDGE(pipe_collision_chance) THEN
 		
@@ -44,16 +39,16 @@ BEGIN
 				
 					collision_detected <= '1';
 					
-					IF(q_collision_counter /= 3) then
-						q_collision_counter := q_collision_counter + 1;
-					ELSE
-						q_collision_counter := 0;
-					END IF;
+					--IF(q_collision_counter /= 3) then
+					--	q_collision_counter := q_collision_counter + 1;
+					--ELSE
+					--	q_collision_counter := 0;
+					--END IF;
 					
 				END IF;
 			END IF;
 		END IF;
-		collision_counter <= q_collision_counter;
+		--collision_counter <= q_collision_counter;
 	END PROCESS;
 
 END ARCHITECTURE behaviour;
