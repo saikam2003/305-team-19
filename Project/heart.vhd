@@ -52,7 +52,7 @@ heart_y_pos <= to_unsigned(47, 10);
 size_times_6 <= to_unsigned(96, 10);
 
 heart_on <= '1' WHEN ( 
-    (unsigned('0' & heart_x_pos) <= unsigned('0' & pixel_column) + size_times_6 - (16*collision_counter) - 1) AND
+    (unsigned('0' & heart_x_pos) <= unsigned('0' & pixel_column) + size_times_6 - (32*collision_counter) - 1) AND
     (unsigned('0' & pixel_column) <= unsigned('0' & heart_x_pos)) AND
     (unsigned('0' & heart_y_pos) <= unsigned(pixel_row) + size) AND
     (unsigned(pixel_row) <= unsigned(heart_y_pos) + size + 1) AND

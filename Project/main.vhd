@@ -19,6 +19,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL t_collision_reset, t_collision_reset_2, t_game_over, t_game_started: STD_LOGIC:= '0';
 	SIGNAL t_collision_counter : INTEGER RANGE 0 TO 3;
+	SIGNAL temp_coll_counter : INTEGER RANGE 0 TO 3 := 0;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -77,7 +78,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 		PORT(reset, clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
 			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			collision_detected: OUT STD_LOGIC;
-			collision_counter: OUT integer range 0 to 3);
+			collision_counter: OUT integer range 0 to 3
+			);
 	END COMPONENT;
 	
 	COMPONENT TEXT_DISPLAY IS
@@ -99,6 +101,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0));
 	END COMPONENT;
 BEGIN 
+
 	
 	bird_component: BIRD
 						PORT MAP(
@@ -170,8 +173,8 @@ BEGIN
 							pipe_collision_chance => t_collision_chance_2,
 							pipe_y_position => t_pipe_position_2,
 							bird_y_position => t_bird_position,
-							collision_detected => t_collision_detected_2
-						);
+							collision_detected => t_collision_detected_2						
+							);
 	pipe_component_2: PIPE
 						PORT MAP(
 							pipe_reset => t_pipe_reset,
@@ -246,6 +249,9 @@ BEGIN
 	t_pipe_reset <= '1' WHEN (start_input = '0' and (game_mode = "01" or game_mode = "10")) ELSE '0';
 	t_collision_reset <= t_pipe_reset;
 	t_collision_reset_2 <= t_pipe_reset;
+	
+	--t_collision_counter <= (t_collision_counter + 1) WHEN (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE 
+	--							0 WHEN t_pipe_reset = '1';
 	
 	t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE
 						'0' WHEN (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE t_pipe_enable;
