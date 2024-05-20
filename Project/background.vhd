@@ -34,7 +34,7 @@ BEGIN
 	
 	background_sprite: custom_bg_rom PORT MAP
 									(
-										font_row => pixel_row,
+										font_row => "00" & pixel_row(9 downto 2),
 										font_col => pixel_column,
 										clock => clk,
 										background_data_alpha => t_bg_alpha,
