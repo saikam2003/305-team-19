@@ -1,6 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;
+USE IEEE.STD_LOGIC_ARITH.all;
+USE IEEE.STD_LOGIC_UNSIGNED.all;
 
 LIBRARY altera_mf;
 USE altera_mf.all;
@@ -72,7 +73,9 @@ BEGIN
         q_a => rom_data
     );
     -- Perform the multiplication and addition with type conversion
-    rom_address <= font_row(8 DOWNTO 0) & font_col;
+    rom_address <= font_row(8 DOWNTO 0) & font_col(9 DOWNTO 0) WHEN (font_row <= CONV_STD_LOGIC_VECTOR(120, 10)) ELSE "0000000000000000000";
+                    
+        --rom_address <= "1110111001001111111";
 
     background_data_alpha <= rom_data(15 downto 12);
     background_data_red <= rom_data (11 downto 8);
