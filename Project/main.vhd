@@ -18,6 +18,7 @@ END ENTITY MAIN;
 ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL t_collision_reset, t_collision_reset_2, t_game_over, t_game_started: STD_LOGIC:= '0';
+	SIGNAL t_pipes_show, t_bird_show, t_text_show, t_bird_reset: STD_LOGIC;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -31,7 +32,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL t_pipe_enable: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL game_mode: STD_LOGIC_VECTOR(1 downto 0) := "00";
+	SIGNAL game_mode, game_level: STD_LOGIC_VECTOR(1 downto 0) := "00";
 	
 	
 	COMPONENT HEART IS
@@ -44,7 +45,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	
 	COMPONENT BIRD IS
-		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
+		PORT(clk, reset, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			bird_on: OUT STD_LOGIC;
@@ -93,13 +94,15 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	COMPONENT FSM IS
 		port(clk, select_option, select_input, game_over: IN STD_LOGIC;
-		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0));
+		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0);
+		  game_level_out: OUT STD_LOGIC_VECTOR(1 downto 0));
 	END COMPONENT;
 BEGIN 
 	
 	bird_component: BIRD
 						PORT MAP(
 							clk => clk_input,
+							reset => t_bird_reset,
 							vert_sync => vertical_sync,
 							mouse_clicked => jump_input,
 							colour_input => '0',
@@ -235,47 +238,77 @@ BEGIN
 						select_option => select_input, 
 						select_input => option_input, 
 						game_over => t_game_over,
-						game_mode_out => game_mode);
+						game_mode_out => game_mode,
+						game_level_out => game_level);
 
 	
-	t_pipe_reset <= '1' WHEN (start_input = '0' and (game_mode = "01" or game_mode = "10")) ELSE '0';
+
 	t_collision_reset <= t_pipe_reset;
 	t_collision_reset_2 <= t_pipe_reset;
 	
-	t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE
-						'0' WHEN (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE t_pipe_enable;
-	
-	--t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE '0';
-							
-	t_pipe_enable_2 <= '0' WHEN  (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE
-								'1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2;
-								
 
+	
+							
+	t_pipe_enable_2 <= '0' WHEN  (t_pipe_enable = '0') ELSE
+								'1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2;
 	
 	t_game_over <= '1' when (t_collision_detected = '1' OR t_collision_detected_2 = '1') and t_game_started = '1' else '0';
 	t_game_started <= '0' when t_game_over = '1' else
 							'1' when (t_pipe_reset = '1' and t_game_started = '0') else t_game_started;					
-	
-	screen_display: PROCESS(clk_input, select_input)
+	update_game_mode: PROCESS(game_mode)
+	BEGIN
+			IF(game_mode = "00") THEN -- Main Menu
+				t_bird_show <= '0';
+				t_pipes_show <= '0';
+				t_text_show <= '1';
+				t_bird_reset <= '1';
+				t_pipe_reset <= '1';
+				t_pipe_enable <= '0';
+			ELSIF(game_mode = "01") THEN -- Training Mode
+				t_bird_show <= '1';
+				t_pipes_show <= '1';
+				t_text_show <= '0';
+				t_bird_reset <= '0';
+				t_pipe_reset <= '0';
+				t_pipe_enable <= '1';
+			ELSIF(game_mode = "10") THEN -- Normal Mode
+				t_bird_show <= '1';
+				t_pipes_show <= '1';
+				t_text_show <= '0';
+				t_bird_reset <= '0';
+				t_pipe_reset <= '0';
+				t_pipe_enable <= '1';
+			ELSIF(game_mode = "11") THEN -- Game Over
+				t_bird_show <= '0';
+				t_pipes_show <= '0';
+				t_text_show <= '1';
+				t_bird_reset <= '1';
+				t_pipe_reset <= '1';
+				t_pipe_enable <= '0';
+			END IF;
+	END PROCESS update_game_mode;
+	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
-			IF (t_heart_on = '1') THEN
+			
+		
+			IF (t_heart_on = '1' and t_pipes_show = '1') THEN
 				red_output <=   heart_red;
 				green_output <= heart_green;
 				blue_output <=  heart_blue;
-			ELSIF (t_text_on = '1') THEN
+			ELSIF (t_text_on = '1' and t_text_show = '1') THEN
 				red_output <= text_red;
 				green_output <= text_green;
 				blue_output <= text_blue;
-			ELSIF (t_bird_on = '1') THEN
+			ELSIF (t_bird_on = '1' and t_bird_show = '1') THEN
 				red_output <= bird_red;
 				green_output <= bird_green;
 				blue_output <= bird_blue;
-			ELSIF (t_pipe_on = '1') THEN
+			ELSIF (t_pipe_on = '1' and t_pipes_show = '1') THEN
 				red_output <= pipe_red;
 				green_output <= pipe_green;
 				blue_output <= pipe_blue;
-			ELSIF (t_pipe_on_2 = '1') THEN
+			ELSIF (t_pipe_on_2 = '1' and t_pipes_show = '1') THEN
 				red_output <= pipe_red_2;
 				green_output <= pipe_green_2;
 				blue_output <= pipe_blue_2;
