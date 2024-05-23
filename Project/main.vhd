@@ -72,12 +72,6 @@ ARCHITECTURE behvaiour OF MAIN IS
 		  background_on 			: OUT std_logic);		
 	END COMPONENT;
 	
---	COMPONENT COLLISION IS
---		PORT(reset, clk, pipe_on, pipe_collision_chance: IN STD_LOGIC;
---			pipe_y_position, bird_y_position: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
---			collision_detected: OUT STD_LOGIC);
---	END COMPONENT;
-	
 	COMPONENT TEXT_DISPLAY IS
 		PORT(Clk, enable, select_option_in: IN STD_LOGIC;
 			game_mode_in: IN STD_LOGIC_VECTOR(1 downto 0);
@@ -149,26 +143,6 @@ BEGIN
 							pipe_position => t_pipe_position
 						);
 						
---	collision_detection_pipe: COLLISION 
---						PORT MAP(
---							reset => t_collision_reset,
---							clk => clk_input,
---							pipe_on => t_pipe_on,
---							pipe_collision_chance => t_collision_chance,
---							pipe_y_position => t_pipe_position,
---							bird_y_position => t_bird_position,
---							collision_detected => t_collision_detected
---						);
---	collision_detection_pipe_2: COLLISION 
---						PORT MAP(
---							reset => t_collision_reset_2,
---							clk => clk_input,
---							pipe_on => t_pipe_on_2,
---							pipe_collision_chance => t_collision_chance_2,
---							pipe_y_position => t_pipe_position_2,
---							bird_y_position => t_bird_position,
---							collision_detected => t_collision_detected_2
---						);
 	pipe_component_2: PIPE
 						PORT MAP(
 							pipe_reset => t_pipe_reset,
@@ -206,7 +180,7 @@ BEGIN
 	text_component: TEXT_DISPLAY
 						PORT MAP(Clk => clk_input,
 							enable => '1',
-							select_option_in => select_input, -- change this to inputs later!!!!!!
+							select_option_in => select_input,
 							game_mode_in => game_mode,
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
@@ -237,21 +211,11 @@ BEGIN
 						select_input => option_input, 
 						game_over => t_game_over,
 						game_mode_out => game_mode,
-						game_level_out => game_level);
-
-	
-
---	t_collision_reset <= t_pipe_reset;
---	t_collision_reset_2 <= t_pipe_reset;
-	
-
-	
+						game_level_out => game_level
+			);
 							
-	t_pipe_enable_2 <= '0' WHEN  (t_pipe_enable = '0') ELSE
-								'1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2;
-	
-	t_game_started <= '0' when t_game_over = '1' else
-							'1' when (t_pipe_reset = '1' and t_game_started = '0') else t_game_started;					
+	t_pipe_enable_2 <= '0' WHEN  (t_pipe_enable = '0') ELSE '1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2; -- start second pipe after firt reaches halfway
+					
 	update_game_mode: PROCESS(game_mode)
 	BEGIN
 			IF(game_mode = "00") THEN -- Main Menu
@@ -284,23 +248,31 @@ BEGIN
 				t_pipe_enable <= '0';
 			END IF;
 	END PROCESS update_game_mode;
+	
+	
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
-			IF(lives_left = "11" and (game_mode = "01" or game_mode = "10")) THEN
+		
+			-- ============ collision detection ==============
+			
+			IF(lives_left = "11" and (game_mode = "01" or game_mode = "10")) THEN -- start game, lives in "11" is unintialised state
 				lives_left <= "10";
 				t_collision <= '0';
-			ELSIF(t_collision = '0' and t_bird_on = '1' and (t_pipe_on = '1' or t_pipe_on_2 = '1')) THEN
+			ELSIF(t_collision = '0' and t_bird_on = '1' and (t_pipe_on = '1' or t_pipe_on_2 = '1')) THEN -- collided
 				t_collision <= '1';
-			ELSIF(t_collision = '1' and not(t_bird_on = '1' and (t_pipe_on = '1' or t_pipe_on_2 = '1'))) THEN
-				t_collision <= '0';
-				lives_left <= lives_left - 1;
 				if(lives_left = "00") THEn
 					t_game_over <= '1';
 				end if;
+				lives_left <= lives_left - 1;
+				
+			ELSIF(t_collision = '1' and not(t_bird_on = '1' and (t_pipe_on = '1' or t_pipe_on_2 = '1'))) THEN -- reset collision flag
+				t_collision <= '0';
 			ELSE
 				t_game_over <= '0';
 			END IF;
+			
+			-- ============ vga sync input ==============
 			
 			IF (t_heart_on = '1' and t_pipes_show = '1') THEN
 				red_output <=   heart_red;
@@ -333,7 +305,7 @@ BEGIN
 			END IF;
 			
 
-		end if;	
+		END IF;
 	END PROCESS screen_display;
 
 

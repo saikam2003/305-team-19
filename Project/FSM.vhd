@@ -28,9 +28,9 @@ BEGIN
 					end if;
 				elsif(game_mode = "11") then
 					if(select_option = '0') then
-						game_mode <= "00";
-					elsif(select_option = '1') then
 						game_mode <= "10";
+					elsif(select_option = '1') then
+						game_mode <= "00";
 					end if;
 				end if;
 			elsif (game_over = '1') then

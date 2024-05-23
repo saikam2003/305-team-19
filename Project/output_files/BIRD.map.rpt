@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Thu May 23 21:29:21 2024
+Thu May 23 21:46:58 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu May 23 21:29:21 2024           ;
+; Analysis & Synthesis Status     ; Successful - Thu May 23 21:46:58 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
@@ -191,7 +191,8 @@ refer to the applicable agreement for further details.
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
-;     Processors 7-16        ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processors 8-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -490,27 +491,27 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_row[0]                          ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[1]                                   ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_row[4]                          ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[3]                                   ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[3]               ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[6]                 ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[2]                           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[10]                ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[0]                           ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[6]                           ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[1]                              ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[0]                              ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[4]                              ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[7]                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[2]                 ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[0]                                    ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[9]                 ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[3]                                    ;
 ; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|red_output[3]                                     ;
-; 15:1               ; 12 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|green[2]          ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[7]               ;
+; 15:1               ; 12 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|blue[3]           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9]               ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]                 ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|lives_left[0]                                     ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|t_text_show                                       ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_2_on             ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[5] ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[1] ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[3]                       ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[3]                       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[2]                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
 
 
@@ -1236,7 +1237,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Thu May 23 21:29:06 2024
+    Info: Processing started: Thu May 23 21:46:50 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1357,20 +1358,20 @@ Warning (10036): Verilog HDL or VHDL warning at main.vhd(29): object "t_pipe_pos
 Warning (10540): VHDL Signal Declaration warning at main.vhd(30): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 30
 Warning (10540): VHDL Signal Declaration warning at main.vhd(30): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 30
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(35): object "game_level" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 35
-Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_bird_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_pipes_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_text_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_bird_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_pipe_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_pipe_enable", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Info (10041): Inferred latch for "t_pipe_enable" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Info (10041): Inferred latch for "t_pipe_reset" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Info (10041): Inferred latch for "t_bird_reset" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Info (10041): Inferred latch for "t_text_show" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Info (10041): Inferred latch for "t_pipes_show" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Info (10041): Inferred latch for "t_bird_show" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
-Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(250) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 250
-Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 102
+Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_bird_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_pipes_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_text_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_bird_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_pipe_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_pipe_enable", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Info (10041): Inferred latch for "t_pipe_enable" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Info (10041): Inferred latch for "t_pipe_reset" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Info (10041): Inferred latch for "t_bird_reset" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Info (10041): Inferred latch for "t_text_show" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Info (10041): Inferred latch for "t_pipes_show" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Info (10041): Inferred latch for "t_bird_show" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
+Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(217) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 217
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 96
 Warning (12125): Using design file bird_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: bird_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 22
     Info (12023): Found entity 1: bird_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 9
@@ -1398,7 +1399,7 @@ Info (12128): Elaborating entity "altsyncram_gig1" for hierarchy "MAIN:inst|BIRD
 Warning (12125): Using design file heart.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: HEART-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 17
     Info (12023): Found entity 1: HEART File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 6
-Info (12128): Elaborating entity "HEART" for hierarchy "MAIN:inst|HEART:heart_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 118
+Info (12128): Elaborating entity "HEART" for hierarchy "MAIN:inst|HEART:heart_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 112
 Warning (12125): Using design file heart_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: heart_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 22
     Info (12023): Found entity 1: heart_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 9
@@ -1423,7 +1424,7 @@ Info (12133): Instantiated megafunction "MAIN:inst|HEART:heart_component|heart_r
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1jg1.tdf
     Info (12023): Found entity 1: altsyncram_1jg1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1jg1.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_1jg1" for hierarchy "MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 132
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 126
 Info (10041): Inferred latch for "gap_y_pos[0]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[1]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[2]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
@@ -1434,7 +1435,7 @@ Info (10041): Inferred latch for "gap_y_pos[6]" at pipe.vhd(45) File: C:/Users/v
 Info (10041): Inferred latch for "gap_y_pos[7]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[8]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[9]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 192
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 166
 Warning (10036): Verilog HDL or VHDL warning at background.vhd(17): object "t_bg_alpha" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 17
 Warning (12125): Using design file custom_bg_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: custom_bg_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd Line: 22
@@ -1466,7 +1467,7 @@ Info (12128): Elaborating entity "decode_l2a" for hierarchy "MAIN:inst|backgroun
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_rib.tdf
     Info (12023): Found entity 1: mux_rib File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_rib.tdf Line: 22
 Info (12128): Elaborating entity "mux_rib" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|mux_rib:mux2" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 40
-Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 206
+Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 180
 Warning (10492): VHDL Process Statement warning at text_display.vhd(46): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 46
 Warning (10492): VHDL Process Statement warning at text_display.vhd(54): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 54
 Warning (10492): VHDL Process Statement warning at text_display.vhd(78): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 78
@@ -1536,8 +1537,8 @@ Info (12128): Elaborating entity "altsyncram_d5g1" for hierarchy "MAIN:inst|text
 Warning (12125): Using design file lfsr.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: LFSR-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 12
     Info (12023): Found entity 1: LFSR File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 6
-Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 218
-Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 234
+Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 192
+Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 208
 Warning (10541): VHDL Signal Declaration warning at FSM.vhd(9): used implicit default value for signal "game_level_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 9
 Warning (10492): VHDL Process Statement warning at FSM.vhd(21): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 21
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:mouse_inst"
@@ -1881,9 +1882,9 @@ Info (21057): Implemented 1069 device resources after synthesis - the final reso
     Info (21064): Implemented 220 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 365 warnings
-    Info: Peak virtual memory: 5002 megabytes
-    Info: Processing ended: Thu May 23 21:29:21 2024
-    Info: Elapsed time: 00:00:15
+    Info: Peak virtual memory: 4995 megabytes
+    Info: Processing ended: Thu May 23 21:46:58 2024
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:04
 
 
