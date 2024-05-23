@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Thu May 23 20:36:02 2024
+Thu May 23 21:29:21 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -66,13 +66,13 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu May 23 20:36:02 2024           ;
+; Analysis & Synthesis Status     ; Successful - Thu May 23 21:29:21 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 272                                             ;
+; Total registers                 ; 262                                             ;
 ; Total pins                      ; 36                                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 1,482,240                                       ;
@@ -190,7 +190,8 @@ refer to the applicable agreement for further details.
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
-;     Processors 6-16        ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processors 7-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -201,7 +202,6 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+---------+
 ; mouse.vhd                        ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd               ;         ;
 ; BCD_to_7Seg.vhd                  ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd         ;         ;
-; collision.vhd                    ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd           ;         ;
 ; background.vhd                   ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd          ;         ;
 ; pipe.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd                ;         ;
 ; main.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd                ;         ;
@@ -246,16 +246,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 498                                                                ;
+; Estimate of Logic utilization (ALMs needed) ; 476                                                                ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 770                                                                ;
+; Combinational ALUT usage for logic          ; 733                                                                ;
 ;     -- 7 input functions                    ; 16                                                                 ;
-;     -- 6 input functions                    ; 200                                                                ;
-;     -- 5 input functions                    ; 113                                                                ;
-;     -- 4 input functions                    ; 123                                                                ;
-;     -- <=3 input functions                  ; 318                                                                ;
+;     -- 6 input functions                    ; 193                                                                ;
+;     -- 5 input functions                    ; 107                                                                ;
+;     -- 4 input functions                    ; 104                                                                ;
+;     -- <=3 input functions                  ; 313                                                                ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 272                                                                ;
+; Dedicated logic registers                   ; 262                                                                ;
 ;                                             ;                                                                    ;
 ; I/O pins                                    ; 36                                                                 ;
 ; Total MLAB memory bits                      ; 0                                                                  ;
@@ -267,9 +267,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 347                                                                ;
-; Total fan-out                               ; 7040                                                               ;
-; Average fan-out                             ; 5.27                                                               ;
+; Maximum fan-out                             ; 349                                                                ;
+; Total fan-out                               ; 6862                                                               ;
+; Average fan-out                             ; 5.32                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
@@ -278,24 +278,22 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                         ; Entity Name     ; Library Name ;
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |Bird_Block                                     ; 770 (1)             ; 272 (0)                   ; 1482240           ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                                                                 ; Bird_Block      ; work         ;
+; |Bird_Block                                     ; 733 (1)             ; 262 (0)                   ; 1482240           ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                                                                 ; Bird_Block      ; work         ;
 ;    |BCD_to_SevenSeg:inst2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst2                                                                                                                                           ; BCD_to_SevenSeg ; work         ;
 ;    |BCD_to_SevenSeg:inst6|                      ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                                                                                                                           ; BCD_to_SevenSeg ; work         ;
-;    |MAIN:inst|                                  ; 599 (69)            ; 95 (12)                   ; 1482240           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                                                                       ; MAIN            ; work         ;
-;       |BIRD:bird_component|                     ; 89 (89)             ; 27 (27)                   ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                                                                   ; BIRD            ; work         ;
+;    |MAIN:inst|                                  ; 562 (66)            ; 85 (16)                   ; 1482240           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                                                                       ; MAIN            ; work         ;
+;       |BIRD:bird_component|                     ; 101 (101)           ; 17 (17)                   ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                                                                   ; BIRD            ; work         ;
 ;          |bird_rom:bird_sprite_up|              ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up                                                                                                           ; bird_rom        ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component                                                                           ; altsyncram      ; work         ;
 ;                |altsyncram_gig1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated                                            ; altsyncram_gig1 ; work         ;
-;       |COLLISION:collision_detection_pipe_2|    ; 16 (16)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:collision_detection_pipe_2                                                                                                                  ; COLLISION       ; work         ;
-;       |COLLISION:collision_detection_pipe|      ; 29 (29)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:collision_detection_pipe                                                                                                                    ; COLLISION       ; work         ;
 ;       |FSM:FSM_DUT|                             ; 2 (2)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|FSM:FSM_DUT                                                                                                                                           ; FSM             ; work         ;
 ;       |HEART:heart_component|                   ; 30 (30)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component                                                                                                                                 ; HEART           ; work         ;
 ;          |heart_rom:heart_sprite|               ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite                                                                                                          ; heart_rom       ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component                                                                          ; altsyncram      ; work         ;
 ;                |altsyncram_1jg1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated                                           ; altsyncram_1jg1 ; work         ;
 ;       |LFSR:prng_2|                             ; 8 (8)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|LFSR:prng_2                                                                                                                                           ; LFSR            ; work         ;
-;       |PIPE:pipe_component_2|                   ; 96 (96)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                                                                 ; PIPE            ; work         ;
-;       |PIPE:pipe_component|                     ; 86 (86)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                                                                   ; PIPE            ; work         ;
+;       |PIPE:pipe_component_2|                   ; 95 (95)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                                                                 ; PIPE            ; work         ;
+;       |PIPE:pipe_component|                     ; 86 (86)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                                                                   ; PIPE            ; work         ;
 ;       |background:background_component|         ; 93 (0)              ; 16 (12)                   ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component                                                                                                                       ; background      ; work         ;
 ;          |custom_bg_rom:background_sprite|      ; 93 (18)             ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite                                                                                       ; custom_bg_rom   ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 75 (0)              ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component                                                       ; altsyncram      ; work         ;
@@ -377,7 +375,6 @@ Encoding Type:  One-Hot
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[2]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[1]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[0]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
-; MAIN:inst|t_game_started                                ; GND                                               ; yes                    ;
 ; MAIN:inst|text_display:text_component|size_col[2]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
 ; MAIN:inst|text_display:text_component|size_col[1]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
 ; MAIN:inst|t_pipe_enable_2                               ; GND                                               ; yes                    ;
@@ -403,7 +400,7 @@ Encoding Type:  One-Hot
 ; MAIN:inst|text_display:text_component|char_address_1[5] ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
 ; MAIN:inst|text_display:text_component|char_address_2[5] ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
 ; MAIN:inst|text_display:text_component|size_col[0]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
-; Number of user-specified and inferred latches = 47      ;                                                   ;                        ;
+; Number of user-specified and inferred latches = 46      ;                                                   ;                        ;
 +---------------------------------------------------------+---------------------------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
@@ -448,12 +445,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 272   ;
+; Total registers                              ; 262   ;
 ; Number of registers using Synchronous Clear  ; 28    ;
 ; Number of registers using Synchronous Load   ; 20    ;
-; Number of registers using Asynchronous Clear ; 45    ;
+; Number of registers using Asynchronous Clear ; 41    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 165   ;
+; Number of registers using Clock Enable       ; 163   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -463,26 +460,28 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------------------------------+---------+
 ; Inverted Register                             ; Fan out ;
 +-----------------------------------------------+---------+
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]   ; 7       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]   ; 5       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[7]   ; 7       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]   ; 7       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[9]   ; 7       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[2] ; 7       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[1] ; 5       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[7] ; 6       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[5] ; 6       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9] ; 6       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]   ; 6       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]   ; 4       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[7]   ; 6       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]   ; 5       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[9]   ; 6       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[2] ; 6       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[1] ; 4       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[7] ; 5       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[5] ; 5       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9] ; 5       ;
 ; MOUSE:mouse_inst|send_char                    ; 3       ;
 ; MAIN:inst|PIPE:pipe_component|random_enable   ; 9       ;
 ; MAIN:inst|LFSR:prng_2|level_easy_reg[0]       ; 4       ;
 ; MAIN:inst|PIPE:pipe_component_2|random_enable ; 9       ;
+; MAIN:inst|lives_left[1]                       ; 3       ;
+; MAIN:inst|lives_left[0]                       ; 4       ;
 ; MOUSE:mouse_inst|SHIFTOUT[3]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[5]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[6]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[7]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[8]                  ; 1       ;
-; Total number of inverted registers = 19       ;         ;
+; Total number of inverted registers = 21       ;         ;
 +-----------------------------------------------+---------+
 
 
@@ -491,26 +490,27 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_column[3]                       ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[6]                                   ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[8]               ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[4]                 ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[0]                           ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_row[0]                          ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[1]                                   ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[3]               ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[6]                 ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[2]                           ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[6]                           ;
 ; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[1]                              ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[4]                              ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[4]                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[8]                 ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[3]                                    ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[7]                 ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[2]                 ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[0]                                    ;
 ; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|red_output[3]                                     ;
-; 15:1               ; 12 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|red[3]            ;
+; 15:1               ; 12 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|green[2]          ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[7]               ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]                 ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|t_pipe_reset                                      ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|lives_left[0]                                     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|t_text_show                                       ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_2_on             ;
 ; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[5] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[2]                       ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[0]                       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[3]                       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[3]                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
 
 
@@ -1122,39 +1122,41 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component_2"                                                            ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port         ; Type   ; Severity ; Details                                                                             ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
-; colour_input ; Input  ; Info     ; Stuck at GND                                                                        ;
-; pipe_x[2..0] ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; pipe_x[4..3] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; pipe_x[10]   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; pipe_x[9]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; pipe_x[8]    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; pipe_x[7]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; pipe_x[6]    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; pipe_x[5]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; pipe_halfway ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component_2"                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; colour_input  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[2..0]  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[4..3]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[10]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[9]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[8]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[7]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[6]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[5]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_halfway  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; pipe_position ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component" ;
-+--------------+-------+----------+-------------------------+
-; Port         ; Type  ; Severity ; Details                 ;
-+--------------+-------+----------+-------------------------+
-; colour_input ; Input ; Info     ; Stuck at GND            ;
-; pipe_x[2..0] ; Input ; Info     ; Stuck at VCC            ;
-; pipe_x[4..3] ; Input ; Info     ; Stuck at GND            ;
-; pipe_x[10]   ; Input ; Info     ; Stuck at GND            ;
-; pipe_x[9]    ; Input ; Info     ; Stuck at VCC            ;
-; pipe_x[8]    ; Input ; Info     ; Stuck at GND            ;
-; pipe_x[7]    ; Input ; Info     ; Stuck at VCC            ;
-; pipe_x[6]    ; Input ; Info     ; Stuck at GND            ;
-; pipe_x[5]    ; Input ; Info     ; Stuck at VCC            ;
-+--------------+-------+----------+-------------------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component"                                                               ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; colour_input  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[2..0]  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[4..3]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[10]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[9]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[8]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[7]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_x[6]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; pipe_x[5]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; pipe_position ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------+
@@ -1166,13 +1168,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------+-------+----------+---------------------------+
 
 
-+-----------------------------------------------------------+
-; Port Connectivity Checks: "MAIN:inst|BIRD:bird_component" ;
-+--------------+-------+----------+-------------------------+
-; Port         ; Type  ; Severity ; Details                 ;
-+--------------+-------+----------+-------------------------+
-; colour_input ; Input ; Info     ; Stuck at GND            ;
-+--------------+-------+----------+-------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MAIN:inst|BIRD:bird_component"                                                                 ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; colour_input    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; bird_y_position ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -1180,32 +1183,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 272                         ;
-;     CLR               ; 4                           ;
+; arriav_ff             ; 262                         ;
+;     CLR               ; 2                           ;
 ;     ENA               ; 86                          ;
-;     ENA CLR           ; 41                          ;
+;     ENA CLR           ; 39                          ;
 ;     ENA SCLR          ; 18                          ;
 ;     ENA SLD           ; 20                          ;
 ;     SCLR              ; 10                          ;
-;     plain             ; 93                          ;
+;     plain             ; 87                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 773                         ;
-;     arith             ; 186                         ;
+; arriav_lcell_comb     ; 736                         ;
+;     arith             ; 173                         ;
 ;         0 data inputs ; 6                           ;
-;         1 data inputs ; 158                         ;
-;         2 data inputs ; 20                          ;
+;         1 data inputs ; 146                         ;
+;         2 data inputs ; 19                          ;
 ;         3 data inputs ; 1                           ;
 ;         4 data inputs ; 1                           ;
 ;     extend            ; 16                          ;
 ;         7 data inputs ; 16                          ;
-;     normal            ; 561                         ;
+;     normal            ; 537                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 9                           ;
-;         2 data inputs ; 30                          ;
-;         3 data inputs ; 86                          ;
-;         4 data inputs ; 122                         ;
-;         5 data inputs ; 113                         ;
-;         6 data inputs ; 200                         ;
+;         2 data inputs ; 33                          ;
+;         3 data inputs ; 91                          ;
+;         4 data inputs ; 103                         ;
+;         5 data inputs ; 107                         ;
+;         6 data inputs ; 193                         ;
 ;     shared            ; 10                          ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 9                           ;
@@ -1213,8 +1216,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 220                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.24                        ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 3.29                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1233,7 +1236,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Thu May 23 20:35:46 2024
+    Info: Processing started: Thu May 23 21:29:06 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1347,24 +1350,26 @@ Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:
 Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst"
 Warning (10541): VHDL Signal Declaration warning at main.vhd(13): used implicit default value for signal "led1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 13
 Warning (10541): VHDL Signal Declaration warning at main.vhd(13): used implicit default value for signal "led2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 13
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(23): object "t_bird_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 23
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(28): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 28
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(29): object "t_pipe_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 29
+Warning (10036): Verilog HDL or VHDL warning at main.vhd(29): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 29
 Warning (10540): VHDL Signal Declaration warning at main.vhd(30): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 30
 Warning (10540): VHDL Signal Declaration warning at main.vhd(30): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 30
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(35): object "game_level" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 35
-Warning (10631): VHDL Process Statement warning at main.vhd(258): inferring latch(es) for signal or variable "t_bird_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Warning (10631): VHDL Process Statement warning at main.vhd(258): inferring latch(es) for signal or variable "t_pipes_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Warning (10631): VHDL Process Statement warning at main.vhd(258): inferring latch(es) for signal or variable "t_text_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Warning (10631): VHDL Process Statement warning at main.vhd(258): inferring latch(es) for signal or variable "t_bird_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Warning (10631): VHDL Process Statement warning at main.vhd(258): inferring latch(es) for signal or variable "t_pipe_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Warning (10631): VHDL Process Statement warning at main.vhd(258): inferring latch(es) for signal or variable "t_pipe_enable", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Info (10041): Inferred latch for "t_pipe_enable" at main.vhd(258) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Info (10041): Inferred latch for "t_pipe_reset" at main.vhd(258) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Info (10041): Inferred latch for "t_bird_reset" at main.vhd(258) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Info (10041): Inferred latch for "t_text_show" at main.vhd(258) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Info (10041): Inferred latch for "t_pipes_show" at main.vhd(258) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Info (10041): Inferred latch for "t_bird_show" at main.vhd(258) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 258
-Info (10041): Inferred latch for "t_game_started" at main.vhd(256) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 256
-Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(252) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 252
+Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_bird_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_pipes_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_text_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_bird_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_pipe_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Warning (10631): VHDL Process Statement warning at main.vhd(255): inferring latch(es) for signal or variable "t_pipe_enable", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Info (10041): Inferred latch for "t_pipe_enable" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Info (10041): Inferred latch for "t_pipe_reset" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Info (10041): Inferred latch for "t_bird_reset" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Info (10041): Inferred latch for "t_text_show" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Info (10041): Inferred latch for "t_pipes_show" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Info (10041): Inferred latch for "t_bird_show" at main.vhd(255) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 255
+Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(250) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 250
 Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 102
 Warning (12125): Using design file bird_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: bird_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 22
@@ -1429,8 +1434,7 @@ Info (10041): Inferred latch for "gap_y_pos[6]" at pipe.vhd(45) File: C:/Users/v
 Info (10041): Inferred latch for "gap_y_pos[7]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[8]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[9]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
-Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst|COLLISION:collision_detection_pipe" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 153
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 194
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 192
 Warning (10036): Verilog HDL or VHDL warning at background.vhd(17): object "t_bg_alpha" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 17
 Warning (12125): Using design file custom_bg_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: custom_bg_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd Line: 22
@@ -1462,7 +1466,7 @@ Info (12128): Elaborating entity "decode_l2a" for hierarchy "MAIN:inst|backgroun
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_rib.tdf
     Info (12023): Found entity 1: mux_rib File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_rib.tdf Line: 22
 Info (12128): Elaborating entity "mux_rib" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|mux_rib:mux2" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 40
-Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 208
+Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 206
 Warning (10492): VHDL Process Statement warning at text_display.vhd(46): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 46
 Warning (10492): VHDL Process Statement warning at text_display.vhd(54): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 54
 Warning (10492): VHDL Process Statement warning at text_display.vhd(78): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 78
@@ -1532,8 +1536,8 @@ Info (12128): Elaborating entity "altsyncram_d5g1" for hierarchy "MAIN:inst|text
 Warning (12125): Using design file lfsr.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: LFSR-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 12
     Info (12023): Found entity 1: LFSR File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 6
-Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 220
-Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 236
+Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 218
+Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 234
 Warning (10541): VHDL Signal Declaration warning at FSM.vhd(9): used implicit default value for signal "game_level_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 9
 Warning (10492): VHDL Process Statement warning at FSM.vhd(21): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 21
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:mouse_inst"
@@ -1869,17 +1873,17 @@ Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL
 Warning (21074): Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[0]"
     Warning (15610): No output dependent on input pin "SW[0]"
-Info (21057): Implemented 1116 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1069 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 30 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 859 logic cells
+    Info (21061): Implemented 812 logic cells
     Info (21064): Implemented 220 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 362 warnings
-    Info: Peak virtual memory: 4999 megabytes
-    Info: Processing ended: Thu May 23 20:36:02 2024
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:03
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 365 warnings
+    Info: Peak virtual memory: 5002 megabytes
+    Info: Processing ended: Thu May 23 21:29:21 2024
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:04
 
 
