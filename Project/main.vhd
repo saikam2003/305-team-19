@@ -268,22 +268,9 @@ BEGIN
 	t_game_started <= '0' when t_game_over = '1' else
 							'1' when (t_pipe_reset = '1' and t_game_started = '0') else t_game_started;					
 	
-	screen_display: PROCESS(clk_input, select_input, t_collision_chance,t_collision_chance_2)
-	variable q_collision_counter : integer range 0 to 3;
+	screen_display: PROCESS(clk_input, select_input)
 	BEGIN
-		IF (t_collision_chance = '1' OR t_collision_chance_2 = '1') THEN
-		
-				IF(t_collision_detected = '1' OR t_collision_detected_2 = '1') then
-				
-					IF(q_collision_counter /= 3) then
-						q_collision_counter := q_collision_counter + 1;
-					ELSE
-						q_collision_counter := 0;
-					END IF;
-					
-				END IF;
-		
-		ELSIF (RISING_EDGE(clk_input)) THEN
+		IF (RISING_EDGE(clk_input)) THEN
 			IF (t_heart_on = '1') THEN
 				red_output <=   heart_red;
 				green_output <= heart_green;
@@ -316,10 +303,30 @@ BEGIN
 			
 		END IF;	
 	
-		collision_counter <= q_collision_counter;
 		
 	END PROCESS screen_display;
-
+	
+	
+	losing_lives: PROCESS(t_collision_chance,t_collision_chance_2)
+	variable q_collision_counter : integer range 0 to 3;
+	BEGIN
+			IF (t_collision_chance = '1' OR t_collision_chance_2 = '1') THEN
+		
+				IF(t_collision_detected = '1' OR t_collision_detected_2 = '1') then
+				
+					IF(q_collision_counter /= 3) then
+						q_collision_counter := q_collision_counter + 1;
+					ELSE
+						q_collision_counter := 0;
+					END IF;
+					
+				END IF;
+				
+			END IF;
+			
+		collision_counter <= q_collision_counter;
+		
+	END PROCESS losing_lives;
 
 END ARCHITECTURE;
 	
