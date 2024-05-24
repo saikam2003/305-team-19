@@ -128,7 +128,7 @@ BEGIN
 					-- Compute next ball X position
 					
 					-- only when the pipe is coming towards the center (where the bird is)
-					IF ((pipe_x_pos >= 295) AND (pipe_x_pos <= 345)) THEN
+					IF ((pipe_x_pos >= 280) AND (pipe_x_pos <= 340)) THEN
 						collision_chance <= '1'; -- the chance of collision is high
 					ELSE
 						collision_chance <= '0';
