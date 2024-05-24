@@ -10,21 +10,22 @@ ENTITY MAIN IS
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-		led1, led2: OUT STD_LOGIC);
+		led1, led2: OUT STD_LOGIC;
+		score_out_1, score_out_2: OUT STD_LOGIC_VECTOR(3 downto 0));
 
 END ENTITY MAIN;
 
 
 ARCHITECTURE behvaiour OF MAIN IS
-	
+	SIGNAL t_score: integer range 99 downto 0;
 	SIGNAL t_collision, t_game_over, t_game_started: STD_LOGIC:= '0';
 	SIGNAL t_pipes_show, t_bird_show, t_text_show, t_bird_reset: STD_LOGIC;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL pipe_red, pipe_green, pipe_blue, pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL heart_red, heart_green, heart_blue : STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
+	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_pipe_1_infront, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
 	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_text_on, t_heart_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
@@ -215,7 +216,8 @@ BEGIN
 			);
 							
 	t_pipe_enable_2 <= '0' WHEN  (t_pipe_enable = '0') ELSE '1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2; -- start second pipe after firt reaches halfway
-					
+	score_out_2 <= CONV_STD_LOGIC_VECTOR(t_score rem 9, 4);
+	score_out_1 <= CONV_STD_LOGIC_VECTOR(t_score / 9, 4);
 	update_game_mode: PROCESS(game_mode)
 	BEGIN
 			IF(game_mode = "00") THEN -- Main Menu
@@ -259,6 +261,8 @@ BEGIN
 			IF(lives_left = "11" and (game_mode = "01" or game_mode = "10")) THEN -- start game, lives in "11" is unintialised state
 				lives_left <= "10";
 				t_collision <= '0';
+				t_pipe_1_infront <= '1';
+				t_score <= 0;
 			ELSIF(t_collision = '0' and t_bird_on = '1' and (t_pipe_on = '1' or t_pipe_on_2 = '1')) THEN -- collided
 				t_collision <= '1';
 				if(lives_left = "00") THEn
@@ -270,6 +274,14 @@ BEGIN
 				t_collision <= '0';
 			ELSE
 				t_game_over <= '0';
+			END IF;
+			
+			IF(t_pipe_1_infront = '1' and t_pipe_halfway = '1')THEN
+				t_pipe_1_infront <= '0' ;
+				t_score <= t_score + 1;
+			ELSIF(t_pipe_1_infront = '0' and t_pipe_halfway_2 = '1')THEN
+				t_pipe_1_infront <= '1' ;
+				t_score <= t_score + 1;
 			END IF;
 			
 			-- ============ vga sync input ==============

@@ -36,7 +36,7 @@ BEGIN
 									(
 										font_row => "00" & pixel_row(9 downto 2),
 										font_col => pixel_column,
-										clock => clk,
+										clock => clk,nb nb n
 										background_data_alpha => t_bg_alpha,
 										background_data_red => t_bg_red,
 										background_data_green => t_bg_green,
