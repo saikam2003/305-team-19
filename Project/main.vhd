@@ -9,7 +9,7 @@ ENTITY MAIN IS
 	PORT(background_on, clk_input, jump_input, start_input, select_input, text_on, option_input: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-		red_output, green_output, blue_output: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+		red_output, green_output, blue_output, score_output: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 		led1, led2: OUT STD_LOGIC);
 
 END ENTITY MAIN;
@@ -23,8 +23,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL heart_red, heart_green, heart_blue : STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
-	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_heart_on, t_background_on, t_random_flag_2, t_random_enable_2: STD_LOGIC;
+	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_collision_chance, t_collision_detected, t_bird_on, t_random_flag, t_random_enable, t_pipe_increment: STD_LOGIC;
+	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_collision_chance_2, t_collision_detected_2, t_text_on, t_heart_on, t_background_on, t_random_flag_2, t_random_enable_2, t_pipe_increment_2: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_y, t_pipe_y_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -59,7 +59,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			pipe_on, random_enable: OUT STD_LOGIC;
-			pipe_halfway, collision_chance: OUT STD_LOGIC;
+			pipe_halfway, collision_chance, pipe_increment: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 	END COMPONENT;
 	
@@ -144,6 +144,7 @@ BEGIN
 							random_enable => t_random_enable,
 							pipe_halfway => t_pipe_halfway,
 							collision_chance => t_collision_chance,
+							pipe_increment => t_pipe_incremenet,
 							pipe_position => t_pipe_position
 						);
 						
@@ -185,6 +186,7 @@ BEGIN
 							random_enable => t_random_enable_2,
 							pipe_halfway => t_pipe_halfway_2,
 							collision_chance => t_collision_chance_2,
+							pipe_increment => t_pipe_incremenet_2,
 							pipe_position => t_pipe_position_2
 						);
 	
@@ -237,24 +239,39 @@ BEGIN
 						game_over => t_game_over,
 						game_mode_out => game_mode);
 
-	
+	-- =================================== COLLISION AND RESET ==========================================================
+
 	t_pipe_reset <= '1' WHEN (start_input = '0' and (game_mode = "01" or game_mode = "10")) ELSE '0';
+
 	t_collision_reset <= t_pipe_reset;
+
 	t_collision_reset_2 <= t_pipe_reset;
 	
 	t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE
 						'0' WHEN (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE t_pipe_enable;
-	
-	--t_pipe_enable <= '1' WHEN (t_pipe_reset = '1') ELSE '0';
 							
 	t_pipe_enable_2 <= '0' WHEN  (t_collision_detected = '1' OR t_collision_detected_2 = '1') ELSE
 								'1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2;
 								
-
-	
 	t_game_over <= '1' when (t_collision_detected = '1' OR t_collision_detected_2 = '1') and t_game_started = '1' else '0';
+
 	t_game_started <= '0' when t_game_over = '1' else
-							'1' when (t_pipe_reset = '1' and t_game_started = '0') else t_game_started;					
+							'1' when (t_pipe_reset = '1' and t_game_started = '0') else t_game_started;				
+							
+	-- ====================================================================================================================
+	
+	--- =================================== SCORE LOGIC ===========================================
+
+	score_counter: PROCESS(clk_input)
+		VARIABLE score: STD_LOGIC_VECTOR(3 DOWNTO 0):= "0000";
+	BEGIN
+		IF (RISING_EDGE(clk_input)) THEN
+			IF (t_pipe_increment = '1' or t_pipe_increment_2 = '1')
+				score:= score + "0001";
+			END IF;
+		END IF;
+		score_output <= score;
+	END PROCESS score_counter;
 	
 	screen_display: PROCESS(clk_input, select_input)
 	BEGIN

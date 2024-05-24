@@ -13,6 +13,7 @@ ENTITY PIPE is
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			pipe_on, random_enable: OUT STD_LOGIC;
 			pipe_halfway, collision_chance: OUT STD_LOGIC;
+			pipe_increment: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
 END ENTITY PIPE;
@@ -29,6 +30,7 @@ ARCHITECTURE behaviour OF PIPE IS
 	SIGNAL gap_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL gap_size_y: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL gap_size_x: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL score_flag: STD_LOGIC;
 	
 BEGIN
 	-- Setting the size of the pipe and converting it into a 10 bit std_logic_vector
@@ -125,8 +127,14 @@ BEGIN
 					END IF;
 
 
-					-- Compute next ball X position
-					
+					-- score increment flag
+
+					IF ((pipe_x_pos = 281) THEN
+						score_flag = '1';
+					ELSE
+						score_flag = '0';
+					END IF;
+
 					-- only when the pipe is coming towards the center (where the bird is)
 					IF ((pipe_x_pos >= 280) AND (pipe_x_pos <= 340)) THEN
 						collision_chance <= '1'; -- the chance of collision is high
@@ -144,6 +152,15 @@ BEGIN
 			END IF;
 		END IF;
 	END PROCESS Move_Pipe;
+
+	score_increment: PROCESS (score_flag)
+	BEGIN
+				IF (rising_edge(score_flag)) THEN
+					pipe_increment <= '1';
+				ELSE
+					pipe_increment <= '0';
+				END IF;
+	END PROCESS score_increment;
 
 -- end of architechture
 END behaviour;
