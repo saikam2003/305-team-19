@@ -64,7 +64,7 @@ BEGIN
         outdata_aclr_a => "NONE",
         outdata_reg_a => "UNREGISTERED",
         widthad_a => 17,
-        width_a => 16,
+        width_a => 19,
         width_byteena_a => 1
     )
     PORT MAP (
@@ -73,8 +73,11 @@ BEGIN
         q_a => rom_data
     );
     -- Perform the multiplication and addition with type conversion
-    rom_address <= font_row(8 DOWNTO 0) & font_col(9 DOWNTO 0) WHEN (font_row <= CONV_STD_LOGIC_VECTOR(120, 10)) ELSE "0000000000000000000";
-                    
+    -- rom_address <= font_row(8 DOWNTO 0) & font_col(9 DOWNTO 0) WHEN (font_row <= CONV_STD_LOGIC_VECTOR(120, 10)) ELSE "0000000000000000000";
+    rom_address <= (font_row(8 DOWNTO 0) - CONV_STD_LOGIC_VECTOR(360, 9)) & font_col(9 DOWNTO 0)
+                    WHEN font_row >= CONV_STD_LOGIC_VECTOR(360, 10) AND font_row <= CONV_STD_LOGIC_VECTOR(480,10)
+                    ELSE "0000000000000000000";
+                     
         --rom_address <= "1110111001001111111";
 
     background_data_alpha <= rom_data(15 downto 12);
