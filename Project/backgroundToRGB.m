@@ -2,7 +2,7 @@ clear
 clc
 
 % Read the image
-img = imread("new_background.jpg");
+img = imread("trial.jpg");
 
 [height, width, ~] = size(img);
 

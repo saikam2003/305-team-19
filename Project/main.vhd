@@ -240,11 +240,11 @@ BEGIN
 				t_pipe_reset <= '0';
 				t_pipe_enable <= '1';
 			ELSIF(game_mode = "11") THEN -- Game Over
-				t_bird_show <= '0';
-				t_pipes_show <= '0';
+				t_bird_show <= '1';
+				t_pipes_show <= '1';
 				t_text_show <= '1';
-				t_bird_reset <= '1';
-				t_pipe_reset <= '1';
+				t_bird_reset <= '0';
+				t_pipe_reset <= '0';
 				t_pipe_enable <= '0';
 			END IF;
 	END PROCESS update_game_mode;
