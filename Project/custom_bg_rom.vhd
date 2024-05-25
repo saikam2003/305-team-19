@@ -22,6 +22,7 @@ ARCHITECTURE SYN OF custom_bg_rom IS
 
     SIGNAL rom_data: STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL rom_address: STD_LOGIC_VECTOR(16 DOWNTO 0); -- 17 bits required for addressing
+    SIGNAL adjusted_col: STD_LOGIC_VECTOR(9 DOWNTO 0);
 
     COMPONENT altsyncram
     GENERIC (
@@ -54,7 +55,7 @@ BEGIN
         address_aclr_a => "NONE",
         clock_enable_input_a => "BYPASS",
         clock_enable_output_a => "BYPASS",
-        init_file => "sky_background_data.mif",
+        init_file => "new_background_data.mif",
         intended_device_family => "Cyclone III",
         lpm_hint => "ENABLE_RUNTIME_MOD=NO",
         lpm_type => "altsyncram",
@@ -72,16 +73,13 @@ BEGIN
         q_a => rom_data
     );
 
-    rom_address <= font_row(8 DOWNTO 0) & font_col(7 DOWNTO 0)
-        WHEN font_col <= CONV_STD_LOGIC_VECTOR(160, 10) ELSE
-        font_row(8 DOWNTO 0) & (font_col - CONV_STD_LOGIC_VECTOR(160, 10))(7 DOWNTO 0)
-        WHEN font_col <= CONV_STD_LOGIC_VECTOR(320, 10) ELSE
-        font_row(8 DOWNTO 0) & (font_col - CONV_STD_LOGIC_VECTOR(320, 10))(7 DOWNTO 0)
-        WHEN font_col <= CONV_STD_LOGIC_VECTOR(480, 10) ELSE
-        font_row(8 DOWNTO 0) & (font_col - CONV_STD_LOGIC_VECTOR(480, 10))(7 DOWNTO 0) ELSE
-        CONV_STD_LOGIC_VECTOR(0, 17);
+    adjusted_col <= font_col WHEN font_col <= CONV_STD_LOGIC_VECTOR(160, 10) ELSE
+                    font_col - CONV_STD_LOGIC_VECTOR(160, 10) WHEN font_col <= CONV_STD_LOGIC_VECTOR(320, 10) ELSE
+                    font_col - CONV_STD_LOGIC_VECTOR(320, 10) WHEN font_col <= CONV_STD_LOGIC_VECTOR(480, 10) ELSE
+                    font_col - CONV_STD_LOGIC_VECTOR(480, 10);
 
-    background_data_alpha <= rom_data(15 DOWNTO 12);
+    rom_address <= font_row(8 DOWNTO 0) & adjusted_col(7 DOWNTO 0);
+
     background_data_red <= rom_data(11 DOWNTO 8);
     background_data_green <= rom_data(7 DOWNTO 4);    
     background_data_blue <= rom_data(3 DOWNTO 0);
