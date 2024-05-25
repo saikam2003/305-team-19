@@ -1,13 +1,13 @@
-clear
-clc
+clear;
+clc;
 
 % Read the image
-img = imread("trial.jpg");
+img = imread("sky_background.jpg");
 
 [height, width, ~] = size(img);
 
-% Initialize the RGBA array (with alpha always set to 15, fully opaque)
-rgba = zeros(height, width, 4); % Preallocate array
+% Initialize the RGB array
+rgb = zeros(height, width, 3); % Preallocate array
 range = linspace(0, 15, 256);
 
 for i = 1:height
@@ -18,19 +18,18 @@ for i = 1:height
         b = img(i, j, 3);
 
         % Map each value to a 4-bit representation (0-15)
-        rgba(i, j, 1) = round(interp1(0 : 255, range, double(r)));
-        rgba(i, j, 2) = round(interp1(0 : 255, range, double(g)));
-        rgba(i, j, 3) = round(interp1(0 : 255, range, double(b)));
-        rgba(i, j, 4) = 15; % Set alpha to 15 (fully opaque)
+        rgb(i, j, 1) = round(interp1(0 : 255, range, double(r)));
+        rgb(i, j, 2) = round(interp1(0 : 255, range, double(g)));
+        rgb(i, j, 3) = round(interp1(0 : 255, range, double(b)));
     end
 end
 
 % Open the file for writing
-fileID = fopen('new_background_data.mif', 'w');
+fileID = fopen('sky_background_data.mif', 'w');
 
 % Write the header information
 fprintf(fileID, 'DEPTH = %d;\n', height * width);
-fprintf(fileID, 'WIDTH = %d;\n', 16);
+fprintf(fileID, 'WIDTH = %d;\n', 12); % Change WIDTH to 12 since we are not using alpha
 fprintf(fileID, 'ADDRESS_RADIX = BIN;\n'); % Change address radix to binary
 fprintf(fileID, 'DATA_RADIX = BIN;\n');
 fprintf(fileID, 'CONTENT BEGIN\n');
@@ -38,14 +37,13 @@ fprintf(fileID, 'CONTENT BEGIN\n');
 % Address calculation
 for row = 0 : height-1
     for col = 0 : width-1
-       address = bitshift(row, 10) + col; % Combine row and column into a 19-bit address
-       address_bin = dec2bin(address, 19); % Convert address to 19-bit binary string
+       address = bitshift(row, 8) + col; % Combine row and column into a 17-bit address (9 bits for row, 8 bits for col)
+       address_bin = dec2bin(address, 17); % Convert address to 17-bit binary string
        fprintf(fileID, '%s : ', address_bin);
-       r = dec2bin(rgba(row+1, col+1, 1), 4);
-       g = dec2bin(rgba(row+1, col+1, 2), 4);
-       b = dec2bin(rgba(row+1, col+1, 3), 4);
-       a = dec2bin(rgba(row+1, col+1, 4), 4);
-       out = [a r g b];
+       r = dec2bin(rgb(row+1, col+1, 1), 4);
+       g = dec2bin(rgb(row+1, col+1, 2), 4);
+       b = dec2bin(rgb(row+1, col+1, 3), 4);
+       out = [r g b];
        fprintf(fileID, '%s;\n', out);
     end
 end
