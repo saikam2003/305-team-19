@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Sun May 26 14:10:07 2024
+Sun May 26 15:19:50 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -30,17 +30,19 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
  22. Parameter Settings for User Entity Instance: MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component
  23. Parameter Settings for User Entity Instance: MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component
  24. Parameter Settings for User Entity Instance: MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component
- 25. altsyncram Parameter Settings by Entity Instance
- 26. Port Connectivity Checks: "MAIN:inst|FSM:FSM_DUT"
- 27. Port Connectivity Checks: "MAIN:inst|text_display:text_component"
- 28. Port Connectivity Checks: "MAIN:inst|background:background_component|custom_bg_rom:background_sprite"
- 29. Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component_2"
- 30. Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component"
- 31. Port Connectivity Checks: "MAIN:inst|HEART:heart_component"
- 32. Port Connectivity Checks: "MAIN:inst|BIRD:bird_component"
- 33. Post-Synthesis Netlist Statistics for Top Partition
- 34. Elapsed Time Per Partition
- 35. Analysis & Synthesis Messages
+ 25. Parameter Settings for Inferred Entity Instance: MAIN:inst|lpm_divide:Div0
+ 26. Parameter Settings for Inferred Entity Instance: MAIN:inst|lpm_divide:Mod0
+ 27. altsyncram Parameter Settings by Entity Instance
+ 28. Port Connectivity Checks: "MAIN:inst|FSM:FSM_DUT"
+ 29. Port Connectivity Checks: "MAIN:inst|text_display:text_component"
+ 30. Port Connectivity Checks: "MAIN:inst|background:background_component|custom_bg_rom:background_sprite"
+ 31. Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component_2"
+ 32. Port Connectivity Checks: "MAIN:inst|PIPE:pipe_component"
+ 33. Port Connectivity Checks: "MAIN:inst|HEART:heart_component"
+ 34. Port Connectivity Checks: "MAIN:inst|BIRD:bird_component"
+ 35. Post-Synthesis Netlist Statistics for Top Partition
+ 36. Elapsed Time Per Partition
+ 37. Analysis & Synthesis Messages
 
 
 
@@ -66,13 +68,13 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun May 26 14:10:07 2024           ;
+; Analysis & Synthesis Status     ; Successful - Sun May 26 15:19:50 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 269                                             ;
+; Total registers                 ; 223                                             ;
 ; Total pins                      ; 36                                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 1,482,240                                       ;
@@ -192,56 +194,64 @@ refer to the applicable agreement for further details.
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
 ;     Processor 7            ;   0.0%      ;
-;     Processor 8            ;   0.0%      ;
-;     Processors 9-16        ;   0.0%      ;
+;     Processors 8-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                  ; Library ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+---------+
-; mouse.vhd                        ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd               ;         ;
-; BCD_to_7Seg.vhd                  ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd         ;         ;
-; collision.vhd                    ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd           ;         ;
-; background.vhd                   ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd          ;         ;
-; pipe.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd                ;         ;
-; main.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd                ;         ;
-; vga_sync.vhd                     ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd            ;         ;
-; bird.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird.vhd                ;         ;
-; Bird_Block.bdf                   ; yes             ; User Block Diagram/Schematic File      ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/Bird_Block.bdf          ;         ;
-; PLL.v                            ; yes             ; User Wizard-Generated File             ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL.v                   ; PLL     ;
-; PLL/PLL_0002.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v          ; PLL     ;
-; text_display.vhd                 ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd        ;         ;
-; FSM.vhd                          ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd                 ;         ;
-; altera_pll.v                     ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v                ;         ;
-; bird_rom.vhd                     ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd            ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf              ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc       ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/lpm_mux.inc                 ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/lpm_decode.inc              ;         ;
-; aglobal181.inc                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/aglobal181.inc              ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/a_rdenreg.inc               ;         ;
-; altrom.inc                       ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altrom.inc                  ;         ;
-; altram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altram.inc                  ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altdpram.inc                ;         ;
-; db/altsyncram_gig1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_gig1.tdf  ;         ;
-; image_data.mif                   ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/image_data.mif          ;         ;
-; heart.vhd                        ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd               ;         ;
-; heart_rom.vhd                    ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd           ;         ;
-; db/altsyncram_1jg1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1jg1.tdf  ;         ;
-; heart_data.mif                   ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_data.mif          ;         ;
-; custom_bg_rom.vhd                ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd       ;         ;
-; db/altsyncram_4nh1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf  ;         ;
-; new_background_data.mif          ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/new_background_data.mif ;         ;
-; db/decode_l2a.tdf                ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/decode_l2a.tdf       ;         ;
-; db/mux_uib.tdf                   ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_uib.tdf          ;         ;
-; char_rom.vhd                     ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd            ;         ;
-; db/altsyncram_d5g1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_d5g1.tdf  ;         ;
-; tcgrom.mif                       ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/tcgrom.mif              ;         ;
-; lfsr.vhd                         ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd                ;         ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                   ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                     ; Library ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------+---------+
+; heart.vhd                        ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd                  ;         ;
+; mouse.vhd                        ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd                  ;         ;
+; BCD_to_7Seg.vhd                  ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd            ;         ;
+; collision.vhd                    ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd              ;         ;
+; background.vhd                   ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd             ;         ;
+; pipe.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd                   ;         ;
+; main.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd                   ;         ;
+; vga_sync.vhd                     ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd               ;         ;
+; bird.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird.vhd                   ;         ;
+; Bird_Block.bdf                   ; yes             ; User Block Diagram/Schematic File      ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/Bird_Block.bdf             ;         ;
+; PLL.v                            ; yes             ; User Wizard-Generated File             ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL.v                      ; PLL     ;
+; PLL/PLL_0002.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/PLL/PLL_0002.v             ; PLL     ;
+; text_display.vhd                 ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd           ;         ;
+; FSM.vhd                          ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd                    ;         ;
+; altera_pll.v                     ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altera_pll.v                   ;         ;
+; bird_rom.vhd                     ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd               ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf                 ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc          ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/lpm_mux.inc                    ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/lpm_decode.inc                 ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/aglobal181.inc                 ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/a_rdenreg.inc                  ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altrom.inc                     ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altram.inc                     ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/altdpram.inc                   ;         ;
+; db/altsyncram_gig1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_gig1.tdf     ;         ;
+; image_data.mif                   ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/image_data.mif             ;         ;
+; heart_rom.vhd                    ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd              ;         ;
+; db/altsyncram_1jg1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1jg1.tdf     ;         ;
+; heart_data.mif                   ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_data.mif             ;         ;
+; custom_bg_rom.vhd                ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd          ;         ;
+; db/altsyncram_4nh1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf     ;         ;
+; new_background_data.mif          ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/new_background_data.mif    ;         ;
+; db/decode_l2a.tdf                ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/decode_l2a.tdf          ;         ;
+; db/mux_uib.tdf                   ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_uib.tdf             ;         ;
+; char_rom.vhd                     ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd               ;         ;
+; db/altsyncram_d5g1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_d5g1.tdf     ;         ;
+; tcgrom.mif                       ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/tcgrom.mif                 ;         ;
+; lfsr.vhd                         ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd                   ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/lpm_divide.tdf                 ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/abs_divider.inc                ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                           ; c:/intelfpga/18.1/quartus/libraries/megafunctions/sign_div_unsign.inc            ;         ;
+; db/lpm_divide_4am.tdf            ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/lpm_divide_4am.tdf      ;         ;
+; db/sign_div_unsign_akh.tdf       ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/sign_div_unsign_akh.tdf ;         ;
+; db/alt_u_div_qse.tdf             ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/alt_u_div_qse.tdf       ;         ;
+; db/lpm_divide_a2m.tdf            ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/lpm_divide_a2m.tdf      ;         ;
+; db/sign_div_unsign_dkh.tdf       ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/sign_div_unsign_dkh.tdf ;         ;
+; db/alt_u_div_0te.tdf             ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/alt_u_div_0te.tdf       ;         ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------+
@@ -249,16 +259,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 469                                                                ;
+; Estimate of Logic utilization (ALMs needed) ; 472                                                                ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 733                                                                ;
+; Combinational ALUT usage for logic          ; 763                                                                ;
 ;     -- 7 input functions                    ; 16                                                                 ;
-;     -- 6 input functions                    ; 180                                                                ;
-;     -- 5 input functions                    ; 107                                                                ;
-;     -- 4 input functions                    ; 122                                                                ;
-;     -- <=3 input functions                  ; 308                                                                ;
+;     -- 6 input functions                    ; 157                                                                ;
+;     -- 5 input functions                    ; 111                                                                ;
+;     -- 4 input functions                    ; 147                                                                ;
+;     -- <=3 input functions                  ; 332                                                                ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 269                                                                ;
+; Dedicated logic registers                   ; 223                                                                ;
 ;                                             ;                                                                    ;
 ; I/O pins                                    ; 36                                                                 ;
 ; Total MLAB memory bits                      ; 0                                                                  ;
@@ -270,51 +280,59 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 354                                                                ;
-; Total fan-out                               ; 6866                                                               ;
-; Average fan-out                             ; 5.29                                                               ;
+; Maximum fan-out                             ; 362                                                                ;
+; Total fan-out                               ; 6704                                                               ;
+; Average fan-out                             ; 5.23                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                     ;
-+-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                         ; Entity Name     ; Library Name ;
-+-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |Bird_Block                                     ; 733 (1)             ; 269 (0)                   ; 1482240           ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                                                                 ; Bird_Block      ; work         ;
-;    |BCD_to_SevenSeg:inst2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst2                                                                                                                                           ; BCD_to_SevenSeg ; work         ;
-;    |BCD_to_SevenSeg:inst6|                      ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                                                                                                                           ; BCD_to_SevenSeg ; work         ;
-;    |MAIN:inst|                                  ; 562 (58)            ; 92 (19)                   ; 1482240           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                                                                       ; MAIN            ; work         ;
-;       |BIRD:bird_component|                     ; 96 (96)             ; 17 (17)                   ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                                                                   ; BIRD            ; work         ;
-;          |bird_rom:bird_sprite_up|              ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up                                                                                                           ; bird_rom        ; work         ;
-;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component                                                                           ; altsyncram      ; work         ;
-;                |altsyncram_gig1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated                                            ; altsyncram_gig1 ; work         ;
-;       |COLLISION:COLLISION_1|                   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:COLLISION_1                                                                                                                                 ; COLLISION       ; work         ;
-;       |COLLISION:COLLISION_2|                   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:COLLISION_2                                                                                                                                 ; COLLISION       ; work         ;
-;       |FSM:FSM_DUT|                             ; 2 (2)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|FSM:FSM_DUT                                                                                                                                           ; FSM             ; work         ;
-;       |HEART:heart_component|                   ; 31 (31)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component                                                                                                                                 ; HEART           ; work         ;
-;          |heart_rom:heart_sprite|               ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite                                                                                                          ; heart_rom       ; work         ;
-;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component                                                                          ; altsyncram      ; work         ;
-;                |altsyncram_1jg1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated                                           ; altsyncram_1jg1 ; work         ;
-;       |LFSR:prng_2|                             ; 8 (8)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|LFSR:prng_2                                                                                                                                           ; LFSR            ; work         ;
-;       |PIPE:pipe_component_2|                   ; 98 (98)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                                                                 ; PIPE            ; work         ;
-;       |PIPE:pipe_component|                     ; 88 (88)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                                                                   ; PIPE            ; work         ;
-;       |background:background_component|         ; 97 (0)              ; 16 (12)                   ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component                                                                                                                       ; background      ; work         ;
-;          |custom_bg_rom:background_sprite|      ; 97 (20)             ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite                                                                                       ; custom_bg_rom   ; work         ;
-;             |altsyncram:altsyncram_component|   ; 77 (0)              ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component                                                       ; altsyncram      ; work         ;
-;                |altsyncram_4nh1:auto_generated| ; 77 (0)              ; 4 (4)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated                        ; altsyncram_4nh1 ; work         ;
-;                   |decode_l2a:rden_decode|      ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|decode_l2a:rden_decode ; decode_l2a      ; work         ;
-;                   |mux_uib:mux2|                ; 60 (60)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|mux_uib:mux2           ; mux_uib         ; work         ;
-;       |text_display:text_component|             ; 82 (80)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component                                                                                                                           ; text_display    ; work         ;
-;          |char_rom:char_comp|                   ; 2 (2)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp                                                                                                        ; char_rom        ; work         ;
-;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component                                                                        ; altsyncram      ; work         ;
-;                |altsyncram_d5g1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated                                         ; altsyncram_d5g1 ; work         ;
-;    |MOUSE:mouse_inst|                           ; 106 (106)           ; 120 (120)                 ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                                                                                                                ; MOUSE           ; work         ;
-;    |PLL:inst3|                                  ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                                                                                                                                       ; PLL             ; PLL          ;
-;       |PLL_0002:pll_inst|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                                                                                                                                     ; PLL_0002        ; PLL          ;
-;          |altera_pll:altera_pll_i|              ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i                                                                                                             ; altera_pll      ; work         ;
-;    |VGA_SYNC:inst1|                             ; 49 (49)             ; 57 (57)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|VGA_SYNC:inst1                                                                                                                                                  ; VGA_SYNC        ; work         ;
-+-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                         ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                         ; Entity Name         ; Library Name ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |Bird_Block                                     ; 763 (0)             ; 223 (0)                   ; 1482240           ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                                                                 ; Bird_Block          ; work         ;
+;    |BCD_to_SevenSeg:inst2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst2                                                                                                                                           ; BCD_to_SevenSeg     ; work         ;
+;    |BCD_to_SevenSeg:inst6|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                                                                                                                           ; BCD_to_SevenSeg     ; work         ;
+;    |MAIN:inst|                                  ; 653 (63)            ; 101 (27)                  ; 1482240           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                                                                       ; MAIN                ; work         ;
+;       |BIRD:bird_component|                     ; 103 (103)           ; 17 (17)                   ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                                                                   ; BIRD                ; work         ;
+;          |bird_rom:bird_sprite_up|              ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up                                                                                                           ; bird_rom            ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component                                                                           ; altsyncram          ; work         ;
+;                |altsyncram_gig1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated                                            ; altsyncram_gig1     ; work         ;
+;       |COLLISION:COLLISION_1|                   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:COLLISION_1                                                                                                                                 ; COLLISION           ; work         ;
+;       |COLLISION:COLLISION_2|                   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:COLLISION_2                                                                                                                                 ; COLLISION           ; work         ;
+;       |FSM:FSM_DUT|                             ; 2 (2)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|FSM:FSM_DUT                                                                                                                                           ; FSM                 ; work         ;
+;       |HEART:heart_component|                   ; 37 (37)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component                                                                                                                                 ; HEART               ; work         ;
+;          |heart_rom:heart_sprite|               ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite                                                                                                          ; heart_rom           ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component                                                                          ; altsyncram          ; work         ;
+;                |altsyncram_1jg1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated                                           ; altsyncram_1jg1     ; work         ;
+;       |LFSR:prng_2|                             ; 8 (8)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|LFSR:prng_2                                                                                                                                           ; LFSR                ; work         ;
+;       |PIPE:pipe_component_2|                   ; 96 (96)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                                                                 ; PIPE                ; work         ;
+;       |PIPE:pipe_component|                     ; 84 (84)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                                                                   ; PIPE                ; work         ;
+;       |background:background_component|         ; 97 (0)              ; 16 (12)                   ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component                                                                                                                       ; background          ; work         ;
+;          |custom_bg_rom:background_sprite|      ; 97 (20)             ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite                                                                                       ; custom_bg_rom       ; work         ;
+;             |altsyncram:altsyncram_component|   ; 77 (0)              ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component                                                       ; altsyncram          ; work         ;
+;                |altsyncram_4nh1:auto_generated| ; 77 (0)              ; 4 (4)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated                        ; altsyncram_4nh1     ; work         ;
+;                   |decode_l2a:rden_decode|      ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|decode_l2a:rden_decode ; decode_l2a          ; work         ;
+;                   |mux_uib:mux2|                ; 60 (60)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|mux_uib:mux2           ; mux_uib             ; work         ;
+;       |lpm_divide:Div0|                         ; 33 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|lpm_divide:Div0                                                                                                                                       ; lpm_divide          ; work         ;
+;          |lpm_divide_4am:auto_generated|        ; 33 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|lpm_divide:Div0|lpm_divide_4am:auto_generated                                                                                                         ; lpm_divide_4am      ; work         ;
+;             |sign_div_unsign_akh:divider|       ; 33 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|lpm_divide:Div0|lpm_divide_4am:auto_generated|sign_div_unsign_akh:divider                                                                             ; sign_div_unsign_akh ; work         ;
+;                |alt_u_div_qse:divider|          ; 33 (33)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|lpm_divide:Div0|lpm_divide_4am:auto_generated|sign_div_unsign_akh:divider|alt_u_div_qse:divider                                                       ; alt_u_div_qse       ; work         ;
+;       |lpm_divide:Mod0|                         ; 46 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|lpm_divide:Mod0                                                                                                                                       ; lpm_divide          ; work         ;
+;          |lpm_divide_a2m:auto_generated|        ; 46 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|lpm_divide:Mod0|lpm_divide_a2m:auto_generated                                                                                                         ; lpm_divide_a2m      ; work         ;
+;             |sign_div_unsign_dkh:divider|       ; 46 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|lpm_divide:Mod0|lpm_divide_a2m:auto_generated|sign_div_unsign_dkh:divider                                                                             ; sign_div_unsign_dkh ; work         ;
+;                |alt_u_div_0te:divider|          ; 46 (46)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|lpm_divide:Mod0|lpm_divide_a2m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_0te:divider                                                       ; alt_u_div_0te       ; work         ;
+;       |text_display:text_component|             ; 82 (80)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component                                                                                                                           ; text_display        ; work         ;
+;          |char_rom:char_comp|                   ; 2 (2)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp                                                                                                        ; char_rom            ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component                                                                        ; altsyncram          ; work         ;
+;                |altsyncram_d5g1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated                                         ; altsyncram_d5g1     ; work         ;
+;    |MOUSE:mouse_inst|                           ; 47 (47)             ; 65 (65)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MOUSE:mouse_inst                                                                                                                                                ; MOUSE               ; work         ;
+;    |PLL:inst3|                                  ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3                                                                                                                                                       ; PLL                 ; PLL          ;
+;       |PLL_0002:pll_inst|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst                                                                                                                                     ; PLL_0002            ; PLL          ;
+;          |altera_pll:altera_pll_i|              ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i                                                                                                             ; altera_pll          ; work         ;
+;    |VGA_SYNC:inst1|                             ; 49 (49)             ; 57 (57)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|VGA_SYNC:inst1                                                                                                                                                  ; VGA_SYNC            ; work         ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -432,6 +450,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MAIN:inst|t_bird_reset                              ; Merged with MAIN:inst|collisions_reset              ;
 ; MAIN:inst|t_pipe_reset                              ; Merged with MAIN:inst|collisions_reset              ;
 ; MAIN:inst|t_text_show                               ; Merged with MAIN:inst|collisions_reset              ;
+; MAIN:inst|t_pipe_enable                             ; Merged with MAIN:inst|t_bird_show                   ;
+; MAIN:inst|t_pipes_show                              ; Merged with MAIN:inst|t_bird_show                   ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[7]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[7] ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[6]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[6] ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[5]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[5] ;
@@ -440,13 +460,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MAIN:inst|LFSR:prng|level_easy_reg[2]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[2] ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[1]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[1] ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[0]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[0] ;
-; MAIN:inst|t_pipe_enable                             ; Merged with MAIN:inst|t_bird_show                   ;
-; MAIN:inst|t_pipes_show                              ; Merged with MAIN:inst|t_bird_show                   ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[0]       ; Stuck at VCC due to stuck port data_in              ;
 ; MAIN:inst|PIPE:pipe_component|pipe_x_pos[0]         ; Stuck at VCC due to stuck port data_in              ;
-; MOUSE:mouse_inst|cursor_row[9]                      ; Stuck at GND due to stuck port data_in              ;
 ; VGA_SYNC:inst1|pixel_row[9]                         ; Stuck at GND due to stuck port data_in              ;
-; Total Number of Removed Registers = 51              ;                                                     ;
+; Total Number of Removed Registers = 50              ;                                                     ;
 +-----------------------------------------------------+-----------------------------------------------------+
 
 
@@ -455,12 +472,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 269   ;
-; Number of registers using Synchronous Clear  ; 30    ;
-; Number of registers using Synchronous Load   ; 20    ;
-; Number of registers using Asynchronous Clear ; 45    ;
+; Total registers                              ; 223   ;
+; Number of registers using Synchronous Clear  ; 22    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 46    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 167   ;
+; Number of registers using Clock Enable       ; 119   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -470,28 +487,32 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------------------------------+---------+
 ; Inverted Register                             ; Fan out ;
 +-----------------------------------------------+---------+
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[2] ; 6       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[1] ; 4       ;
+; MAIN:inst|t_score[1]                          ; 6       ;
+; MAIN:inst|t_score[0]                          ; 4       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[2] ; 7       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[1] ; 5       ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[7] ; 6       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9] ; 7       ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[5] ; 6       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9] ; 6       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]   ; 6       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]   ; 4       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[7]   ; 7       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]   ; 7       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]   ; 7       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]   ; 5       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[7]   ; 6       ;
 ; MAIN:inst|PIPE:pipe_component|pipe_x_pos[9]   ; 7       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]   ; 6       ;
+; MAIN:inst|t_score[6]                          ; 6       ;
+; MAIN:inst|t_score[5]                          ; 5       ;
 ; MAIN:inst|PIPE:pipe_component_2|random_enable ; 9       ;
 ; MAIN:inst|LFSR:prng_2|level_easy_reg[0]       ; 4       ;
 ; MAIN:inst|PIPE:pipe_component|random_enable   ; 9       ;
-; MOUSE:mouse_inst|send_char                    ; 3       ;
+; MAIN:inst|collision_counter[1]                ; 3       ;
 ; MAIN:inst|collision_counter[0]                ; 3       ;
-; MAIN:inst|collision_counter[1]                ; 2       ;
+; MOUSE:mouse_inst|send_char                    ; 3       ;
 ; MOUSE:mouse_inst|SHIFTOUT[3]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[5]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[6]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[7]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[8]                  ; 1       ;
-; Total number of inverted registers = 21       ;         ;
+; Total number of inverted registers = 25       ;         ;
 +-----------------------------------------------+---------+
 
 
@@ -500,26 +521,23 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_column[2]                       ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[6]               ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[8]                 ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[3]                                   ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[9]                           ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[8]                           ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[8]                              ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[5]                              ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[4]                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[10]              ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[3]                 ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[0]                                   ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|t_score[4]                                        ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[6]                 ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[9]                 ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[2]                                    ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|red_output[1]                                     ;
-; 15:1               ; 12 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|blue[0]           ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9]               ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[3]                                    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|green_output[3]                                   ;
+; 15:1               ; 12 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|red[0]            ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[5]               ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[9]                 ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|collision_counter[0]                              ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_3_on             ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[0] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[0]                       ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[3]                       ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|t_score[0]                                        ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|collision_counter[1]                              ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_2_on             ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[4] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[0]                       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[5]                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
 
 
@@ -1050,6 +1068,52 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: MAIN:inst|lpm_divide:Div0 ;
++------------------------+----------------+----------------------------------+
+; Parameter Name         ; Value          ; Type                             ;
++------------------------+----------------+----------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                          ;
+; LPM_WIDTHD             ; 4              ; Untyped                          ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_PIPELINE           ; 0              ; Untyped                          ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                          ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                          ;
+; CBXI_PARAMETER         ; lpm_divide_4am ; Untyped                          ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                          ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                          ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                   ;
++------------------------+----------------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: MAIN:inst|lpm_divide:Mod0 ;
++------------------------+----------------+----------------------------------+
+; Parameter Name         ; Value          ; Type                             ;
++------------------------+----------------+----------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                          ;
+; LPM_WIDTHD             ; 7              ; Untyped                          ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_PIPELINE           ; 0              ; Untyped                          ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                          ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                          ;
+; CBXI_PARAMETER         ; lpm_divide_a2m ; Untyped                          ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                          ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                          ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                   ;
++------------------------+----------------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; altsyncram Parameter Settings by Entity Instance                                                                                                      ;
 +-------------------------------------------+-----------------------------------------------------------------------------------------------------------+
@@ -1144,7 +1208,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; pipe_x[7]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; pipe_x[6]     ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; pipe_x[5]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; pipe_halfway  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; pipe_position ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -1191,41 +1254,39 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 269                         ;
-;     CLR               ; 4                           ;
-;     ENA               ; 88                          ;
-;     ENA CLR           ; 41                          ;
-;     ENA SCLR          ; 18                          ;
-;     ENA SLD           ; 20                          ;
+; arriav_ff             ; 223                         ;
+;     CLR               ; 3                           ;
+;     ENA               ; 66                          ;
+;     ENA CLR           ; 43                          ;
+;     ENA SCLR          ; 10                          ;
 ;     SCLR              ; 12                          ;
-;     plain             ; 86                          ;
+;     plain             ; 89                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 736                         ;
-;     arith             ; 173                         ;
-;         0 data inputs ; 6                           ;
-;         1 data inputs ; 146                         ;
-;         2 data inputs ; 19                          ;
-;         3 data inputs ; 1                           ;
-;         4 data inputs ; 1                           ;
+; arriav_lcell_comb     ; 763                         ;
+;     arith             ; 218                         ;
+;         0 data inputs ; 14                          ;
+;         1 data inputs ; 172                         ;
+;         2 data inputs ; 11                          ;
+;         3 data inputs ; 11                          ;
+;         4 data inputs ; 10                          ;
 ;     extend            ; 16                          ;
 ;         7 data inputs ; 16                          ;
-;     normal            ; 537                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 10                          ;
-;         2 data inputs ; 32                          ;
-;         3 data inputs ; 86                          ;
-;         4 data inputs ; 121                         ;
-;         5 data inputs ; 107                         ;
-;         6 data inputs ; 180                         ;
-;     shared            ; 10                          ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 9                           ;
+;     normal            ; 523                         ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 36                          ;
+;         3 data inputs ; 75                          ;
+;         4 data inputs ; 137                         ;
+;         5 data inputs ; 111                         ;
+;         6 data inputs ; 157                         ;
+;     shared            ; 6                           ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 2                           ;
 ; boundary_port         ; 36                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 220                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.40                        ;
-; Average LUT depth     ; 3.22                        ;
+; Max LUT depth         ; 10.50                       ;
+; Average LUT depth     ; 3.98                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1234,7 +1295,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -1244,10 +1305,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Sun May 26 14:10:00 2024
+    Info: Processing started: Sun May 26 15:19:42 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file heart.vhd
+    Info (12022): Found design unit 1: HEART-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 15
+    Info (12023): Found entity 1: HEART File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file cloud.vhd
     Info (12022): Found design unit 1: cloud-behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 16
     Info (12023): Found entity 1: cloud File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/cloud.vhd Line: 7
@@ -1357,14 +1421,13 @@ Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "pll_subtype" = "General"
 Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst"
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(23): object "t_bird_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 23
-Warning (10036): Verilog HDL or VHDL warning at main.vhd(28): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 28
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(29): object "t_pipe_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 29
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(29): object "t_pipe_position_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 29
 Warning (10540): VHDL Signal Declaration warning at main.vhd(30): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 30
 Warning (10540): VHDL Signal Declaration warning at main.vhd(30): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 30
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(35): object "game_level" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 35
-Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(239) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 239
-Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 102
+Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(242) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 242
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 103
 Warning (12125): Using design file bird_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: bird_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 22
     Info (12023): Found entity 1: bird_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 9
@@ -1389,14 +1452,11 @@ Info (12133): Instantiated megafunction "MAIN:inst|BIRD:bird_component|bird_rom:
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_gig1.tdf
     Info (12023): Found entity 1: altsyncram_gig1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_gig1.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_gig1" for hierarchy "MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Warning (12125): Using design file heart.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: HEART-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 17
-    Info (12023): Found entity 1: HEART File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 6
-Info (12128): Elaborating entity "HEART" for hierarchy "MAIN:inst|HEART:heart_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 118
+Info (12128): Elaborating entity "HEART" for hierarchy "MAIN:inst|HEART:heart_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 119
 Warning (12125): Using design file heart_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: heart_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 22
     Info (12023): Found entity 1: heart_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 9
-Info (12128): Elaborating entity "heart_rom" for hierarchy "MAIN:inst|HEART:heart_component|heart_rom:heart_sprite" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 47
+Info (12128): Elaborating entity "heart_rom" for hierarchy "MAIN:inst|HEART:heart_component|heart_rom:heart_sprite" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 39
 Info (12128): Elaborating entity "altsyncram" for hierarchy "MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 53
 Info (12130): Elaborated megafunction instantiation "MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 53
 Info (12133): Instantiated megafunction "MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 53
@@ -1417,7 +1477,7 @@ Info (12133): Instantiated megafunction "MAIN:inst|HEART:heart_component|heart_r
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1jg1.tdf
     Info (12023): Found entity 1: altsyncram_1jg1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1jg1.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_1jg1" for hierarchy "MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 132
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 135
 Info (10041): Inferred latch for "gap_y_pos[0]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[1]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[2]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
@@ -1428,7 +1488,7 @@ Info (10041): Inferred latch for "gap_y_pos[6]" at pipe.vhd(45) File: C:/Users/v
 Info (10041): Inferred latch for "gap_y_pos[7]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[8]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[9]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 174
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 177
 Warning (10036): Verilog HDL or VHDL warning at background.vhd(17): object "t_bg_alpha" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 17
 Warning (12125): Using design file custom_bg_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: custom_bg_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd Line: 22
@@ -1460,7 +1520,7 @@ Info (12128): Elaborating entity "decode_l2a" for hierarchy "MAIN:inst|backgroun
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_uib.tdf
     Info (12023): Found entity 1: mux_uib File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_uib.tdf Line: 22
 Info (12128): Elaborating entity "mux_uib" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|mux_uib:mux2" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 40
-Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 188
+Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 191
 Warning (10492): VHDL Process Statement warning at text_display.vhd(46): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 46
 Warning (10492): VHDL Process Statement warning at text_display.vhd(54): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 54
 Warning (10492): VHDL Process Statement warning at text_display.vhd(78): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 78
@@ -1530,18 +1590,18 @@ Info (12128): Elaborating entity "altsyncram_d5g1" for hierarchy "MAIN:inst|text
 Warning (12125): Using design file lfsr.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: LFSR-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 12
     Info (12023): Found entity 1: LFSR File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 6
-Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 200
-Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 216
+Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 203
+Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
 Warning (10541): VHDL Signal Declaration warning at FSM.vhd(9): used implicit default value for signal "game_level_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 9
 Warning (10492): VHDL Process Statement warning at FSM.vhd(21): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 21
-Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst|COLLISION:COLLISION_1" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 225
+Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst|COLLISION:COLLISION_1" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 228
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:mouse_inst"
 Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(25): object "CHARIN" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 25
 Warning (10492): VHDL Process Statement warning at mouse.vhd(151): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 151
 Warning (10492): VHDL Process Statement warning at mouse.vhd(155): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 155
 Warning (10492): VHDL Process Statement warning at mouse.vhd(156): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 156
 Warning (10492): VHDL Process Statement warning at mouse.vhd(157): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 157
-Info (12128): Elaborating entity "BCD_to_SevenSeg" for hierarchy "BCD_to_SevenSeg:inst6"
+Info (12128): Elaborating entity "BCD_to_SevenSeg" for hierarchy "BCD_to_SevenSeg:inst2"
 Warning (12001): Port "address_a[17]" does not exist in entity definition of "altsyncram".  The port's range differs between the entity definition and its actual instantiation, "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component". File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd Line: 53
 Warning (12001): Port "address_a[18]" does not exist in entity definition of "altsyncram".  The port's range differs between the entity definition and its actual instantiation, "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component". File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd Line: 53
 Warning (14284): Synthesized away the following node(s):
@@ -1651,6 +1711,33 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a282" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5963
         Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a283" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5984
         Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a284" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 6005
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "MAIN:inst|Div0" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 247
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "MAIN:inst|Mod0" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 248
+Info (12130): Elaborated megafunction instantiation "MAIN:inst|lpm_divide:Div0" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 247
+Info (12133): Instantiated megafunction "MAIN:inst|lpm_divide:Div0" with the following parameter: File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 247
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_4am.tdf
+    Info (12023): Found entity 1: lpm_divide_4am File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/lpm_divide_4am.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_akh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_akh File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/sign_div_unsign_akh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_qse.tdf
+    Info (12023): Found entity 1: alt_u_div_qse File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/alt_u_div_qse.tdf Line: 22
+Info (12130): Elaborated megafunction instantiation "MAIN:inst|lpm_divide:Mod0" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 248
+Info (12133): Instantiated megafunction "MAIN:inst|lpm_divide:Mod0" with the following parameter: File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 248
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_a2m.tdf
+    Info (12023): Found entity 1: lpm_divide_a2m File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/lpm_divide_a2m.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_dkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_dkh File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/sign_div_unsign_dkh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_0te.tdf
+    Info (12023): Found entity 1: alt_u_div_0te File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/alt_u_div_0te.tdf Line: 22
 Warning (13012): Latch MAIN:inst|text_display:text_component|char_2_on has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 15
     Warning (13013): Ports D and ENA on the latch are fed by the same signal MAIN:inst|FSM:FSM_DUT|game_mode[0] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 21
 Warning (13012): Latch MAIN:inst|text_display:text_component|char_1_on has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 15
@@ -1910,17 +1997,17 @@ Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL
 Warning (21074): Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[0]"
     Warning (15610): No output dependent on input pin "SW[0]"
-Info (21057): Implemented 1074 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1087 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 30 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 817 logic cells
+    Info (21061): Implemented 830 logic cells
     Info (21064): Implemented 220 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 399 warnings
-    Info: Peak virtual memory: 4996 megabytes
-    Info: Processing ended: Sun May 26 14:10:07 2024
-    Info: Elapsed time: 00:00:07
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 397 warnings
+    Info: Peak virtual memory: 4998 megabytes
+    Info: Processing ended: Sun May 26 15:19:50 2024
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:05
 
 

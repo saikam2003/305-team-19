@@ -9,7 +9,7 @@ ENTITY MAIN IS
 	PORT(background_on, clk_input, jump_input, start_input, select_input, text_on, option_input: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-		red_output, green_output, blue_output: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+		red_output, green_output, blue_output, score_tens, score_ones: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 		led1, led2: OUT STD_LOGIC);
 
 END ENTITY MAIN;
@@ -17,7 +17,7 @@ END ENTITY MAIN;
 
 ARCHITECTURE behvaiour OF MAIN IS
 	
-	SIGNAL t_collision_1, t_collision_2, t_collision_flag, collisions_reset, collision_tracker, pipe_1_collision_chance, pipe_2_collision_chance, t_game_over, t_game_started: STD_LOGIC:= '0';
+	SIGNAL t_collision_1, t_collision_2, t_collision_flag, collisions_reset, collision_tracker, pipe_1_infront, pipe_1_collision_chance, pipe_2_collision_chance, t_game_over, t_game_started: STD_LOGIC:= '0';
 	SIGNAL t_pipes_show, t_bird_show, t_text_show, t_bird_reset: STD_LOGIC;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -34,12 +34,13 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL game_mode, game_level: STD_LOGIC_VECTOR(1 downto 0) := "00";
 	SIGNAL collision_counter: INTEGER RANGE 3 downto 0;
-	
+	SIGNAL t_score: INTEGER RANGE 99 downto 0;
 	COMPONENT HEART IS
 		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
-			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
-			heart_on: OUT STD_LOGIC
+			 pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			 collision_counter : IN INTEGER RANGE 0 TO 3;
+			 red, green, blue : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+			 heart_on: OUT STD_LOGIC
 		);
 	END COMPONENT;
 	
@@ -123,11 +124,13 @@ BEGIN
 							colour_input => '0',
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
+							collision_counter => collision_counter,
 							red 	=> heart_red,
 							blue 	=> heart_blue,
 							green 	=> heart_green,
 							heart_on => t_heart_on
 						);
+						
 	
 	pipe_component: PIPE
 						PORT MAP(
@@ -240,6 +243,10 @@ BEGIN
 	
 	led1 <= t_collision_1;
 	led2 <= t_collision_2;
+	
+	score_tens <= CONV_STD_LOGIC_VECTOR(t_score / 9,4);
+	score_ones <= CONV_STD_LOGIC_VECTOR(t_score rem 9,4);
+			
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
@@ -255,6 +262,8 @@ BEGIN
 				collision_counter <= 0;
 				t_collision_flag <= '0';
 				t_game_over <= '0';
+				pipe_1_infront <= '1';
+				t_score <= 0;
 			ELSIF(game_mode = "01") THEN -- Training Mode
 				t_bird_show <= '1';
 				t_pipes_show <= '1';
@@ -282,6 +291,8 @@ BEGIN
 				collision_counter <= 0;
 				t_collision_flag <= '0';
 				t_game_over <= '0';
+				pipe_1_infront <= '1';
+				t_score <= 0;
 			END IF;
 		
 			-- ============ collision detection ==============
@@ -306,6 +317,19 @@ BEGIN
 					t_collision_flag <= '0';
 				end if;
 			END IF;
+			
+			-- ============ score counter ==============
+			
+			IF(pipe_1_infront = '1' and t_pipe_halfway = '1') THEN
+				pipe_1_infront <= '0';
+				t_score <= t_score + 1;
+			ELSIF(pipe_1_infront = '0' and t_pipe_halfway_2 = '1') THEN
+				pipe_1_infront <= '1';
+				t_score <= t_score + 1;
+			END IF;
+			
+			
+			
 			-- ============ vga sync input ==============
 			
 			IF (t_heart_on = '1' and t_pipes_show = '1') THEN
