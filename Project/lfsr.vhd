@@ -20,7 +20,9 @@ BEGIN
 	BEGIN
 		IF RISING_EDGE(clk) THEN
 			-- feedback is equal to the primitive polynomial equation for 8 bits
-			feedback:= level_easy_reg(7) XOR level_easy_reg(5) XOR level_easy_reg(4) XOR level_easy_reg(0);
+			-- feedback:= level_easy_reg(7) XOR level_easy_reg(5) XOR level_easy_reg(4) XOR level_easy_reg(0);
+			feedback:= level_easy_reg(7) XOR level_easy_reg(3) XOR level_easy_reg(2) XOR level_easy_reg(1);
+
 			-- overwriting the level_easy_reg with concatenated reg and feedback
 			level_easy_reg <= level_easy_reg(6 DOWNTO 0) & feedback;
 		END IF;

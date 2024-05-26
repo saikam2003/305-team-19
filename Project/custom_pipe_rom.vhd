@@ -8,8 +8,8 @@ USE altera_mf.all;
 
 ENTITY custom_pipe_rom IS
     PORT (
-        font_row: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-        font_col: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+        font_row: IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+        font_col: IN STD_LOGIC_VECTOR(5 DOWNTO 0);
         clock: IN STD_LOGIC;
         pipe_data_red: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         pipe_data_green: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -54,7 +54,7 @@ BEGIN
         address_aclr_a => "NONE",
         clock_enable_input_a => "BYPASS",
         clock_enable_output_a => "BYPASS",
-        init_file => "sky_background_data.mif",
+        init_file => "custom_pipe_data.mif",
         intended_device_family => "Cyclone III",
         lpm_hint => "ENABLE_RUNTIME_MOD=NO",
         lpm_type => "altsyncram",
@@ -71,23 +71,8 @@ BEGIN
         address_a => rom_address,
         q_a => rom_data
     );
-
-    adjusted_col <= font_col WHEN font_col >= CONV_STD_LOGIC_VECTOR(0, 10) AND font_col < CONV_STD_LOGIC_VECTOR(40, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(40, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(40, 10) AND font_col < CONV_STD_LOGIC_VECTOR(80, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(80, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(80, 10) AND font_col < CONV_STD_LOGIC_VECTOR(160, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(120, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(120, 10) AND font_col < CONV_STD_LOGIC_VECTOR(200, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(160, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(160, 10) AND font_col < CONV_STD_LOGIC_VECTOR(120, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(200, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(200, 10) AND font_col < CONV_STD_LOGIC_VECTOR(240, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(240, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(240, 10) AND font_col < CONV_STD_LOGIC_VECTOR(280, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(280, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(280, 10) AND font_col < CONV_STD_LOGIC_VECTOR(320, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(320, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(320, 10) AND font_col < CONV_STD_LOGIC_VECTOR(360, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(360, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(360, 10) AND font_col < CONV_STD_LOGIC_VECTOR(400, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(400, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(400, 10) AND font_col < CONV_STD_LOGIC_VECTOR(440, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(440, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(440, 10) AND font_col < CONV_STD_LOGIC_VECTOR(480, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(480, 10);
-
-    rom_address <= font_row(8 DOWNTO 0) & adjusted_col(5 DOWNTO 0);
-
+    
+    rom_address <= font_row & font_col;
     pipe_data_red <= rom_data(11 DOWNTO 8);
     pipe_data_green <= rom_data(7 DOWNTO 4);    
     pipe_data_blue <= rom_data(3 DOWNTO 0);

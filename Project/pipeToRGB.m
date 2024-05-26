@@ -2,7 +2,7 @@ clear;
 clc;
 
 % Read the image
-img = imread("pipe.jpg");
+img = imread("pipe2.jpg");
 
 [height, width, ~] = size(img);
 

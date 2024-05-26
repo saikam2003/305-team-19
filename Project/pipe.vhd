@@ -34,8 +34,8 @@ ARCHITECTURE behaviour OF PIPE IS
 	
 	COMPONENT custom_pipe_rom IS
 		PORT (
-			font_row: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			font_col: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			font_row: IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+			font_col: IN STD_LOGIC_VECTOR(5 DOWNTO 0);
 			clock: IN STD_LOGIC;
 			pipe_data_red: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 			pipe_data_green: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -45,8 +45,8 @@ ARCHITECTURE behaviour OF PIPE IS
 BEGIN
 
 	custom_pipe_sprite: custom_pipe_rom PORT MAP(
-		font_row => pixel_row, -- - (ball_y_pos(3 downto 0) + size(3 downto 0)) ,
-		font_col => pixel_column - (pipe_x_pos(9 downto 0)),
+		font_row => pixel_row(8 downto 0), 
+		font_col => pixel_column(5 downto 0) - (pipe_x_pos(5 downto 0) - size_x(5 downto 0)),
 		clock => clk,
 		pipe_data_red	=>	t_pipe_red,
 		pipe_data_green	=>	t_pipe_green,
@@ -57,7 +57,7 @@ BEGIN
 	
 	-- Setting the size of the gap between the pipes
 	gap_size_y <= CONV_STD_LOGIC_VECTOR(56, 10);
-	gap_size_x <= size_x;
+	gap_size_x <= size_x; -- gap horizontal size is 40
 	
 	
 	
@@ -105,18 +105,6 @@ BEGIN
 		-- moving the pipes only when enable is 1
 			IF (enable = '1') THEN
 				
-			-- changing color according to switch input
-				-- IF(colour_input = '1') THEN
-				-- 	red <= "1011";
-				-- 	green <= "0000";
-				-- ELSE
-				-- 	green <= "1100";
-				-- 	red <= "0000";
-				-- END IF;
-
-				-- INCREMENTING THE HALF COUNTER
-				--half_counter:= half_counter + 1;
-
 				-- if the counter is 1
 				IF (first_iteration = '1') THEN
 					-- then check if the pipe os going beyond 0
@@ -129,12 +117,7 @@ BEGIN
 						random_enable <= '0';
 
 						-- moving the pipe every 2 vertical syncs to slow down the pipes
-						--IF (half_counter = 2) THEN
-						-- if the half counter is 2 only then move pipe
-							pipe_x_pos <= pipe_x_pos + pipe_x_motion;
-							-- and reset the counter
-							--half_counter:= 0;
-						--END IF;
+						pipe_x_pos <= pipe_x_pos + pipe_x_motion;
 
 					END IF;
 					
@@ -144,10 +127,6 @@ BEGIN
 					ELSE
 						pipe_halfway <= '0';
 					END IF;
-
-
-					-- Compute next ball X position
-					
 
 				ELSE
 

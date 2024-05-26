@@ -256,13 +256,13 @@ BEGIN
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
 		
-			-- ============ collision detection ==============
-			
+			--collision detection logic
 			IF(lives_left = "11" and (game_mode = "01" or game_mode = "10")) THEN -- start game, lives in "11" is unintialised state
 				lives_left <= "10";
 				t_collision <= '0';
-			ELSIF(t_collision = '0' and t_bird_on = '1' and (t_pipe_on = '1' or t_pipe_on_2 = '1')) THEN -- collided
-				t_collision <= '1';
+			ELSIF(t_collision = '0' and t_bird_on = '1' and (t_pipe_on = '1' or t_pipe_on_2 = '1')) THEN -- collision has occured
+				-- t_collision <= '1';
+				t_collision <= '0';
 				if(lives_left = "00") THEn
 					t_game_over <= '1';
 				end if;
@@ -274,8 +274,7 @@ BEGIN
 				t_game_over <= '0';
 			END IF;
 			
-			-- ============ vga sync input ==============
-			
+			--vga sync input logic
 			IF (t_heart_on = '1' and t_pipes_show = '1') THEN
 				red_output <=   heart_red;
 				green_output <= heart_green;
