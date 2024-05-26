@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BIRD
-Thu May 23 21:46:58 2024
+Sun May 26 14:10:07 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -23,7 +23,7 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
  15. Multiplexer Restructuring Statistics (Restructuring Performed)
  16. Source assignments for MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated
  17. Source assignments for MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated
- 18. Source assignments for MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated
+ 18. Source assignments for MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated
  19. Source assignments for MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated
  20. Parameter Settings for User Entity Instance: PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i
  21. Parameter Settings for User Entity Instance: MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component
@@ -66,13 +66,13 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu May 23 21:46:58 2024           ;
+; Analysis & Synthesis Status     ; Successful - Sun May 26 14:10:07 2024           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; BIRD                                            ;
 ; Top-level Entity Name           ; Bird_Block                                      ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 262                                             ;
+; Total registers                 ; 269                                             ;
 ; Total pins                      ; 36                                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 1,482,240                                       ;
@@ -192,7 +192,8 @@ refer to the applicable agreement for further details.
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
 ;     Processor 7            ;   0.0%      ;
-;     Processors 8-16        ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -203,6 +204,7 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+---------+
 ; mouse.vhd                        ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd               ;         ;
 ; BCD_to_7Seg.vhd                  ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd         ;         ;
+; collision.vhd                    ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd           ;         ;
 ; background.vhd                   ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd          ;         ;
 ; pipe.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd                ;         ;
 ; main.vhd                         ; yes             ; User VHDL File                         ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd                ;         ;
@@ -231,10 +233,10 @@ refer to the applicable agreement for further details.
 ; db/altsyncram_1jg1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1jg1.tdf  ;         ;
 ; heart_data.mif                   ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_data.mif          ;         ;
 ; custom_bg_rom.vhd                ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd       ;         ;
-; db/altsyncram_1nh1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf  ;         ;
+; db/altsyncram_4nh1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf  ;         ;
 ; new_background_data.mif          ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/new_background_data.mif ;         ;
 ; db/decode_l2a.tdf                ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/decode_l2a.tdf       ;         ;
-; db/mux_rib.tdf                   ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_rib.tdf          ;         ;
+; db/mux_uib.tdf                   ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_uib.tdf          ;         ;
 ; char_rom.vhd                     ; yes             ; Auto-Found VHDL File                   ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/char_rom.vhd            ;         ;
 ; db/altsyncram_d5g1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_d5g1.tdf  ;         ;
 ; tcgrom.mif                       ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/vdis663/Documents/GitHub/305-team-19/Project/tcgrom.mif              ;         ;
@@ -247,16 +249,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 476                                                                ;
+; Estimate of Logic utilization (ALMs needed) ; 469                                                                ;
 ;                                             ;                                                                    ;
 ; Combinational ALUT usage for logic          ; 733                                                                ;
 ;     -- 7 input functions                    ; 16                                                                 ;
-;     -- 6 input functions                    ; 193                                                                ;
+;     -- 6 input functions                    ; 180                                                                ;
 ;     -- 5 input functions                    ; 107                                                                ;
-;     -- 4 input functions                    ; 104                                                                ;
-;     -- <=3 input functions                  ; 313                                                                ;
+;     -- 4 input functions                    ; 122                                                                ;
+;     -- <=3 input functions                  ; 308                                                                ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 262                                                                ;
+; Dedicated logic registers                   ; 269                                                                ;
 ;                                             ;                                                                    ;
 ; I/O pins                                    ; 36                                                                 ;
 ; Total MLAB memory bits                      ; 0                                                                  ;
@@ -268,9 +270,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:inst3|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 349                                                                ;
-; Total fan-out                               ; 6862                                                               ;
-; Average fan-out                             ; 5.32                                                               ;
+; Maximum fan-out                             ; 354                                                                ;
+; Total fan-out                               ; 6866                                                               ;
+; Average fan-out                             ; 5.29                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
@@ -279,29 +281,31 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                         ; Entity Name     ; Library Name ;
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |Bird_Block                                     ; 733 (1)             ; 262 (0)                   ; 1482240           ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                                                                 ; Bird_Block      ; work         ;
+; |Bird_Block                                     ; 733 (1)             ; 269 (0)                   ; 1482240           ; 0          ; 36   ; 0            ; |Bird_Block                                                                                                                                                                 ; Bird_Block      ; work         ;
 ;    |BCD_to_SevenSeg:inst2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst2                                                                                                                                           ; BCD_to_SevenSeg ; work         ;
 ;    |BCD_to_SevenSeg:inst6|                      ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|BCD_to_SevenSeg:inst6                                                                                                                                           ; BCD_to_SevenSeg ; work         ;
-;    |MAIN:inst|                                  ; 562 (66)            ; 85 (16)                   ; 1482240           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                                                                       ; MAIN            ; work         ;
-;       |BIRD:bird_component|                     ; 101 (101)           ; 17 (17)                   ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                                                                   ; BIRD            ; work         ;
+;    |MAIN:inst|                                  ; 562 (58)            ; 92 (19)                   ; 1482240           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst                                                                                                                                                       ; MAIN            ; work         ;
+;       |BIRD:bird_component|                     ; 96 (96)             ; 17 (17)                   ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component                                                                                                                                   ; BIRD            ; work         ;
 ;          |bird_rom:bird_sprite_up|              ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up                                                                                                           ; bird_rom        ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component                                                                           ; altsyncram      ; work         ;
 ;                |altsyncram_gig1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated                                            ; altsyncram_gig1 ; work         ;
+;       |COLLISION:COLLISION_1|                   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:COLLISION_1                                                                                                                                 ; COLLISION       ; work         ;
+;       |COLLISION:COLLISION_2|                   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|COLLISION:COLLISION_2                                                                                                                                 ; COLLISION       ; work         ;
 ;       |FSM:FSM_DUT|                             ; 2 (2)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|FSM:FSM_DUT                                                                                                                                           ; FSM             ; work         ;
-;       |HEART:heart_component|                   ; 30 (30)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component                                                                                                                                 ; HEART           ; work         ;
+;       |HEART:heart_component|                   ; 31 (31)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component                                                                                                                                 ; HEART           ; work         ;
 ;          |heart_rom:heart_sprite|               ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite                                                                                                          ; heart_rom       ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component                                                                          ; altsyncram      ; work         ;
 ;                |altsyncram_1jg1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated                                           ; altsyncram_1jg1 ; work         ;
 ;       |LFSR:prng_2|                             ; 8 (8)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|LFSR:prng_2                                                                                                                                           ; LFSR            ; work         ;
-;       |PIPE:pipe_component_2|                   ; 95 (95)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                                                                 ; PIPE            ; work         ;
-;       |PIPE:pipe_component|                     ; 86 (86)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                                                                   ; PIPE            ; work         ;
-;       |background:background_component|         ; 93 (0)              ; 16 (12)                   ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component                                                                                                                       ; background      ; work         ;
-;          |custom_bg_rom:background_sprite|      ; 93 (18)             ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite                                                                                       ; custom_bg_rom   ; work         ;
-;             |altsyncram:altsyncram_component|   ; 75 (0)              ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component                                                       ; altsyncram      ; work         ;
-;                |altsyncram_1nh1:auto_generated| ; 75 (0)              ; 4 (4)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated                        ; altsyncram_1nh1 ; work         ;
-;                   |decode_l2a:rden_decode|      ; 15 (15)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|decode_l2a:rden_decode ; decode_l2a      ; work         ;
-;                   |mux_rib:mux2|                ; 60 (60)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|mux_rib:mux2           ; mux_rib         ; work         ;
-;       |text_display:text_component|             ; 81 (79)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component                                                                                                                           ; text_display    ; work         ;
+;       |PIPE:pipe_component_2|                   ; 98 (98)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2                                                                                                                                 ; PIPE            ; work         ;
+;       |PIPE:pipe_component|                     ; 88 (88)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|PIPE:pipe_component                                                                                                                                   ; PIPE            ; work         ;
+;       |background:background_component|         ; 97 (0)              ; 16 (12)                   ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component                                                                                                                       ; background      ; work         ;
+;          |custom_bg_rom:background_sprite|      ; 97 (20)             ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite                                                                                       ; custom_bg_rom   ; work         ;
+;             |altsyncram:altsyncram_component|   ; 77 (0)              ; 4 (0)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component                                                       ; altsyncram      ; work         ;
+;                |altsyncram_4nh1:auto_generated| ; 77 (0)              ; 4 (4)                     ; 1469952           ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated                        ; altsyncram_4nh1 ; work         ;
+;                   |decode_l2a:rden_decode|      ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|decode_l2a:rden_decode ; decode_l2a      ; work         ;
+;                   |mux_uib:mux2|                ; 60 (60)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|mux_uib:mux2           ; mux_uib         ; work         ;
+;       |text_display:text_component|             ; 82 (80)             ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component                                                                                                                           ; text_display    ; work         ;
 ;          |char_rom:char_comp|                   ; 2 (2)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp                                                                                                        ; char_rom        ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component                                                                        ; altsyncram      ; work         ;
 ;                |altsyncram_d5g1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |Bird_Block|MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated                                         ; altsyncram_d5g1 ; work         ;
@@ -321,7 +325,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+---------+-------------------------+
 ; MAIN:inst|BIRD:bird_component|bird_rom:bird_sprite_up|altsyncram:altsyncram_component|altsyncram_gig1:auto_generated|ALTSYNCRAM                     ; AUTO ; ROM  ; 256          ; 16           ; --           ; --           ; 4096    ; image_data.mif          ;
 ; MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated|ALTSYNCRAM                    ; AUTO ; ROM  ; 256          ; 16           ; --           ; --           ; 4096    ; heart_data.mif          ;
-; MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 122496       ; 16           ; --           ; --           ; 1959936 ; new_background_data.mif ;
+; MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 122496       ; 19           ; --           ; --           ; 2327424 ; new_background_data.mif ;
 ; MAIN:inst|text_display:text_component|char_rom:char_comp|altsyncram:altsyncram_component|altsyncram_d5g1:auto_generated|ALTSYNCRAM                  ; AUTO ; ROM  ; 512          ; 8            ; --           ; --           ; 4096    ; tcgrom.mif              ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+---------+-------------------------+
 
@@ -355,18 +359,6 @@ Encoding Type:  One-Hot
 +---------------------------------------------------------+---------------------------------------------------+------------------------+
 ; Latch Name                                              ; Latch Enable Signal                               ; Free of Timing Hazards ;
 +---------------------------------------------------------+---------------------------------------------------+------------------------+
-; MAIN:inst|text_display:text_component|char_2_on         ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
-; MAIN:inst|text_display:text_component|char_1_on         ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
-; MAIN:inst|text_display:text_component|char_3_on         ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[8]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[7]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[6]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[5]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[3]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[4]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[2]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[1]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
-; MAIN:inst|PIPE:pipe_component|gap_y_pos[0]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[8]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[7]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[6]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
@@ -376,9 +368,21 @@ Encoding Type:  One-Hot
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[2]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[1]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
 ; MAIN:inst|PIPE:pipe_component_2|gap_y_pos[0]            ; MAIN:inst|PIPE:pipe_component_2|random_enable     ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[8]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[7]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[6]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[5]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[3]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[4]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[2]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[1]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|PIPE:pipe_component|gap_y_pos[0]              ; MAIN:inst|PIPE:pipe_component|random_enable       ; yes                    ;
+; MAIN:inst|t_pipe_enable_2                               ; GND                                               ; yes                    ;
+; MAIN:inst|text_display:text_component|char_2_on         ; MAIN:inst|text_display:text_component|char_2_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_1_on         ; MAIN:inst|text_display:text_component|char_1_on   ; yes                    ;
+; MAIN:inst|text_display:text_component|char_3_on         ; MAIN:inst|text_display:text_component|char_3_on   ; yes                    ;
 ; MAIN:inst|text_display:text_component|size_col[2]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
 ; MAIN:inst|text_display:text_component|size_col[1]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
-; MAIN:inst|t_pipe_enable_2                               ; GND                                               ; yes                    ;
 ; MAIN:inst|text_display:text_component|size_row[0]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
 ; MAIN:inst|text_display:text_component|size_row[1]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
 ; MAIN:inst|text_display:text_component|size_row[2]       ; MAIN:inst|text_display:text_component|size_col[0] ; yes                    ;
@@ -425,6 +429,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MAIN:inst|PIPE:pipe_component|red[0..3]             ; Stuck at GND due to stuck port data_in              ;
 ; MAIN:inst|PIPE:pipe_component|green[2,3]            ; Stuck at VCC due to stuck port data_in              ;
 ; MAIN:inst|PIPE:pipe_component|green[1]              ; Stuck at GND due to stuck port data_in              ;
+; MAIN:inst|t_bird_reset                              ; Merged with MAIN:inst|collisions_reset              ;
+; MAIN:inst|t_pipe_reset                              ; Merged with MAIN:inst|collisions_reset              ;
+; MAIN:inst|t_text_show                               ; Merged with MAIN:inst|collisions_reset              ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[7]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[7] ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[6]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[6] ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[5]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[5] ;
@@ -433,11 +440,13 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MAIN:inst|LFSR:prng|level_easy_reg[2]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[2] ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[1]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[1] ;
 ; MAIN:inst|LFSR:prng|level_easy_reg[0]               ; Merged with MAIN:inst|LFSR:prng_2|level_easy_reg[0] ;
+; MAIN:inst|t_pipe_enable                             ; Merged with MAIN:inst|t_bird_show                   ;
+; MAIN:inst|t_pipes_show                              ; Merged with MAIN:inst|t_bird_show                   ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[0]       ; Stuck at VCC due to stuck port data_in              ;
 ; MAIN:inst|PIPE:pipe_component|pipe_x_pos[0]         ; Stuck at VCC due to stuck port data_in              ;
 ; MOUSE:mouse_inst|cursor_row[9]                      ; Stuck at GND due to stuck port data_in              ;
 ; VGA_SYNC:inst1|pixel_row[9]                         ; Stuck at GND due to stuck port data_in              ;
-; Total Number of Removed Registers = 46              ;                                                     ;
+; Total Number of Removed Registers = 51              ;                                                     ;
 +-----------------------------------------------------+-----------------------------------------------------+
 
 
@@ -446,12 +455,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 262   ;
-; Number of registers using Synchronous Clear  ; 28    ;
+; Total registers                              ; 269   ;
+; Number of registers using Synchronous Clear  ; 30    ;
 ; Number of registers using Synchronous Load   ; 20    ;
-; Number of registers using Asynchronous Clear ; 41    ;
+; Number of registers using Asynchronous Clear ; 45    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 163   ;
+; Number of registers using Clock Enable       ; 167   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -461,22 +470,22 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------------------------------+---------+
 ; Inverted Register                             ; Fan out ;
 +-----------------------------------------------+---------+
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]   ; 6       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]   ; 4       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[7]   ; 6       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]   ; 5       ;
-; MAIN:inst|PIPE:pipe_component|pipe_x_pos[9]   ; 6       ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[2] ; 6       ;
 ; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[1] ; 4       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[7] ; 5       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[5] ; 5       ;
-; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9] ; 5       ;
-; MOUSE:mouse_inst|send_char                    ; 3       ;
-; MAIN:inst|PIPE:pipe_component|random_enable   ; 9       ;
-; MAIN:inst|LFSR:prng_2|level_easy_reg[0]       ; 4       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[7] ; 6       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[5] ; 6       ;
+; MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9] ; 6       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[2]   ; 6       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[1]   ; 4       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[7]   ; 7       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]   ; 7       ;
+; MAIN:inst|PIPE:pipe_component|pipe_x_pos[9]   ; 7       ;
 ; MAIN:inst|PIPE:pipe_component_2|random_enable ; 9       ;
-; MAIN:inst|lives_left[1]                       ; 3       ;
-; MAIN:inst|lives_left[0]                       ; 4       ;
+; MAIN:inst|LFSR:prng_2|level_easy_reg[0]       ; 4       ;
+; MAIN:inst|PIPE:pipe_component|random_enable   ; 9       ;
+; MOUSE:mouse_inst|send_char                    ; 3       ;
+; MAIN:inst|collision_counter[0]                ; 3       ;
+; MAIN:inst|collision_counter[1]                ; 2       ;
 ; MOUSE:mouse_inst|SHIFTOUT[3]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[5]                  ; 1       ;
 ; MOUSE:mouse_inst|SHIFTOUT[6]                  ; 1       ;
@@ -491,27 +500,26 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_row[4]                          ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|new_cursor_column[2]                       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[6]               ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[8]                 ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Bird_Block|VGA_SYNC:inst1|v_count[3]                                   ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[3]               ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[10]                ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[0]                           ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[6]                           ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[0]                              ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[4]                              ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[7]                 ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[9]                           ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_column[8]                           ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[8]                              ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MOUSE:mouse_inst|cursor_row[5]                              ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[4]                 ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|BIRD:bird_component|ball_y_pos[9]                 ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[3]                                    ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|red_output[3]                                     ;
-; 15:1               ; 12 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|blue[3]           ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|blue_output[2]                                    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|red_output[1]                                     ;
+; 15:1               ; 12 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|background:background_component|blue[0]           ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component_2|pipe_x_pos[9]               ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[5]                 ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|lives_left[0]                                     ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|t_text_show                                       ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_2_on             ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[1] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[3]                       ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[2]                       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|PIPE:pipe_component|pipe_x_pos[9]                 ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Bird_Block|MAIN:inst|collision_counter[0]                              ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_3_on             ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|MAIN:inst|text_display:text_component|char_address_final[0] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst6|SevenSeg_out[0]                       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Bird_Block|BCD_to_SevenSeg:inst2|SevenSeg_out[3]                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------+
 
 
@@ -534,7 +542,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated ;
+; Source assignments for MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated ;
 +---------------------------------+--------------------+------+---------------------------------------------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                                                                ;
 +---------------------------------+--------------------+------+---------------------------------------------------------------------------------------------------+
@@ -932,7 +940,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE                                                                          ;
 ; WIDTH_BYTEENA                      ; 1                       ; Untyped                                                                                 ;
 ; OPERATION_MODE                     ; ROM                     ; Untyped                                                                                 ;
-; WIDTH_A                            ; 16                      ; Signed Integer                                                                          ;
+; WIDTH_A                            ; 19                      ; Signed Integer                                                                          ;
 ; WIDTHAD_A                          ; 17                      ; Signed Integer                                                                          ;
 ; NUMWORDS_A                         ; 122496                  ; Signed Integer                                                                          ;
 ; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                                                                                 ;
@@ -976,7 +984,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                                                                                 ;
 ; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                                                                                 ;
 ; DEVICE_FAMILY                      ; Cyclone V               ; Untyped                                                                                 ;
-; CBXI_PARAMETER                     ; altsyncram_1nh1         ; Untyped                                                                                 ;
+; CBXI_PARAMETER                     ; altsyncram_4nh1         ; Untyped                                                                                 ;
 +------------------------------------+-------------------------+-----------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -1072,7 +1080,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                                 ;
 ; Entity Instance                           ; MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component ;
 ;     -- OPERATION_MODE                     ; ROM                                                                                                       ;
-;     -- WIDTH_A                            ; 16                                                                                                        ;
+;     -- WIDTH_A                            ; 19                                                                                                        ;
 ;     -- NUMWORDS_A                         ; 122496                                                                                                    ;
 ;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                                              ;
 ;     -- WIDTH_B                            ; 1                                                                                                         ;
@@ -1118,7 +1126,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port                  ; Type   ; Severity ; Details                                                                             ;
 +-----------------------+--------+----------+-------------------------------------------------------------------------------------+
-; font_row[9..8]        ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; background_data_alpha ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +-----------------------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -1184,14 +1191,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 262                         ;
-;     CLR               ; 2                           ;
-;     ENA               ; 86                          ;
-;     ENA CLR           ; 39                          ;
+; arriav_ff             ; 269                         ;
+;     CLR               ; 4                           ;
+;     ENA               ; 88                          ;
+;     ENA CLR           ; 41                          ;
 ;     ENA SCLR          ; 18                          ;
 ;     ENA SLD           ; 20                          ;
-;     SCLR              ; 10                          ;
-;     plain             ; 87                          ;
+;     SCLR              ; 12                          ;
+;     plain             ; 86                          ;
 ; arriav_io_obuf        ; 2                           ;
 ; arriav_lcell_comb     ; 736                         ;
 ;     arith             ; 173                         ;
@@ -1204,12 +1211,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         7 data inputs ; 16                          ;
 ;     normal            ; 537                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 9                           ;
-;         2 data inputs ; 33                          ;
-;         3 data inputs ; 91                          ;
-;         4 data inputs ; 103                         ;
+;         1 data inputs ; 10                          ;
+;         2 data inputs ; 32                          ;
+;         3 data inputs ; 86                          ;
+;         4 data inputs ; 121                         ;
 ;         5 data inputs ; 107                         ;
-;         6 data inputs ; 193                         ;
+;         6 data inputs ; 180                         ;
 ;     shared            ; 10                          ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 9                           ;
@@ -1217,8 +1224,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 220                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 3.29                        ;
+; Max LUT depth         ; 7.40                        ;
+; Average LUT depth     ; 3.22                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1227,7 +1234,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -1237,7 +1244,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Thu May 23 21:46:50 2024
+    Info: Processing started: Sun May 26 14:10:00 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BIRD -c BIRD
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1251,7 +1258,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file bcd_to_
     Info (12022): Found design unit 1: BCD_to_SevenSeg-arc1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd Line: 12
     Info (12023): Found entity 1: BCD_to_SevenSeg File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/BCD_to_7Seg.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file collision.vhd
-    Info (12022): Found design unit 1: COLLISION-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd Line: 15
+    Info (12022): Found design unit 1: COLLISION-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd Line: 14
     Info (12023): Found entity 1: COLLISION File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/collision.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file background.vhd
     Info (12022): Found design unit 1: background-behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 15
@@ -1349,8 +1356,6 @@ Info (12133): Instantiated megafunction "PLL:inst3|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
 Info (12128): Elaborating entity "MAIN" for hierarchy "MAIN:inst"
-Warning (10541): VHDL Signal Declaration warning at main.vhd(13): used implicit default value for signal "led1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 13
-Warning (10541): VHDL Signal Declaration warning at main.vhd(13): used implicit default value for signal "led2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 13
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(23): object "t_bird_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 23
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(28): object "t_pipe_halfway_2" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 28
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(29): object "t_pipe_position" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 29
@@ -1358,20 +1363,8 @@ Warning (10036): Verilog HDL or VHDL warning at main.vhd(29): object "t_pipe_pos
 Warning (10540): VHDL Signal Declaration warning at main.vhd(30): used explicit default value for signal "t_pipe_x" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 30
 Warning (10540): VHDL Signal Declaration warning at main.vhd(30): used explicit default value for signal "t_pipe_x_2" because signal was never assigned a value File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 30
 Warning (10036): Verilog HDL or VHDL warning at main.vhd(35): object "game_level" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 35
-Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_bird_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_pipes_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_text_show", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_bird_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_pipe_reset", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Warning (10631): VHDL Process Statement warning at main.vhd(219): inferring latch(es) for signal or variable "t_pipe_enable", which holds its previous value in one or more paths through the process File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Info (10041): Inferred latch for "t_pipe_enable" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Info (10041): Inferred latch for "t_pipe_reset" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Info (10041): Inferred latch for "t_bird_reset" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Info (10041): Inferred latch for "t_text_show" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Info (10041): Inferred latch for "t_pipes_show" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Info (10041): Inferred latch for "t_bird_show" at main.vhd(219) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 219
-Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(217) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 217
-Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 96
+Info (10041): Inferred latch for "t_pipe_enable_2" at main.vhd(239) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 239
+Info (12128): Elaborating entity "BIRD" for hierarchy "MAIN:inst|BIRD:bird_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 102
 Warning (12125): Using design file bird_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: bird_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 22
     Info (12023): Found entity 1: bird_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/bird_rom.vhd Line: 9
@@ -1399,7 +1392,7 @@ Info (12128): Elaborating entity "altsyncram_gig1" for hierarchy "MAIN:inst|BIRD
 Warning (12125): Using design file heart.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: HEART-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 17
     Info (12023): Found entity 1: HEART File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart.vhd Line: 6
-Info (12128): Elaborating entity "HEART" for hierarchy "MAIN:inst|HEART:heart_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 112
+Info (12128): Elaborating entity "HEART" for hierarchy "MAIN:inst|HEART:heart_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 118
 Warning (12125): Using design file heart_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: heart_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 22
     Info (12023): Found entity 1: heart_rom File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/heart_rom.vhd Line: 9
@@ -1424,7 +1417,7 @@ Info (12133): Instantiated megafunction "MAIN:inst|HEART:heart_component|heart_r
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1jg1.tdf
     Info (12023): Found entity 1: altsyncram_1jg1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1jg1.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_1jg1" for hierarchy "MAIN:inst|HEART:heart_component|heart_rom:heart_sprite|altsyncram:altsyncram_component|altsyncram_1jg1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 126
+Info (12128): Elaborating entity "PIPE" for hierarchy "MAIN:inst|PIPE:pipe_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 132
 Info (10041): Inferred latch for "gap_y_pos[0]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[1]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[2]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
@@ -1435,7 +1428,7 @@ Info (10041): Inferred latch for "gap_y_pos[6]" at pipe.vhd(45) File: C:/Users/v
 Info (10041): Inferred latch for "gap_y_pos[7]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[8]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
 Info (10041): Inferred latch for "gap_y_pos[9]" at pipe.vhd(45) File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/pipe.vhd Line: 45
-Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 166
+Info (12128): Elaborating entity "background" for hierarchy "MAIN:inst|background:background_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 174
 Warning (10036): Verilog HDL or VHDL warning at background.vhd(17): object "t_bg_alpha" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/background.vhd Line: 17
 Warning (12125): Using design file custom_bg_rom.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: custom_bg_rom-SYN File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd Line: 22
@@ -1456,18 +1449,18 @@ Info (12133): Instantiated megafunction "MAIN:inst|background:background_compone
     Info (12134): Parameter "outdata_aclr_a" = "NONE"
     Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
     Info (12134): Parameter "widthad_a" = "17"
-    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_a" = "19"
     Info (12134): Parameter "width_byteena_a" = "1"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1nh1.tdf
-    Info (12023): Found entity 1: altsyncram_1nh1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 31
-Info (12128): Elaborating entity "altsyncram_1nh1" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_4nh1.tdf
+    Info (12023): Found entity 1: altsyncram_4nh1 File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 31
+Info (12128): Elaborating entity "altsyncram_4nh1" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_l2a.tdf
     Info (12023): Found entity 1: decode_l2a File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/decode_l2a.tdf Line: 22
-Info (12128): Elaborating entity "decode_l2a" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|decode_l2a:rden_decode" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 39
-Info (12021): Found 1 design units, including 1 entities, in source file db/mux_rib.tdf
-    Info (12023): Found entity 1: mux_rib File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_rib.tdf Line: 22
-Info (12128): Elaborating entity "mux_rib" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|mux_rib:mux2" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 40
-Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 180
+Info (12128): Elaborating entity "decode_l2a" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|decode_l2a:rden_decode" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_uib.tdf
+    Info (12023): Found entity 1: mux_uib File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/mux_uib.tdf Line: 22
+Info (12128): Elaborating entity "mux_uib" for hierarchy "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|mux_uib:mux2" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 40
+Info (12128): Elaborating entity "text_display" for hierarchy "MAIN:inst|text_display:text_component" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 188
 Warning (10492): VHDL Process Statement warning at text_display.vhd(46): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 46
 Warning (10492): VHDL Process Statement warning at text_display.vhd(54): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 54
 Warning (10492): VHDL Process Statement warning at text_display.vhd(78): signal "game_mode_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 78
@@ -1537,10 +1530,11 @@ Info (12128): Elaborating entity "altsyncram_d5g1" for hierarchy "MAIN:inst|text
 Warning (12125): Using design file lfsr.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: LFSR-behaviour File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 12
     Info (12023): Found entity 1: LFSR File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/lfsr.vhd Line: 6
-Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 192
-Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 208
+Info (12128): Elaborating entity "LFSR" for hierarchy "MAIN:inst|LFSR:prng" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 200
+Info (12128): Elaborating entity "FSM" for hierarchy "MAIN:inst|FSM:FSM_DUT" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 216
 Warning (10541): VHDL Signal Declaration warning at FSM.vhd(9): used implicit default value for signal "game_level_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 9
 Warning (10492): VHDL Process Statement warning at FSM.vhd(21): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 21
+Info (12128): Elaborating entity "COLLISION" for hierarchy "MAIN:inst|COLLISION:COLLISION_1" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/main.vhd Line: 225
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:mouse_inst"
 Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(25): object "CHARIN" assigned a value but never read File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 25
 Warning (10492): VHDL Process Statement warning at mouse.vhd(151): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 151
@@ -1552,66 +1546,111 @@ Warning (12001): Port "address_a[17]" does not exist in entity definition of "al
 Warning (12001): Port "address_a[18]" does not exist in entity definition of "altsyncram".  The port's range differs between the entity definition and its actual instantiation, "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component". File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/custom_bg_rom.vhd Line: 53
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a12" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 293
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a13" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 314
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a14" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 335
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a15" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 356
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a28" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 629
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a29" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 650
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a30" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 671
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a31" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 692
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a44" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 965
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a45" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 986
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a46" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1007
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a47" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1028
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a60" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1301
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a61" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1322
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a62" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1343
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a63" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1364
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a76" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1637
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a77" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1658
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a78" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1679
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a79" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1700
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a92" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1973
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a93" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 1994
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a94" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2015
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a95" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2036
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a108" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2309
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a109" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2330
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a110" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2351
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a111" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2372
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a124" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2645
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a125" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2666
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a126" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2687
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a127" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2708
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a140" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 2981
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a141" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3002
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a142" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3023
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a143" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3044
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a156" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3317
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a157" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3338
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a158" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3359
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a159" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3380
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a172" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3653
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a173" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3674
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a174" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3695
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a175" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3716
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a188" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 3989
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a189" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4010
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a190" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4031
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a191" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4052
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a204" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4325
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a205" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4346
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a206" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4367
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a207" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4388
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a220" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4661
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a221" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4682
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a222" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4703
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a223" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4724
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a236" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 4997
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a237" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 5018
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a238" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 5039
-        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_1nh1:auto_generated|ram_block1a239" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_1nh1.tdf Line: 5060
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a12" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 293
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a13" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 314
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a14" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 335
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a15" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 356
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a16" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 377
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a17" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 398
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a18" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 419
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a31" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 692
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a32" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 713
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a33" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 734
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a34" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 755
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a35" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 776
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a36" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 797
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a37" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 818
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a50" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1091
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a51" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1112
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a52" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1133
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a53" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1154
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a54" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1175
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a55" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1196
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a56" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1217
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a69" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1490
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a70" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1511
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a71" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1532
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a72" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1553
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a73" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1574
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a74" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1595
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a75" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1616
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a88" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1889
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a89" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1910
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a90" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1931
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a91" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1952
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a92" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1973
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a93" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 1994
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a94" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2015
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a107" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2288
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a108" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2309
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a109" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2330
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a110" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2351
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a111" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2372
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a112" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2393
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a113" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2414
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a126" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2687
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a127" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2708
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a128" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2729
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a129" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2750
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a130" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2771
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a131" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2792
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a132" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 2813
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a145" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3086
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a146" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3107
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a147" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3128
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a148" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3149
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a149" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3170
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a150" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3191
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a151" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3212
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a164" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3485
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a165" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3506
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a166" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3527
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a167" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3548
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a168" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3569
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a169" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3590
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a170" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3611
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a183" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3884
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a184" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3905
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a185" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3926
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a186" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3947
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a187" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3968
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a188" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 3989
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a189" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4010
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a202" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4283
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a203" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4304
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a204" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4325
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a205" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4346
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a206" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4367
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a207" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4388
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a208" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4409
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a221" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4682
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a222" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4703
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a223" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4724
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a224" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4745
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a225" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4766
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a226" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4787
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a227" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 4808
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a240" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5081
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a241" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5102
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a242" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5123
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a243" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5144
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a244" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5165
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a245" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5186
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a246" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5207
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a259" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5480
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a260" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5501
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a261" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5522
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a262" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5543
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a263" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5564
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a264" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5585
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a265" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5606
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a278" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5879
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a279" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5900
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a280" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5921
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a281" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5942
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a282" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5963
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a283" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 5984
+        Warning (14320): Synthesized away node "MAIN:inst|background:background_component|custom_bg_rom:background_sprite|altsyncram:altsyncram_component|altsyncram_4nh1:auto_generated|ram_block1a284" File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/db/altsyncram_4nh1.tdf Line: 6005
 Warning (13012): Latch MAIN:inst|text_display:text_component|char_2_on has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 15
     Warning (13013): Ports D and ENA on the latch are fed by the same signal MAIN:inst|FSM:FSM_DUT|game_mode[0] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/FSM.vhd Line: 21
 Warning (13012): Latch MAIN:inst|text_display:text_component|char_1_on has unsafe behavior File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/text_display.vhd Line: 15
@@ -1632,9 +1671,6 @@ Warning (13012): Latch MAIN:inst|text_display:text_component|size_col[0] has uns
     Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst1|pixel_row[7] File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/vga_sync.vhd Line: 90
 Info (13000): Registers with preset signals will power-up high File: C:/Users/vdis663/Documents/GitHub/305-team-19/Project/mouse.vhd Line: 146
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[3]" is stuck at GND
-    Warning (13410): Pin "LEDR[2]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
 Warning (20013): Ignored 230 assignments for entity "DE0_CV_Default" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK2_50 -entity DE0_CV_Default was ignored
@@ -1874,17 +1910,17 @@ Warning: RST port on the PLL is not properly connected on instance PLL:inst3|PLL
 Warning (21074): Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[0]"
     Warning (15610): No output dependent on input pin "SW[0]"
-Info (21057): Implemented 1069 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1074 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 30 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 812 logic cells
+    Info (21061): Implemented 817 logic cells
     Info (21064): Implemented 220 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 365 warnings
-    Info: Peak virtual memory: 4995 megabytes
-    Info: Processing ended: Thu May 23 21:46:58 2024
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 399 warnings
+    Info: Peak virtual memory: 4996 megabytes
+    Info: Processing ended: Sun May 26 14:10:07 2024
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:05
 
 

@@ -12,7 +12,7 @@ ENTITY PIPE is
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			pipe_on, random_enable: OUT STD_LOGIC;
-			pipe_halfway: OUT STD_LOGIC;
+			pipe_halfway, collision_chance: OUT STD_LOGIC;
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
 END ENTITY PIPE;
@@ -74,6 +74,8 @@ BEGIN
 				-- reset counters
 				first_iteration := '0';
 				--half_counter := 0;
+				-- reset chance of collision because pipe is reset to the end
+				collision_chance <= '0';
 				pipe_halfway <= '0';
 				
 		
@@ -125,7 +127,12 @@ BEGIN
 
 					-- Compute next ball X position
 					
-
+					-- only when the pipe is coming towards the center (where the bird is)
+					IF ((pipe_x_pos >= 295) AND (pipe_x_pos <= 345)) THEN
+						collision_chance <= '1'; -- the chance of collision is high
+					ELSE
+						collision_chance <= '0';
+					END IF;
 				ELSE
 
 					-- setting the default position at the very end
