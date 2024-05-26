@@ -73,9 +73,9 @@ BEGIN
         q_a => rom_data
     );
 
-    adjusted_col <= font_col WHEN font_col <= CONV_STD_LOGIC_VECTOR(160, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(160, 10) WHEN font_col <= CONV_STD_LOGIC_VECTOR(320, 10) ELSE
-                    font_col - CONV_STD_LOGIC_VECTOR(320, 10) WHEN font_col <= CONV_STD_LOGIC_VECTOR(480, 10) ELSE
+    adjusted_col <= font_col WHEN font_col >= CONV_STD_LOGIC_VECTOR(0, 10) AND font_col < CONV_STD_LOGIC_VECTOR(160, 10) ELSE
+                    font_col - CONV_STD_LOGIC_VECTOR(160, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(160, 10) AND font_col < CONV_STD_LOGIC_VECTOR(320, 10) ELSE
+                    font_col - CONV_STD_LOGIC_VECTOR(320, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(320, 10) AND font_col < CONV_STD_LOGIC_VECTOR(480, 10) ELSE
                     font_col - CONV_STD_LOGIC_VECTOR(480, 10);
 
     rom_address <= font_row(8 DOWNTO 0) & adjusted_col(7 DOWNTO 0);
