@@ -5,7 +5,8 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY FSM IS
 	port(clk, select_option, select_input, game_over: IN STD_LOGIC;
-		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0));
+		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0);
+		  game_level_out: OUT STD_LOGIC_VECTOR(1 downto 0));
 END ENTITY;
 
 ARCHITECTURE BEHAVIOUR OF FSM IS
@@ -27,9 +28,9 @@ BEGIN
 					end if;
 				elsif(game_mode = "11") then
 					if(select_option = '0') then
-						game_mode <= "00";
-					elsif(select_option = '1') then
 						game_mode <= "10";
+					elsif(select_option = '1') then
+						game_mode <= "00";
 					end if;
 				end if;
 			elsif (game_over = '1') then
