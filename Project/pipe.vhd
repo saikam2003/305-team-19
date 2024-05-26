@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY PIPE is
 
-	PORT(pipe_reset, enable, vert_sync, colour_input: IN STD_LOGIC;
+	PORT(pipe_reset, enable, vert_sync, colour_input, clk: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			random_flag: IN STD_LOGIC;
@@ -16,7 +16,6 @@ ENTITY PIPE is
 			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
 
 END ENTITY PIPE;
-
 
 ARCHITECTURE behaviour OF PIPE IS
 	
@@ -29,8 +28,30 @@ ARCHITECTURE behaviour OF PIPE IS
 	SIGNAL gap_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL gap_size_y: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL gap_size_x: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL t_pipe_red	: STD_LOGIC_VECTOR(3 downto 0);
+	SIGNAL t_pipe_green : STD_LOGIC_VECTOR(3 downto 0);
+	SIGNAL t_pipe_blue	: STD_LOGIC_VECTOR(3 downto 0);
 	
+	COMPONENT custom_pipe_rom IS
+		PORT (
+			font_row: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			font_col: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			clock: IN STD_LOGIC;
+			pipe_data_red: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+			pipe_data_green: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+			pipe_data_blue: OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+		);
+	END COMPONENT;
 BEGIN
+
+	custom_pipe_sprite: custom_pipe_rom PORT MAP(
+		font_row => pixel_row, -- - (ball_y_pos(3 downto 0) + size(3 downto 0)) ,
+		font_col => pixel_column - (pipe_x_pos(9 downto 0)),
+		clock => clk,
+		pipe_data_red	=>	t_pipe_red,
+		pipe_data_green	=>	t_pipe_green,
+		pipe_data_blue	=>	t_pipe_blue
+	);
 	-- Setting the size of the pipe and converting it into a 10 bit std_logic_vector
 	size_x <= CONV_STD_LOGIC_VECTOR(20, 10);
 	
@@ -55,8 +76,10 @@ BEGIN
 
 
 	-- Setting the colour of the pipe
-	blue <= "0000";
-
+	--blue <= "0000";
+	red  <=  t_pipe_red;
+	blue  <= t_pipe_blue;
+	green <= t_pipe_green;
 	-- setting t he output of entity
 	pipe_on <= pipe_on_output;
 	-- the pipe position is the same as gap_y_position
@@ -83,13 +106,13 @@ BEGIN
 			IF (enable = '1') THEN
 				
 			-- changing color according to switch input
-				IF(colour_input = '1') THEN
-					red <= "1011";
-					green <= "0000";
-				ELSE
-					green <= "1100";
-					red <= "0000";
-				END IF;
+				-- IF(colour_input = '1') THEN
+				-- 	red <= "1011";
+				-- 	green <= "0000";
+				-- ELSE
+				-- 	green <= "1100";
+				-- 	red <= "0000";
+				-- END IF;
 
 				-- INCREMENTING THE HALF COUNTER
 				--half_counter:= half_counter + 1;

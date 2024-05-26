@@ -53,7 +53,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT PIPE IS
-		PORT(pipe_reset, enable, vert_sync, colour_input: IN STD_LOGIC;
+		PORT(pipe_reset, enable, vert_sync, colour_input, clk: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			random_flag: IN STD_LOGIC;
@@ -128,6 +128,7 @@ BEGIN
 							pipe_reset => t_pipe_reset,
 							enable => t_pipe_enable,
 							vert_sync => vertical_sync,
+							clk => clk_input,
 							colour_input => '0',
 							pipe_x => t_pipe_x,
 							pipe_y => t_pipe_y,
@@ -148,6 +149,7 @@ BEGIN
 							pipe_reset => t_pipe_reset,
 							enable => t_pipe_enable_2,
 							vert_sync => vertical_sync,
+							clk => clk_input,
 							colour_input => '0',
 							pipe_x => t_pipe_x_2,
 							pipe_y => t_pipe_y_2,

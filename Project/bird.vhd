@@ -48,9 +48,9 @@ BEGIN
 		clock => clk,
 		mouse_input => mouse_clicked,
 		bird_data_alpha	=>	t_bird_alpha,
-		bird_data_red	=>	t_bird_red,
-		bird_data_green	=>	t_bird_green,
-		bird_data_blue	=>	t_bird_blue
+		bird_data_red	=>	red,
+		bird_data_green	=>	green,
+		bird_data_blue	=>	blue
 	);
 	
 	
@@ -71,9 +71,9 @@ BEGIN
 	--bird_on <= '1' when (pixel_column >= CONV_STD_LOGIC_VECTOR(314,10) AND pixel_column <= CONV_STD_LOGIC_VECTOR(336,10)) AND (T_BIRD_ALPHA = "0001") ELSE '0';
 	
 	-- Setting the colour of the bird
-	red <= t_bird_red;
-	blue <= t_bird_blue;
-	green <= t_bird_green;
+	-- red <= t_bird_red;
+	-- blue <= t_bird_blue;
+	-- green <= t_bird_green;
 
 	--bird_on <= ball_on;
 
