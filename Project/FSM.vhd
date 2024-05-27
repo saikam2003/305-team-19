@@ -24,10 +24,10 @@ BEGIN
 			if(prev_select = '1' and select_input = '0') then
 				if(game_mode = "00") then
 					if(option_input = '0') then
-						game_mode <= "01";
+						game_mode <= "10";
 						game_level_out <= "01";
 					elsif(option_input = '1') then
-						game_mode <= "10";
+						game_mode <= "01";
 						game_level_out <= "01";
 					end if;
 				elsif(game_mode = "11") then

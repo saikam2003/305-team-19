@@ -90,6 +90,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	COMPONENT FSM IS
 		port(clk, option_input, select_input, game_over, reset: IN STD_LOGIC;
+		  score_in: IN INTEGER RANGE 999 downto 0;
 		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0);
 		  game_level_out: OUT STD_LOGIC_VECTOR(1 downto 0));
 	END COMPONENT;
@@ -240,6 +241,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 						select_input => select_input, 
 						game_over => t_game_over,
 						reset => not(global_reset_button),
+						score_in => t_score,
 						game_mode_out => game_mode,
 						game_level_out => game_level
 			);
@@ -314,7 +316,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 				red_output <= pipe_red_2;
 				green_output <= pipe_green_2;
 				blue_output <= pipe_blue_2;
-			ELSIF (t_power_up_on = '1') THEN
+			ELSIF (t_power_up_on = '1' and in_game = '1') THEN
 				red_output <= 	t_power_up_red;
 				green_output <= t_power_up_green;
 				blue_output <= 	t_power_up_blue;

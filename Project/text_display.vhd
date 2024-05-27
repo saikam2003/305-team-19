@@ -234,7 +234,7 @@ BEGIN
 					 when CONV_STD_LOGIC_VECTOR(1, 7) =>
 						  char_address_4 <= CONV_STD_LOGIC_VECTOR(23, 6); -- W
 					 when CONV_STD_LOGIC_VECTOR(2, 7) =>
-						  char_address_4 <= CONV_STD_LOGIC_VECTOR(49, 6); -- 1
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
 					 when CONV_STD_LOGIC_VECTOR(3, 7) =>
 						  char_address_4 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
 					 when CONV_STD_LOGIC_VECTOR(4, 7) =>
@@ -324,7 +324,7 @@ BEGIN
 						  char_5_on <= '0';
 				end case;
 			end if;
-		elsif(pixel_row >= 351 and pixel_row < 377) then
+		elsif(pixel_row >= 351 and pixel_row < 367) then
 			-- ==================== key bindings 3 ====================
 			char_6_on <= '1';
 			size_row <= pixel_row(3 downto 1);
@@ -336,7 +336,7 @@ BEGIN
 					 when CONV_STD_LOGIC_VECTOR(1, 7) =>
 						  char_address_6 <= CONV_STD_LOGIC_VECTOR(23, 6); -- W
 					 when CONV_STD_LOGIC_VECTOR(2, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR(50, 6); -- 1
+						  char_address_6 <= CONV_STD_LOGIC_VECTOR(49, 6); -- 1
 					 when CONV_STD_LOGIC_VECTOR(3, 7) =>
 						  char_address_6 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
 					 when CONV_STD_LOGIC_VECTOR(4, 7) =>
@@ -360,7 +360,7 @@ BEGIN
 						  char_6_on <= '0';
 				end case;
 			end if;
-		elsif(pixel_row >= 377 and pixel_row <= 393) then
+		elsif(pixel_row >= 367 and pixel_row <= 383) then
 			-- ==================== key bindings 4 ====================
 			char_7_on <= '1';
 			size_row <= pixel_row(3 downto 1);

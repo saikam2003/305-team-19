@@ -42,14 +42,15 @@ END COMPONENT;
 
 BEGIN
 
-size <= CONV_STD_LOGIC_VECTOR(15, 10);
+size <= CONV_STD_LOGIC_VECTOR(7 , 10);
 power_up_x_pos <= CONV_STD_LOGIC_VECTOR(313, 11);
 power_up_y_pos <= gap_y_pos;
 
 power_up_sprite: heart_rom PORT MAP(
-    font_row => pixel_row(4 DOWNTO 1) - (power_up_x_pos(4 downto 1) + size(4 downto 1)),
-    --font_col => pixel_column(4 DOWNTO 1) - (power_up_y_pos(4 downto 1) + size(4 downto 1)),
-    font_col => pixel_column(4 DOWNTO 1),
+    font_row => pixel_row(3 DOWNTO 0) - (power_up_y_pos(3 downto 0) + size(3 downto 0) + CONV_STD_LOGIC_VECTOR(2,4)),   
+    -- font_col => pixel_column(4 DOWNTO 1) - CONV_STD_LOGIC_VECTOR(4,4),
+    font_col => pixel_column(3 DOWNTO 0),
+    --font_col => pixel_column(4 DOWNTO 1),
     clock => clk,
     heart_data_alpha => t_power_up_alpha,
     heart_data_red =>   t_power_up_red,
@@ -58,11 +59,18 @@ power_up_sprite: heart_rom PORT MAP(
 );
 
 
-power_up_on <= '1' when ((score /= 0) AND (score mod 5 = 0)) AND (enable = '1') AND 
-                ('0' & power_up_x_pos <= '0' & pixel_column + size - 1) AND
-                ('0' & pixel_column <= '0' & power_up_x_pos + size) AND
-                ('0' & power_up_y_pos <= pixel_row + size) AND
-                (pixel_row <= power_up_y_pos + size + 1) AND
+-- power_up_on <= '1' when ((score /= 0) AND (score mod 5 = 0)) AND (enable = '1') AND 
+--                 ('0' & power_up_x_pos <= '0' & pixel_column + size - 1) AND
+--                 ('0' & pixel_column <= '0' & power_up_x_pos + size) AND
+--                 ('0' & power_up_y_pos <= pixel_row + size) AND
+--                 (pixel_row <= power_up_y_pos + size + 1) AND
+--                 (t_power_up_alpha = "0001") else '0';
+
+    power_up_on <= '1' when (enable = '1') AND 
+                ('0' & power_up_x_pos <= '0' & pixel_column + size + CONV_STD_LOGIC_VECTOR(1,10)) AND
+                ('0' & pixel_column <= '0' & power_up_x_pos + size ) AND
+                ('0' & power_up_y_pos <= pixel_row + size ) AND
+                (pixel_row <= power_up_y_pos + size + CONV_STD_LOGIC_VECTOR(1,10)) AND
                 (t_power_up_alpha = "0001") else '0';
 
 red <=    t_power_up_red;
