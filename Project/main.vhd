@@ -263,7 +263,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 							enable => '1',
 							pipe_quarterway => t_pipe_halfway_2,
 							score => t_score,
-							gap_y_pos => CONV_STD_LOGIC_VECTOR(0,10),
+							gap_y_pos => t_pipe_position,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => t_power_up_red,

@@ -1,6 +1,8 @@
 LIBRARY IEEE;
-USE IEEE.STD_LOGIC_1164.ALL;
-USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.STD_LOGIC_1164.all;
+USE IEEE.STD_LOGIC_ARITH.all;
+USE IEEE.STD_LOGIC_SIGNED.all;
+
 
 
 ENTITY power_up IS
@@ -17,9 +19,9 @@ END ENTITY power_up;
 
 architecture behaviour of power_up is
 
-SIGNAL power_up_x_pos: UNSIGNED(10 DOWNTO 0);
-SIGNAL power_up_y_pos: UNSIGNED(9 DOWNTO 0);
-SIGNAL size: UNSIGNED(9 DOWNTO 0);
+SIGNAL power_up_x_pos: STD_LOGIC_VECTOR(10 DOWNTO 0);
+SIGNAL power_up_y_pos: STD_LOGIC_VECTOR(9 DOWNTO 0);
+SIGNAL size: STD_LOGIC_VECTOR(9 DOWNTO 0);
 SIGNAL t_power_up_alpha: STD_LOGIC_VECTOR(3 DOWNTO 0);
 SIGNAL t_power_up_red: STD_LOGIC_VECTOR(3 DOWNTO 0);
 SIGNAL t_power_up_green : STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -40,12 +42,13 @@ END COMPONENT;
 
 BEGIN
 
-size <= to_unsigned(15, 10);
-power_up_x_pos <= to_unsigned(313, 11);
-power_up_y_pos <= to_unsigned(63, 10);
+size <= CONV_STD_LOGIC_VECTOR(15, 10);
+power_up_x_pos <= CONV_STD_LOGIC_VECTOR(313, 11);
+power_up_y_pos <= gap_y_pos;
 
 power_up_sprite: heart_rom PORT MAP(
-    font_row => pixel_row(4 DOWNTO 1),
+    font_row => pixel_row(4 DOWNTO 1) - (power_up_x_pos(4 downto 1) + size(4 downto 1)),
+    --font_col => pixel_column(4 DOWNTO 1) - (power_up_y_pos(4 downto 1) + size(4 downto 1)),
     font_col => pixel_column(4 DOWNTO 1),
     clock => clk,
     heart_data_alpha => t_power_up_alpha,
@@ -55,13 +58,11 @@ power_up_sprite: heart_rom PORT MAP(
 );
 
 
--- power_up_on <= '1' when (score mod 10 = 0) and (pipe_quarterway = '1') and (t_power_up_alpha = "0001") else 
---               '0';
-power_up_on <= '1' when (score mod 5 = 0) and (pipe_quarterway = '1') AND (enable = '1') AND 
-                (unsigned('0' & power_up_x_pos) <= unsigned('0' & pixel_column) + size - 1) AND
-                (unsigned('0' & pixel_column) <= unsigned('0' & power_up_x_pos) + size) AND
-                (unsigned('0' & power_up_y_pos) <= unsigned(pixel_row) + size) AND
-                (unsigned(pixel_row) <= unsigned(power_up_y_pos) + size + 1) AND
+power_up_on <= '1' when ((score /= 0) AND (score mod 5 = 0)) AND (enable = '1') AND 
+                ('0' & power_up_x_pos <= '0' & pixel_column + size - 1) AND
+                ('0' & pixel_column <= '0' & power_up_x_pos + size) AND
+                ('0' & power_up_y_pos <= pixel_row + size) AND
+                (pixel_row <= power_up_y_pos + size + 1) AND
                 (t_power_up_alpha = "0001") else '0';
 
 red <=    t_power_up_red;
