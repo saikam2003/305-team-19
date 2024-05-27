@@ -24,10 +24,11 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL heart_red, heart_green, heart_blue : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
-	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_text_on, t_heart_on, t_background_on, t_random_flag_2, t_random_enable_2, t_power_up_on: STD_LOGIC;
+	SIGNAL t_pipe_on_2, t_pipe_halfway_2, t_pipe_quarterway, t_pipe_quarterway_2, t_text_on, t_heart_on, t_background_on, t_random_flag_2, t_random_enable_2, t_power_up_on, t_power_up_flag: STD_LOGIC;
 	SIGNAL t_pipe_position, t_pipe_position_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL t_pipe_x, t_pipe_x_2: STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(679, 11);
 	SIGNAL t_pipe_y, t_pipe_y_2: STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL pipe_1_horz,pipe_2_horz, pipe_horz: STD_LOGIC_VECTOR(10 DOWNTO 0);
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL t_pipe_enable: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -62,8 +63,9 @@ ARCHITECTURE behvaiour OF MAIN IS
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			pipe_on, random_enable: OUT STD_LOGIC;
-			pipe_halfway, collision_chance: OUT STD_LOGIC;
-			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
+			pipe_halfway, pipe_quarterway,collision_chance: OUT STD_LOGIC;
+			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+			pipe_horz_position: OUT STD_LOGIC_VECTOR(10 DOWNTO 0));
 	END COMPONENT;
 	
 	COMPONENT BACKGROUND IS
@@ -96,7 +98,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT COLLISION IS
-		PORT(reset, clk, pipe_on_1, pipe_on_2, bird_on, pipe_1_collision_chance, pipe_2_collision_chance, pipe_1_halfway, pipe_2_halfway: IN STD_LOGIC;
+		PORT(reset, clk, pipe_on_1, pipe_on_2, bird_on, pipe_1_collision_chance, pipe_2_collision_chance, pipe_1_halfway, pipe_2_halfway, power_up_flag: IN STD_LOGIC;
 			game_over: OUT STD_LOGIC;
 			collision_count: OUT INTEGER RANGE 3 downto 0;
 			score_count: OUT INTEGER RANGE 999 downto 0);
@@ -105,11 +107,13 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	COMPONENT power_up IS
 		PORT (bird_on, clk, vert_sync, enable, pipe_quarterway: IN STD_LOGIC;
+					current_level: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+					pipe_horz_pos: IN STD_LOGIC_VECTOR(10 DOWNTO 0); 
 					score: IN INTEGER RANGE 999 DOWNTO 0;
-					gap_y_pos: IN STD_LOGIC_VECTOR(9 DOWNTO 0); 
+					gap_y_pos,bird_y_pos: IN STD_LOGIC_VECTOR(9 DOWNTO 0); 
 					pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 					red, green, blue: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-					power_up_on : OUT STD_LOGIC);
+					power_up_on, power_up_flag : OUT STD_LOGIC);
 	END COMPONENT;
 
 	BEGIN 
@@ -157,6 +161,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 							pipe_x => t_pipe_x,
 							pipe_y => t_pipe_y,
 							game_level_input => game_level,
+							pipe_quarterway => t_pipe_quarterway,
 							random_flag => t_random_flag,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
@@ -167,7 +172,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 							random_enable => t_random_enable,
 							pipe_halfway => t_pipe_halfway,
 							collision_chance => pipe_1_collision_chance,
-							pipe_position => t_pipe_position
+							pipe_position => t_pipe_position,
+							pipe_horz_position => pipe_1_horz
 						);
 						
 	pipe_component_2: PIPE
@@ -177,6 +183,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 							enable => (t_pipe_enable_2 and not(pause_input)),
 							vert_sync => vertical_sync,
 							game_level_input => game_level,
+							pipe_quarterway => t_pipe_quarterway_2,
 							colour_input => '0',
 							pipe_x => t_pipe_x_2,
 							pipe_y => t_pipe_y_2,
@@ -190,7 +197,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 							random_enable => t_random_enable_2,
 							pipe_halfway => t_pipe_halfway_2,
 							collision_chance => pipe_2_collision_chance,
-							pipe_position => t_pipe_position_2
+							pipe_position => t_pipe_position_2,
+							pipe_horz_position => pipe_2_horz
 						);
 	
 	background_component: BACKGROUND
@@ -250,6 +258,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 			port map(reset => not(in_game), 
 						clk => clk_input, 
 						pipe_on_1 => t_pipe_on,
+						power_up_flag => t_power_up_flag,
 						pipe_on_2 => t_pipe_on_2,
 						bird_on => t_bird_on,
 						pipe_1_collision_chance => pipe_1_collision_chance, 
@@ -265,16 +274,20 @@ ARCHITECTURE behvaiour OF MAIN IS
 			port map(bird_on => t_bird_on,
 							clk => clk_input,
 							vert_sync => vertical_sync,
+							current_level => game_level,
 							enable => '1',
-							pipe_quarterway => t_pipe_halfway_2,
+							pipe_horz_pos => pipe_horz,
+							pipe_quarterway => t_pipe_quarterway,
 							score => t_score,
+							bird_y_pos => t_bird_position,
 							gap_y_pos => t_pipe_position,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
 							red => t_power_up_red,
 							green => t_power_up_green,
 							blue => t_power_up_blue,
-							power_up_on => t_power_up_on
+							power_up_on => t_power_up_on,
+							power_up_flag => t_power_up_flag
 							);
 	in_game <= '1' when (game_mode = "01" or game_mode = "10") else '0';
 	
@@ -286,10 +299,11 @@ ARCHITECTURE behvaiour OF MAIN IS
     score_hundreds <= CONV_STD_LOGIC_VECTOR(t_score / 100, 4); -- Hundreds place
     score_tens <= CONV_STD_LOGIC_VECTOR((t_score mod 100) / 10, 4); -- Tens place
     score_ones <= CONV_STD_LOGIC_VECTOR((t_score mod 10), 4); -- Ones place
-	 t_power_up_enable <= '0' when t_bird_on = '1' AND t_power_up_on = '1' else '0';
+	t_power_up_enable <= '0' when t_bird_on = '1' AND t_power_up_on = '1' else '0';
 
-	 
-	 game_level_out <= "00" & game_level;
+	pipe_horz <= pipe_2_horz WHEN (t_score mod 2 = 0) else pipe_1_horz;
+
+	game_level_out <= "00" & game_level;
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN

@@ -13,8 +13,9 @@ ENTITY PIPE is
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			pipe_on, random_enable: OUT STD_LOGIC;
-			pipe_halfway, collision_chance: OUT STD_LOGIC;
-			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
+			pipe_halfway, pipe_quarterway,collision_chance: OUT STD_LOGIC;
+			pipe_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+			pipe_horz_position: OUT STD_LOGIC_VECTOR(10 DOWNTO 0));
 
 END ENTITY PIPE;
 
@@ -45,6 +46,7 @@ ARCHITECTURE behaviour OF PIPE IS
 	END COMPONENT;
 BEGIN
 
+	pipe_horz_position <= pipe_x_pos;
 	custom_pipe_sprite: custom_pipe_rom PORT MAP(
 		font_row => pixel_row(8 downto 0), 
 		font_col => pixel_column(5 downto 0) - (pipe_x_pos(5 downto 0) - size_x(5 downto 0)),
@@ -130,6 +132,12 @@ BEGIN
 						pipe_halfway <= '1';
 					ELSE
 						pipe_halfway <= '0';
+					END IF;
+
+					IF (('0' & pipe_x_pos <= CONV_STD_LOGIC_VECTOR(500, 11) - size_x)) THEN
+						pipe_quarterway <= '1';
+					ELSE
+						pipe_quarterway <= '0';
 					END IF;
 
 

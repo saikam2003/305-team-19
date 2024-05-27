@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY COLLISION IS
 
-	PORT(reset, clk, pipe_on_1, pipe_on_2, bird_on, pipe_1_collision_chance, pipe_2_collision_chance, pipe_1_halfway, pipe_2_halfway: IN STD_LOGIC;
+	PORT(reset, clk, pipe_on_1, pipe_on_2, bird_on, pipe_1_collision_chance, pipe_2_collision_chance, pipe_1_halfway, pipe_2_halfway, power_up_flag: IN STD_LOGIC;
 			game_over: OUT STD_LOGIC;
 			collision_count: OUT INTEGER RANGE 3 downto 0;
 			score_count: OUT INTEGER RANGE 999 downto 0);
@@ -25,7 +25,7 @@ BEGIN
 
 	score_count <= curr_score;
 	collision_count <= t_collision_count;
-	PROCESS(clk,reset)
+	PROCESS(clk,reset,power_up_flag)
 	BEGIN
 		IF (reset = '1') THEN
 			game_over <= '0';
@@ -33,9 +33,9 @@ BEGIN
 			t_collision_flag <= '0';
 			score_pipe_tracker <= '0';
 			curr_score <= 0;
+		ELSIF (power_up_flag = '1' AND t_collision_count /= 0) THEN
+			t_collision_count <= t_collision_count - 1;
 		ELSIF RISING_EDGE(clk) THEN
-		
-
 			-- collision tracker
 			IF(t_collision_flag = '0' and bird_on = '1' and (pipe_on_1 = '1' or pipe_on_2 = '1'))THEN
 				t_collision_count <= t_collision_count + 1;
