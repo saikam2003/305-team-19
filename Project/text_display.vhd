@@ -32,7 +32,7 @@ BEGIN
 		font_col => size_col,
 		clock => clk,
 		rom_mux_output => t_text_on);
-	text_on <= '0' when char_3_on = '0' and char_2_on = '0' and char_1_on = '0' else t_text_on when enable = '1' else '0';
+	text_on <= '0' when char_4_on = '0' and char_3_on = '0' and char_2_on = '0' and char_1_on = '0' else t_text_on when enable = '1' else '0';
 	blue  <= "0000" ;
 	green <= (t_text_on,t_text_on,t_text_on,t_text_on) when t_text_on = '1' and char_2_on = '1' and option_in = '1' else 
 				(t_text_on,t_text_on,t_text_on,t_text_on) when t_text_on = '1' and char_3_on = '1' and option_in = '0' else "0000";
@@ -40,16 +40,11 @@ BEGIN
 	red <= (t_text_on,t_text_on,t_text_on,t_text_on);
 	char_address_final <= char_address_1 when char_1_on = '1'  else 
 								char_address_2 when char_2_on = '1' else
-								char_address_3 when char_3_on = '1'else 
+								char_address_3 when char_3_on = '1' else 
 								char_address_4 when char_4_on = '1' else "100000";
 	process(pixel_row,pixel_column)
 	begin
-		if(game_mode_in = "01" or game_mode_in = "10") then
-			char_address_1<= "100000";
-			char_address_2<= "100000";
-			char_address_3<= "100000";
-			char_address_4<= "100000";
-		elsif(pixel_row >= 63 and pixel_row <= 95) then
+		if(pixel_row >= 63 and pixel_row <= 95) then
 			-- ==================== TITLE ====================
 			char_1_on <= '1';
 			size_row <= pixel_row(4 downto 2);
@@ -224,19 +219,19 @@ BEGIN
 						  char_3_on <= '0';
 				end case;
 			end if;
-		elsif(pixel_row >= 399 and pixel_row <= 407) then
+		elsif(pixel_row >= 319) then
 			-- ==================== key bindings 1 ====================
 			char_4_on <= '1';
-			size_row <= pixel_row(2 downto 0);
-			size_col <= pixel_column(2 downto 0);
+			size_row <= pixel_row(3 downto 1);
+			size_col <= pixel_column(3 downto 1);
 			if game_mode_in = "00" then
-				case pixel_column(9 downto 3) is
+				case ("0" & pixel_column(9 downto 4)) is
 					 when CONV_STD_LOGIC_VECTOR(0, 7) =>
 						  char_address_4 <= CONV_STD_LOGIC_VECTOR(19, 6); -- S
 					 when CONV_STD_LOGIC_VECTOR(1, 7) =>
 						  char_address_4 <= CONV_STD_LOGIC_VECTOR(23, 6); -- W
 					 when CONV_STD_LOGIC_VECTOR(2, 7) =>
-						  char_address_4 <= CONV_STD_LOGIC_VECTOR(1, 6); -- 1
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(57, 6); -- 1
 					 when CONV_STD_LOGIC_VECTOR(3, 7) =>
 						  char_address_4 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
 					 when CONV_STD_LOGIC_VECTOR(4, 7) =>
