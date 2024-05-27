@@ -14,14 +14,13 @@ ENTITY MAIN IS
 
 END ENTITY MAIN;
 
-	pipe_q => pipe_1_quarter AND pipe_2_quarter
 ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL t_collision_1, t_collision_2, t_collision_flag, collisions_reset, collision_tracker, pipe_1_infront, pipe_1_collision_chance, pipe_2_collision_chance, t_game_over, t_game_started: STD_LOGIC:= '0';
-	SIGNAL t_pipes_show, t_bird_show, t_text_show, t_bird_reset, paused_game, t_power_up_enable: STD_LOGIC;
+	SIGNAL t_pipes_show, t_bird_show, t_text_show, in_game, paused_game, t_power_up_enable: STD_LOGIC;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
-	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL text_red, text_blue, text_green, t_power_up_red, t_power_up_green, t_power_up_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL pipe_red, pipe_green, pipe_blue,pipe_red_2, pipe_green_2, pipe_blue_2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL heart_red, heart_green, heart_blue : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_pipe_reset, t_pipe_on, t_pipe_halfway, t_bird_on, t_random_flag, t_random_enable: STD_LOGIC;
@@ -32,9 +31,9 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL t_pipe_enable: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL game_mode, game_level: STD_LOGIC_VECTOR(1 downto 0) := "00";
-	SIGNAL collision_counter: INTEGER RANGE 3 downto 0;
-	SIGNAL t_score, best_score, prev_score: INTEGER RANGE 999 downto 0;
+	SIGNAL game_mode, prev_game_mode, game_level: STD_LOGIC_VECTOR(1 downto 0) := "00";
+	SIGNAL collision_counter: INTEGER RANGE 3 downto 0 := 0;
+	SIGNAL t_score, best_score, prev_score: INTEGER RANGE 999 downto 0 := 0;
 	COMPONENT HEART IS
 		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			 pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -95,8 +94,10 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT COLLISION IS
-		PORT(reset, clk, pipe_on, bird_on: IN STD_LOGIC;
-			collision_detected: OUT STD_LOGIC);
+		PORT(reset, clk, pipe_on_1, pipe_on_2, bird_on, pipe_1_collision_chance, pipe_2_collision_chance, pipe_1_halfway, pipe_2_halfway: IN STD_LOGIC;
+			game_over: OUT STD_LOGIC;
+			collision_count: OUT INTEGER RANGE 3 downto 0;
+			score_count: OUT INTEGER RANGE 999 downto 0);
 	END COMPONENT COLLISION;
 	
 	
@@ -105,8 +106,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 					score: IN INTEGER RANGE 999 DOWNTO 0;
 					gap_y_pos: IN STD_LOGIC_VECTOR(9 DOWNTO 0); 
 					pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-					red, green, blue: OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
-					power_up_on : OUT STD_LOGIC;
+					red, green, blue: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+					power_up_on : OUT STD_LOGIC);
 	END COMPONENT;
 
 	BEGIN 
@@ -114,8 +115,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 	bird_component: BIRD
 						PORT MAP(
 							clk => clk_input,
-							enable => (not(paused_game)),
-							reset => t_bird_reset,
+							enable => not(pause_input),
+							reset => not(in_game),
 							vert_sync => vertical_sync,
 							mouse_clicked => jump_input,
 							colour_input => '0',
@@ -147,8 +148,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 	pipe_component: PIPE
 						PORT MAP(
 							clk => clk_input,
-							pipe_reset => t_pipe_reset,
-							enable => (t_pipe_enable and not(pause_input)),
+							pipe_reset => not(in_game),
+							enable => (not(pause_input)),
 							vert_sync => vertical_sync,
 							colour_input => '0',
 							pipe_x => t_pipe_x,
@@ -169,7 +170,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	pipe_component_2: PIPE
 						PORT MAP(
 							clk => clk_input,
-							pipe_reset => t_pipe_reset,
+							pipe_reset => not(in_game),
 							enable => (t_pipe_enable_2 and not(pause_input)),
 							vert_sync => vertical_sync,
 							colour_input => '0',
@@ -204,7 +205,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 								
 	text_component: TEXT_DISPLAY
 						PORT MAP(Clk => clk_input,
-							enable => '1',
+							enable => not(in_game),
 							option_in => option_input,
 							game_mode_in => game_mode,
 							pixel_row => pixel_row_input, 
@@ -241,18 +242,18 @@ ARCHITECTURE behvaiour OF MAIN IS
 			);
 	
 	COLLISION_1: COLLISION
-			port map(reset => collisions_reset, 
+			port map(reset => not(in_game), 
 						clk => clk_input, 
-						pipe_on => t_pipe_on,
-						bird_on => t_bird_on, 
-						collision_detected => t_collision_1);		
-						
-	COLLISION_2: COLLISION
-			port map(reset => collisions_reset, 
-						clk => clk_input, 
-						pipe_on => t_pipe_on_2,
-						bird_on => t_bird_on, 
-						collision_detected => t_collision_2);		
+						pipe_on_1 => t_pipe_on,
+						pipe_on_2 => t_pipe_on_2,
+						bird_on => t_bird_on,
+						pipe_1_collision_chance => pipe_1_collision_chance, 
+						pipe_2_collision_chance => pipe_2_collision_chance,
+						pipe_1_halfway => t_pipe_halfway, 
+						pipe_2_halfway => t_pipe_halfway_2,
+						game_over => t_game_over,
+						collision_count => collision_counter,
+						score_count => t_score);			
 
 
 	POWER_UP_COMPONENT: POWER_UP
@@ -269,121 +270,43 @@ ARCHITECTURE behvaiour OF MAIN IS
 							green => t_power_up_green,
 							blue => t_power_up_blue,
 							power_up_on => t_power_up_on
-							)
-							
-	t_pipe_enable_2 <= '0' WHEN  (t_pipe_enable = '0') ELSE '1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2; -- start second pipe after firt reaches halfway
+							);
+	in_game <= '1' when (game_mode = "01" or game_mode = "10") else '0';
 	
-	led1 <= t_collision_1;
-	led2 <= t_collision_2;
+	t_pipe_enable_2 <= '0' WHEN  (in_game = '0') ELSE '1' WHEN (t_pipe_halfway = '1') ELSE t_pipe_enable_2; -- start second pipe after firt reaches halfway
+	
+	led1 <= '1' when (t_bird_on = '1' and t_pipe_on = '1') else '0';
+	led2 <= '1' when (t_bird_on = '1' and t_pipe_on_2 = '1') else '0';
 	
     score_hundreds <= CONV_STD_LOGIC_VECTOR(t_score / 100, 4); -- Hundreds place
     score_tens <= CONV_STD_LOGIC_VECTOR((t_score mod 100) / 10, 4); -- Tens place
     score_ones <= CONV_STD_LOGIC_VECTOR((t_score mod 10), 4); -- Ones place
-		t_power_up_enable <= '0' when t_bird_on = '1' AND t_power_up_on = '1' else '0';
-		paused_game <= pause_input;
+	 t_power_up_enable <= '0' when t_bird_on = '1' AND t_power_up_on = '1' else '0';
+
 
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
-		
-			IF(game_mode = "00") THEN -- Main Menu
-				t_bird_show <= '0';
-				t_pipes_show <= '0';
-				t_text_show <= '1';
-				t_bird_reset <= '1';
-				t_pipe_reset <= '1';
-				t_pipe_enable <= '0';
-				collisions_reset <= '1';
-				collision_counter <= 0;
-				t_collision_flag <= '0';
-				t_game_over <= '0';
-				pipe_1_infront <= '1';
-				t_score <= 0;
-			ELSIF(game_mode = "01") THEN -- Training Mode
-				t_bird_show <= '1';
-				t_pipes_show <= '1';
-				t_text_show <= '0';
-				t_bird_reset <= '0';
-				t_pipe_reset <= '0';
-				t_pipe_enable <= '1';
-				collisions_reset <= '0';
-			ELSIF(game_mode = "10") THEN -- Normal Mode
-				t_bird_show <= '1';
-				t_pipes_show <= '1';
-				t_text_show <= '0';
-				t_bird_reset <= '0';
-				t_pipe_reset <= '0';
-				t_pipe_enable <= '1';
-				collisions_reset <= '0';
-			ELSIF(game_mode = "11") THEN -- Game Over
-				t_bird_show <= '0';
-				t_pipes_show <= '0';
-				t_text_show <= '1';
-				t_bird_reset <= '1';
-				t_pipe_reset <= '1';
-				t_pipe_enable <= '0';
-				collisions_reset <= '1';
-				collision_counter <= 0;
-				t_collision_flag <= '0';
-				t_game_over <= '0';
-				pipe_1_infront <= '1';
-				t_score <= 0;
-			END IF;
-
-			-- ============ collision detection ==============
-			
-			IF(t_collision_flag = '0' and (t_collision_1 = '1' or t_collision_2 = '1'))THEN
-				
-				collision_counter <= collision_counter + 1;
-				IF(collision_counter = 2) THEN
-					t_game_over <= '1';
-				END IF;
-				
-				t_collision_flag <= '1';
-				if(t_collision_1 = '1') THEN
-					collision_tracker <= '1';
-				else
-					collision_tracker <= '0';
-				end if;
-			ELSIF(t_collision_flag = '1')THEN
-				if(collision_tracker = '1' and pipe_2_collision_chance = '1')then
-					t_collision_flag <= '0';
-				elsif(collision_tracker = '0' and pipe_1_collision_chance = '1') then 
-					t_collision_flag <= '0';
-				end if;
-			END IF;
-			
-			-- ============ score counter ==============
-			
-			IF(pipe_1_infront = '1' and t_pipe_halfway = '1') THEN
-				pipe_1_infront <= '0';
-				t_score <= t_score + 9;
-			ELSIF(pipe_1_infront = '0' and t_pipe_halfway_2 = '1') THEN
-				pipe_1_infront <= '1';
-				t_score <= t_score + 9;
-			END IF;
-			
-			
 			
 			-- ============ vga sync input ==============
 			
-			IF (t_heart_on = '1' and t_pipes_show = '1') THEN
+			IF (t_heart_on = '1' and in_game = '1') THEN
 				red_output <=   heart_red;
 				green_output <= heart_green;
 				blue_output <=  heart_blue;
-			ELSIF (t_text_on = '1' and t_text_show = '1') THEN
+			ELSIF (t_text_on = '1' and in_game = '0') THEN
 				red_output <= text_red;
 				green_output <= text_green;
 				blue_output <= text_blue;
-			ELSIF (t_bird_on = '1' and t_bird_show = '1') THEN
+			ELSIF (t_bird_on = '1' and in_game = '1') THEN
 				red_output <= bird_red;
 				green_output <= bird_green;
 				blue_output <= bird_blue;
-			ELSIF (t_pipe_on = '1' and t_pipes_show = '1') THEN
+			ELSIF (t_pipe_on = '1' and in_game = '1') THEN
 				red_output <= pipe_red;
 				green_output <= pipe_green;
 				blue_output <= pipe_blue;
-			ELSIF (t_pipe_on_2 = '1' and t_pipes_show = '1') THEN
+			ELSIF (t_pipe_on_2 = '1' and in_game = '1') THEN
 				red_output <= pipe_red_2;
 				green_output <= pipe_green_2;
 				blue_output <= pipe_blue_2;
@@ -401,7 +324,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 				blue_output <= "1011";
 			END IF;
 			
-
+			prev_game_mode <= game_mode;
 		END IF;
 	END PROCESS screen_display;
 

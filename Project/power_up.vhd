@@ -9,8 +9,8 @@ ENTITY power_up IS
         score: IN INTEGER RANGE 999 DOWNTO 0;
         gap_y_pos: IN STD_LOGIC_VECTOR(9 DOWNTO 0); 
         pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-        red, green, blue: OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
-        power_up_on : OUT STD_LOGIC;
+        red, green, blue: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+        power_up_on : OUT STD_LOGIC);
 
 END ENTITY power_up;
 
@@ -42,11 +42,11 @@ BEGIN
 
 size <= to_unsigned(15, 10);
 power_up_x_pos <= to_unsigned(313, 11);
-power_up_y_pos <= to_unsigned(47, 10);
+power_up_y_pos <= to_unsigned(63, 10);
 
 power_up_sprite: heart_rom PORT MAP(
-    font_row => pixel_row(3 DOWNTO 0),
-    font_col => pixel_column(3 DOWNTO 0),
+    font_row => pixel_row(4 DOWNTO 1),
+    font_col => pixel_column(4 DOWNTO 1),
     clock => clk,
     heart_data_alpha => t_power_up_alpha,
     heart_data_red =>   t_power_up_red,
@@ -57,12 +57,12 @@ power_up_sprite: heart_rom PORT MAP(
 
 -- power_up_on <= '1' when (score mod 10 = 0) and (pipe_quarterway = '1') and (t_power_up_alpha = "0001") else 
 --               '0';
-power_up_on <= '1' when (score mod 10 = 0) and (pipe_quarterway = '1') AND (enable = '1') AND 
-                (unsigned('0' & heart_x_pos) <= unsigned('0' & pixel_column) + size - 1) AND
-                (unsigned('0' & pixel_column) <= unsigned('0' & heart_x_pos) + size) AND
-                (unsigned('0' & heart_y_pos) <= unsigned(pixel_row) + size) AND
-                (unsigned(pixel_row) <= unsigned(heart_y_pos) + size + 1) AND
-                (t_heart_alpha = "0001") else '0';
+power_up_on <= '1' when (score mod 5 = 0) and (pipe_quarterway = '1') AND (enable = '1') AND 
+                (unsigned('0' & power_up_x_pos) <= unsigned('0' & pixel_column) + size - 1) AND
+                (unsigned('0' & pixel_column) <= unsigned('0' & power_up_x_pos) + size) AND
+                (unsigned('0' & power_up_y_pos) <= unsigned(pixel_row) + size) AND
+                (unsigned(pixel_row) <= unsigned(power_up_y_pos) + size + 1) AND
+                (t_power_up_alpha = "0001") else '0';
 
 red <=    t_power_up_red;
 blue <=   t_power_up_blue;
