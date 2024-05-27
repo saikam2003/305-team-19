@@ -2,7 +2,7 @@ clear;
 clc;
 
 % Read the image
-img = imread("sky_background.jpg");
+img = imread("cyber_city.jpg");
 
 [height, width, ~] = size(img);
 
