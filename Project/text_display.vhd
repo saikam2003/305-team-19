@@ -34,11 +34,13 @@ BEGIN
 		clock => clk,
 		rom_mux_output => t_text_on);
 	text_on <= t_text_on when enable = '1' else '0';
-	blue  <= "0000" ;
-	green <= (t_text_on,t_text_on,t_text_on,t_text_on) when t_text_on = '1' and char_2_on = '1' and option_in = '1' else 
-				(t_text_on,t_text_on,t_text_on,t_text_on) when t_text_on = '1' and char_3_on = '1' and option_in = '0' else "0000";
 	
-	red <= (t_text_on,t_text_on,t_text_on,t_text_on);
+	red <= "0000" when t_text_on = '1' and char_2_on = '1' and option_in = '1' else 
+				"0000" when t_text_on = '1' and char_3_on = '1' and option_in = '0' else (t_text_on,t_text_on,t_text_on,t_text_on);
+	blue <= "0000" when t_text_on = '1' and char_2_on = '1' and option_in = '1' else 
+				"0000" when t_text_on = '1' and char_3_on = '1' and option_in = '0' else (t_text_on,t_text_on,t_text_on,t_text_on);
+	green <= (t_text_on,t_text_on,t_text_on,t_text_on);
+	
 	char_address_final <= char_address_1 when char_1_on = '1'  else 
 								char_address_2 when char_2_on = '1' else
 								char_address_3 when char_3_on = '1' else 
@@ -148,18 +150,20 @@ BEGIN
 					 when CONV_STD_LOGIC_VECTOR(4, 6) =>
 						  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
 					 when CONV_STD_LOGIC_VECTOR(5, 6) =>
-						  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(9, 6);  -- I
 					 when CONV_STD_LOGIC_VECTOR(6, 6) =>
-						  char_address_2 <= CONV_STD_LOGIC_VECTOR(7, 6);  -- G
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
 					 when CONV_STD_LOGIC_VECTOR(7, 6) =>
-						  char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6); -- " "
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(7, 6);  -- G
 					 when CONV_STD_LOGIC_VECTOR(8, 6) =>
-						  char_address_2 <= CONV_STD_LOGIC_VECTOR(13, 6); -- M
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6); -- " "
 					 when CONV_STD_LOGIC_VECTOR(9, 6) =>
-						  char_address_2 <= CONV_STD_LOGIC_VECTOR(15, 6); -- O
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(13, 6); -- M
 					 when CONV_STD_LOGIC_VECTOR(10, 6) =>
-						  char_address_2 <= CONV_STD_LOGIC_VECTOR(4, 6); -- D
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(15, 6); -- O
 					 when CONV_STD_LOGIC_VECTOR(11, 6) =>
+						  char_address_2 <= CONV_STD_LOGIC_VECTOR(4, 6); -- D
+					 when CONV_STD_LOGIC_VECTOR(12, 6) =>
 						  char_address_2 <= CONV_STD_LOGIC_VECTOR(5, 6); -- E
 					 when others =>
 						  char_address_2 <= CONV_STD_LOGIC_VECTOR(32, 6); -- " "
@@ -274,7 +278,7 @@ BEGIN
 						  char_4_on <= '0';
 				end case;
 			end if;
-		elsif(pixel_row >= 335 and pixel_row < 351) then
+		elsif(pixel_row >= 351 and pixel_row < 367) then
 			-- ==================== key bindings 2 ====================
 			char_5_on <= '1';
 			size_row <= pixel_row(3 downto 1);
@@ -328,7 +332,7 @@ BEGIN
 						  char_5_on <= '0';
 				end case;
 			end if;
-		elsif(pixel_row >= 351 and pixel_row < 367) then
+		elsif(pixel_row >= 383 and pixel_row < 399) then
 			-- ==================== key bindings 3 / prev score ====================
 			char_6_on <= '1';
 			size_row <= pixel_row(3 downto 1);
@@ -390,7 +394,7 @@ BEGIN
 						  char_6_on <= '0';
 				end case;
 			end if;
-		elsif(pixel_row >= 367 and pixel_row <= 383) then
+		elsif(pixel_row >= 415 and pixel_row <= 431) then
 			-- ==================== key bindings 4 / high score ====================
 			char_7_on <= '1';
 			size_row <= pixel_row(3 downto 1);
@@ -450,15 +454,15 @@ BEGIN
 					 when CONV_STD_LOGIC_VECTOR(9, 7) =>
 						  char_address_7 <= CONV_STD_LOGIC_VECTOR(5, 6); -- E
 					 when CONV_STD_LOGIC_VECTOR(10, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR(33, 6); -- :
+						  char_address_7 <= CONV_STD_LOGIC_VECTOR(33, 6); -- :
 					 when CONV_STD_LOGIC_VECTOR(11, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
+						  char_address_7 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
 					 when CONV_STD_LOGIC_VECTOR(12, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR((temp_high_score / 100) + 48, 6); -- score hundreds
+						  char_address_7 <= CONV_STD_LOGIC_VECTOR((temp_high_score / 100) + 48, 6); -- score hundreds
 					 when CONV_STD_LOGIC_VECTOR(13, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR(((temp_high_score mod 100) / 10) + 48, 6); -- score tens
+						  char_address_7 <= CONV_STD_LOGIC_VECTOR(((temp_high_score mod 100) / 10) + 48, 6); -- score tens
 					 when CONV_STD_LOGIC_VECTOR(14, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR((temp_high_score mod 10) + 48, 6); -- score ones
+						  char_address_7 <= CONV_STD_LOGIC_VECTOR((temp_high_score mod 10) + 48, 6); -- score ones
 					 when others =>
 							char_address_7 <= CONV_STD_LOGIC_VECTOR(32, 6);
 						  char_7_on <= '0';
