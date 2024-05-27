@@ -436,7 +436,7 @@ BEGIN
 				end case;
 			else 
 				char_7_on <= '0';
-			end if;;
+			end if;
 		end if;
 	end process;
 END ARCHITECTURE behaviour;
