@@ -4,7 +4,7 @@ USE IEEE.STD_LOGIC_ARITH.all;
 USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY FSM IS
-	port(clk, option_input, select_input, game_over: IN STD_LOGIC;
+	port(clk, option_input, select_input, game_over, reset: IN STD_LOGIC;
 		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0);
 		  game_level_out: OUT STD_LOGIC_VECTOR(1 downto 0));
 END ENTITY;
@@ -17,8 +17,9 @@ BEGIN
 	FSM_game_mode: PROCESS(select_input, game_over)
 		variable prev_select: STD_LOGIC;
 	begin
-	
-		if(rising_edge(clk)) then
+		if(reset = '1') then
+			game_mode <= "00";
+		elsif(rising_edge(clk)) then
 			if(prev_select = '1' and select_input = '0') then
 				if(game_mode = "00") then
 					if(option_input = '0') then

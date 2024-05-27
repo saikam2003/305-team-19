@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 
 ENTITY MAIN IS
-	PORT(background_on, clk_input, jump_input, pause_input, select_input, option_input: IN STD_LOGIC;
+	PORT(background_on, clk_input, jump_input, pause_input, select_input, option_input, global_reset_button: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output, score_hundreds, score_tens, score_ones: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -89,7 +89,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT FSM IS
-		port(clk, option_input, select_input, game_over: IN STD_LOGIC;
+		port(clk, option_input, select_input, game_over, reset: IN STD_LOGIC;
 		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0);
 		  game_level_out: OUT STD_LOGIC_VECTOR(1 downto 0));
 	END COMPONENT;
@@ -225,6 +225,7 @@ BEGIN
 						option_input => option_input, 
 						select_input => select_input, 
 						game_over => t_game_over,
+						reset => not(global_reset_button),
 						game_mode_out => game_mode,
 						game_level_out => game_level
 			);
