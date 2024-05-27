@@ -79,6 +79,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	COMPONENT TEXT_DISPLAY IS
 		PORT(Clk, enable, option_in: IN STD_LOGIC;
 			game_mode_in: IN STD_LOGIC_VECTOR(1 downto 0);
+			score_in, high_score_in: IN INTEGER RANGE 999 downto 0;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
 			text_on: OUT STD_LOGIC);
@@ -220,6 +221,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 							enable => not(in_game),
 							option_in => option_input,
 							game_mode_in => game_mode,
+							score_in => t_score,
+							high_score_in => best_score,
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
 							red => text_red, 
