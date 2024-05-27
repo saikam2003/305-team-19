@@ -57,7 +57,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 376 256 544 272)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "SW[9]" (rect 5 0 36 12)(font "Arial" ))
+	(text "SW[1]" (rect 5 0 35 17)(font "Intel Clear" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -68,7 +68,7 @@ refer to the applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 320 248 376 272))
+	(annotation_block (location)(rect 408 264 472 288))
 )
 (pin
 	(output)
@@ -620,8 +620,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 96)
 		(input)
-		(text "select_option_input" (rect 0 0 94 12)(font "Arial" ))
-		(text "select_option_input" (rect 21 91 115 103)(font "Arial" ))
+		(text "select_input" (rect 0 0 59 12)(font "Arial" ))
+		(text "select_input" (rect 21 91 80 103)(font "Arial" ))
 		(line (pt 0 96)(pt 16 96))
 	)
 	(port

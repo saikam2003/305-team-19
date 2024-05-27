@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 
 ENTITY MAIN IS
-	PORT(background_on, clk_input, jump_input, pause_input, select_option_input, option_input: IN STD_LOGIC;
+	PORT(background_on, clk_input, jump_input, pause_input, select_input, option_input: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output, score_hundreds, score_tens, score_ones: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -75,7 +75,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT TEXT_DISPLAY IS
-		PORT(Clk, enable, select_option_in: IN STD_LOGIC;
+		PORT(Clk, enable, option_in: IN STD_LOGIC;
 			game_mode_in: IN STD_LOGIC_VECTOR(1 downto 0);
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
@@ -89,7 +89,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT FSM IS
-		port(clk, select_option, select_input, game_over: IN STD_LOGIC;
+		port(clk, option_input, select_input, game_over: IN STD_LOGIC;
 		  game_mode_out: OUT STD_LOGIC_VECTOR(1 downto 0);
 		  game_level_out: OUT STD_LOGIC_VECTOR(1 downto 0));
 	END COMPONENT;
@@ -104,7 +104,7 @@ BEGIN
 	bird_component: BIRD
 						PORT MAP(
 							clk => clk_input,
-							enable => not(paused_game),
+							enable => (not(paused_game)),
 							reset => t_bird_reset,
 							vert_sync => vertical_sync,
 							mouse_clicked => jump_input,
@@ -138,7 +138,7 @@ BEGIN
 						PORT MAP(
 							clk => clk_input,
 							pipe_reset => t_pipe_reset,
-							enable => t_pipe_enable and not(paused_game),
+							enable => (t_pipe_enable and not(pause_input)),
 							vert_sync => vertical_sync,
 							colour_input => '0',
 							pipe_x => t_pipe_x,
@@ -160,7 +160,7 @@ BEGIN
 						PORT MAP(
 							clk => clk_input,
 							pipe_reset => t_pipe_reset,
-							enable => t_pipe_enable_2 and not(paused_game),
+							enable => (t_pipe_enable_2 and not(pause_input)),
 							vert_sync => vertical_sync,
 							colour_input => '0',
 							pipe_x => t_pipe_x_2,
@@ -195,7 +195,7 @@ BEGIN
 	text_component: TEXT_DISPLAY
 						PORT MAP(Clk => clk_input,
 							enable => '1',
-							select_option_in => select_option_input,
+							option_in => option_input,
 							game_mode_in => game_mode,
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
@@ -222,8 +222,8 @@ BEGIN
 			
 	FSM_DUT: FSM
 			port map(clk => clk_input,
-						select_option => select_option_input, 
-						select_input => option_input, 
+						option_input => option_input, 
+						select_input => select_input, 
 						game_over => t_game_over,
 						game_mode_out => game_mode,
 						game_level_out => game_level
