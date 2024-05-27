@@ -99,7 +99,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 	
 	COMPONENT COLLISION IS
-		PORT(reset, clk, pipe_on_1, pipe_on_2, bird_on, pipe_1_collision_chance, pipe_2_collision_chance, pipe_1_halfway, pipe_2_halfway, power_up_flag: IN STD_LOGIC;
+		PORT(reset, clk, pipe_on_1, pipe_on_2, bird_on, pipe_1_collision_chance, pipe_2_collision_chance, pipe_1_halfway, pipe_2_halfway, power_up_on: IN STD_LOGIC;
 			game_over: OUT STD_LOGIC;
 			collision_count: OUT INTEGER RANGE 3 downto 0;
 			score_count: OUT INTEGER RANGE 999 downto 0);
@@ -261,7 +261,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 			port map(reset => not(in_game), 
 						clk => clk_input, 
 						pipe_on_1 => t_pipe_on,
-						power_up_flag => t_power_up_flag,
+						power_up_on => t_power_up_on,
 						pipe_on_2 => t_pipe_on_2,
 						bird_on => t_bird_on,
 						pipe_1_collision_chance => pipe_1_collision_chance, 

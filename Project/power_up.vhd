@@ -71,7 +71,7 @@ BEGIN
 
     power_up_x_pos <= pipe_horz_pos + CONV_STD_LOGIC_VECTOR(240, 11);
     
-    t_power_up_on <= '1'  when ((score /= 0) AND (score mod 3 = 0)) AND (enable = '1') AND t_power_up_flag = '0' AND
+    t_power_up_on <= '1'  when ((score /= 0) AND (score mod 3 = 0)) AND (enable = '1') AND
                 ('0' & power_up_x_pos <= '0' & pixel_column + size + CONV_STD_LOGIC_VECTOR(1,10)) AND
                 ('0' & pixel_column <= '0' & power_up_x_pos + size ) AND
                 ('0' & power_up_y_pos <= pixel_row + size ) AND
