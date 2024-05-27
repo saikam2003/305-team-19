@@ -12,9 +12,9 @@ ENTITY text_display IS
 END ENTITY;
 
 ARCHITECTURE behaviour OF text_display IS
-	SIGNAL t_text_on, char_1_on, char_2_on, char_3_on: STD_LOGIC;
+	SIGNAL t_text_on, char_1_on, char_2_on, char_3_on, char_4_on: STD_LOGIC := '0';
 	SIGNAL size_row, size_col: STD_LOGIC_VECTOR(2 downto 0);
-	SIGNAL char_address_1, char_address_2, char_address_3, char_address_final: STD_LOGIC_VECTOR (5 DOWNTO 0);
+	SIGNAL char_address_1, char_address_2, char_address_3, char_address_4, char_address_5, char_address_6, char_address_7, char_address_final: STD_LOGIC_VECTOR (5 DOWNTO 0);
 	
 	COMPONENT char_rom IS
 		PORT(
@@ -40,14 +40,17 @@ BEGIN
 	red <= (t_text_on,t_text_on,t_text_on,t_text_on);
 	char_address_final <= char_address_1 when char_1_on = '1'  else 
 								char_address_2 when char_2_on = '1' else
-								char_address_3 when char_3_on = '1'else "100000";
+								char_address_3 when char_3_on = '1'else 
+								char_address_4 when char_4_on = '1' else "100000";
 	process(pixel_row,pixel_column)
 	begin
 		if(game_mode_in = "01" or game_mode_in = "10") then
 			char_address_1<= "100000";
 			char_address_2<= "100000";
 			char_address_3<= "100000";
+			char_address_4<= "100000";
 		elsif(pixel_row >= 63 and pixel_row <= 95) then
+			-- ==================== TITLE ====================
 			char_1_on <= '1';
 			size_row <= pixel_row(4 downto 2);
 			size_col <= pixel_column(4 downto 2);
@@ -102,6 +105,7 @@ BEGIN
 			end if;
 			
 		elsif(pixel_row >= 207 and pixel_row <= 223) then
+		-- ==================== option 0 ====================
 			char_2_on <= '1';
 			size_row <= pixel_row(3 downto 1);
 			size_col <= pixel_column(3 downto 1);
@@ -161,6 +165,7 @@ BEGIN
 				end case;
 			end if;
 		elsif(pixel_row >= 255 and pixel_row <= 271) then
+			-- ==================== option 1 ====================
 			char_3_on <= '1';
 			size_row <= pixel_row(3 downto 1);
 			size_col <= pixel_column(3 downto 1);
@@ -219,33 +224,56 @@ BEGIN
 						  char_3_on <= '0';
 				end case;
 			end if;
+		elsif(pixel_row >= 399 and pixel_row <= 407) then
+			-- ==================== key bindings 1 ====================
+			char_4_on <= '1';
+			size_row <= pixel_row(2 downto 0);
+			size_col <= pixel_column(2 downto 0);
+			if game_mode_in = "00" then
+				case pixel_column(9 downto 3) is
+					 when CONV_STD_LOGIC_VECTOR(0, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(19, 6); -- S
+					 when CONV_STD_LOGIC_VECTOR(1, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(23, 6); -- W
+					 when CONV_STD_LOGIC_VECTOR(2, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(1, 6); -- 1
+					 when CONV_STD_LOGIC_VECTOR(3, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
+					 when CONV_STD_LOGIC_VECTOR(4, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(3, 6); -- C
+					 when CONV_STD_LOGIC_VECTOR(5, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(8, 6); -- H
+					 when CONV_STD_LOGIC_VECTOR(6, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(1, 6); -- A
+					 when CONV_STD_LOGIC_VECTOR(7, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
+					 when CONV_STD_LOGIC_VECTOR(8, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(7, 6); -- G
+					 when CONV_STD_LOGIC_VECTOR(9, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(5, 6); -- E
+					 when CONV_STD_LOGIC_VECTOR(10, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(19, 6); -- S
+					 when CONV_STD_LOGIC_VECTOR(11, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
+					 when CONV_STD_LOGIC_VECTOR(12, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(15, 6); -- O
+					 when CONV_STD_LOGIC_VECTOR(13, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(16, 6); -- P
+					 when CONV_STD_LOGIC_VECTOR(14, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(20, 6); -- T
+					 when CONV_STD_LOGIC_VECTOR(15, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(9, 6); -- I
+					 when CONV_STD_LOGIC_VECTOR(16, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(15, 6); -- O
+					 when CONV_STD_LOGIC_VECTOR(17, 7) =>
+						  char_address_4 <= CONV_STD_LOGIC_VECTOR(14, 6); -- N
+					 when others =>
+							char_address_4 <= CONV_STD_LOGIC_VECTOR(32, 6);
+						  char_4_on <= '0';
+				end case;
+			end if;
 		end if;
 	end process;
---	text_on <= t_text_on when (pixel_row <= 47 and pixel_column <= 300) else '0';
---	char_address_final <= char_address_2 when (pixel_row <= 47 and pixel_row > 31) else char_address_1;
---	size_row <= pixel_row(3 downto 1) when (pixel_row <= 47 and pixel_row > 31) else pixel_row(4 downto 2) ;
---	size_col <= pixel_column(3 downto 1) when (pixel_row <= 47 and pixel_row > 31) else pixel_column(4 downto 2) ;
---	with pixel_column(9 downto 5) select
---		char_address_1 <= CONV_STD_LOGIC_VECTOR(7,6) when CONV_STD_LOGIC_VECTOR(0,5),
---							 CONV_STD_LOGIC_VECTOR(1,6) when CONV_STD_LOGIC_VECTOR(1,5),
---							 CONV_STD_LOGIC_VECTOR(13,6) when CONV_STD_LOGIC_VECTOR(2,5),
---							 CONV_STD_LOGIC_VECTOR(5,6) when CONV_STD_LOGIC_VECTOR(3,5),
---							 CONV_STD_LOGIC_VECTOR(32,6) when CONV_STD_LOGIC_VECTOR(4,5),
---							 CONV_STD_LOGIC_VECTOR(15,6) when CONV_STD_LOGIC_VECTOR(5,5),
---							 CONV_STD_LOGIC_VECTOR(22,6) when CONV_STD_LOGIC_VECTOR(6,5),
---							 CONV_STD_LOGIC_VECTOR(5,6) when CONV_STD_LOGIC_VECTOR(7,5),
---							 CONV_STD_LOGIC_VECTOR(18,6) when CONV_STD_LOGIC_VECTOR(8,5),
---							 CONV_STD_LOGIC_VECTOR(32,6) when others;
---							 
---	with pixel_column(8 downto 4) select
---		char_address_2 <= CONV_STD_LOGIC_VECTOR(18,6) when CONV_STD_LOGIC_VECTOR(0,5),
---							 CONV_STD_LOGIC_VECTOR(5,6) when CONV_STD_LOGIC_VECTOR(1,5),
---							 CONV_STD_LOGIC_VECTOR(19,6) when CONV_STD_LOGIC_VECTOR(2,5),
---							 CONV_STD_LOGIC_VECTOR(20,6) when CONV_STD_LOGIC_VECTOR(3,5),
---							 CONV_STD_LOGIC_VECTOR(1,6) when CONV_STD_LOGIC_VECTOR(4,5),
---							 CONV_STD_LOGIC_VECTOR(18,6) when CONV_STD_LOGIC_VECTOR(5,5),
---							 CONV_STD_LOGIC_VECTOR(20,6) when CONV_STD_LOGIC_VECTOR(6,5),
---							 CONV_STD_LOGIC_VECTOR(32,6) when others;
 END ARCHITECTURE behaviour;
 			
 		
