@@ -34,7 +34,7 @@ BEGIN
 					end if;
 				end if;
 			elsif (game_over = '1') then
-				if(game_mode = "01") then
+				if(game_mode = "01") then 
 					game_mode <= "11";
 				elsif(game_mode = "10") then
 					game_mode <= "11";
