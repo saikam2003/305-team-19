@@ -8,6 +8,7 @@ ENTITY PIPE is
 	PORT(pipe_reset, enable, vert_sync, colour_input, clk: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			game_level_input: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
 			random_flag: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
@@ -59,13 +60,16 @@ BEGIN
 	gap_size_y <= CONV_STD_LOGIC_VECTOR(56, 10);
 	gap_size_x <= size_x; -- gap horizontal size is 40
 	
-	
-	
+	pipe_x_motion <=	- CONV_STD_LOGIC_VECTOR(2, 11) WHEN game_level_input = "10" ELSE
+							- CONV_STD_LOGIC_VECTOR(3, 11) WHEN game_level_input = "11" ELSE
+							- CONV_STD_LOGIC_VECTOR(1, 11);
+							
+		
 	
 	-- Setting the y position of the gap to the y position of the pipe only when random flag is 1
 	gap_y_pos <= pipe_y WHEN random_flag = '1' ELSE gap_y_pos;
 	gap_x_pos <= pipe_x_pos; -- gap position is always the same as pipe center
-	pipe_x_motion <= - CONV_STD_LOGIC_VECTOR(2, 11); -- the pipe moves by 1 pixel by default
+	--pipe_x_motion <= - CONV_STD_LOGIC_VECTOR(2, 11); -- the pipe moves by 1 pixel by default
 	
 	-- setting when the pipe should be on
 	pipe_on_output <= --'0' WHEN enable = '0' ELSE

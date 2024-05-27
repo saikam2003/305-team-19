@@ -57,6 +57,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	PORT(pipe_reset, enable, vert_sync, colour_input, clk: IN STD_LOGIC;
 			pipe_x: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
 			pipe_y: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+			game_level_input: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
 			random_flag: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
@@ -154,6 +155,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 							colour_input => '0',
 							pipe_x => t_pipe_x,
 							pipe_y => t_pipe_y,
+							game_level_input => game_level,
 							random_flag => t_random_flag,
 							pixel_row => pixel_row_input,
 							pixel_column => pixel_column_input,
@@ -173,6 +175,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 							pipe_reset => not(in_game),
 							enable => (t_pipe_enable_2 and not(pause_input)),
 							vert_sync => vertical_sync,
+							game_level_input => game_level,
 							colour_input => '0',
 							pipe_x => t_pipe_x_2,
 							pipe_y => t_pipe_y_2,
