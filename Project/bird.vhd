@@ -27,7 +27,7 @@ ARCHITECTURE behaviour OF BIRD IS
 	SIGNAL t_bird_blue	: STD_LOGIC_VECTOR(3 downto 0);
 	
 	
-	
+	-- importing the sprite rom for the bird
 	COMPONENT bird_rom IS
 		PORT(
 			font_row, font_col	:	IN STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -67,16 +67,7 @@ BEGIN
 					AND ('0' & ball_y_pos <= pixel_row + size + CONV_STD_LOGIC_VECTOR(1,10)) AND ('0' & pixel_row <= ball_y_pos + size) AND (t_bird_alpha = "0001") )  ELSE	-- y_pos - size <= pixel_row <= y_pos + size
 			'0';
 	
-	
-	--bird_on <= '1' when (pixel_column >= CONV_STD_LOGIC_VECTOR(314,10) AND pixel_column <= CONV_STD_LOGIC_VECTOR(336,10)) AND (T_BIRD_ALPHA = "0001") ELSE '0';
-	
-	-- Setting the colour of the bird
-	-- red <= t_bird_red;
-	-- blue <= t_bird_blue;
-	-- green <= t_bird_green;
-
-	--bird_on <= ball_on;
-
+	-- This process handles the vertical movement of the bird 
 	Move_Bird: PROCESS (vert_sync)
 	VARIABLE mouse_prev, jumping: STD_LOGIC;
 	VARIABLE counter: INTEGER RANGE 0 to 15:= 0;
@@ -91,12 +82,6 @@ BEGIN
 				END IF;
 				--now, the previous state of the mouse is updated to the current mouse state
 				mouse_prev := mouse_clicked;
-				
-				--IF(colour_input = '1') THEN
-				--	blue <= "0001";
-				--ELSE
-				--	blue <= "0000";
-				--END IF;
 				
 				--Now, if the bird is jumping
 				IF (jumping = '1') THEN
@@ -117,7 +102,7 @@ BEGIN
 						--otherwise keep increasing the motion eeent by 2 pixels
 						ball_y_motion <= CONV_STD_LOGIC_VECTOR(2, 10);
 					END IF;
-					-- Compute next ball Y position
+					-- Compute next bird Y position
 					ball_y_pos <= ball_y_pos + ball_y_motion;
 				END IF;
 			END IF;

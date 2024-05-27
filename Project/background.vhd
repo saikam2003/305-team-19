@@ -3,7 +3,7 @@ USE IEEE.STD_LOGIC_1164.all;
 USE  IEEE.STD_LOGIC_ARITH.all;
 USE  IEEE.STD_LOGIC_SIGNED.all;
 
-
+-- This entity handles the logic to display the background sprite
 ENTITY background IS
 	PORT
 		( clk, enable, vert_sync, horz_sync	: IN std_logic;
@@ -14,8 +14,11 @@ END background;
 
 architecture behavior of background is
 
+	-- signal definitions for the transparency, red, green and blue for the background
 	SIGNAL t_bg_alpha, t_bg_red, t_bg_blue,  t_bg_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
 
+		-- importing the custom bacground rom component that will fetch the data for the 
+		-- colors of the pixels of the background.
 	COMPONENT custom_bg_rom
 		PORT(
         font_row:    IN STD_LOGIC_VECTOR (9 DOWNTO 0);
@@ -30,6 +33,7 @@ architecture behavior of background is
 	
 BEGIN
 	
+	-- the background should always be ON
 	background_on <= '1';
 	
 	background_sprite: custom_bg_rom PORT MAP

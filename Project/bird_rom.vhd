@@ -107,6 +107,8 @@ BEGIN
 		END IF;
 	END PROCESS;
 
+	-- concatenating the input 4-bit row and 4-bit column
+	-- to fetch teh right address for each and every pixel 
 	rom_address <= font_row & font_col;
 	bird_data_alpha <= rom_data(15 downto 12);
 	bird_data_red <= rom_data (11 downto 8);

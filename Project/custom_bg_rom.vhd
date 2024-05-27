@@ -20,6 +20,7 @@ END custom_bg_rom;
 
 ARCHITECTURE SYN OF custom_bg_rom IS
 
+    -- initialising the signals for the altsyncram
     SIGNAL rom_data: STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL rom_address: STD_LOGIC_VECTOR(16 DOWNTO 0); -- 17 bits required for addressing
     SIGNAL adjusted_col: STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -73,13 +74,20 @@ BEGIN
         q_a => rom_data
     );
 
+    -- The signal adjusted col is being used due to our width of the background sprite being 160 pixels, which is 6 bits in width
+    -- but will cause issues when taking in the font_col as 8 bits can go upto 256, but we want to reset the column to 0 when it reaches
+    -- 160. 
+    
+    -- Thus, for the required ranges, we subtract by appropriate numbers to ensure that the column goes upto 160 and resets to 0 again
     adjusted_col <= font_col WHEN font_col >= CONV_STD_LOGIC_VECTOR(0, 10) AND font_col < CONV_STD_LOGIC_VECTOR(160, 10) ELSE
                     font_col - CONV_STD_LOGIC_VECTOR(160, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(160, 10) AND font_col < CONV_STD_LOGIC_VECTOR(320, 10) ELSE
                     font_col - CONV_STD_LOGIC_VECTOR(320, 10) WHEN font_col >= CONV_STD_LOGIC_VECTOR(320, 10) AND font_col < CONV_STD_LOGIC_VECTOR(480, 10) ELSE
                     font_col - CONV_STD_LOGIC_VECTOR(480, 10);
 
+    -- concatenating the font_row and adjusted_col
     rom_address <= font_row(8 DOWNTO 0) & adjusted_col(7 DOWNTO 0);
 
+    -- outputting the rgb values for the background from the mif file
     background_data_red <= rom_data(11 DOWNTO 8);
     background_data_green <= rom_data(7 DOWNTO 4);    
     background_data_blue <= rom_data(3 DOWNTO 0);

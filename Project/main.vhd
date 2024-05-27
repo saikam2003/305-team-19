@@ -16,6 +16,7 @@ END ENTITY MAIN;
 
 ARCHITECTURE behvaiour OF MAIN IS
 	
+	-- signal definitions
 	SIGNAL t_collision_1, t_collision_2, t_collision_flag, collisions_reset, collision_tracker, pipe_1_infront, pipe_1_collision_chance, pipe_2_collision_chance, t_game_over, t_game_started: STD_LOGIC:= '0';
 	SIGNAL t_pipes_show, t_bird_show, t_text_show, in_game, paused_game, t_power_up_enable: STD_LOGIC;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -32,7 +33,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL t_pipe_enable_2: STD_LOGIC:= '0';
 	SIGNAL t_pipe_enable: STD_LOGIC:= '0';
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL game_mode, prev_game_mode, game_level: STD_LOGIC_VECTOR(1 downto 0) := "00";
+	SIGNAL game_mode, game_level: STD_LOGIC_VECTOR(1 downto 0) := "00";
 	SIGNAL collision_counter: INTEGER RANGE 3 downto 0 := 0;
 	SIGNAL t_score, best_score, prev_score: INTEGER RANGE 999 downto 0 := 0;
 	COMPONENT HEART IS
@@ -44,7 +45,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 		);
 	END COMPONENT;
 	
-	
+	-- importing the required components for the game
 	COMPONENT BIRD IS
 	PORT(clk, enable, reset, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -118,7 +119,8 @@ ARCHITECTURE behvaiour OF MAIN IS
 	END COMPONENT;
 
 	BEGIN 
-	
+
+	-- mapping all the signals to the respective components
 	bird_component: BIRD
 						PORT MAP(
 							clk => clk_input,
@@ -299,14 +301,21 @@ ARCHITECTURE behvaiour OF MAIN IS
 	led1 <= '1' when (t_bird_on = '1' and t_pipe_on = '1') else '0';
 	led2 <= '1' when (t_bird_on = '1' and t_pipe_on_2 = '1') else '0';
 	
-    score_hundreds <= CONV_STD_LOGIC_VECTOR(t_score / 100, 4); -- Hundreds place
-    score_tens <= CONV_STD_LOGIC_VECTOR((t_score mod 100) / 10, 4); -- Tens place
-    score_ones <= CONV_STD_LOGIC_VECTOR((t_score mod 10), 4); -- Ones place
-	t_power_up_enable <= '0' when t_bird_on = '1' AND t_power_up_on = '1' else '0';
+	-- score digits for the 7-seg display
+  score_hundreds <= CONV_STD_LOGIC_VECTOR(t_score / 100, 4); -- Hundreds place
+  score_tens <= CONV_STD_LOGIC_VECTOR((t_score mod 100) / 10, 4); -- Tens place
+  score_ones <= CONV_STD_LOGIC_VECTOR((t_score mod 10), 4); -- Ones place
 
+ -- changing the current pipe x position based on if the score is even or odd.
+ -- if even then feed 2nd pipe else feed first pipe horizontal position
 	pipe_horz <= pipe_2_horz WHEN (t_score mod 2 = 0) else pipe_1_horz;
 
 	game_level_out <= "00" & game_level;
+
+
+	-- this process handles the displaying and layering of different components on the screen
+	-- when the respective component is supposed to be on, the red, green and blue values of
+	-- the same component will be outputted to the vga sync.
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
@@ -346,8 +355,6 @@ ARCHITECTURE behvaiour OF MAIN IS
 				green_output <= "1010";
 				blue_output <= "1011";
 			END IF;
-			
-			prev_game_mode <= game_mode;
 		END IF;
 	END PROCESS screen_display;
 
