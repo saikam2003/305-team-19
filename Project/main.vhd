@@ -35,7 +35,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL game_mode, game_level: STD_LOGIC_VECTOR(1 downto 0) := "00";
 	SIGNAL collision_counter: INTEGER RANGE 3 downto 0 := 0;
-	SIGNAL t_score, best_score, prev_score: INTEGER RANGE 999 downto 0 := 0;
+	SIGNAL t_score, prev_score: INTEGER RANGE 999 downto 0 := 0;
 	COMPONENT HEART IS
 		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			 pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -80,7 +80,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	COMPONENT TEXT_DISPLAY IS
 		PORT(Clk, enable, option_in: IN STD_LOGIC;
 			game_mode_in: IN STD_LOGIC_VECTOR(1 downto 0);
-			score_in, high_score_in: IN INTEGER RANGE 999 downto 0;
+			score_in: IN INTEGER RANGE 999 downto 0;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
 			text_on: OUT STD_LOGIC);
@@ -223,8 +223,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 							enable => not(in_game),
 							option_in => option_input,
 							game_mode_in => game_mode,
-							score_in => t_score,
-							high_score_in => best_score,
+							score_in => prev_score,
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
 							red => text_red, 
@@ -309,7 +308,7 @@ ARCHITECTURE behvaiour OF MAIN IS
  -- changing the current pipe x position based on if the score is even or odd.
  -- if even then feed 2nd pipe else feed first pipe horizontal position
 	pipe_horz <= pipe_2_horz WHEN (t_score mod 2 = 0) else pipe_1_horz;
-
+	prev_score <= t_score when in_game = '1' and t_score /= 0 else prev_score;
 	game_level_out <= "00" & game_level;
 
 

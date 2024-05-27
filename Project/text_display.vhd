@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.all;
 ENTITY text_display IS
 	PORT(Clk, enable, option_in: IN STD_LOGIC;
 			game_mode_in: IN STD_LOGIC_VECTOR(1 downto 0);
-			score_in, high_score_in: IN INTEGER RANGE 999 downto 0;
+			score_in: IN INTEGER RANGE 999 downto 0;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 downto 0);
 			red, blue, green : OUT STD_LOGIC_VECTOR(3 downto 0);
 			text_on: OUT STD_LOGIC);
@@ -16,7 +16,7 @@ ARCHITECTURE behaviour OF text_display IS
 	SIGNAL t_text_on, char_1_on, char_2_on, char_3_on, char_4_on, char_5_on, char_6_on, char_7_on: STD_LOGIC := '0';
 	SIGNAL size_row, size_col: STD_LOGIC_VECTOR(2 downto 0);
 	SIGNAL char_address_1, char_address_2, char_address_3, char_address_4, char_address_5, char_address_6, char_address_7, char_address_final: STD_LOGIC_VECTOR (5 DOWNTO 0);
-	SIGNAL temp_score, temp_high_score: INTEGER RANGE 999 to 0;
+--	SIGNAL temp_score, temp_high_score: INTEGER RANGE 999 to 0;
 	COMPONENT char_rom IS
 		PORT(
 			character_address	:	IN STD_LOGIC_VECTOR (5 DOWNTO 0);
@@ -33,7 +33,8 @@ BEGIN
 		font_col => size_col,
 		clock => clk,
 		rom_mux_output => t_text_on);
-	text_on <= t_text_on when enable = '1' else '0';
+	text_on <= 	t_text_on when enable = '1' and char_1_on = '1' else
+					'1' when enable = '1' and (char_2_on = '1' or char_3_on ='1' or char_4_on= '1' or char_5_on ='1' or char_6_on = '1' or char_7_on = '1') else '0';
 	
 	red <= "0000" when t_text_on = '1' and char_2_on = '1' and option_in = '1' else 
 				"0000" when t_text_on = '1' and char_3_on = '1' and option_in = '0' else (t_text_on,t_text_on,t_text_on,t_text_on);
@@ -49,8 +50,6 @@ BEGIN
 								char_address_6 when char_6_on = '1' else
 								char_address_7 when char_7_on = '1' else "100000";
 								
-	temp_score <= score_in;
-	temp_high_score <= high_score_in;
 	process(pixel_row,pixel_column)
 	begin
 		if(pixel_row >= 63 and pixel_row <= 95) then
@@ -277,6 +276,8 @@ BEGIN
 							char_address_4 <= CONV_STD_LOGIC_VECTOR(32, 6);
 						  char_4_on <= '0';
 				end case;
+			else 
+				char_4_on <= '0';
 			end if;
 		elsif(pixel_row >= 351 and pixel_row < 367) then
 			-- ==================== key bindings 2 ====================
@@ -331,6 +332,8 @@ BEGIN
 							char_address_5 <= CONV_STD_LOGIC_VECTOR(32, 6);
 						  char_5_on <= '0';
 				end case;
+			else 
+				char_5_on <= '0';
 			end if;
 		elsif(pixel_row >= 383 and pixel_row < 399) then
 			-- ==================== key bindings 3 / prev score ====================
@@ -380,15 +383,15 @@ BEGIN
 					 when CONV_STD_LOGIC_VECTOR(4, 7) =>
 						  char_address_6 <= CONV_STD_LOGIC_VECTOR(5, 6); -- E
 					 when CONV_STD_LOGIC_VECTOR(5, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR(33, 6); -- :
+						  char_address_6 <= CONV_STD_LOGIC_VECTOR(45, 6); -- -
 					 when CONV_STD_LOGIC_VECTOR(6, 7) =>
 						  char_address_6 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
 					 when CONV_STD_LOGIC_VECTOR(7, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR((temp_score / 100) + 48, 6); -- score hundreds
+						  char_address_6 <= CONV_STD_LOGIC_VECTOR((score_in / 100) + 48, 6); -- score hundreds
 					 when CONV_STD_LOGIC_VECTOR(8, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR(((temp_score mod 100) / 10) + 48, 6); -- score tens
+						  char_address_6 <= CONV_STD_LOGIC_VECTOR(((score_in mod 100) / 10) + 48, 6); -- score tens
 					 when CONV_STD_LOGIC_VECTOR(9, 7) =>
-						  char_address_6 <= CONV_STD_LOGIC_VECTOR((temp_score mod 10) + 48, 6); -- score ones
+						  char_address_6 <= CONV_STD_LOGIC_VECTOR((score_in mod 10) + 48, 6); -- score ones
 					 when others =>
 							char_address_6 <= CONV_STD_LOGIC_VECTOR(32, 6);
 						  char_6_on <= '0';
@@ -431,43 +434,9 @@ BEGIN
 							char_address_7 <= CONV_STD_LOGIC_VECTOR(32, 6);
 						  char_7_on <= '0';
 				end case;
-			elsif game_mode_in = "11" then -- high score in game_over
-				case ("0" & pixel_column(9 downto 4)) is
-					 when CONV_STD_LOGIC_VECTOR(0, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(8, 6); -- H
-					 when CONV_STD_LOGIC_VECTOR(1, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(9, 6); -- I
-					 when CONV_STD_LOGIC_VECTOR(2, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(7, 6); -- G
-					 when CONV_STD_LOGIC_VECTOR(3, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(8, 6); --H
-					 when CONV_STD_LOGIC_VECTOR(4, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
-					 when CONV_STD_LOGIC_VECTOR(5, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(19, 6); -- S
-					 when CONV_STD_LOGIC_VECTOR(6, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(3, 6); -- C
-					 when CONV_STD_LOGIC_VECTOR(7, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(15, 6); -- O
-					 when CONV_STD_LOGIC_VECTOR(8, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(18, 6); -- R
-					 when CONV_STD_LOGIC_VECTOR(9, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(5, 6); -- E
-					 when CONV_STD_LOGIC_VECTOR(10, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(33, 6); -- :
-					 when CONV_STD_LOGIC_VECTOR(11, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(32, 6); -- 
-					 when CONV_STD_LOGIC_VECTOR(12, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR((temp_high_score / 100) + 48, 6); -- score hundreds
-					 when CONV_STD_LOGIC_VECTOR(13, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR(((temp_high_score mod 100) / 10) + 48, 6); -- score tens
-					 when CONV_STD_LOGIC_VECTOR(14, 7) =>
-						  char_address_7 <= CONV_STD_LOGIC_VECTOR((temp_high_score mod 10) + 48, 6); -- score ones
-					 when others =>
-							char_address_7 <= CONV_STD_LOGIC_VECTOR(32, 6);
-						  char_7_on <= '0';
-				end case;
-			end if;
+			else 
+				char_7_on <= '0';
+			end if;;
 		end if;
 	end process;
 END ARCHITECTURE behaviour;
