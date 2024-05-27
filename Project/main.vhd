@@ -9,7 +9,7 @@ ENTITY MAIN IS
 	PORT(background_on, clk_input, jump_input, pause_input, select_input, option_input, global_reset_button: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-		red_output, green_output, blue_output, score_hundreds, score_tens, score_ones: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+		red_output, green_output, blue_output, score_hundreds, score_tens, score_ones, game_level_out: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 		led1, led2: OUT STD_LOGIC);
 
 END ENTITY MAIN;
@@ -286,7 +286,8 @@ ARCHITECTURE behvaiour OF MAIN IS
     score_ones <= CONV_STD_LOGIC_VECTOR((t_score mod 10), 4); -- Ones place
 	 t_power_up_enable <= '0' when t_bird_on = '1' AND t_power_up_on = '1' else '0';
 
-
+	 
+	 game_level_out <= "00" & game_level;
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
