@@ -9,7 +9,7 @@ ENTITY MAIN IS
 	PORT(background_on, clk_input, jump_input, start_input, select_input, text_on, option_input: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-		red_output, green_output, blue_output, score_tens, score_ones: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+		red_output, green_output, blue_output, score_hundreds, score_tens, score_ones: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 		led1, led2: OUT STD_LOGIC);
 
 END ENTITY MAIN;
@@ -34,7 +34,7 @@ ARCHITECTURE behvaiour OF MAIN IS
 	SIGNAL background_red, background_green, background_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL game_mode, game_level: STD_LOGIC_VECTOR(1 downto 0) := "00";
 	SIGNAL collision_counter: INTEGER RANGE 3 downto 0;
-	SIGNAL t_score: INTEGER RANGE 99 downto 0;
+	SIGNAL t_score, best_score, prev_score: INTEGER RANGE 999 downto 0;
 	COMPONENT HEART IS
 		PORT(clk, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			 pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -246,8 +246,9 @@ BEGIN
 	led1 <= t_collision_1;
 	led2 <= t_collision_2;
 	
-	score_tens <= CONV_STD_LOGIC_VECTOR(t_score / 9,4);
-	score_ones <= CONV_STD_LOGIC_VECTOR(t_score rem 9,4);
+    score_hundreds <= CONV_STD_LOGIC_VECTOR(t_score / 100, 4); -- Hundreds place
+    score_tens <= CONV_STD_LOGIC_VECTOR((t_score mod 100) / 10, 4); -- Tens place
+    score_ones <= CONV_STD_LOGIC_VECTOR((t_score mod 10), 4); -- Ones place
 			
 	screen_display: PROCESS(clk_input)
 	BEGIN
@@ -324,10 +325,10 @@ BEGIN
 			
 			IF(pipe_1_infront = '1' and t_pipe_halfway = '1') THEN
 				pipe_1_infront <= '0';
-				t_score <= t_score + 1;
+				t_score <= t_score + 9;
 			ELSIF(pipe_1_infront = '0' and t_pipe_halfway_2 = '1') THEN
 				pipe_1_infront <= '1';
-				t_score <= t_score + 1;
+				t_score <= t_score + 9;
 			END IF;
 			
 			

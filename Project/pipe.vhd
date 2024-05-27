@@ -110,9 +110,9 @@ BEGIN
 				-- if the counter is 1
 				IF (first_iteration = '1') THEN
 					-- then check if the pipe os going beyond 0
-					IF ((pipe_x_pos + size_x) <  - CONV_STD_LOGIC_VECTOR(39, 11)) THEN
+					IF ((pipe_x_pos + size_x) <  CONV_STD_LOGIC_VECTOR(0, 11)) THEN
 						--if so resest pipecenter to the right end of screen
-						pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
+						pipe_x_pos <= CONV_STD_LOGIC_VECTOR(699, 11);
 						random_enable <= '1'; -- re-enable random_enable
 					ELSE
 					-- otherwise, random enable is set to 0
@@ -140,7 +140,7 @@ BEGIN
 				ELSE
 
 					-- setting the default position at the very end
-					pipe_x_pos <= CONV_STD_LOGIC_VECTOR(679, 11);
+					pipe_x_pos <= CONV_STD_LOGIC_VECTOR(699, 11);
 					random_enable <= '1'; -- random enable is always 1
 					first_iteration:= '1'; -- resetting counter to 1
 
