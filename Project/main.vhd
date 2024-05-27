@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 
 ENTITY MAIN IS
-	PORT(background_on, clk_input, jump_input, start_input, select_input, text_on, option_input: IN STD_LOGIC;
+	PORT(background_on, clk_input, jump_input, pause_input, select_option_input, option_input: IN STD_LOGIC;
 		horizontal_sync, vertical_sync: IN STD_LOGIC;
 		pixel_row_input, pixel_column_input: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		red_output, green_output, blue_output, score_hundreds, score_tens, score_ones: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -18,7 +18,7 @@ END ENTITY MAIN;
 ARCHITECTURE behvaiour OF MAIN IS
 	
 	SIGNAL t_collision_1, t_collision_2, t_collision_flag, collisions_reset, collision_tracker, pipe_1_infront, pipe_1_collision_chance, pipe_2_collision_chance, t_game_over, t_game_started: STD_LOGIC:= '0';
-	SIGNAL t_pipes_show, t_bird_show, t_text_show, t_bird_reset: STD_LOGIC;
+	SIGNAL t_pipes_show, t_bird_show, t_text_show, t_bird_reset, paused_game: STD_LOGIC;
 	SIGNAL bird_red, bird_green, bird_blue: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL t_bird_position: STD_LOGIC_VECTOR(9 DOWNTO 0);
 	SIGNAL text_red, text_blue, text_green: STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -46,11 +46,12 @@ ARCHITECTURE behvaiour OF MAIN IS
 	
 	
 	COMPONENT BIRD IS
-		PORT(clk, reset, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
+	PORT(clk, enable, reset, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			bird_on: OUT STD_LOGIC;
 			bird_y_position: OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
+
 	END COMPONENT;
 	
 	COMPONENT PIPE IS
@@ -103,6 +104,7 @@ BEGIN
 	bird_component: BIRD
 						PORT MAP(
 							clk => clk_input,
+							enable => not(paused_game),
 							reset => t_bird_reset,
 							vert_sync => vertical_sync,
 							mouse_clicked => jump_input,
@@ -136,7 +138,7 @@ BEGIN
 						PORT MAP(
 							clk => clk_input,
 							pipe_reset => t_pipe_reset,
-							enable => t_pipe_enable,
+							enable => t_pipe_enable and not(paused_game),
 							vert_sync => vertical_sync,
 							colour_input => '0',
 							pipe_x => t_pipe_x,
@@ -158,7 +160,7 @@ BEGIN
 						PORT MAP(
 							clk => clk_input,
 							pipe_reset => t_pipe_reset,
-							enable => t_pipe_enable_2,
+							enable => t_pipe_enable_2 and not(paused_game),
 							vert_sync => vertical_sync,
 							colour_input => '0',
 							pipe_x => t_pipe_x_2,
@@ -179,7 +181,7 @@ BEGIN
 	background_component: BACKGROUND
 								PORT MAP(
 									clk => clk_input,
-									enable => start_input,
+									enable => '1',
 									vert_sync => vertical_sync,
 									horz_sync => horizontal_sync,
 									pixel_row => pixel_row_input,
@@ -193,7 +195,7 @@ BEGIN
 	text_component: TEXT_DISPLAY
 						PORT MAP(Clk => clk_input,
 							enable => '1',
-							select_option_in => select_input,
+							select_option_in => select_option_input,
 							game_mode_in => game_mode,
 							pixel_row => pixel_row_input, 
 							pixel_column => pixel_column_input,
@@ -220,7 +222,7 @@ BEGIN
 			
 	FSM_DUT: FSM
 			port map(clk => clk_input,
-						select_option => select_input, 
+						select_option => select_option_input, 
 						select_input => option_input, 
 						game_over => t_game_over,
 						game_mode_out => game_mode,
@@ -249,7 +251,8 @@ BEGIN
     score_hundreds <= CONV_STD_LOGIC_VECTOR(t_score / 100, 4); -- Hundreds place
     score_tens <= CONV_STD_LOGIC_VECTOR((t_score mod 100) / 10, 4); -- Tens place
     score_ones <= CONV_STD_LOGIC_VECTOR((t_score mod 10), 4); -- Ones place
-			
+	paused_game <= pause_input;
+	
 	screen_display: PROCESS(clk_input)
 	BEGIN
 		IF (RISING_EDGE(clk_input)) THEN
@@ -297,7 +300,7 @@ BEGIN
 				pipe_1_infront <= '1';
 				t_score <= 0;
 			END IF;
-		
+
 			-- ============ collision detection ==============
 			
 			IF(t_collision_flag = '0' and (t_collision_1 = '1' or t_collision_2 = '1'))THEN

@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY BIRD IS 
 
-	PORT(clk, reset, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
+	PORT(clk, enable, reset, vert_sync, mouse_clicked, colour_input: IN STD_LOGIC;
 			pixel_row, pixel_column: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			red, green, blue : OUT STD_LOGIC_VECTOR(3 downto 0);
 			bird_on: OUT STD_LOGIC;
@@ -84,42 +84,43 @@ BEGIN
 	
 	--Logic for the bird to move uop and down with gravity logic
 		IF (RISING_EDGE(vert_sync)) THEN
-		--if the mouse was not clicked previously but is now clicked, and the bird is not currently jumping
-			IF(mouse_prev = '0' and mouse_clicked = '1' and jumping = '0') THEN
-				jumping := '1'; -- the brd will now jump
-			END IF;
-			--now, the previous state of the mouse is updated to the current mouse state
-			mouse_prev := mouse_clicked;
-			
-			--IF(colour_input = '1') THEN
-			--	blue <= "0001";
-			--ELSE
-			--	blue <= "0000";
-			--END IF;
-			
-			--Now, if the bird is jumping
-			IF (jumping = '1') THEN
-				-- if the counter is equal to 15 (then the bird has jumped 15 times upwards by 5 pixel distance and now should not be jumping)
-				IF (counter = 15) THEN
-					jumping := '0'; --bird is not jumping
-					counter := 0; -- reset the counter
-				ELSE
-					-- otherwise keep making the bird jump by 4 pixels for 15 times
-					ball_y_pos<= ball_y_pos - CONV_STD_LOGIC_VECTOR(4, 10);
-					counter:= counter + 1;
+			IF(enable = '1') THEN
+				--if the mouse was not clicked previously but is now clicked, and the bird is not currently jumping
+				IF(mouse_prev = '0' and mouse_clicked = '1' and jumping = '0') THEN
+					jumping := '1'; -- the brd will now jump
 				END IF;
-			ELSE
-				IF (ball_y_pos >= (CONV_STD_LOGIC_VECTOR(479, 10) - size)) THEN
-					--if the ball reaches less than or equal to the bottom of the screen set motion to 0
-					ball_y_motion <= CONV_STD_LOGIC_VECTOR(0, 10);
+				--now, the previous state of the mouse is updated to the current mouse state
+				mouse_prev := mouse_clicked;
+				
+				--IF(colour_input = '1') THEN
+				--	blue <= "0001";
+				--ELSE
+				--	blue <= "0000";
+				--END IF;
+				
+				--Now, if the bird is jumping
+				IF (jumping = '1') THEN
+					-- if the counter is equal to 15 (then the bird has jumped 15 times upwards by 5 pixel distance and now should not be jumping)
+					IF (counter = 15) THEN
+						jumping := '0'; --bird is not jumping
+						counter := 0; -- reset the counter
+					ELSE
+						-- otherwise keep making the bird jump by 4 pixels for 15 times
+						ball_y_pos<= ball_y_pos - CONV_STD_LOGIC_VECTOR(4, 10);
+						counter:= counter + 1;
+					END IF;
 				ELSE
-					--otherwise keep increasing the motion eeent by 2 pixels
-					ball_y_motion <= CONV_STD_LOGIC_VECTOR(2, 10);
+					IF (ball_y_pos >= (CONV_STD_LOGIC_VECTOR(479, 10) - size)) THEN
+						--if the ball reaches less than or equal to the bottom of the screen set motion to 0
+						ball_y_motion <= CONV_STD_LOGIC_VECTOR(0, 10);
+					ELSE
+						--otherwise keep increasing the motion eeent by 2 pixels
+						ball_y_motion <= CONV_STD_LOGIC_VECTOR(2, 10);
+					END IF;
+					-- Compute next ball Y position
+					ball_y_pos <= ball_y_pos + ball_y_motion;
 				END IF;
-				-- Compute next ball Y position
-				ball_y_pos <= ball_y_pos + ball_y_motion;
 			END IF;
-			
 			IF(reset = '1') THEN
 				ball_y_pos <= CONV_STD_LOGIC_VECTOR(240, 10);
 			ELSIF(ball_y_pos < CONV_STD_LOGIC_VECTOR(0, 10)) THEN
